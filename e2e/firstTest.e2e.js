@@ -19,7 +19,7 @@ describe('Example login', () => {
     await expect(element(by.id(testIDLogin.loginView))).toBeVisible();
   });
 
-  it('Should navigate to login screen, complete the login form and navigate to home scree', async () => {
+  it('Should complete the login form and navigate to OnBoarding screen', async () => {
     await expect(element(by.text('Email'))).toBeVisible();
     await expect(element(by.text('Contraseña'))).toBeVisible();
     await element(by.id(testIDLogin.emailLoginInput)).typeText(USER_MOCK.email);
