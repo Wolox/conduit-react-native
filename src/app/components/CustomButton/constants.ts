@@ -18,4 +18,5 @@ export interface CustomButtonProps extends CustomTextVariants, CustomButtonVaria
   style?: ViewStyle;
   textStyle?: TextStyle;
   title?: string;
+  testID?: string;
 }
