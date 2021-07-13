@@ -1,6 +1,6 @@
 import i18next from 'i18next';
 import Routes from '@constants/routes';
-import { blue, white } from '@constants/colors';
+import { white, fern } from '@constants/colors';
 import statusBarConfig from '@constants/statusBar';
 import { Navigation } from '@interfaces/navigation';
 
@@ -12,7 +12,7 @@ const defaultNavOptions = ({ route }: Navigation) => ({
   headerTitle: i18next.t(`app:${route.name}`),
   // TODO: The following options are examples. Change them to your need
   headerStyle: {
-    backgroundColor: blue
+    backgroundColor: fern
   },
   headerBackTitleStyle: {
     color: white

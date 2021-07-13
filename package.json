@@ -33,6 +33,7 @@
     "apisauce": "^2.1.1",
     "cerealizr": "^1.0.1-alpha",
     "i18next": "^20.3.2",
+    "moment-timezone": "^0.5.33",
     "react": "17.0.1",
     "react-hook-form": "^7.10.1",
     "react-native": "0.64.2",

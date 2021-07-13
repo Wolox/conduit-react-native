@@ -8,7 +8,8 @@ const Routes: StringObject = {
   Tab1: 'Tab1',
   Tab2: 'Tab2',
   App: 'App',
-  Home: 'Home'
+  Home: 'Home',
+  Articles: 'Articles'
 };
 
 export default Routes;

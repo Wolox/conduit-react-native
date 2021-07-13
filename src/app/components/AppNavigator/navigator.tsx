@@ -10,6 +10,7 @@ import Login from '@authScreens/Login';
 import SignUp from '@authScreens/SignUp';
 import OnBoarding from '@screens/OnBoarding';
 import Home from '@screens/Home';
+import Articles from '@screens/Articles';
 
 const Stack = createStackNavigator();
 
@@ -24,7 +25,7 @@ const Tab = createBottomTabNavigator();
 function HomeTabs() {
   return (
     <Tab.Navigator {...tabNavConfig}>
-      {inferRoute(Tab)({ [Routes.Tab1]: Home })}
+      {inferRoute(Tab)({ [Routes.Tab1]: Articles })}
       {inferRoute(Tab)({ [Routes.Tab2]: Home })}
     </Tab.Navigator>
   );

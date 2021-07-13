@@ -2,6 +2,9 @@ import { Dispatch } from 'react';
 import { ApiOkResponse, ApiErrorResponse } from 'apisauce';
 import { CurrentUser } from '@interfaces/authInterfaces';
 import { Nullable } from '@interfaces/globalInterfaces';
+import { PaginatedList } from '@interfaces/miscelanious';
+
+import { Article } from './articlesInterface';
 
 export interface Action<T = null, P = null, K = null> {
   [key: string]: any;
@@ -29,8 +32,16 @@ export interface AuthState {
   hasAccessOnBoarding: boolean;
 }
 
+export interface ArtcileAction extends PaginatedList<Article> {}
+export interface ArticlesState {
+  articlesList: Article[];
+  articlesListLoading: boolean;
+  articlesListError: Nullable<String>;
+}
+
 export interface State {
   auth: AuthState;
+  articles: ArticlesState;
 }
 
 export interface ReduxObject {
