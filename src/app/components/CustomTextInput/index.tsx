@@ -32,6 +32,7 @@ const CustomTextInput = forwardRef<TextInput, Props>(function CustomTextInput(
     showEye,
     style,
     value,
+    testIDProp,
     ...props
   },
   ref
@@ -94,7 +95,7 @@ const CustomTextInput = forwardRef<TextInput, Props>(function CustomTextInput(
           secureTextEntry={secureTextEntry && !showPassword}
           style={[styles.inputStyle, !multiline && styles.singleInput, inputTextStyles]}
           value={value}
-          testID={label || placeholder}
+          testID={testIDProp}
         />
         {secureTextEntry && showEye && (
           <ShowPassword onShowPassword={handleShowPassword} passwordVisible={showPassword} />

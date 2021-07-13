@@ -16,11 +16,16 @@
     "android:build.qa": "cd android && ./gradlew clean && ./gradlew assembleQaRelease",
     "android:build.stage": "cd android && ./gradlew clean && ./gradlew assembleStageRelease",
     "android:build.production": "cd android && ./gradlew clean && ./gradlew assembleProductionRelease",
+    "android:open": "open android/app/build/outputs/apk",
     "test:watch": "jest --watch",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "lint-fix": "eslint src --ext .js,.ts,.jsx,.tsx --fix",
     "lint-diff": "git diff --staged --name-only --relative --diff-filter=ACM | grep -E \"\\.(ts|tsx|js|jsx)$\" | xargs eslint",
-    "check-types": "tsc"
+    "check-types": "tsc",
+    "e2e:build.ios": "detox build --configuration ios",
+    "e2e:build.android": "detox build --configuration android.emu.qa.release",
+    "e2e:ios": "detox test -c ios",
+    "e2e:android": "detox test -c android.emu.qa.release"
   },
   "dependencies": {
     "@hookform/devtools": "^3.1.0",
@@ -32,8 +37,10 @@
     "@react-navigation/stack": "^5.14.5",
     "apisauce": "^2.1.1",
     "cerealizr": "^1.0.1-alpha",
+    "detox": "^18.18.1",
     "i18next": "^20.3.2",
     "moment-timezone": "^0.5.33",
+    "jest-circus": "^27.0.6",
     "react": "17.0.1",
     "react-hook-form": "^7.10.1",
     "react-native": "0.64.2",
