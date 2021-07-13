@@ -34,7 +34,7 @@ export interface AuthState {
 
 export interface ArtcileAction extends PaginatedList<Article> {}
 export interface ArticlesState {
-  articlesList: Article[];
+  articlesList: Nullable<ArtcileAction>;
   articlesListLoading: boolean;
   articlesListError: Nullable<String>;
 }

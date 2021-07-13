@@ -14,7 +14,7 @@ function Articles() {
   /* const dispatch = useDispatch(); */
   const paginated = useRef(false);
 
-  const articles = useSelector<State, Article[]>(state => state.articles.articlesList);
+  const articles = useSelector<State, Article[]>(state => state.articles.articlesList?.page || []);
   const loading = useSelector<State, boolean>(state => state.articles.articlesListLoading);
 
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
@@ -30,7 +30,9 @@ function Articles() {
     [loading, paginated, articles.length]
   );
 
-  /* const getArticles = useCallback(() => {
+  /* 
+  TODO: Logic for consume articles endpoint
+  const getArticles = useCallback(() => {
     dispatch(ArticlesActions.getArticles());
   }, [dispatch]);
 
