@@ -15,6 +15,7 @@ import { validateRequired, validateEmail } from '@utils/validations/validateUtil
 
 import './i18n';
 import styles from './styles';
+import testIds from './testIds';
 
 function Login({ navigation }: Navigation) {
   const dispatch = useDispatch();
@@ -26,10 +27,11 @@ function Login({ navigation }: Navigation) {
 
   const handleGoToSignUp = () => navigation.navigate(Routes.SignUp);
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} testID={testIds.loginView}>
       <View style={styles.container}>
         <View style={styles.form}>
           <ControlledCustomTextInput
+            testIDProp={testIds.emailLoginInput}
             control={control}
             animated
             keyboardType="email-address"
@@ -40,6 +42,7 @@ function Login({ navigation }: Navigation) {
             rules={{ ...validateRequired, ...validateEmail }}
           />
           <ControlledCustomTextInput
+            testIDProp={testIds.passwordLoginInput}
             control={control}
             animated
             showEye
@@ -56,11 +59,13 @@ function Login({ navigation }: Navigation) {
           )}
         </View>
         <CustomButton
+          testID={testIds.loginButton}
           onPress={handleSubmit(handleLogin)}
           style={styles.formButton}
           title={i18next.t('LOGIN:LOG_IN')}
         />
         <CustomButton
+          testID={testIds.signUpButton}
           onPress={handleGoToSignUp}
           style={styles.formButton}
           title={i18next.t('LOGIN:SIGN_UP')}

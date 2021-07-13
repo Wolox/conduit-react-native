@@ -10,9 +10,11 @@ import styles from './styles';
 const CustomButton = (props: CustomButtonProps) => {
   const customStyles = useCallback(() => getCustomStyles(VARIANTS, props, styles), [props]);
   const customTextStyles = useCallback(() => getCustomStyles(VARIANTS, props, styles, 'Content'), [props]);
-  const { onPress, style, activeOpacity, icon, title, iconStyle, disabled, textStyle, ...textProps } = props;
+  const { onPress, style, activeOpacity, icon, title, iconStyle, disabled, textStyle, testID, ...textProps } =
+    props;
   return (
     <TouchableOpacity
+      testID={testID}
       onPress={onPress}
       style={[styles.container, customStyles(), style]}
       activeOpacity={activeOpacity}

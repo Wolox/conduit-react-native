@@ -7,7 +7,7 @@ import { CustomTextInputProps } from '@components/CustomTextInput/interface';
 type Props = CustomTextInputProps & Omit<ControllerProps, 'control' | 'render'> & { control: Control<any> };
 
 const CustomTextInputController = forwardRef<TextInput, Props>(function CustomTextInputController(
-  { name, control, defaultValue = '', rules, ...props },
+  { name, control, defaultValue = '', rules, testIDProp, ...props },
   ref
 ) {
   return (
@@ -18,6 +18,7 @@ const CustomTextInputController = forwardRef<TextInput, Props>(function CustomTe
       rules={rules}
       render={({ field: { onChange, onBlur, ...fieldProps }, fieldState: { error } }) => (
         <CustomTextInput
+          testIDProp={testIDProp}
           {...props}
           {...fieldProps}
           error={error?.message}
