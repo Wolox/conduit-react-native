@@ -6,6 +6,7 @@ import { State } from '@interfaces/reduxInterfaces';
 import { Article } from '@interfaces/articlesInterface';
 import { THRESHOLD } from '@constants/pagination';
 import ScreenWithLoader from '@components/ScreenWithLoader';
+import { ListKeyExtractor } from '@interfaces/miscelanious';
 
 import ArticleItem from './components/ArticleItem';
 import styles from './styles';
@@ -20,6 +21,8 @@ function Articles() {
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
 
   const renderItem: ListRenderItem<Article> = useCallback(({ item }) => <ArticleItem item={item} />, []);
+
+  const keyExtractor: ListKeyExtractor<Article> = useCallback(({ slug }) => `${slug}`, []);
 
   const renderFooter = useCallback(
     () => (
@@ -56,6 +59,7 @@ function Articles() {
         <FlatList<Article>
           style={styles.container}
           data={articles}
+          keyExtractor={keyExtractor}
           renderItem={renderItem}
           ItemSeparatorComponent={renderSeparator}
           onEndReachedThreshold={THRESHOLD}

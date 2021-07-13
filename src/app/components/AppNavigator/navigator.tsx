@@ -25,7 +25,7 @@ const Tab = createBottomTabNavigator();
 function HomeTabs() {
   return (
     <Tab.Navigator {...tabNavConfig}>
-      {inferRoute(Tab)({ [Routes.Tab1]: Articles })}
+      {inferRoute(Tab)({ [Routes.Articles]: Articles })}
       {inferRoute(Tab)({ [Routes.Tab2]: Home })}
     </Tab.Navigator>
   );
