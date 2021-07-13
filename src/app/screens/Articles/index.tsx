@@ -1,7 +1,6 @@
 import React, { useCallback, useRef, useEffect } from 'react';
 import { SafeAreaView, FlatList, ListRenderItem, View, ActivityIndicator } from 'react-native';
-import { /* useDispatch,  */ useSelector } from 'react-redux';
-/* import ArticlesActions, { TARGETS } from '@redux/articles/actions'; */
+import { useSelector } from 'react-redux';
 import { State } from '@interfaces/reduxInterfaces';
 import { Article } from '@interfaces/articlesInterface';
 import { THRESHOLD } from '@constants/pagination';
@@ -12,7 +11,6 @@ import ArticleItem from './components/ArticleItem';
 import styles from './styles';
 
 function Articles() {
-  /* const dispatch = useDispatch(); */
   const paginated = useRef(false);
 
   const articles = useSelector<State, Article[]>(state => state.articles.articlesList?.page || []);
