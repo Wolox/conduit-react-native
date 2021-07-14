@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { green, lightGray, white } from '@constants/colors';
 
+const COMMON_VALUE_25 = 25;
 export default StyleSheet.create({
   container: {
     alignItems: 'center',
@@ -44,7 +45,7 @@ export default StyleSheet.create({
   formButton: {
     backgroundColor: green,
     padding: 10,
-    borderRadius: 25,
+    borderRadius: COMMON_VALUE_25,
     marginTop: 2
   },
   textFormButton: {
@@ -54,6 +55,6 @@ export default StyleSheet.create({
     textAlign: 'center'
   },
   textFormCustomText: {
-    marginTop: 25
+    marginTop: COMMON_VALUE_25
   }
 });

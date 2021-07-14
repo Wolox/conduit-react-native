@@ -8,18 +8,19 @@ import { Navigation } from '@interfaces/navigation';
 
 import fonts from './fonts';
 
-const heightTabNav = isIos ? 70 : 55;
-const paddingButtonTabNav = isAndroid ? 20 : 25;
+const HEIGHT_TAB_NAV = isIos ? 70 : 55;
+const PADDING_BUTTON_TAB_NAV = isAndroid ? 20 : 25;
+const COMMON_VALUE_25 = 25;
 const styles = StyleSheet.create({
   styleTabNav: {
-    height: heightTabNav,
+    height: HEIGHT_TAB_NAV,
     paddingTop: 5,
     position: 'absolute',
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
+    borderTopLeftRadius: COMMON_VALUE_25,
+    borderTopRightRadius: COMMON_VALUE_25,
     backgroundColor: white,
     elevation: 1,
-    paddingBottom: paddingButtonTabNav,
+    paddingBottom: PADDING_BUTTON_TAB_NAV,
     shadowOpacity: 0.4,
     shadowColor: lightGray
   }
@@ -82,10 +83,5 @@ export const appScreensNavOptions = {
 
 export const statusBarStyles = {
   // TODO: Change these styles to customize the status bar
-  [Routes.Login]: statusBarConfig.greenStatusBar,
-  [Routes.SignUp]: statusBarConfig.greenStatusBar,
-  [Routes.Tab1]: statusBarConfig.greenStatusBar,
-  [Routes.Tab2]: statusBarConfig.greenStatusBar,
-  [Routes.Home]: statusBarConfig.greenStatusBar,
-  default: statusBarConfig.transparentStatusBar
+  default: statusBarConfig.greenStatusBar
 };

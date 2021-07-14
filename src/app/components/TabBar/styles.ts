@@ -1,5 +1,5 @@
-import { gray, green, white } from '@constants/colors';
 import { StyleSheet } from 'react-native';
+import { white } from '@constants/colors';
 
 const styles = StyleSheet.create({
   image: {
@@ -7,13 +7,7 @@ const styles = StyleSheet.create({
     width: 30,
     marginTop: 3
   },
-  textActive: {
-    color: green
-  },
-  textInactive: {
-    color: gray
-  },
-  selectedRoute: {
+  centerTab: {
     padding: 14,
     backgroundColor: white,
     marginBottom: 10,
