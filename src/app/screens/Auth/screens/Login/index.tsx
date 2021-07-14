@@ -19,6 +19,7 @@ import { MIN_LENGTH_PASS } from './constants';
 import CustomTextPressable from './components/CustomTextPressable';
 import Header from './components/Header';
 import LogoConduit from './components/LogoConduit';
+import testIds from './testIds';
 
 function Login({ navigation }: Navigation) {
   const dispatch = useDispatch();
@@ -30,12 +31,13 @@ function Login({ navigation }: Navigation) {
 
   const handleGoToSignUp = () => navigation.navigate(Routes.SignUp);
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} testID={testIds.loginView}>
       <View style={styles.container}>
         <Header />
         <LogoConduit />
         <View style={styles.form}>
           <ControlledCustomTextInput
+            testIDProp={testIds.emailLoginInput}
             control={control}
             style={styles.inputText}
             inputContainerStyle={styles.input}
@@ -49,6 +51,7 @@ function Login({ navigation }: Navigation) {
             rules={{ ...validateRequired, ...validateEmail }}
           />
           <ControlledCustomTextInput
+            testIDProp={testIds.passwordLoginInput}
             control={control}
             style={styles.inputText}
             inputContainerStyle={styles.input}
@@ -69,6 +72,7 @@ function Login({ navigation }: Navigation) {
           )}
         </View>
         <CustomButton
+          testID={testIds.loginButton}
           onPress={handleSubmit(handleLogin)}
           style={styles.formButton}
           textStyle={styles.textFormButton}
