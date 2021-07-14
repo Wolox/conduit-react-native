@@ -7,7 +7,8 @@ export default StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingBottom: 50
+    paddingBottom: 50,
+    paddingTop: 12
   },
   stretchAndFlex: {
     alignSelf: 'stretch'
