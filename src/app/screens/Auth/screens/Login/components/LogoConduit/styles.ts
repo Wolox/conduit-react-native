@@ -1,7 +1,7 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { IS_SMALL_DEVICE } from '@constants/platform';
 
-const { height } = Dimensions.get('window');
-const marginLogo = height < 600 ? 50 : 10;
+const marginLogo = IS_SMALL_DEVICE ? 50 : 10;
 
 const styles = StyleSheet.create({
   containerimag: {

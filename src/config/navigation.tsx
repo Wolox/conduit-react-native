@@ -1,16 +1,15 @@
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import i18next from 'i18next';
 import Routes from '@constants/routes';
+import { isAndroid, isIos } from '@constants/platform';
 import { green, lightGray, white } from '@constants/colors';
 import statusBarConfig from '@constants/statusBar';
 import { Navigation } from '@interfaces/navigation';
 
 import fonts from './fonts';
 
-const IOS = Platform.OS === 'ios';
-const ANDROID = Platform.OS === 'android';
-const heightTabNav = IOS ? 70 : 55;
-const paddingButtonTabNav = ANDROID ? 20 : 25;
+const heightTabNav = isIos ? 70 : 55;
+const paddingButtonTabNav = isAndroid ? 20 : 25;
 const styles = StyleSheet.create({
   styleTabNav: {
     height: heightTabNav,

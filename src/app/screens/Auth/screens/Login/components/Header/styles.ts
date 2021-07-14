@@ -1,7 +1,7 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { IS_SMALL_DEVICE } from '@constants/platform';
 
-const { height } = Dimensions.get('window');
-const heightHeader = height < 600 ? 150 : 200;
+const heightHeader = IS_SMALL_DEVICE ? 150 : 200;
 
 const styles = StyleSheet.create({
   image: {
