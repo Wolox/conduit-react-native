@@ -18,6 +18,7 @@ import {
   validateMinLength
 } from '@utils/validations/validateUtils';
 
+import { MIN_LENGTH_PASS } from './constants';
 import './i18n';
 import styles from './styles';
 
@@ -51,23 +52,31 @@ function SignUp({ navigation }: Navigation) {
           <View style={[styles.stretchAndFlex, styles.form]}>
             <ControlledCustomTextInput
               control={control}
-              animated
+              inputContainerStyle={styles.input}
+              labelStyle={styles.labelText}
+              errorContainerStyle={styles.errorContainer}
               label={i18next.t('SIGNUP:NAME')}
+              placeholder={i18next.t('SIGNUP:NAME_PLACEHOLDER')}
               name={FIELDS.name}
               showError={hasSignUpError}
               rules={{ ...validateRequired, ...validateOnlyText }}
             />
             <ControlledCustomTextInput
               control={control}
-              animated
+              inputContainerStyle={styles.input}
+              labelStyle={styles.labelText}
+              errorContainerStyle={styles.errorContainer}
               label={i18next.t('SIGNUP:SURNAME')}
+              placeholder={i18next.t('SIGNUP:SURNAME_PLACEHOLDER')}
               name={FIELDS.surname}
               showError={hasSignUpError}
               rules={{ ...validateRequired, ...validateOnlyText }}
             />
             <ControlledCustomTextInput
               control={control}
-              animated
+              inputContainerStyle={styles.input}
+              labelStyle={styles.labelText}
+              errorContainerStyle={styles.errorContainer}
               label={i18next.t('SIGNUP:BIRTH_DATE')}
               name={FIELDS.birthDate}
               placeholder={i18next.t('SIGNUP:BIRTH_DATE_PLACEHOLDER')}
@@ -76,7 +85,9 @@ function SignUp({ navigation }: Navigation) {
             />
             <ControlledCustomTextInput
               control={control}
-              animated
+              inputContainerStyle={styles.input}
+              labelStyle={styles.labelText}
+              errorContainerStyle={styles.errorContainer}
               label={i18next.t('SIGNUP:SEX')}
               name={FIELDS.sex}
               placeholder={i18next.t('SIGNUP:SEX_PLACEHOLDER')}
@@ -84,8 +95,10 @@ function SignUp({ navigation }: Navigation) {
               rules={{ ...validateRequired, ...validateOnlyText }}
             />
             <ControlledCustomTextInput
+              inputContainerStyle={styles.input}
+              labelStyle={styles.labelText}
+              errorContainerStyle={styles.errorContainer}
               control={control}
-              animated
               keyboardType="email-address"
               label={i18next.t('SIGNUP:MAIL')}
               name={FIELDS.email}
@@ -94,18 +107,23 @@ function SignUp({ navigation }: Navigation) {
               rules={{ ...validateRequired, ...validateEmail }}
             />
             <ControlledCustomTextInput
+              inputContainerStyle={styles.input}
+              labelStyle={styles.labelText}
+              errorContainerStyle={styles.errorContainer}
               control={control}
-              animated
               showEye
               secureTextEntry
               label={i18next.t('SIGNUP:PASSWORD')}
+              placeholder={i18next.t('SIGNUP:PASSWORD')}
               name={FIELDS.password}
               showError={hasSignUpError}
-              rules={{ ...validateRequired, ...validateMinLength(8) }}
+              rules={{ ...validateRequired, ...validateMinLength(MIN_LENGTH_PASS) }}
             />
             <ControlledCustomTextInput
+              inputContainerStyle={styles.input}
+              labelStyle={styles.labelText}
+              errorContainerStyle={styles.errorContainer}
               control={control}
-              animated
               isOptional
               keyboardType="phone-pad"
               label={i18next.t('SIGNUP:PHONE_NUMBER')}
@@ -121,6 +139,7 @@ function SignUp({ navigation }: Navigation) {
             <CustomButton
               onPress={handleSubmit(handleSignUp)}
               style={styles.formButton}
+              textStyle={styles.textFormButton}
               title={i18next.t('SIGNUP:SIGN_UP')}
               disabled={hasSignUpError || !isValid}
             />

@@ -5,6 +5,7 @@
   "scripts": {
     "android": "npx react-native run-android --variant=qaDebug",
     "ios": "npx react-native run-ios --scheme qa",
+    "both":"npx react-native run-android --variant=qaDebug && npx react-native run-ios --scheme qa",
     "start": "npx react-native start",
     "test": "jest --passWithNoTests",
     "lint": "eslint src --ext .js,.ts,.jsx,.tsx",
