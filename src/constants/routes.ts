@@ -7,6 +7,9 @@ const Routes: StringObject = {
   OnBoarding: 'OnBoarding',
   Tab1: 'Tab1',
   Tab2: 'Tab2',
+  Tab3: 'Tab3',
+  Tab4: 'Tab4',
+  Tab5: 'Tab5',
   App: 'App',
   Home: 'Home'
 };

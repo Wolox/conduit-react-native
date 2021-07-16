@@ -2,7 +2,9 @@ import i18next from 'i18next';
 
 i18next.addResources('es', 'SIGNUP', {
   NAME: 'Nombre/s',
+  NAME_PLACEHOLDER: 'Ingrese su nombre',
   SURNAME: 'Apellido/s',
+  SURNAME_PLACEHOLDER: 'Ingrese su apellido',
   BIRTH_DATE: 'Fecha de nacimiento',
   BIRTH_DATE_PLACEHOLDER: 'Ej: DD/MM/AAAA',
   MAIL: 'Email',
