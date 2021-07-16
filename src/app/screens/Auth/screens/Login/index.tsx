@@ -11,10 +11,14 @@ import { Navigation } from '@interfaces/navigation';
 import { State } from '@interfaces/reduxInterfaces';
 import { actionCreators as AuthActions } from '@redux/auth/actions';
 import { FIELDS, LoginFormValues } from '@screens/Auth/constants';
-import { validateRequired, validateEmail } from '@utils/validations/validateUtils';
+import { validateRequired, validateEmail, validateMinLength } from '@utils/validations/validateUtils';
 
 import './i18n';
 import styles from './styles';
+import { MIN_LENGTH_PASS } from './constants';
+import CustomTextPressable from './components/CustomTextPressable';
+import Header from './components/Header';
+import LogoConduit from './components/LogoConduit';
 import testIds from './testIds';
 
 function Login({ navigation }: Navigation) {
@@ -29,11 +33,16 @@ function Login({ navigation }: Navigation) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} testID={testIds.loginView}>
       <View style={styles.container}>
+        <Header />
+        <LogoConduit />
         <View style={styles.form}>
           <ControlledCustomTextInput
             testIDProp={testIds.emailLoginInput}
             control={control}
-            animated
+            style={styles.inputText}
+            inputContainerStyle={styles.input}
+            labelStyle={styles.labelText}
+            errorContainerStyle={styles.errorContainer}
             keyboardType="email-address"
             label={i18next.t('LOGIN:MAIL')}
             name={FIELDS.email}
@@ -44,13 +53,17 @@ function Login({ navigation }: Navigation) {
           <ControlledCustomTextInput
             testIDProp={testIds.passwordLoginInput}
             control={control}
-            animated
+            style={styles.inputText}
+            inputContainerStyle={styles.input}
+            labelStyle={styles.labelText}
+            errorContainerStyle={styles.errorContainer}
+            placeholder={i18next.t('LOGIN:PASSWORD')}
             showEye
             secureTextEntry
             label={i18next.t('LOGIN:PASSWORD')}
             name={FIELDS.password}
             showError={hasLoginError}
-            rules={validateRequired}
+            rules={{ ...validateRequired, ...validateMinLength(MIN_LENGTH_PASS) }}
           />
           {hasLoginError && (
             <CustomText error center>
@@ -62,13 +75,13 @@ function Login({ navigation }: Navigation) {
           testID={testIds.loginButton}
           onPress={handleSubmit(handleLogin)}
           style={styles.formButton}
+          textStyle={styles.textFormButton}
           title={i18next.t('LOGIN:LOG_IN')}
         />
-        <CustomButton
-          testID={testIds.signUpButton}
+        <CustomTextPressable
+          text={i18next.t('LOGIN:SIGN_UP')}
           onPress={handleGoToSignUp}
-          style={styles.formButton}
-          title={i18next.t('LOGIN:SIGN_UP')}
+          style={styles.textFormCustomText}
         />
       </View>
     </TouchableWithoutFeedback>

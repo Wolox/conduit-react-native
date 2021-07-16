@@ -27,7 +27,6 @@ export const VARIANTS = [
   'error',
   'label',
   'title',
-  'fern'
 ];
 
 export interface VariantsInterface {
@@ -51,7 +50,6 @@ export interface VariantsInterface {
   error?: boolean;
   label?: boolean;
   title?: boolean;
-  fern?: boolean;
 }
 
 export interface CustomTextProps extends VariantsInterface {

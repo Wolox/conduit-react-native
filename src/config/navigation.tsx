@@ -1,18 +1,37 @@
+import { StyleSheet } from 'react-native';
 import i18next from 'i18next';
 import Routes from '@constants/routes';
-import { white, fern } from '@constants/colors';
+import { isAndroid, isIos } from '@constants/platform';
+import { green, lightGray, white } from '@constants/colors';
 import statusBarConfig from '@constants/statusBar';
 import { Navigation } from '@interfaces/navigation';
 
 import fonts from './fonts';
 
+const HEIGHT_TAB_NAV = isIos ? 70 : 55;
+const PADDING_BUTTON_TAB_NAV = isAndroid ? 20 : 25;
+const COMMON_VALUE_25 = 25;
+const styles = StyleSheet.create({
+  styleTabNav: {
+    height: HEIGHT_TAB_NAV,
+    paddingTop: 5,
+    position: 'absolute',
+    borderTopLeftRadius: COMMON_VALUE_25,
+    borderTopRightRadius: COMMON_VALUE_25,
+    backgroundColor: white,
+    elevation: 1,
+    paddingBottom: PADDING_BUTTON_TAB_NAV,
+    shadowOpacity: 0.4,
+    shadowColor: lightGray
+  }
+});
 // Default nav options for all screens
 const defaultNavOptions = ({ route }: Navigation) => ({
   // Change screen title from i18n traslates files
   headerTitle: i18next.t(`app:${route.name}`),
   // TODO: The following options are examples. Change them to your need
   headerStyle: {
-    backgroundColor: fern
+    backgroundColor: green
   },
   headerBackTitleStyle: {
     color: white
@@ -33,17 +52,18 @@ export const authStackNavConfig = {
   initialRouteName: Routes.Login
 };
 
-const defaultTabNavOptions = {
-  // TODO: Change them to your need
-};
+// const defaultTabNavOptions = {
+// TODO: Change them to your need
+// };
 
 export const tabNavConfig = {
   // TODO: Change them to your need
-  // tabBarOptions: {
-  //   activeTintColor: 'blue',
-  //   inactiveTintColor: 'gray',
-  // }
-  screenOptions: defaultTabNavOptions
+  initialRouteName: Routes.Home,
+  tabBarOptions: {
+    showLabel: false,
+    lazyLoad: true,
+    style: styles.styleTabNav
+  }
 };
 
 // Default nav options for all screens
@@ -57,16 +77,11 @@ export const appScreensNavOptions = {
     headerShown: false
   },
   [Routes.Home]: {
-    headerTitle: 'Home'
+    headerShown: false
   }
 };
 
 export const statusBarStyles = {
   // TODO: Change these styles to customize the status bar
-  [Routes.Login]: statusBarConfig.whiteStatusBar,
-  [Routes.SignUp]: statusBarConfig.blueStatusBar,
-  [Routes.Tab1]: statusBarConfig.blueStatusBar,
-  [Routes.Tab2]: statusBarConfig.blueStatusBar,
-  [Routes.Home]: statusBarConfig.blueStatusBar,
-  default: statusBarConfig.transparentStatusBar
+  default: statusBarConfig.greenStatusBar
 };

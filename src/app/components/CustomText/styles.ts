@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import fonts from '@config/fonts';
-import { blue, white, green, gray, transparent, red, fern } from '@constants/colors';
+import { blue, white, green, gray, transparent, red } from '@constants/colors';
 import { SIZES } from '@constants/fonts';
 import { moderateScale } from '@utils/scalingUtils';
 import { StringObject, NumberObject } from '@interfaces/globalInterfaces';
@@ -39,7 +39,7 @@ export default StyleSheet.create({
   },
   label: fonts.labelFont,
   // Colors
-  ...getColors({ blue, gray, green, white, fern }),
+  ...getColors({ blue, gray, green, white }),
   // Sizes
   ...getSizes({
     xxsmall: SIZES.XXSMALL,

@@ -1,9 +1,7 @@
-import { ImageSourcePropType } from 'react-native';
-
 export interface Author {
   bio: string;
   following: boolean;
-  image: ImageSourcePropType;
+  image: string;
   username: string;
 }
 
@@ -15,7 +13,9 @@ export interface Article {
   favorited: boolean;
   favoritesCount: number;
   slug: string;
-  /* tagList: []; */
+  /* 
+  TODO: validae inferface with endpoint response
+  tagList: []; */
   title: string;
   updatedAt: string;
 }

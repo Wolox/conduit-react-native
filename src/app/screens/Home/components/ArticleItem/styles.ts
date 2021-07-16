@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { darkGray } from '@constants/colors';
-import { moderateScale } from '@utils/scalingUtils';
 import { SPACING } from '@constants/dimentions';
+import { moderateScale } from '@utils/scalingUtils';
 
 const IMAGE_SIZE = moderateScale(40);
 
@@ -13,7 +13,6 @@ export default StyleSheet.create({
     flexDirection: 'row',
     marginBottom: SPACING.MEDIUM
   },
-  containerNick: {},
   image: {
     width: IMAGE_SIZE,
     height: IMAGE_SIZE,
