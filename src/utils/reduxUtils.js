@@ -1,8 +1,10 @@
+import { INITIAL_PAGE } from '@constants/pagination';
+
 export const onPagination = () => (state, action) =>
   state.merge({
     [action.target]: {
       page:
-        action.payload?.currentPage === 1
+        action.payload?.currentPage === INITIAL_PAGE
           ? action.payload.page
           : [...(state[action.target]?.page || []), ...(action.payload?.page || [])],
       nextPage: action.payload?.nextPage,
