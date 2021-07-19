@@ -1,16 +1,18 @@
 import React, { useCallback, useRef, useEffect } from 'react';
 import { SafeAreaView, FlatList, ListRenderItem, View, ActivityIndicator } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { State } from '@interfaces/reduxInterfaces';
 import { Article } from '@interfaces/articlesInterface';
 import { THRESHOLD } from '@constants/pagination';
 import { ListKeyExtractor } from '@interfaces/miscelanious';
 import ScreenWithLoader from '@components/ScreenWithLoader';
+import ArticlesActions, { TARGETS } from '@redux/articles/actions';
 
 import ArticleItem from './components/ArticleItem';
 import styles from './styles';
 
 function Home() {
+  const dispatch = useDispatch();
   const paginated = useRef(false);
 
   const articles = useSelector<State, Article[]>(state => state.articles.articlesList?.page || []);
@@ -31,8 +33,6 @@ function Home() {
     [loading, paginated, articles]
   );
 
-  /* 
-  TODO: Logic for consume articles endpoint
   const getArticles = useCallback(() => {
     dispatch(ArticlesActions.getArticles());
   }, [dispatch]);
@@ -42,7 +42,7 @@ function Home() {
     return () => {
       dispatch(ArticlesActions.clearTarget(TARGETS.ARTICLES_LIST));
     };
-  }, [dispatch, getArticles]); */
+  }, [dispatch, getArticles]);
 
   useEffect(() => {
     if (!paginated.current && !!articles.length) paginated.current = true;

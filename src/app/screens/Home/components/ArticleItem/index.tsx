@@ -4,6 +4,7 @@ import CustomText from '@components/CustomText';
 import { Article } from '@interfaces/articlesInterface';
 import { formatDate } from '@utils/dateUtils';
 
+import CUSTOM_IMAGE from './assets/default_article_image.jpg';
 import styles from './styles';
 
 interface Props {
@@ -21,7 +22,7 @@ function ArticleItem({
   return (
     <View style={styles.container}>
       <View style={styles.containerImage}>
-        <Image source={{ uri: image }} style={styles.image} />
+        <Image source={image && image !== '' ? { uri: image } : CUSTOM_IMAGE} style={styles.image} />
         <View>
           <CustomText green>{username}</CustomText>
           <CustomText label>{formatDate(updatedAt)}</CustomText>
