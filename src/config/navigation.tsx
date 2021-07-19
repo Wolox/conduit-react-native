@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { NavigationStackOptions } from 'react-navigation-stack';
 import i18next from 'i18next';
 import Routes from '@constants/routes';
 import { isAndroid, isIos } from '@constants/platform';
@@ -7,6 +8,8 @@ import statusBarConfig from '@constants/statusBar';
 import { Navigation } from '@interfaces/navigation';
 
 import fonts from './fonts';
+
+export const withoutHeader = (): NavigationStackOptions => ({ headerShown: false });
 
 const HEIGHT_TAB_NAV = isIos ? 70 : 55;
 const PADDING_BUTTON_TAB_NAV = isAndroid ? 20 : 25;
@@ -43,14 +46,16 @@ const defaultNavOptions = ({ route }: Navigation) => ({
   headerTintColor: white
 });
 
-export const appStackNavConfig = {
-  screenOptions: defaultNavOptions
-};
-
-export const authStackNavConfig = {
+const defaultStackNavConfig = (initialRoute?: string) => ({
   screenOptions: defaultNavOptions,
-  initialRouteName: Routes.Login
-};
+  initialRouteName: initialRoute
+});
+
+export const appStackNavConfig = defaultStackNavConfig(Routes.Home);
+
+export const authStackNavConfig = defaultStackNavConfig(Routes.Login);
+
+export const profileStackConfig = defaultStackNavConfig(Routes.Profile);
 
 // const defaultTabNavOptions = {
 // TODO: Change them to your need
@@ -70,15 +75,10 @@ export const tabNavConfig = {
 export const appScreensNavOptions = {
   // TODO: Add here the screens nav options that changes with respect to
   // the default ones defined in defaultNavOptions, for example...
-  [Routes.Login]: {
-    headerShown: false
-  },
-  [Routes.OnBoarding]: {
-    headerShown: false
-  },
-  [Routes.Home]: {
-    headerShown: false
-  }
+  [Routes.Auth]: withoutHeader,
+  [Routes.App]: withoutHeader,
+  [Routes.OnBoarding]: withoutHeader,
+  [Routes.Profile]: withoutHeader
 };
 
 export const statusBarStyles = {
