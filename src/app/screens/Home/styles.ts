@@ -1,15 +1,17 @@
 import { StyleSheet } from 'react-native';
-import { green } from '@constants/colors';
+import { BOTTOM_SEPARATOR_LINE } from '@constants/commonStyles';
+import { SPACING } from '@constants/dimentions';
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    flex: 1
   },
-  home: {
-    backgroundColor: green,
-    padding: 10,
-    borderRadius: 3
+  separator: {
+    ...BOTTOM_SEPARATOR_LINE,
+    width: '100%',
+    alignItems: 'center'
+  },
+  indicator: {
+    marginTop: SPACING.SMALL
   }
 });
