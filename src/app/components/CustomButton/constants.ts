@@ -19,4 +19,6 @@ export interface CustomButtonProps extends CustomTextVariants, CustomButtonVaria
   textStyle?: TextStyle;
   title?: string;
   testID?: string;
+  link?: boolean;
+  secondary?: boolean;
 }

@@ -26,7 +26,6 @@ export const VARIANTS = [
   'xbig',
   'error',
   'label',
-  'title',
   'headerTitle'
 ];
 
@@ -50,7 +49,6 @@ export interface VariantsInterface {
   xbig?: boolean;
   error?: boolean;
   label?: boolean;
-  title?: boolean;
   headerTitle?: boolean;
 }
 

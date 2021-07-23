@@ -2,8 +2,7 @@ import React from 'react';
 import i18next from 'i18next';
 import { Keyboard, ScrollView, TouchableOpacity, View } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
+import { useForm } from 'react-hook-form';
 import WithHeader from '@components/WithHeader';
 import Routes from '@constants/routes';
 import { isIos } from '@constants/platform';
@@ -11,14 +10,18 @@ import { OPACITY } from '@constants/commonStyles';
 import { Navigation } from '@interfaces/navigation';
 import { actionCreators as AuthActions } from '@redux/auth/actions';
 import logoutIcon from '@assets/Profile/ic_logout.png';
-import CustomTextInput from '@components/CustomTextInput';
 import CustomButton from '@components/CustomButton';
+import ControlledCustomTextInput from '@components/CustomTextInput/controller';
+import * as AuthService from '@services/AuthService';
+import { useAsyncRequest } from '@hooks/useRequest';
+import { validateRequired, validateEmail, validateOnlyText } from '@utils/validations/validateUtils';
+import signUpStyles from '@screens/Auth/screens/SignUp/styles';
 
 import './i18n';
 
 import styles from './styles';
 import ProfileListItem from './components/ProfileItem';
-import { ANDROID_SCROLLVIEW_PROPS } from './constants';
+import { ANDROID_SCROLLVIEW_PROPS, ProfileFormValues, FIELDS } from './constants';
 
 interface Props extends Navigation {}
 
@@ -26,21 +29,21 @@ function Profile() {
   const dispatch = useDispatch();
   const handlePressLogout = () => dispatch(AuthActions.logout());
 
-  const profileFormSchema = Yup.object().shape({
-    userName: Yup.string().required('Required'),
-    email: Yup.string().email('Invalid email').required('Required'),
-    description: Yup.string()
+  const [, , error, updateProfile] = useAsyncRequest({
+    request: AuthService.updateProfile
   });
 
-  const { handleChange, handleSubmit, isValid, dirty } = useFormik({
-    initialValues: {
-      userName: '',
-      email: '',
-      description: ''
-    },
-    onSubmit: () => console.log('submit profile form'),
-    validationSchema: profileFormSchema
-  });
+  const {
+    handleSubmit,
+    control,
+    formState: { isValid, isDirty }
+  } = useForm<ProfileFormValues>({ mode: 'onBlur' });
+
+  const hasError = !!error;
+  const handleUpdateProfile = (values: ProfileFormValues) => {
+    Keyboard.dismiss();
+    updateProfile(values);
+  };
 
   return (
     <WithHeader title={i18next.t(`app:${Routes.Profile}`)} withAvatar>
@@ -56,27 +59,42 @@ function Profile() {
             onPress={Keyboard.dismiss}
             activeOpacity={OPACITY.NONE}
             style={[styles.stretchAndFlex, styles.form]}>
-            <CustomTextInput
-              onChange={handleChange}
+            <ControlledCustomTextInput
+              name={FIELDS.username}
+              control={control}
               label={i18next.t('PROFILE:USERNAME')}
-              style={styles.formElement}
-              value={'username'}
+              placeholder={i18next.t('PROFILE:USERNAME')}
+              inputContainerStyle={signUpStyles.input}
+              labelStyle={signUpStyles.labelText}
+              errorContainerStyle={signUpStyles.errorContainer}
+              showError={hasError}
+              rules={{ ...validateRequired, ...validateOnlyText }}
             />
-            <CustomTextInput
-              onChange={handleChange}
+            <ControlledCustomTextInput
+              name={FIELDS.email}
+              control={control}
               label={i18next.t('PROFILE:EMAIL')}
-              style={styles.formElement}
-              value={'email'}
+              placeholder={i18next.t('PROFILE:EMAIL')}
+              inputContainerStyle={signUpStyles.input}
+              labelStyle={signUpStyles.labelText}
+              errorContainerStyle={signUpStyles.errorContainer}
+              showError={hasError}
+              rules={{ ...validateRequired, ...validateEmail }}
             />
-            <CustomTextInput
-              onChange={handleChange}
+            <ControlledCustomTextInput
+              name={FIELDS.description}
+              control={control}
               label={i18next.t('PROFILE:DESCRIPTION')}
-              style={styles.formElement}
-              value={'description'}
+              placeholder={i18next.t('PROFILE:DESCRIPTION')}
+              inputContainerStyle={signUpStyles.input}
+              labelStyle={signUpStyles.labelText}
+              errorContainerStyle={signUpStyles.errorContainer}
+              showError={hasError}
+              rules={{ ...validateOnlyText }}
             />
             <CustomButton
-              disabled={!(isValid && dirty)}
-              onPress={handleSubmit}
+              disabled={!(isValid && isDirty)}
+              onPress={handleSubmit(handleUpdateProfile)}
               style={styles.formButton}
               textStyle={styles.textFormButton}
               title={i18next.t('PROFILE:UPDATE_PROFILE')}
