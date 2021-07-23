@@ -24,7 +24,9 @@ export const VARIANTS = [
   'xmedium',
   'big',
   'xbig',
-  'error'
+  'error',
+  'label',
+  'title',
 ];
 
 export interface VariantsInterface {
@@ -46,6 +48,8 @@ export interface VariantsInterface {
   big?: boolean;
   xbig?: boolean;
   error?: boolean;
+  label?: boolean;
+  title?: boolean;
 }
 
 export interface CustomTextProps extends VariantsInterface {
