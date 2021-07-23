@@ -1,12 +1,15 @@
 import React, { useCallback, useRef, useEffect } from 'react';
 import { SafeAreaView, FlatList, ListRenderItem, View, ActivityIndicator } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 import { State } from '@interfaces/reduxInterfaces';
 import { Article } from '@interfaces/articlesInterface';
 import { THRESHOLD } from '@constants/pagination';
 import { ListKeyExtractor } from '@interfaces/miscelanious';
 import ScreenWithLoader from '@components/ScreenWithLoader';
+import CustomButton from '@components/CustomButton';
 import ArticlesActions, { TARGETS } from '@redux/articles/actions';
+import Routes from '@constants/routes';
 
 import ArticleItem from './components/ArticleItem';
 import styles from './styles';
@@ -14,6 +17,7 @@ import styles from './styles';
 function Home() {
   const dispatch = useDispatch();
   const paginated = useRef(false);
+  const navigation = useNavigation();
 
   const articles = useSelector<State, Article[]>(state => state.articles.articlesList?.page || []);
   const loading = useSelector<State, boolean>(state => state.articles.articlesListLoading);
@@ -33,6 +37,8 @@ function Home() {
     [loading, paginated, articles]
   );
 
+  const goToNewArticle = () => navigation.navigate(Routes.NewArticle);
+
   const getArticles = useCallback(() => {
     dispatch(ArticlesActions.getArticles());
   }, [dispatch]);
@@ -50,6 +56,12 @@ function Home() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <CustomButton
+        style={styles.createButton}
+        primary
+        title={'Create new article'}
+        onPress={goToNewArticle}
+      />
       <ScreenWithLoader
         loading={loading && !articles.length}
         refreshed={paginated.current}

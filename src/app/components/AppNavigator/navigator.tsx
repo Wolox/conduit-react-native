@@ -58,15 +58,15 @@ function AuthTabs() {
   );
 }
 const AuthStack = () => {
-  return <>{inferRoute(Stack)({ [Routes.Home]: AuthTabs })}</>;
-};
-function AppStack() {
   return (
     <>
-      {inferRoute(Stack)({ [Routes.Home]: HomeTabs })}
+      {inferRoute(Stack)({ [Routes.Home]: AuthTabs })}
       {inferRoute(Stack)({ [Routes.NewArticle]: NewArticle })}
     </>
   );
+};
+function AppStack() {
+  return <>{inferRoute(Stack)({ [Routes.Home]: HomeTabs })}</>;
 }
 
 const Navigator = () => {
