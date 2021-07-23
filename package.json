@@ -5,7 +5,7 @@
   "scripts": {
     "android": "npx react-native run-android --variant=qaDebug",
     "ios": "npx react-native run-ios --scheme qa",
-    "both":"npx react-native run-android --variant=qaDebug && npx react-native run-ios --scheme qa",
+    "both": "npx react-native run-android --variant=qaDebug && npx react-native run-ios --scheme qa",
     "start": "npx react-native start",
     "test": "jest --passWithNoTests",
     "lint": "eslint src --ext .js,.ts,.jsx,.tsx",
@@ -47,6 +47,7 @@
     "react-native-config": "^1.4.2",
     "react-native-flipper": "^0.96.1",
     "react-native-gesture-handler": "^1.10.3",
+    "react-native-keyboard-aware-scroll-view": "^0.9.4",
     "react-native-keyboard-spacer": "^0.4.1",
     "react-native-localize": "^2.1.1",
     "react-native-reanimated": "^2.2.0",
