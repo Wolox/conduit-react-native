@@ -57,7 +57,7 @@ export const updateProfile = (_: UpdateProfileData) => {
   //   ok: false,
   //   problem: 'CLIENT_ERROR',
   //   originalError: {},
-  //   data: 'Error en el signup!'
+  //   data: 'Error updating profile data'
   // }) as Promise<ApiResponse<any, any>>;
   return Promise.resolve({
     ok: true,
