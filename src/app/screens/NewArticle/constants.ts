@@ -18,3 +18,10 @@ export interface TextInputKeyEvent {
     text: string;
   };
 }
+
+export const fiedlsValidations = () => ({
+  MIN_LENGHT_FIELD: 5,
+  MAX_TITLE_LENGHT: 50,
+  MAX_DESCRIPTION_LENGHT: 200,
+  MAX_BODY_LENGHT: 5000
+});

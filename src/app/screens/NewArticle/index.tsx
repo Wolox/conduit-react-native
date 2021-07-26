@@ -6,16 +6,23 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import ControlledCustomTextInput from '@components/CustomTextInput/controller';
 import CustomButton from '@components/CustomButton';
 import CustomText from '@components/CustomText';
-import { validateRequired, validateAlphanumeric } from '@utils/validations/validateUtils';
+import {
+  validateRequired,
+  validateAlphanumeric,
+  validateMinLength,
+  validateMaxLength
+} from '@utils/validations/validateUtils';
 
-import { FIELDS, NewArticleValues } from './constants';
+import { FIELDS, NewArticleValues, fiedlsValidations } from './constants';
 import './i18n';
 import styles from './styles';
-import Tag from './components';
+import Tag from './components/Tag';
 import testIds from './testIds';
 
+const { MIN_LENGHT_FIELD, MAX_TITLE_LENGHT, MAX_DESCRIPTION_LENGHT, MAX_BODY_LENGHT } = fiedlsValidations();
+
 function NewArticle() {
-  const { handleSubmit, control, setValue } = useForm<NewArticleValues>({ mode: 'all' });
+  const { handleSubmit, control, setValue, trigger } = useForm<NewArticleValues>({ mode: 'all' });
   const [items, setItems] = useState<string[]>([]);
   const handleDeleteTag = (index: number) => {
     const newItems = items.filter((_, key) => key !== index);
@@ -26,7 +33,10 @@ function NewArticle() {
     <Tag text={item} index={index} onDeleteTag={handleDeleteTag} />
   );
   // @TODO: do the quest when you already have the token in the headers
-  const handleNewArticle = (values: NewArticleValues) => console.log(values);
+  const handleNewArticle = (values: NewArticleValues) => {
+    trigger();
+    console.log(values);
+  };
 
   useEffect(() => {
     setValue(FIELDS.tagList, items);
@@ -45,7 +55,13 @@ function NewArticle() {
           name={FIELDS.title}
           placeholder={i18next.t('NEW_ARTICLE:PLACEHODER_TITLE')}
           labelStyle={styles.labelStyle}
-          rules={{ ...validateRequired, ...validateAlphanumeric }}
+          rules={{
+            ...validateRequired,
+            ...validateMinLength(MIN_LENGHT_FIELD),
+            ...validateMaxLength(MAX_TITLE_LENGHT),
+            ...validateAlphanumeric
+          }}
+          maxLength={80}
         />
         <ControlledCustomTextInput
           testIDProp={testIds.descriptionInput}
@@ -54,7 +70,13 @@ function NewArticle() {
           label={i18next.t('NEW_ARTICLE:DESCRIPTION')}
           name={FIELDS.description}
           placeholder={i18next.t('NEW_ARTICLE:PLACEHOLDER_DESCRIPTION')}
-          rules={{ ...validateRequired, ...validateAlphanumeric }}
+          rules={{
+            ...validateRequired,
+            ...validateMinLength(MIN_LENGHT_FIELD),
+            ...validateMaxLength(MAX_DESCRIPTION_LENGHT),
+            ...validateAlphanumeric
+          }}
+          maxLength={200}
         />
 
         <ControlledCustomTextInput
@@ -65,19 +87,26 @@ function NewArticle() {
           labelStyle={styles.labelStyle}
           name={FIELDS.body}
           placeholder={i18next.t('NEW_ARTICLE:PLACEHOLDER_BODY')}
-          rules={{ ...validateRequired }}
+          rules={{
+            ...validateRequired,
+            ...validateMinLength(MIN_LENGHT_FIELD),
+            ...validateMaxLength(MAX_BODY_LENGHT)
+          }}
+          maxLength={5000}
         />
-        <View>
-          <ControlledCustomTextInput
-            testIDProp={testIds.tagInput}
-            control={control}
-            labelStyle={styles.labelStyle}
-            label={i18next.t('NEW_ARTICLE:TAGS')}
-            name={'addTag'}
-            placeholder={i18next.t('NEW_ARTICLE:PLACHEHOLDER_TAGS')}
-            onSubmitEditing={({ nativeEvent: { text } }) => setItems([...items, text])}
-          />
 
+        <ControlledCustomTextInput
+          testIDProp={testIds.tagInput}
+          control={control}
+          labelStyle={styles.labelStyle}
+          label={i18next.t('NEW_ARTICLE:TAGS')}
+          name={'addTag'}
+          placeholder={i18next.t('NEW_ARTICLE:PLACHEHOLDER_TAGS')}
+          onSubmitEditing={({ nativeEvent: { text } }) => {
+            if (text.length > 2) setItems([...items, text]);
+          }}
+        />
+        <>
           <FlatList
             numColumns={2}
             columnWrapperStyle={styles.row}
@@ -85,7 +114,7 @@ function NewArticle() {
             keyExtractor={(item, index) => `${item}${index}`}
             renderItem={renderItem}
           />
-        </View>
+        </>
         <CustomButton
           testID={testIds.createArticleButton}
           primary
