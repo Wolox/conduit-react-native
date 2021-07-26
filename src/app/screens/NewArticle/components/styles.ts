@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native';
-import { gray, green } from '@constants/colors';
+import { darkGrayMedium } from '@constants/colors';
 
 const DEFAULT_SPACE = 10;
 const DEFAULT_MARGIN = 5;
 
 export default StyleSheet.create({
   tagContainer: {
-    backgroundColor: green,
+    backgroundColor: darkGrayMedium,
     paddingHorizontal: DEFAULT_SPACE,
     marginVertical: DEFAULT_MARGIN,
     alignItems: 'center',
@@ -24,7 +24,6 @@ export default StyleSheet.create({
   },
   removeItem: {
     marginLeft: DEFAULT_MARGIN,
-    backgroundColor: gray,
     width: 20,
     borderRadius: DEFAULT_SPACE
   }

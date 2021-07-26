@@ -11,3 +11,10 @@ export interface NewArticleValues {
   [FIELDS.body]: string;
   [FIELDS.tagList]: string[];
 }
+
+export interface TextInputKeyEvent {
+  nativeEvent: {
+    key: string;
+    text: string;
+  };
+}

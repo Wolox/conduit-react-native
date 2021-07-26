@@ -2,12 +2,12 @@ import i18next from 'i18next';
 
 i18next.addResources('es', 'NEW_ARTICLE', {
   TITLE: 'Title',
-  PLACEHODER_TITLE: 'Type title',
+  PLACEHODER_TITLE: 'Article title',
   DESCRIPTION: 'Description',
-  PLACEHOLDER_DESCRIPTION: 'Type description',
+  PLACEHOLDER_DESCRIPTION: "What's this article about",
   TAGS: 'Add tags',
-  PLACHEHOLDER_TAGS: 'Add a tag',
+  PLACHEHOLDER_TAGS: 'Enter tags',
   BODY: 'Body',
-  PLACEHOLDER_BODY: 'Type article content',
-  CREATE_BUTTON: 'Create article'
+  PLACEHOLDER_BODY: 'Write you article (in markdown)',
+  CREATE_BUTTON: 'Publish Article'
 });

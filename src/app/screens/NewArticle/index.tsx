@@ -56,24 +56,6 @@ function NewArticle() {
           placeholder={i18next.t('NEW_ARTICLE:PLACEHOLDER_DESCRIPTION')}
           rules={{ ...validateRequired, ...validateAlphanumeric }}
         />
-        <View>
-          <ControlledCustomTextInput
-            testIDProp={testIds.tagInput}
-            control={control}
-            labelStyle={styles.labelStyle}
-            label={i18next.t('NEW_ARTICLE:TAGS')}
-            name={'addTag'}
-            placeholder={i18next.t('NEW_ARTICLE:PLACHEHOLDER_TAGS')}
-            onSubmitEditing={({ nativeEvent: { text } }) => setItems([...items, text])}
-          />
-          <FlatList
-            numColumns={2}
-            columnWrapperStyle={styles.row}
-            data={items}
-            keyExtractor={(item, index) => `${item}${index}`}
-            renderItem={renderItem}
-          />
-        </View>
 
         <ControlledCustomTextInput
           testIDProp={testIds.bodyInput}
@@ -85,6 +67,25 @@ function NewArticle() {
           placeholder={i18next.t('NEW_ARTICLE:PLACEHOLDER_BODY')}
           rules={{ ...validateRequired }}
         />
+        <View>
+          <ControlledCustomTextInput
+            testIDProp={testIds.tagInput}
+            control={control}
+            labelStyle={styles.labelStyle}
+            label={i18next.t('NEW_ARTICLE:TAGS')}
+            name={'addTag'}
+            placeholder={i18next.t('NEW_ARTICLE:PLACHEHOLDER_TAGS')}
+            onSubmitEditing={({ nativeEvent: { text } }) => setItems([...items, text])}
+          />
+
+          <FlatList
+            numColumns={2}
+            columnWrapperStyle={styles.row}
+            data={items}
+            keyExtractor={(item, index) => `${item}${index}`}
+            renderItem={renderItem}
+          />
+        </View>
         <CustomButton
           testID={testIds.createArticleButton}
           primary
