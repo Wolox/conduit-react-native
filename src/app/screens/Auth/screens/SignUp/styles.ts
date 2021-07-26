@@ -12,7 +12,7 @@ export default StyleSheet.create({
     alignItems: COMMON_ALIGN_CENTER,
     justifyContent: COMMON_ALIGN_CENTER,
     paddingBottom: 50,
-    paddingTop: 12
+    paddingTop: 35
   },
   stretchAndFlex: {
     alignSelf: 'stretch'
@@ -27,7 +27,7 @@ export default StyleSheet.create({
     borderBottomWidth: 0,
     backgroundColor: white,
     width: COMMON_PERCENTAJE_100,
-    height: 35,
+    height: 40,
     borderRadius: 15,
     elevation: 1,
     shadowColor: lightGray,
