@@ -11,7 +11,6 @@ export default StyleSheet.create({
   container: {
     alignItems: COMMON_ALIGN_CENTER,
     justifyContent: COMMON_ALIGN_CENTER,
-    paddingBottom: 50,
     paddingTop: 35
   },
   stretchAndFlex: {
