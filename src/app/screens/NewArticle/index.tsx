@@ -61,7 +61,7 @@ function NewArticle() {
             ...validateMaxLength(MAX_TITLE_LENGHT),
             ...validateAlphanumeric
           }}
-          maxLength={80}
+          maxLength={MAX_TITLE_LENGHT}
         />
         <ControlledCustomTextInput
           testIDProp={testIds.descriptionInput}
@@ -76,7 +76,7 @@ function NewArticle() {
             ...validateMaxLength(MAX_DESCRIPTION_LENGHT),
             ...validateAlphanumeric
           }}
-          maxLength={200}
+          maxLength={MAX_DESCRIPTION_LENGHT}
         />
 
         <ControlledCustomTextInput
@@ -92,7 +92,7 @@ function NewArticle() {
             ...validateMinLength(MIN_LENGHT_FIELD),
             ...validateMaxLength(MAX_BODY_LENGHT)
           }}
-          maxLength={5000}
+          maxLength={MAX_BODY_LENGHT}
         />
 
         <ControlledCustomTextInput
