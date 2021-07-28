@@ -11,11 +11,15 @@ export default StyleSheet.create({
     paddingHorizontal: DEFAULT_SPACE,
     marginVertical: DEFAULT_MARGIN,
     alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: DEFAULT_SPACE_LARGE,
     flexDirection: 'row',
     flexWrap: 'wrap',
     maxWidth: 200,
     height: 30
+  },
+  text: {
+    marginLeft: DEFAULT_MARGIN
   },
   tagDelete: {
     paddingHorizontal: DEFAULT_SPACE,

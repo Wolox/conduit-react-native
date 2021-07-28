@@ -18,7 +18,9 @@ function Tag({ text, onDeleteTag, index }: Props) {
 
   return (
     <View style={styles.tagContainer}>
-      <CustomText white>{textFormmated}</CustomText>
+      <CustomText center white style={styles.text}>
+        {textFormmated}
+      </CustomText>
       <TouchableWithoutFeedback style={styles.tagDelete} onPress={() => onDeleteTag(index)}>
         <View style={styles.removeItem}>
           <CustomText bold white center>

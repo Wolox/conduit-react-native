@@ -5,12 +5,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import i18next from 'i18next';
 import { State } from '@interfaces/reduxInterfaces';
 import { Article } from '@interfaces/articlesInterface';
-import { THRESHOLD } from '@constants/pagination';
 import { ListKeyExtractor } from '@interfaces/miscelanious';
+import { THRESHOLD } from '@constants/pagination';
+import Routes from '@constants/routes';
 import ScreenWithLoader from '@components/ScreenWithLoader';
 import CustomButton from '@components/CustomButton';
 import ArticlesActions, { TARGETS } from '@redux/articles/actions';
-import Routes from '@constants/routes';
 
 import ArticleItem from './components/ArticleItem';
 import styles from './styles';

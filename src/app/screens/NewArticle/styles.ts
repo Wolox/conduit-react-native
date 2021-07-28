@@ -21,7 +21,7 @@ export default StyleSheet.create({
     justifyContent: 'space-around'
   },
   createButton: {
-    marginTop: DEFAULT_SPACE,
+    marginVertical: DEFAULT_SPACE,
     width: '80%',
     marginLeft: '10%'
   }
