@@ -1,7 +1,8 @@
 import React, { useCallback, useRef, useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView, FlatList, ListRenderItem, View, ActivityIndicator } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
+import i18next from 'i18next';
 import { State } from '@interfaces/reduxInterfaces';
 import { Article } from '@interfaces/articlesInterface';
 import { THRESHOLD } from '@constants/pagination';
@@ -13,6 +14,7 @@ import Routes from '@constants/routes';
 
 import ArticleItem from './components/ArticleItem';
 import styles from './styles';
+import './i18n';
 
 function Home() {
   const dispatch = useDispatch();
@@ -59,7 +61,7 @@ function Home() {
       <CustomButton
         style={styles.createButton}
         primary
-        title={'Create new article'}
+        title={i18next.t('HOME:NEW_ARTICLE')}
         onPress={goToNewArticle}
       />
       <ScreenWithLoader

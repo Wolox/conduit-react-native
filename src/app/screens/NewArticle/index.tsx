@@ -19,7 +19,8 @@ import styles from './styles';
 import Tag from './components/Tag';
 import testIds from './testIds';
 
-const { MIN_LENGHT_FIELD, MAX_TITLE_LENGHT, MAX_DESCRIPTION_LENGHT, MAX_BODY_LENGHT } = fiedlsValidations();
+const { MIN_LENGHT_FIELD, MAX_TITLE_LENGHT, MAX_DESCRIPTION_LENGHT, MAX_BODY_LENGHT, MIN_LENGTH_TAG } =
+  fiedlsValidations();
 
 function NewArticle() {
   const { handleSubmit, control, setValue, trigger } = useForm<NewArticleValues>({ mode: 'all' });
@@ -103,7 +104,7 @@ function NewArticle() {
           name={'addTag'}
           placeholder={i18next.t('NEW_ARTICLE:PLACHEHOLDER_TAGS')}
           onSubmitEditing={({ nativeEvent: { text } }) => {
-            if (text.length > 2) setItems([...items, text]);
+            if (text.length >= MIN_LENGTH_TAG) setItems([...items, text]);
           }}
         />
         <>

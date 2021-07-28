@@ -3,6 +3,7 @@ import { darkGrayMedium } from '@constants/colors';
 
 const DEFAULT_SPACE = 10;
 const DEFAULT_MARGIN = 5;
+const DEFAULT_SPACE_LARGE = 20;
 
 export default StyleSheet.create({
   tagContainer: {
@@ -10,7 +11,7 @@ export default StyleSheet.create({
     paddingHorizontal: DEFAULT_SPACE,
     marginVertical: DEFAULT_MARGIN,
     alignItems: 'center',
-    borderRadius: 20,
+    borderRadius: DEFAULT_SPACE_LARGE,
     flexDirection: 'row',
     flexWrap: 'wrap',
     maxWidth: 200,
@@ -24,7 +25,7 @@ export default StyleSheet.create({
   },
   removeItem: {
     marginLeft: DEFAULT_MARGIN,
-    width: 20,
+    width: DEFAULT_SPACE_LARGE,
     borderRadius: DEFAULT_SPACE
   }
 });

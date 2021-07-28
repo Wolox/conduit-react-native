@@ -10,8 +10,11 @@ interface Props {
   onDeleteTag: (index: number) => void;
 }
 
+const MAX_LENGTH_WORD_TAG = 15;
+
 function Tag({ text, onDeleteTag, index }: Props) {
-  const textFormmated = text.length > 15 ? `${text.substring(0, 15)}..` : text;
+  const textFormmated =
+    text.length > MAX_LENGTH_WORD_TAG ? `${text.substring(0, MAX_LENGTH_WORD_TAG)}..` : text;
 
   return (
     <View style={styles.tagContainer}>
