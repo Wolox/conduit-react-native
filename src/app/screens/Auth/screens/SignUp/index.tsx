@@ -11,12 +11,7 @@ import { useAsyncRequest } from '@hooks/useRequest';
 import { Navigation } from '@interfaces/navigation';
 import { FIELDS, SignupFormValues } from '@screens/Auth/constants';
 import * as AuthService from '@services/AuthService';
-import {
-  validateRequired,
-  validateEmail,
-  validateOnlyText,
-  validateMinLength
-} from '@utils/validations/validateUtils';
+import { validateRequired, validateEmail, validateMinLength } from '@utils/validations/validateUtils';
 
 import { MIN_LENGTH_PASS } from './constants';
 import './i18n';
@@ -51,48 +46,16 @@ function SignUp({ navigation }: Navigation) {
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={[styles.stretchAndFlex, styles.form]}>
             <ControlledCustomTextInput
-              control={control}
               inputContainerStyle={styles.input}
               labelStyle={styles.labelText}
               errorContainerStyle={styles.errorContainer}
-              label={i18next.t('SIGNUP:NAME')}
-              placeholder={i18next.t('SIGNUP:NAME_PLACEHOLDER')}
-              name={FIELDS.name}
-              showError={hasSignUpError}
-              rules={{ ...validateRequired, ...validateOnlyText }}
-            />
-            <ControlledCustomTextInput
               control={control}
-              inputContainerStyle={styles.input}
-              labelStyle={styles.labelText}
-              errorContainerStyle={styles.errorContainer}
-              label={i18next.t('SIGNUP:SURNAME')}
-              placeholder={i18next.t('SIGNUP:SURNAME_PLACEHOLDER')}
-              name={FIELDS.surname}
+              keyboardType="default"
+              label={i18next.t('SIGNUP:USERNAME')}
+              name={FIELDS.username}
+              placeholder={i18next.t('SIGNUP:USERNAME_PLACEHOLDER')}
               showError={hasSignUpError}
-              rules={{ ...validateRequired, ...validateOnlyText }}
-            />
-            <ControlledCustomTextInput
-              control={control}
-              inputContainerStyle={styles.input}
-              labelStyle={styles.labelText}
-              errorContainerStyle={styles.errorContainer}
-              label={i18next.t('SIGNUP:BIRTH_DATE')}
-              name={FIELDS.birthDate}
-              placeholder={i18next.t('SIGNUP:BIRTH_DATE_PLACEHOLDER')}
-              showError={hasSignUpError}
-              rules={validateRequired}
-            />
-            <ControlledCustomTextInput
-              control={control}
-              inputContainerStyle={styles.input}
-              labelStyle={styles.labelText}
-              errorContainerStyle={styles.errorContainer}
-              label={i18next.t('SIGNUP:SEX')}
-              name={FIELDS.sex}
-              placeholder={i18next.t('SIGNUP:SEX_PLACEHOLDER')}
-              showError={hasSignUpError}
-              rules={{ ...validateRequired, ...validateOnlyText }}
+              rules={{ ...validateRequired }}
             />
             <ControlledCustomTextInput
               inputContainerStyle={styles.input}
@@ -118,18 +81,6 @@ function SignUp({ navigation }: Navigation) {
               name={FIELDS.password}
               showError={hasSignUpError}
               rules={{ ...validateRequired, ...validateMinLength(MIN_LENGTH_PASS) }}
-            />
-            <ControlledCustomTextInput
-              inputContainerStyle={styles.input}
-              labelStyle={styles.labelText}
-              errorContainerStyle={styles.errorContainer}
-              control={control}
-              isOptional
-              keyboardType="phone-pad"
-              label={i18next.t('SIGNUP:PHONE_NUMBER')}
-              name={FIELDS.phoneNumber}
-              placeholder={i18next.t('SIGNUP:PHONE_NUMBER_PLACEHOLDER')}
-              showError={hasSignUpError}
             />
             {hasSignUpError && (
               <CustomText error center>

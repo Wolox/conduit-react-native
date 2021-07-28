@@ -1,1 +1,1 @@
-export const MIN_LENGTH_PASS = 4;
+export const MIN_LENGTH_PASS = 6;
