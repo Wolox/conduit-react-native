@@ -9,6 +9,7 @@ import { inferRoute } from '@utils/navUtils';
 import Login from '@authScreens/Login';
 import SignUp from '@authScreens/SignUp';
 import Home from '@screens/Home';
+import NewArticle from '@screens/NewArticle';
 
 import TabBar from '../TabBar';
 
@@ -57,7 +58,12 @@ function AuthTabs() {
   );
 }
 const AuthStack = () => {
-  return <>{inferRoute(Stack)({ [Routes.Home]: AuthTabs })}</>;
+  return (
+    <>
+      {inferRoute(Stack)({ [Routes.Home]: AuthTabs })}
+      {inferRoute(Stack)({ [Routes.NewArticle]: NewArticle })}
+    </>
+  );
 };
 function AppStack() {
   return <>{inferRoute(Stack)({ [Routes.Home]: HomeTabs })}</>;

@@ -10,18 +10,29 @@ import styles from './styles';
 const CustomButton = (props: CustomButtonProps) => {
   const customStyles = useCallback(() => getCustomStyles(VARIANTS, props, styles), [props]);
   const customTextStyles = useCallback(() => getCustomStyles(VARIANTS, props, styles, 'Content'), [props]);
-  const { onPress, style, activeOpacity, icon, title, iconStyle, disabled, textStyle, testID, ...textProps } =
-    props;
+  const {
+    onPress,
+    style,
+    activeOpacity,
+    icon,
+    title,
+    iconStyle,
+    disabled,
+    textStyle,
+    testID,
+    primary,
+    ...textProps
+  } = props;
   return (
     <TouchableOpacity
       testID={testID}
       onPress={onPress}
-      style={[styles.container, customStyles(), style]}
+      style={[styles.container, customStyles(), primary && styles.primary, style]}
       activeOpacity={activeOpacity}
       disabled={disabled}>
       {icon && <Image source={icon} resizeMode="contain" style={[styles.icon, iconStyle]} />}
       {title && (
-        <CustomText {...textProps} style={[customTextStyles(), textStyle]}>
+        <CustomText white={primary} bold={primary} {...textProps} style={[customTextStyles(), textStyle]}>
           {title}
         </CustomText>
       )}

@@ -49,5 +49,11 @@ export default StyleSheet.create({
   },
   greenContent: {
     color: white
+  },
+  primary: {
+    backgroundColor: green,
+    padding: 10,
+    borderRadius: 25,
+    marginTop: 2
   }
 });

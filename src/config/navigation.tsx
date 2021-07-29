@@ -78,6 +78,9 @@ export const appScreensNavOptions = {
   },
   [Routes.Home]: {
     headerShown: false
+  },
+  [Routes.NewArticle]: {
+    headerShown: false
   }
 };
 

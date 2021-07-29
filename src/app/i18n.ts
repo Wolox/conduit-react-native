@@ -3,7 +3,7 @@ import Routes from '@constants/routes';
 
 // TODO: Replace here the screens titles
 
-i18next.addResources('es', 'app', {
+i18next.addResources('en', 'app', {
   [Routes.Login]: 'Login',
   [Routes.SignUp]: 'SignUp',
   [Routes.Tab1]: 'Tab 1',
