@@ -3,7 +3,6 @@
 // If you want to read more about naming and linking custom fonts,
 // this is the original post: https://medium.com/@mehran.khan/ultimate-guide-to-use-custom-fonts-in-react-native-77fcdf859cf4
 export const NUNITO = 'Nunito';
-export const SOURCE_SANS_PRO = 'SourceSansPro';
 // WEIGHTS
 export const REGULAR = 'Regular';
 export const SEMIBOLD = 'SemiBold';

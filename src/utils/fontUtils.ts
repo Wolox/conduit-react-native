@@ -1,6 +1,6 @@
 import { TextStyle } from 'react-native';
 import { isAndroid } from '@constants/platform';
-import { NUNITO, REGULAR, SEMIBOLD, BOLD, NORMAL, ITALIC, SOURCE_SANS_PRO } from '@constants/fonts';
+import { NUNITO, REGULAR, SEMIBOLD, BOLD, NORMAL, ITALIC } from '@constants/fonts';
 import { moderateScale } from '@utils/scalingUtils';
 import { StringObject } from '@interfaces/globalInterfaces';
 
@@ -33,23 +33,12 @@ const fonts: Record<string, Types> = {
       [NORMAL]: NORMAL_STYLE,
       [ITALIC]: 'italic'
     }
-  },
-  [SOURCE_SANS_PRO]: {
-    weights: {
-      [REGULAR]: REGULAR_WEIGHT,
-      [SEMIBOLD]: '600',
-      [BOLD]: '700'
-    },
-    styles: {
-      [NORMAL]: NORMAL_STYLE,
-      [ITALIC]: 'italic'
-    }
   }
 };
 
 export const fontMaker = (options: FontMakerOptions = {}): TextStyle => {
   const { size = null, color = null } = options;
-  let { weight = null, style = null, family = SOURCE_SANS_PRO } = options;
+  let { weight = null, style = null, family = NUNITO } = options;
 
   let font = {};
   const { weights, styles } = fonts[family];
