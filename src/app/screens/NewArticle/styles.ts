@@ -16,6 +16,9 @@ export default StyleSheet.create({
     color: green,
     marginVertical: 5
   },
+  containerList: {
+    marginBottom: DEFAULT_SPACE
+  },
   row: {
     flex: 1,
     justifyContent: 'space-around'

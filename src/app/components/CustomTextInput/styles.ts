@@ -4,6 +4,8 @@ import { blue, gray, darkGray, red, white } from '@constants/colors';
 import { SIZES } from '@constants/fonts';
 import { commonBoxShadow } from '@constants/commonStyles';
 
+const DEFAULT_BORDER = 15;
+
 export default StyleSheet.create({
   container: {
     marginBottom: 5,
@@ -16,6 +18,7 @@ export default StyleSheet.create({
     height: 75,
     paddingHorizontal: 5,
     backgroundColor: white,
+    borderRadius: DEFAULT_BORDER,
     ...commonBoxShadow
   },
   inputContainer: {
@@ -26,7 +29,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: white,
     height: 50,
-    borderRadius: 15,
+    borderRadius: DEFAULT_BORDER,
     ...commonBoxShadow,
     alignSelf: 'center',
     paddingHorizontal: 8
