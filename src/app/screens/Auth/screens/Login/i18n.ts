@@ -1,6 +1,6 @@
 import i18next from 'i18next';
 
-i18next.addResources('es', 'LOGIN', {
+i18next.addResources('en', 'LOGIN', {
   MAIL: 'Email',
   MAIL_PLACEHOLDER: 'Ej: email@dominio.com',
   PASSWORD: 'Password',

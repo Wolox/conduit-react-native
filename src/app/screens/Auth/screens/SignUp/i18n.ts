@@ -1,6 +1,6 @@
 import i18next from 'i18next';
 
-i18next.addResources('es', 'SIGNUP', {
+i18next.addResources('en', 'SIGNUP', {
   USERNAME: 'Username',
   USERNAME_PLACEHOLDER: 'Hello12',
   MAIL: 'Email',

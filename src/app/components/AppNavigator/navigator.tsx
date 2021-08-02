@@ -9,6 +9,7 @@ import { inferRoute } from '@utils/navUtils';
 import Login from '@authScreens/Login';
 import SignUp from '@authScreens/SignUp';
 import Home from '@screens/Home';
+import FavArticles from '@screens/FavArticles';
 import NewArticle from '@screens/NewArticle';
 
 import TabBar from '../TabBar';
@@ -30,7 +31,7 @@ function HomeTabs() {
       {inferRoute(Tab)({ [Routes.Tab1]: Home })}
       {inferRoute(Tab)({ [Routes.Tab2]: Home })}
       {inferRoute(Tab)({ [Routes.Tab3]: Home })}
-      {inferRoute(Tab)({ [Routes.Tab4]: Home })}
+      {inferRoute(Tab)({ [Routes.Fav]: FavArticles })}
       {inferRoute(Tab)({ [Routes.Tab5]: Home })}
     </Tab.Navigator>
   );
