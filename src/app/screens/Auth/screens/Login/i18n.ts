@@ -1,10 +1,10 @@
 import i18next from 'i18next';
 
-i18next.addResources('es', 'LOGIN', {
+i18next.addResources('en', 'LOGIN', {
   MAIL: 'Email',
   MAIL_PLACEHOLDER: 'Ej: email@dominio.com',
-  PASSWORD: 'Contraseña',
-  LOG_IN: 'Ingresar',
-  LOGIN_FAILURE: 'Email y/o contraseña incorrecto/s',
-  SIGN_UP: '¿No tienes cuenta todavía? Registrate!'
+  PASSWORD: 'Password',
+  LOG_IN: 'Sign In',
+  LOGIN_FAILURE: 'Email or passsword invalid',
+  SIGN_UP: '¿Need an account? Register!'
 });

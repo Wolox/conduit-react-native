@@ -12,6 +12,6 @@ const getLanguage = {
 };
 
 i18next.use(getLanguage).init({
-  fallbackLng: 'es',
+  fallbackLng: 'en',
   initImmediate: false
 });

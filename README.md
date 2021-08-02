@@ -11,7 +11,6 @@ We highly recommend using [nvm](https://github.com/creationix/nvm) instead of br
 
 ## One time setup
 
-
 ### ENV setup
 
 Each environment has its env file with the following filename format:

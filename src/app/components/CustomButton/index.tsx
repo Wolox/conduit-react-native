@@ -23,6 +23,7 @@ const CustomButton = (props: CustomButtonProps) => {
     testID,
     secondary,
     link,
+    primary,
     ...textProps
   } = props;
   const { BUTTON_STYLE, TEXT_STYLE, ICON_STYLE } = useMemo(
@@ -33,12 +34,16 @@ const CustomButton = (props: CustomButtonProps) => {
     <TouchableOpacity
       testID={testID}
       onPress={onPress}
-      style={[styles.container, customStyles(), style, BUTTON_STYLE]}
+      style={[styles.container, customStyles(), primary && styles.primary, style, BUTTON_STYLE]}
       activeOpacity={activeOpacity}
       disabled={disabled}>
       {icon && <Image source={icon} resizeMode="contain" style={[styles.icon, iconStyle, ICON_STYLE]} />}
       {title && (
-        <CustomText {...textProps} style={[customTextStyles(), textStyle, TEXT_STYLE]}>
+        <CustomText
+          white={primary}
+          bold={primary}
+          {...textProps}
+          style={[customTextStyles(), textStyle, TEXT_STYLE]}>
           {title}
         </CustomText>
       )}

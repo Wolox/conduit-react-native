@@ -13,3 +13,4 @@ export const lightGray: string = '#E5E5E5';
 export const gray: string = '#A7A7A7';
 export const mediumGray: string = '#939393';
 export const darkGray: string = '#555555';
+export const darkGrayMedium: string = '#818A91';

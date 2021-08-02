@@ -11,3 +11,13 @@ export const OPACITY = {
   DEFAULT: 0.7,
   NONE: 1
 };
+
+export const commonBoxShadow = {
+  elevation: 1,
+  shadowColor: lightGray,
+  shadowOpacity: 1,
+  shadowOffset: {
+    width: 0,
+    height: 3
+  }
+};

@@ -12,7 +12,8 @@ const Routes: StringObject = {
   Tab5: 'Tab5',
   App: 'App',
   Home: 'Home',
-  Profile: 'Profile'
+  Profile: 'Profile',
+  NewArticle: 'NewArticle'
 };
 
 export default Routes;

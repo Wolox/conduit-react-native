@@ -8,10 +8,7 @@ export interface AuthData {
 }
 
 export interface SignUpData {
-  name: string;
-  surname: string;
-  birthDate: string;
-  sex: string;
+  username: string;
   email: string;
   password: string;
   phoneNumber?: string;

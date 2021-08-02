@@ -10,6 +10,7 @@ import Login from '@authScreens/Login';
 import SignUp from '@authScreens/SignUp';
 import Home from '@screens/Home';
 import Profile from '@screens/Profile';
+import NewArticle from '@screens/NewArticle';
 
 import TabBar from '../TabBar';
 
@@ -62,7 +63,12 @@ const AuthTabs = () => (
   </Tab.Navigator>
 );
 
-const AuthStack = () => <>{inferRoute(Stack)({ [Routes.Auth]: AuthTabs })}</>;
+const AuthStack = () => (
+  <>
+    {inferRoute(Stack)({ [Routes.Auth]: AuthTabs })}
+    {inferRoute(Stack)({ [Routes.NewArticle]: NewArticle })}
+  </>
+);
 
 const AppStack = () => <>{inferRoute(Stack)({ [Routes.App]: AppTabs })}</>;
 
