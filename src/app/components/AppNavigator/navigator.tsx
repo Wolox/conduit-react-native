@@ -29,7 +29,7 @@ function HomeTabs() {
       })}>
       {inferRoute(Tab)({ [Routes.Tab1]: Home })}
       {inferRoute(Tab)({ [Routes.Tab2]: Home })}
-      {inferRoute(Tab)({ [Routes.Tab3]: Home })}
+      {inferRoute(Tab)({ [Routes.Tab3]: NewArticle })}
       {inferRoute(Tab)({ [Routes.Tab4]: Home })}
       {inferRoute(Tab)({ [Routes.Tab5]: Home })}
     </Tab.Navigator>
@@ -58,15 +58,15 @@ function AuthTabs() {
   );
 }
 const AuthStack = () => {
+  return <>{inferRoute(Stack)({ [Routes.Home]: AuthTabs })}</>;
+};
+function AppStack() {
   return (
     <>
-      {inferRoute(Stack)({ [Routes.Home]: AuthTabs })}
+      {inferRoute(Stack)({ [Routes.Home]: HomeTabs })}
       {inferRoute(Stack)({ [Routes.NewArticle]: NewArticle })}
     </>
   );
-};
-function AppStack() {
-  return <>{inferRoute(Stack)({ [Routes.Home]: HomeTabs })}</>;
 }
 
 const Navigator = () => {

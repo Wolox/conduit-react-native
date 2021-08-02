@@ -51,7 +51,7 @@ function NewArticle() {
         <View style={styles.container}>
           <KeyboardAwareScrollView bounces={false} enableOnAndroid>
             <CustomText green bold style={styles.title}>
-              Create article
+              {i18next.t('NEW_ARTICLE:CREATE_ARTICLE')}
             </CustomText>
             <ControlledCustomTextInput
               testIDProp={testIds.titleInput}
