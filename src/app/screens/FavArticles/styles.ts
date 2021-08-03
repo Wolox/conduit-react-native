@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-
   separator: {
     ...BOTTOM_SEPARATOR_LINE,
     width: '100%',

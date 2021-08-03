@@ -26,7 +26,7 @@ export const VARIANTS = [
   'xbig',
   'error',
   'label',
-  'title',
+  'title'
 ];
 
 export interface VariantsInterface {
