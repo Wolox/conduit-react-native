@@ -38,10 +38,15 @@ export interface ArticlesState {
   articlesListLoading: boolean;
   articlesListError: Nullable<String>;
 }
-
+export interface FavouritesState {
+  favouritesarticlesList: [];
+  favouritesarticlesListLoading: boolean;
+  favouritesarticlesListError: Nullable<string>;
+}
 export interface State {
   auth: AuthState;
   articles: ArticlesState;
+  favourites: FavouritesState;
 }
 
 export interface ReduxObject {
