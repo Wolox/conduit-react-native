@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
   styleTabNav: {
     height: HEIGHT_TAB_NAV,
     paddingTop: 5,
-    position: 'absolute',
     borderTopLeftRadius: COMMON_VALUE_25,
     borderTopRightRadius: COMMON_VALUE_25,
     backgroundColor: white,

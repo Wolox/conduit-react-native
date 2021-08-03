@@ -35,7 +35,6 @@ export default function FavArticles() {
         loading={favouritesarticlesListLoading || !favouritesarticlesList.length}
         withInitialLoading={false}>
         <FlatList<Article>
-          style={styles.list}
           data={favouritesarticlesList}
           keyExtractor={keyExtractor}
           renderItem={renderItem}
