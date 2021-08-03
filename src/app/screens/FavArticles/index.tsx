@@ -1,14 +1,14 @@
 import React, { useEffect, useCallback } from 'react';
 import { SafeAreaView, FlatList, ListRenderItem, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
 import i18next from 'i18next';
-import FavouritesActions from '@redux/favourites/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import CustomText from '@components/CustomText';
+import ScreenWithLoader from '@components/ScreenWithLoader';
 import { State } from '@interfaces/reduxInterfaces';
 import { Article } from '@interfaces/articlesInterface';
 import ArticleItem from '@components/ArticleItem';
 import { ListKeyExtractor } from '@interfaces/miscelanious';
-import ScreenWithLoader from '@components/ScreenWithLoader';
-import CustomText from '@components/CustomText';
+import FavouritesActions from '@redux/favourites/actions';
 
 import './i18n';
 import styles from './styles';
