@@ -28,7 +28,7 @@ export default function FavArticles() {
     <SafeAreaView style={styles.container}>
       <View style={styles.statusNavBar}>
         <View style={styles.textTitle}>
-          <CustomText medium>{i18next.t('FAV_ARTICLES:FAVOURITED_ARTICLES')}</CustomText>
+          <CustomText medium>{i18next.t('FAV_ARTICLES:FAVORITED_ARTICLES')}</CustomText>
         </View>
       </View>
       <ScreenWithLoader
