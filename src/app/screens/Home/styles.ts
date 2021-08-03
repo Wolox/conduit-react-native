@@ -13,9 +13,5 @@ export default StyleSheet.create({
   },
   indicator: {
     marginTop: SPACING.SMALL
-  },
-  createButton: {
-    width: '60%',
-    margin: 30
   }
 });

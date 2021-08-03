@@ -1,6 +1,7 @@
 import i18next from 'i18next';
 
 i18next.addResources('en', 'NEW_ARTICLE', {
+  CREATE_ARTICLE: 'Create article',
   TITLE: 'Title',
   PLACEHODER_TITLE: 'Article title',
   DESCRIPTION: 'Description',
