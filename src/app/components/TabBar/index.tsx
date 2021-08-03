@@ -37,7 +37,7 @@ export default function TabBar({ currentTab, focused }: Props) {
         setImageInactiveState(icAddInactive);
         setImageActiveState(icAddActive);
         break;
-      case Routes.Fav:
+      case Routes.FavArticles:
         setImageInactiveState(icFavouriteInactive);
         setImageActiveState(icFavouriteActive);
         break;

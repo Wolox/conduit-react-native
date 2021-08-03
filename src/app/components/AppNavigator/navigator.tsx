@@ -31,7 +31,7 @@ function HomeTabs() {
       {inferRoute(Tab)({ [Routes.Tab1]: Home })}
       {inferRoute(Tab)({ [Routes.Tab2]: Home })}
       {inferRoute(Tab)({ [Routes.Tab3]: NewArticle })}
-      {inferRoute(Tab)({ [Routes.Fav]: FavArticles })}
+      {inferRoute(Tab)({ [Routes.FavArticles]: FavArticles })}
       {inferRoute(Tab)({ [Routes.Tab5]: Home })}
     </Tab.Navigator>
   );
