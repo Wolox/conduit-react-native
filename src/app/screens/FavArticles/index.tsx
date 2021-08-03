@@ -1,6 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
 import { SafeAreaView, FlatList, ListRenderItem, View } from 'react-native';
-import { ParamListBase, RouteProp, useRoute } from '@react-navigation/native';
 import FavouritesActions from '@redux/favourites/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { State } from '@interfaces/reduxInterfaces';
@@ -11,7 +10,6 @@ import ScreenWithLoader from '@components/ScreenWithLoader';
 
 import './i18n';
 import styles from './styles';
-import TopBar from './Components/TopBar';
 
 export default function FavArticles() {
   const { favouritesarticlesList, favouritesarticlesListLoading } = useSelector<State, any>(
@@ -21,13 +19,11 @@ export default function FavArticles() {
   const renderItem: ListRenderItem<Article> = useCallback(({ item }) => <ArticleItem item={item} />, []);
   const keyExtractor: ListKeyExtractor<Article> = useCallback(({ slug }) => `${slug}`, []);
   const dispatch = useDispatch();
-  const route: RouteProp<ParamListBase, string> = useRoute();
   useEffect(() => {
     dispatch(FavouritesActions.getFavouritesArticles());
   }, [dispatch]);
   return (
     <SafeAreaView style={styles.container}>
-      <TopBar routeName={route.name} />
       <ScreenWithLoader
         loading={favouritesarticlesListLoading || !favouritesarticlesList.length}
         withInitialLoading={false}>
