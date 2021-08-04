@@ -1,6 +1,6 @@
 import React from 'react';
-import i18next from 'i18next';
 import { Keyboard, ScrollView, TouchableOpacity, View } from 'react-native';
+import i18next from 'i18next';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import WithHeader from '@components/WithHeader';
@@ -11,7 +11,7 @@ import { isIos } from '@constants/platform';
 import { OPACITY } from '@constants/commonStyles';
 import { Navigation } from '@interfaces/navigation';
 import { actionCreators as AuthActions } from '@redux/auth/actions';
-import logoutIcon from '@assets/Profile/ic_logout.png';
+import logoutIcon from '@assets/Profile/icLogout.png';
 import * as AuthService from '@services/AuthService';
 import { useAsyncRequest } from '@hooks/useRequest';
 import { validateRequired, validateEmail, validateOnlyText } from '@utils/validations/validateUtils';

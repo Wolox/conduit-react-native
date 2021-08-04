@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, ImageSourcePropType, Image } from 'react-native';
 import CustomText from '@components/CustomText';
-import iconArrow from '@assets/Profile/ic_general_row-arrow.png';
+import icGeneralRowArrow from '@assets/Profile/icGeneralRowArrow.png';
 
 import styles from './styles';
 
@@ -21,7 +21,7 @@ function ProfileItem({ title, icon, onPress }: Props) {
           </View>
           <CustomText>{title}</CustomText>
         </View>
-        <Image source={iconArrow} style={styles.arrow} />
+        <Image source={icGeneralRowArrow} style={styles.arrow} />
       </View>
     </TouchableOpacity>
   );
