@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import { FlatList, ListRenderItem, SafeAreaView, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import i18next from 'i18next';
 import ScreenWithLoader from '@components/ScreenWithLoader';
 import { MyArticlesState, State } from '@interfaces/reduxInterfaces';
 import { Article } from '@interfaces/articlesInterface';
@@ -32,7 +33,7 @@ export default function MyArticles() {
           />
         ) : (
           <View style={styles.noItemMessage}>
-            <CustomText>Hola</CustomText>
+            <CustomText>{i18next.t('MY_ARTICLES:NO_ARTICLES')}</CustomText>
           </View>
         )}
       </>

@@ -25,7 +25,7 @@ const MyArticlesService = {
       ok: true,
       problem: null,
       originalError: null,
-      data: MY_ARTICLES_MOCK
+      data: []
     })
 };
 
