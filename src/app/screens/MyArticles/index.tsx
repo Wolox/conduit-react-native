@@ -7,7 +7,7 @@ import './i18n';
 import Header from './Header';
 import styles from './styles';
 
-export default function MyFeed() {
+export default function MyArticles() {
   return (
     <SafeAreaView style={styles.container}>
       <Header />

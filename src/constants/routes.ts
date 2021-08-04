@@ -6,7 +6,7 @@ const Routes: StringObject = {
   SignUp: 'SignUp',
   OnBoarding: 'OnBoarding',
   Tab1: 'Tab1',
-  MyFeed: 'MyFeed',
+  MyArticles: 'MyArticles',
   Tab3: 'Tab3',
   Tab4: 'Tab4',
   Tab5: 'Tab5',

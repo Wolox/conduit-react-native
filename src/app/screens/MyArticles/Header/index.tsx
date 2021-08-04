@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <View style={styles.titleContainer}>
       <View style={styles.title}>
-        <CustomText>{i18next.t('MY_FEED:TITLE')}</CustomText>
+        <CustomText>{i18next.t('MY_ARTICLES:TITLE')}</CustomText>
       </View>
     </View>
   );
