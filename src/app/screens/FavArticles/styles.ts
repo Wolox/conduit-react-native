@@ -23,6 +23,11 @@ const styles = StyleSheet.create({
   textTitle: {
     borderBottomColor: green,
     borderBottomWidth: 2
+  },
+  noItemMessage: {
+    marginTop: '10%',
+    alignItems: 'center',
+    flex: 1
   }
 });
 export default styles;

@@ -21,6 +21,26 @@ export default function FavArticles() {
   const renderItem: ListRenderItem<Article> = useCallback(({ item }) => <ArticleItem item={item} />, []);
   const keyExtractor: ListKeyExtractor<Article> = useCallback(({ slug }) => `${slug}`, []);
   const dispatch = useDispatch();
+  const renderMessage = useCallback(
+    () => (
+      <>
+        {favouritesarticlesList.length ? (
+          <FlatList<Article>
+            data={favouritesarticlesList}
+            keyExtractor={keyExtractor}
+            renderItem={renderItem}
+            ItemSeparatorComponent={renderSeparator}
+            showsVerticalScrollIndicator={false}
+          />
+        ) : (
+          <View style={styles.noItemMessage}>
+            <CustomText>{i18next.t('FAV_ARTICLES:NO_ARTICLES')}</CustomText>
+          </View>
+        )}
+      </>
+    ),
+    [keyExtractor, favouritesarticlesList, renderItem, renderSeparator]
+  );
   useEffect(() => {
     dispatch(FavouritesActions.getFavouritesArticles());
   }, [dispatch]);
@@ -31,16 +51,8 @@ export default function FavArticles() {
           <CustomText medium>{i18next.t('FAV_ARTICLES:FAVORITED_ARTICLES')}</CustomText>
         </View>
       </View>
-      <ScreenWithLoader
-        loading={favouritesarticlesListLoading || !favouritesarticlesList.length}
-        withInitialLoading={false}>
-        <FlatList<Article>
-          data={favouritesarticlesList}
-          keyExtractor={keyExtractor}
-          renderItem={renderItem}
-          ItemSeparatorComponent={renderSeparator}
-          showsVerticalScrollIndicator={false}
-        />
+      <ScreenWithLoader loading={favouritesarticlesListLoading} withInitialLoading={false}>
+        {renderMessage()}
       </ScreenWithLoader>
     </SafeAreaView>
   );
