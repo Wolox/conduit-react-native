@@ -31,19 +31,21 @@ const ProfileStack = () => (
   </Stack.Navigator>
 );
 
-const AppTabs = () => (
-  <Tab.Navigator
-    {...tabNavConfig}
-    screenOptions={({ route: { name, key } }) => ({
-      tabBarIcon: ({ focused }) => renderTab(focused, name, key)
-    })}>
-    {inferRoute(Tab)({ [Routes.Tab1]: HomeStack })}
-    {inferRoute(Tab)({ [Routes.Tab2]: HomeStack })}
-    {inferRoute(Tab)({ [Routes.Tab3]: HomeStack })}
-    {inferRoute(Tab)({ [Routes.Tab4]: HomeStack })}
-    {inferRoute(Tab)({ [Routes.Tab5]: ProfileStack })}
-  </Tab.Navigator>
-);
+function HomeTabs() {
+  return (
+    <Tab.Navigator
+      {...tabNavConfig}
+      screenOptions={({ route: { name, key } }) => ({
+        tabBarIcon: ({ focused }) => renderTab(focused, name, key)
+      })}>
+      {inferRoute(Tab)({ [Routes.Tab1]: HomeStack })}
+      {inferRoute(Tab)({ [Routes.Tab2]: HomeStack })}
+      {inferRoute(Tab)({ [Routes.Tab3]: NewArticle })}
+      {inferRoute(Tab)({ [Routes.Tab4]: HomeStack })}
+      {inferRoute(Tab)({ [Routes.Tab5]: ProfileStack })}
+    </Tab.Navigator>
+  );
+}
 
 const AuthStackTabs = () => (
   <Stack.Navigator {...authStackNavConfig}>
@@ -63,14 +65,14 @@ const AuthTabs = () => (
   </Tab.Navigator>
 );
 
-const AuthStack = () => (
+const AuthStack = () => <>{inferRoute(Stack)({ [Routes.Auth]: AuthTabs })}</>;
+
+const AppStack = () => (
   <>
-    {inferRoute(Stack)({ [Routes.Auth]: AuthTabs })}
+    {inferRoute(Stack)({ [Routes.Home]: HomeTabs })}
     {inferRoute(Stack)({ [Routes.NewArticle]: NewArticle })}
   </>
 );
-
-const AppStack = () => <>{inferRoute(Stack)({ [Routes.App]: AppTabs })}</>;
 
 const Navigator = () => {
   const currentUser = useSelector((state: State) => state.auth.currentUser);
