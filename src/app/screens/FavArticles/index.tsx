@@ -4,7 +4,7 @@ import i18next from 'i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import CustomText from '@components/CustomText';
 import ScreenWithLoader from '@components/ScreenWithLoader';
-import { State } from '@interfaces/reduxInterfaces';
+import { FavouritesState, State } from '@interfaces/reduxInterfaces';
 import { Article } from '@interfaces/articlesInterface';
 import ArticleItem from '@components/ArticleItem';
 import { ListKeyExtractor } from '@interfaces/miscelanious';
@@ -14,7 +14,7 @@ import './i18n';
 import styles from './styles';
 
 export default function FavArticles() {
-  const { favouritesarticlesList, favouritesarticlesListLoading } = useSelector<State, any>(
+  const { favouritesarticlesList, favouritesarticlesListLoading } = useSelector<State, FavouritesState>(
     state => state.favourites
   );
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
