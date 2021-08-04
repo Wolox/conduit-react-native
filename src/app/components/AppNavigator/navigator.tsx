@@ -10,6 +10,7 @@ import Login from '@authScreens/Login';
 import SignUp from '@authScreens/SignUp';
 import Home from '@screens/Home';
 import NewArticle from '@screens/NewArticle';
+import MyFeed from '@screens/MyFeed';
 
 import TabBar from '../TabBar';
 
@@ -28,7 +29,7 @@ function HomeTabs() {
         tabBarIcon: ({ focused }) => renderTab(focused, name, key)
       })}>
       {inferRoute(Tab)({ [Routes.Tab1]: Home })}
-      {inferRoute(Tab)({ [Routes.Tab2]: Home })}
+      {inferRoute(Tab)({ [Routes.MyFeed]: MyFeed })}
       {inferRoute(Tab)({ [Routes.Tab3]: NewArticle })}
       {inferRoute(Tab)({ [Routes.Tab4]: Home })}
       {inferRoute(Tab)({ [Routes.Tab5]: Home })}

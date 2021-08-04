@@ -29,7 +29,7 @@ export default function TabBar({ currentTab, focused }: Props) {
         setImageInactiveState(icHomeInactive);
         setImageActiveState(icHomeActive);
         break;
-      case Routes.Tab2:
+      case Routes.MyFeed:
         setImageInactiveState(icPostInactive);
         setImageActiveState(icPostActive);
         break;
