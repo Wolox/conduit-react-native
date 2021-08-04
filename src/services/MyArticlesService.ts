@@ -19,6 +19,7 @@ const MY_ARTICLES_MOCK = [
 ];
 
 const MyArticlesService = {
+  //* TODO, REPLACE WITH CORRECT BASE API WHEN VERIFY ALL EPS
   getMockMyArticles: () =>
     Promise.resolve({
       ok: true,
