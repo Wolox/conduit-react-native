@@ -25,7 +25,7 @@ export default function TabBar({ currentTab, focused }: Props) {
   const [imageInactiveState, setImageInactiveState] = useState<ImageSourcePropType>(icHomeInactive);
   const setIconImages = (tabName: string) => {
     switch (tabName) {
-      case Routes.Home:
+      case Routes.Tab1:
         setImageInactiveState(icHomeInactive);
         setImageActiveState(icHomeActive);
         break;

@@ -1,4 +1,4 @@
-import { black, mediumGray } from '@constants/colors';
+import { black, mediumGray, white } from '@constants/colors';
 import { SEMIBOLD, BOLD, ITALIC, SIZES } from '@constants/fonts';
 import { fontMaker } from '@utils/fontUtils';
 
@@ -9,5 +9,6 @@ export default {
   baseItalicFont: fontMaker({ size: SIZES.MEDIUM, color: black, style: ITALIC }),
   semiBoldFont: fontMaker({ weight: SEMIBOLD, size: SIZES.MEDIUM, color: black }),
   boldFont: fontMaker({ weight: BOLD, size: SIZES.MEDIUM, color: black }),
-  labelFont: fontMaker({ size: SIZES.XSMALL, color: mediumGray })
+  labelFont: fontMaker({ size: SIZES.XSMALL, color: mediumGray }),
+  headerTitleFont: fontMaker({ weight: BOLD, size: SIZES.BIG, color: white })
 };
