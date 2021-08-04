@@ -26,7 +26,7 @@ export const VARIANTS = [
   'xbig',
   'error',
   'label',
-  'title'
+  'headerTitle'
 ];
 
 export interface VariantsInterface {
@@ -49,7 +49,7 @@ export interface VariantsInterface {
   xbig?: boolean;
   error?: boolean;
   label?: boolean;
-  title?: boolean;
+  headerTitle?: boolean;
 }
 
 export interface CustomTextProps extends VariantsInterface {

@@ -13,3 +13,9 @@ export interface SignUpData {
   password: string;
   phoneNumber?: string;
 }
+
+export interface UpdateProfileData {
+  username: string;
+  email: string;
+  description?: string;
+}

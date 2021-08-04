@@ -37,6 +37,7 @@ export default StyleSheet.create({
   error: {
     color: red
   },
+  headerTitle: fonts.headerTitleFont,
   label: fonts.labelFont,
   // Colors
   ...getColors({ blue, gray, green, white }),
