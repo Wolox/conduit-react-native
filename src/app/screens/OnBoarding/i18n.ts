@@ -1,6 +1,6 @@
 import i18next from 'i18next';
 
-i18next.addResources('es', 'ONBOARDING', {
+i18next.addResources('en', 'ONBOARDING', {
   SKIP: 'Skip',
   NEXT: 'Next',
   PREVIOUS: 'Previous',

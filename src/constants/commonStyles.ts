@@ -6,6 +6,12 @@ export const BOTTOM_SEPARATOR_LINE = {
   borderBottomColor: lightGray
 };
 
+export const OPACITY = {
+  FULL: 0,
+  DEFAULT: 0.7,
+  NONE: 1
+};
+
 export const commonBoxShadow = {
   elevation: 1,
   shadowColor: lightGray,
