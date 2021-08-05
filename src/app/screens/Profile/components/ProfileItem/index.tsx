@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, ImageSourcePropType, Image } from 'react-native';
 import CustomText from '@components/CustomText';
-import icGeneralRowArrow from '@assets/Profile/icGeneralRowArrow.png';
+import icGeneralRowArrow from '@assets/Profile/icGeneralArrow.png';
 
 import styles from './styles';
 
