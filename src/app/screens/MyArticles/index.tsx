@@ -8,9 +8,9 @@ import { Article } from '@interfaces/articlesInterface';
 import { ListKeyExtractor } from '@interfaces/miscelanious';
 import MyActiclesActions from '@redux/myArticles/actions';
 import CustomText from '@components/CustomText';
+import ArticleItem from '@screens/Home/components/ArticleItem';
 
 import './i18n';
-import ArticleItem from '../Home/components/ArticleItem';
 
 import styles from './styles';
 import Header from './Header';

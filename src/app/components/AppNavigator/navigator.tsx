@@ -11,7 +11,7 @@ import SignUp from '@authScreens/SignUp';
 import Home from '@screens/Home';
 import Profile from '@screens/Profile';
 import NewArticle from '@screens/NewArticle';
-import MyArticles from '@app/screens/MyArticles';
+import MyArticles from '@screens/MyArticles';
 
 import TabBar from '../TabBar';
 
