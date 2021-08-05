@@ -11,6 +11,7 @@ import SignUp from '@authScreens/SignUp';
 import Home from '@screens/Home';
 import Profile from '@screens/Profile';
 import NewArticle from '@screens/NewArticle';
+import DetailArticle from '@screens/DetailArticle';
 
 import TabBar from '../TabBar';
 
@@ -22,7 +23,10 @@ const renderTab = (focused: boolean, name: string, key: string): ReactElement =>
 );
 
 const HomeStack = () => (
-  <Stack.Navigator {...appStackNavConfig}>{inferRoute(Stack)({ [Routes.Home]: Home })}</Stack.Navigator>
+  <Stack.Navigator {...appStackNavConfig}>
+    {inferRoute(Stack)({ [Routes.Home]: Home })}
+    {inferRoute(Stack)({ [Routes.DetailArticle]: DetailArticle })}
+  </Stack.Navigator>
 );
 
 const ProfileStack = () => (
@@ -60,7 +64,7 @@ const AuthTabs = () => (
     screenOptions={({ route: { name, key } }) => ({
       tabBarIcon: ({ focused }) => renderTab(focused, name, key)
     })}>
-    {inferRoute(Tab)({ [Routes.Home]: Home })}
+    {inferRoute(Tab)({ [Routes.Home]: HomeStack })}
     {inferRoute(Tab)({ [Routes.Login]: AuthStackTabs })}
   </Tab.Navigator>
 );

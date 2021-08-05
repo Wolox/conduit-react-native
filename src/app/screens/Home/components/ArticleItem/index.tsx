@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, TouchableOpacity } from 'react-native';
 import CustomText from '@components/CustomText';
 import { Article } from '@interfaces/articlesInterface';
 import { formatDate } from '@utils/dateUtils';
@@ -9,18 +9,19 @@ import styles from './styles';
 
 interface Props {
   item: Article;
+  onClick: (item: Article) => void;
 }
 
-function ArticleItem({
-  item: {
+function ArticleItem({ item, onClick }: Props) {
+  const handleClick = () => onClick(item);
+  const {
     title,
     description,
     updatedAt,
     author: { image, username }
-  }
-}: Props) {
+  } = item;
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={handleClick}>
       <View style={styles.containerImage}>
         <Image source={image ? { uri: image } : icDefaultArticleImage} style={styles.image} />
         <View>
@@ -30,7 +31,7 @@ function ArticleItem({
       </View>
       <CustomText>{title}</CustomText>
       <CustomText label>{description}</CustomText>
-    </View>
+    </TouchableOpacity>
   );
 }
 

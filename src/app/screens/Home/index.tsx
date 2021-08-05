@@ -7,12 +7,14 @@ import { ListKeyExtractor } from '@interfaces/miscelanious';
 import { THRESHOLD } from '@constants/pagination';
 import ScreenWithLoader from '@components/ScreenWithLoader';
 import ArticlesActions, { TARGETS } from '@redux/articles/actions';
+import Routes from '@constants/routes';
+import { Navigation } from '@interfaces/navigation';
 
 import ArticleItem from './components/ArticleItem';
 import styles from './styles';
 import './i18n';
 
-function Home() {
+function Home({ navigation }: Navigation) {
   const dispatch = useDispatch();
   const paginated = useRef(false);
 
@@ -21,7 +23,15 @@ function Home() {
 
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
 
-  const renderItem: ListRenderItem<Article> = useCallback(({ item }) => <ArticleItem item={item} />, []);
+  const handleClickArticle = useCallback(
+    (article: Article) => navigation.navigate(Routes.DetailArticle, { article }),
+    [navigation]
+  );
+
+  const renderItem: ListRenderItem<Article> = useCallback(
+    ({ item }) => <ArticleItem item={item} onClick={handleClickArticle} />,
+    [handleClickArticle]
+  );
 
   const keyExtractor: ListKeyExtractor<Article> = useCallback(({ slug }) => `${slug}`, []);
 
