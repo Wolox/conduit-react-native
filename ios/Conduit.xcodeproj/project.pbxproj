@@ -16,37 +16,37 @@
 		6B66E6CF2CBC41FBA2AE628F /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5622F55FBCA4264AED1D5DA /* Nunito-Bold.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		89D1660CB38C4BBEB871B4DD /* Nunito-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0BA23317CC4A5ABCA749DD /* Nunito-SemiBoldItalic.ttf */; };
-		9FDFA22E6AB389835D6FEA62 /* libPods-conduitReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1B3539D79B8C3A0C181B5BA /* libPods-conduitReactNative.a */; };
+		9FDFA22E6AB389835D6FEA62 /* libPods-Conduit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1B3539D79B8C3A0C181B5BA /* libPods-Conduit.a */; };
 		A03DC06925A74A7CBBF401FE /* Nunito.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F97FB5E05894BFCA774936A /* Nunito.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* conduitReactNativeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = conduitReactNativeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* ConduitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConduitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* conduitReactNativeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = conduitReactNativeTests.m; sourceTree = "<group>"; };
-		0FC3D5EF9AFCC85A19FCF716 /* Pods-conduitReactNative.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-conduitReactNative.debug.xcconfig"; path = "Target Support Files/Pods-conduitReactNative/Pods-conduitReactNative.debug.xcconfig"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* conduitReactNative.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = conduitReactNative.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = conduitReactNative/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = conduitReactNative/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = conduitReactNative/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = conduitReactNative/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = conduitReactNative/main.m; sourceTree = "<group>"; };
-		31BF3D517043429AE4F582F8 /* Pods-conduitReactNative.stage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-conduitReactNative.stage.xcconfig"; path = "Target Support Files/Pods-conduitReactNative/Pods-conduitReactNative.stage.xcconfig"; sourceTree = "<group>"; };
-		4809129795E59CB3AE7F1E17 /* Pods-conduitReactNative-conduitReactNativeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-conduitReactNative-conduitReactNativeTests.debug.xcconfig"; path = "Target Support Files/Pods-conduitReactNative-conduitReactNativeTests/Pods-conduitReactNative-conduitReactNativeTests.debug.xcconfig"; sourceTree = "<group>"; };
-		4FCD2FEF1D7B46959A138D16 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-SemiBold.ttf"; path = "../assets/fonts/Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
-		53FAC0AE7CDFA0A0110B3B27 /* Pods-conduitReactNative.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-conduitReactNative.production.xcconfig"; path = "Target Support Files/Pods-conduitReactNative/Pods-conduitReactNative.production.xcconfig"; sourceTree = "<group>"; };
-		57ACC6F92C88487BA5175446 /* Nunito-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-BoldItalic.ttf"; path = "../assets/fonts/Nunito-BoldItalic.ttf"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = conduitReactNative/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8F97FB5E05894BFCA774936A /* Nunito.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Nunito.ttf; path = ../assets/fonts/Nunito.ttf; sourceTree = "<group>"; };
-		8FE561B11BBFB606E05C2740 /* Pods-conduitReactNative.qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-conduitReactNative.qa.xcconfig"; path = "Target Support Files/Pods-conduitReactNative/Pods-conduitReactNative.qa.xcconfig"; sourceTree = "<group>"; };
-		954FAEDD09A0430B96DEF28A /* Nunito-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Italic.ttf"; path = "../assets/fonts/Nunito-Italic.ttf"; sourceTree = "<group>"; };
-		B57619617AEC943D61E8AE3C /* libPods-conduitReactNative-conduitReactNativeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-conduitReactNative-conduitReactNativeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C5622F55FBCA4264AED1D5DA /* Nunito-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Bold.ttf"; path = "../assets/fonts/Nunito-Bold.ttf"; sourceTree = "<group>"; };
-		DBF83E7C2753F1A8E44827FE /* Pods-conduitReactNative-conduitReactNativeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-conduitReactNative-conduitReactNativeTests.release.xcconfig"; path = "Target Support Files/Pods-conduitReactNative-conduitReactNativeTests/Pods-conduitReactNative-conduitReactNativeTests.release.xcconfig"; sourceTree = "<group>"; };
-		E1B3539D79B8C3A0C181B5BA /* libPods-conduitReactNative.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-conduitReactNative.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F21AD99517003FC87E /* ConduitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConduitTests.m; sourceTree = "<group>"; };
+		0FC3D5EF9AFCC85A19FCF716 /* Pods-Conduit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Conduit.debug.xcconfig"; path = "Target Support Files/Pods-Conduit/Pods-Conduit.debug.xcconfig"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* Conduit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Conduit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Conduit/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Conduit/AppDelegate.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Conduit/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Conduit/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Conduit/main.m; sourceTree = "<group>"; };
+		31BF3D517043429AE4F582F8 /* Pods-Conduit.stage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Conduit.stage.xcconfig"; path = "Target Support Files/Pods-Conduit/Pods-Conduit.stage.xcconfig"; sourceTree = "<group>"; };
+		4809129795E59CB3AE7F1E17 /* Pods-Conduit-ConduitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Conduit-ConduitTests.debug.xcconfig"; path = "Target Support Files/Pods-Conduit-ConduitTests/Pods-Conduit-ConduitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4FCD2FEF1D7B46959A138D16 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-SemiBold.ttf"; path = "../assets/fonts/Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
+		53FAC0AE7CDFA0A0110B3B27 /* Pods-Conduit.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Conduit.production.xcconfig"; path = "Target Support Files/Pods-Conduit/Pods-Conduit.production.xcconfig"; sourceTree = "<group>"; };
+		57ACC6F92C88487BA5175446 /* Nunito-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-BoldItalic.ttf"; path = "../assets/fonts/Nunito-BoldItalic.ttf"; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Conduit/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8F97FB5E05894BFCA774936A /* Nunito.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Nunito.ttf; path = ../assets/fonts/Nunito.ttf; sourceTree = "<group>"; };
+		8FE561B11BBFB606E05C2740 /* Pods-Conduit.qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Conduit.qa.xcconfig"; path = "Target Support Files/Pods-Conduit/Pods-Conduit.qa.xcconfig"; sourceTree = "<group>"; };
+		954FAEDD09A0430B96DEF28A /* Nunito-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Italic.ttf"; path = "../assets/fonts/Nunito-Italic.ttf"; sourceTree = "<group>"; };
+		B57619617AEC943D61E8AE3C /* libPods-Conduit-ConduitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Conduit-ConduitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5622F55FBCA4264AED1D5DA /* Nunito-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Bold.ttf"; path = "../assets/fonts/Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		DBF83E7C2753F1A8E44827FE /* Pods-Conduit-ConduitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Conduit-ConduitTests.release.xcconfig"; path = "Target Support Files/Pods-Conduit-ConduitTests/Pods-Conduit-ConduitTests.release.xcconfig"; sourceTree = "<group>"; };
+		E1B3539D79B8C3A0C181B5BA /* libPods-Conduit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Conduit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F604F49FB1C018CD4177A9AD /* Pods-conduitReactNative.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-conduitReactNative.release.xcconfig"; path = "Target Support Files/Pods-conduitReactNative/Pods-conduitReactNative.release.xcconfig"; sourceTree = "<group>"; };
-		FA0BA23317CC4A5ABCA749DD /* Nunito-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-SemiBoldItalic.ttf"; path = "../assets/fonts/Nunito-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		F604F49FB1C018CD4177A9AD /* Pods-Conduit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Conduit.release.xcconfig"; path = "Target Support Files/Pods-Conduit/Pods-Conduit.release.xcconfig"; sourceTree = "<group>"; };
+		FA0BA23317CC4A5ABCA749DD /* Nunito-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-SemiBoldItalic.ttf"; path = "../assets/fonts/Nunito-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,20 +54,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FDFA22E6AB389835D6FEA62 /* libPods-conduitReactNative.a in Frameworks */,
+				9FDFA22E6AB389835D6FEA62 /* libPods-Conduit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* conduitReactNativeTests */ = {
+		00E356EF1AD99517003FC87E /* ConduitTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* conduitReactNativeTests.m */,
+				00E356F21AD99517003FC87E /* ConduitTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = conduitReactNativeTests;
+			path = ConduitTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -78,7 +78,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* conduitReactNative */ = {
+		13B07FAE1A68108700A75B9A /* Conduit */ = {
 			isa = PBXGroup;
 			children = (
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -88,15 +88,15 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = conduitReactNative;
+			name = Conduit;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				E1B3539D79B8C3A0C181B5BA /* libPods-conduitReactNative.a */,
-				B57619617AEC943D61E8AE3C /* libPods-conduitReactNative-conduitReactNativeTests.a */,
+				E1B3539D79B8C3A0C181B5BA /* libPods-Conduit.a */,
+				B57619617AEC943D61E8AE3C /* libPods-Conduit-ConduitTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,7 +112,6 @@
 				8F97FB5E05894BFCA774936A /* Nunito.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -125,9 +124,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* conduitReactNative */,
+				13B07FAE1A68108700A75B9A /* Conduit */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* conduitReactNativeTests */,
+				00E356EF1AD99517003FC87E /* ConduitTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				C998947943788335BABE3E52 /* Pods */,
@@ -141,8 +140,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* conduitReactNative.app */,
-				00E356EE1AD99517003FC87E /* conduitReactNativeTests.xctest */,
+				13B07F961A680F5B00A75B9A /* Conduit.app */,
+				00E356EE1AD99517003FC87E /* ConduitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,24 +149,23 @@
 		C998947943788335BABE3E52 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0FC3D5EF9AFCC85A19FCF716 /* Pods-conduitReactNative.debug.xcconfig */,
-				F604F49FB1C018CD4177A9AD /* Pods-conduitReactNative.release.xcconfig */,
-				4809129795E59CB3AE7F1E17 /* Pods-conduitReactNative-conduitReactNativeTests.debug.xcconfig */,
-				DBF83E7C2753F1A8E44827FE /* Pods-conduitReactNative-conduitReactNativeTests.release.xcconfig */,
-				8FE561B11BBFB606E05C2740 /* Pods-conduitReactNative.qa.xcconfig */,
-				31BF3D517043429AE4F582F8 /* Pods-conduitReactNative.stage.xcconfig */,
-				53FAC0AE7CDFA0A0110B3B27 /* Pods-conduitReactNative.production.xcconfig */,
+				0FC3D5EF9AFCC85A19FCF716 /* Pods-Conduit.debug.xcconfig */,
+				F604F49FB1C018CD4177A9AD /* Pods-Conduit.release.xcconfig */,
+				4809129795E59CB3AE7F1E17 /* Pods-Conduit-ConduitTests.debug.xcconfig */,
+				DBF83E7C2753F1A8E44827FE /* Pods-Conduit-ConduitTests.release.xcconfig */,
+				8FE561B11BBFB606E05C2740 /* Pods-Conduit.qa.xcconfig */,
+				31BF3D517043429AE4F582F8 /* Pods-Conduit.stage.xcconfig */,
+				53FAC0AE7CDFA0A0110B3B27 /* Pods-Conduit.production.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13B07F861A680F5B00A75B9A /* conduitReactNative */ = {
+		13B07F861A680F5B00A75B9A /* Conduit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "conduitReactNative" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Conduit" */;
 			buildPhases = (
 				FAD4542F096272334081F020 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -182,9 +180,9 @@
 			);
 			dependencies = (
 			);
-			name = conduitReactNative;
-			productName = conduitReactNative;
-			productReference = 13B07F961A680F5B00A75B9A /* conduitReactNative.app */;
+			name = Conduit;
+			productName = Conduit;
+			productReference = 13B07F961A680F5B00A75B9A /* Conduit.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -197,11 +195,10 @@
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
 						LastSwiftMigration = 1120;
-						ProvisioningStyle = Manual;
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "conduitReactNative" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Conduit" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -214,7 +211,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* conduitReactNative */,
+				13B07F861A680F5B00A75B9A /* Conduit */,
 			);
 		};
 /* End PBXProject section */
@@ -258,15 +255,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-conduitReactNative/Pods-conduitReactNative-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Conduit/Pods-Conduit-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-conduitReactNative/Pods-conduitReactNative-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Conduit/Pods-Conduit-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-conduitReactNative/Pods-conduitReactNative-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Conduit/Pods-Conduit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		92EF347964BB56C22D231A93 /* [CP] Embed Pods Frameworks */ = {
@@ -275,15 +272,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-conduitReactNative/Pods-conduitReactNative-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Conduit/Pods-Conduit-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-conduitReactNative/Pods-conduitReactNative-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Conduit/Pods-Conduit-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-conduitReactNative/Pods-conduitReactNative-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Conduit/Pods-Conduit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FAD4542F096272334081F020 /* [CP] Check Pods Manifest.lock */ = {
@@ -301,7 +298,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-conduitReactNative-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Conduit-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -344,14 +341,15 @@
 /* Begin XCBuildConfiguration section */
 		0F66686CF1E4E9B20B9136D1 /* QA */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8FE561B11BBFB606E05C2740 /* Pods-conduitReactNative.qa.xcconfig */;
+			baseConfigurationReference = 8FE561B11BBFB606E05C2740 /* Pods-Conduit.qa.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7XS5GQGS29;
-				INFOPLIST_FILE = conduitReactNative/Info.plist;
+				INFOPLIST_FILE = Conduit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -362,24 +360,26 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wolox.conduitReactNative;
-				PRODUCT_NAME = conduitReactNative;
+				PRODUCT_NAME = Conduit;
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.wolox.conduitReactNative";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = QA;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0FC3D5EF9AFCC85A19FCF716 /* Pods-conduitReactNative.debug.xcconfig */;
+			baseConfigurationReference = 0FC3D5EF9AFCC85A19FCF716 /* Pods-Conduit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7XS5GQGS29;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = conduitReactNative/Info.plist;
+				INFOPLIST_FILE = Conduit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -390,10 +390,11 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wolox.conduitReactNative;
-				PRODUCT_NAME = conduitReactNative;
+				PRODUCT_NAME = Conduit;
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.wolox.conduitReactNative";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -516,14 +517,15 @@
 		};
 		66F93E3B9153EE3526CD7FD0 /* Stage */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 31BF3D517043429AE4F582F8 /* Pods-conduitReactNative.stage.xcconfig */;
+			baseConfigurationReference = 31BF3D517043429AE4F582F8 /* Pods-Conduit.stage.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = conduitReactNative/Info.plist;
+				DEVELOPMENT_TEAM = 7XS5GQGS29;
+				INFOPLIST_FILE = Conduit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -534,9 +536,10 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wolox.conduitReactNative;
-				PRODUCT_NAME = conduitReactNative;
+				PRODUCT_NAME = Conduit;
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.wolox.conduitReactNative";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Stage;
@@ -608,14 +611,15 @@
 		};
 		D13765003226B37C112CB83B /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 53FAC0AE7CDFA0A0110B3B27 /* Pods-conduitReactNative.production.xcconfig */;
+			baseConfigurationReference = 53FAC0AE7CDFA0A0110B3B27 /* Pods-Conduit.production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = conduitReactNative/Info.plist;
+				DEVELOPMENT_TEAM = 7XS5GQGS29;
+				INFOPLIST_FILE = Conduit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -626,9 +630,10 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wolox.conduitReactNative;
-				PRODUCT_NAME = conduitReactNative;
+				PRODUCT_NAME = Conduit;
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.wolox.conduitReactNative";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Production;
@@ -694,7 +699,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "conduitReactNative" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Conduit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -705,7 +710,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "conduitReactNative" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Conduit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
@@ -714,7 +719,7 @@
 				D38FEFF7A540644C1511E721 /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
