@@ -7,10 +7,10 @@ import icAddInactive from '@assets/TabBar/icAddpostInactive.png';
 import icAddActive from '@assets/TabBar/icAddpostActive.png';
 import icFavouriteInactive from '@assets/TabBar/icFavoriteInactive.png';
 import icFavouriteActive from '@assets/TabBar/icFavoriteActive.png';
-
-import icDefaultArticleImage from '../Home/components/ArticleItem/assets/default_article_image.jpg';
+import icDefaultArticleImage from '@assets/icons/defaultArticleImage.jpg';
 
 import styles from './styles';
+import testIds from './testIds';
 
 interface Props extends Navigation {}
 
@@ -54,14 +54,20 @@ function DetailArticle({ route }: Props) {
         <CustomText>{title}</CustomText>
         <CustomText label>{description}</CustomText>
         <View style={styles.interactionButtons}>
-          <TouchableOpacity style={styles.interactionButton} onPress={() => setIsFollow(!isFollow)}>
+          <TouchableOpacity
+            testID={testIds.followButton}
+            style={styles.interactionButton}
+            onPress={() => setIsFollow(!isFollow)}>
             <Image
               style={styles.interactionButtonImage}
               source={isFollow ? icAddActive : icAddInactive}
               resizeMode="contain"
             />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.interactionButton} onPress={handleToggleFavorite}>
+          <TouchableOpacity
+            testID={testIds.favoriteButton}
+            style={styles.interactionButton}
+            onPress={handleToggleFavorite}>
             <Image
               style={styles.interactionButtonImage}
               source={favoriteCount > favoritesCount ? icFavouriteActive : icFavouriteInactive}
