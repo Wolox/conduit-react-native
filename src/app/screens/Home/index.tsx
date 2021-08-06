@@ -23,14 +23,14 @@ function Home({ navigation }: Navigation) {
 
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
 
-  const handleClickArticle = useCallback(
+  const handlePressArticle = useCallback(
     (article: Article) => navigation.navigate(Routes.DetailArticle, { article }),
     [navigation]
   );
 
   const renderItem: ListRenderItem<Article> = useCallback(
-    ({ item }) => <ArticleItem item={item} onClick={handleClickArticle} />,
-    [handleClickArticle]
+    ({ item }) => <ArticleItem item={item} onPress={handlePressArticle} />,
+    [handlePressArticle]
   );
 
   const keyExtractor: ListKeyExtractor<Article> = useCallback(({ slug }) => `${slug}`, []);

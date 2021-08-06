@@ -9,11 +9,11 @@ import styles from './styles';
 
 interface Props {
   item: Article;
-  onClick: (item: Article) => void;
+  onPress: (item: Article) => void;
 }
 
-function ArticleItem({ item, onClick }: Props) {
-  const handleClick = () => onClick(item);
+function ArticleItem({ item, onPress }: Props) {
+  const handlePress = () => onPress(item);
   const {
     title,
     description,
@@ -21,7 +21,7 @@ function ArticleItem({ item, onClick }: Props) {
     author: { image, username }
   } = item;
   return (
-    <TouchableOpacity style={styles.container} onPress={handleClick}>
+    <TouchableOpacity style={styles.container} onPress={handlePress}>
       <View style={styles.containerImage}>
         <Image source={image ? { uri: image } : icDefaultArticleImage} style={styles.image} />
         <View>
