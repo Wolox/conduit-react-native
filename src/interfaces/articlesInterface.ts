@@ -13,9 +13,7 @@ export interface Article {
   favorited: boolean;
   favoritesCount: number;
   slug: string;
-  /* 
-  TODO: validae inferface with endpoint response
-  tagList: []; */
+  tagList: string[];
   title: string;
   updatedAt: string;
 }
