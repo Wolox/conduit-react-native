@@ -16,6 +16,8 @@ export interface CustomTextInputProps extends TextInputProps, TextProps {
   onBlur?: TextInputProps['onBlur'];
   onChange?(e: any): any;
   onFocus?: TextInputProps['onFocus'];
+  placeholderRightText?: string;
+  showPlaceholderRight?: boolean;
   placeholder?: string;
   placeholderColor?: string;
   secureTextEntry?: boolean;

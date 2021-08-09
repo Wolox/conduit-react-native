@@ -42,6 +42,7 @@ export interface ArticlesState {
 export interface State {
   auth: AuthState;
   articles: ArticlesState;
+  comments: any;
 }
 
 export interface ReduxObject {

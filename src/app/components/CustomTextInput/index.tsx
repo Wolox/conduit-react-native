@@ -27,6 +27,8 @@ const CustomTextInput = forwardRef<TextInput, Props>(function CustomTextInput(
     onFocus,
     placeholder,
     placeholderColor,
+    showPlaceholderRight,
+    placeholderRightText,
     secureTextEntry,
     showError,
     showEye,
@@ -41,6 +43,13 @@ const CustomTextInput = forwardRef<TextInput, Props>(function CustomTextInput(
   const [isFocused, setIsFocused] = useState(false);
 
   const handleShowPassword = () => setShowPassword(prevShowPassword => !prevShowPassword);
+
+  const placeholderTextRightMultilne =
+    placeholderRightText && placeholderRightText.includes('/')
+      ? placeholderRightText.split('/')
+      : placeholderRightText;
+  const isPlaceholderTextRightSplitted = typeof placeholderTextRightMultilne === 'object';
+
   const handleFocus = useCallback(
     e => {
       setIsFocused(true);
@@ -97,6 +106,22 @@ const CustomTextInput = forwardRef<TextInput, Props>(function CustomTextInput(
           value={value}
           testID={testIDProp}
         />
+        {showPlaceholderRight && (
+          <CustomText xsmall gray style={[styles.placeHolderRigth, multiline && styles.placeHolderMultiline]}>
+            {isPlaceholderTextRightSplitted ? (
+              <>
+                <CustomText green={isFocused} gray={!isFocused}>
+                  {placeholderTextRightMultilne?.[0]}
+                </CustomText>
+                <CustomText
+                  green={isFocused}
+                  gray={!isFocused}>{` / ${placeholderTextRightMultilne?.[1]}`}</CustomText>
+              </>
+            ) : (
+              placeholderTextRightMultilne
+            )}
+          </CustomText>
+        )}
         {secureTextEntry && showEye && (
           <ShowPassword onShowPassword={handleShowPassword} passwordVisible={showPassword} />
         )}

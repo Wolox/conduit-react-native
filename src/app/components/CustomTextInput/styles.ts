@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import fonts from '@config/fonts';
-import { blue, gray, darkGray, red, white } from '@constants/colors';
+import { blue, gray, darkGray, red, white, lightGray } from '@constants/colors';
 import { SIZES } from '@constants/fonts';
 import { commonBoxShadow } from '@constants/commonStyles';
 
@@ -56,5 +56,15 @@ export default StyleSheet.create({
   errorContainer: {
     height: 15,
     marginTop: 3
+  },
+  placeHolderRigth: {
+    marginHorizontal: 5,
+    color: lightGray
+  },
+  placeHolderMultiline: {
+    position: 'absolute',
+    right: 0,
+    bottom: 0,
+    margin: 10
   }
 });
