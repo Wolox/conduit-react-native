@@ -1,18 +1,20 @@
 import React, { useCallback, useRef, useEffect } from 'react';
 import { SafeAreaView, FlatList, ListRenderItem, View, ActivityIndicator } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { State } from '@interfaces/reduxInterfaces';
-import { Article } from '@interfaces/articlesInterface';
-import { ListKeyExtractor } from '@interfaces/miscelanious';
 import { THRESHOLD } from '@constants/pagination';
 import ScreenWithLoader from '@components/ScreenWithLoader';
+import ArticleItem from '@components/ArticleItem';
+import { ListKeyExtractor } from '@interfaces/miscelanious';
+import { Article } from '@interfaces/articlesInterface';
+import { State } from '@interfaces/reduxInterfaces';
 import ArticlesActions, { TARGETS } from '@redux/articles/actions';
+import Routes from '@constants/routes';
+import { Navigation } from '@interfaces/navigation';
 
-import ArticleItem from './components/ArticleItem';
 import styles from './styles';
 import './i18n';
 
-function Home() {
+function Home({ navigation }: Navigation) {
   const dispatch = useDispatch();
   const paginated = useRef(false);
 
@@ -21,7 +23,15 @@ function Home() {
 
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
 
-  const renderItem: ListRenderItem<Article> = useCallback(({ item }) => <ArticleItem item={item} />, []);
+  const handlePressArticle = useCallback(
+    (article: Article) => navigation.navigate(Routes.DetailArticle, { article }),
+    [navigation]
+  );
+
+  const renderItem: ListRenderItem<Article> = useCallback(
+    ({ item }) => <ArticleItem item={item} onPress={handlePressArticle} />,
+    [handlePressArticle]
+  );
 
   const keyExtractor: ListKeyExtractor<Article> = useCallback(({ slug }) => `${slug}`, []);
 

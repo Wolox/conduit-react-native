@@ -29,7 +29,7 @@ export default function TabBar({ currentTab, focused }: Props) {
         setImageInactiveState(icHomeInactive);
         setImageActiveState(icHomeActive);
         break;
-      case Routes.Tab2:
+      case Routes.MyArticles:
         setImageInactiveState(icPostInactive);
         setImageActiveState(icPostActive);
         break;
@@ -37,7 +37,7 @@ export default function TabBar({ currentTab, focused }: Props) {
         setImageInactiveState(icAddInactive);
         setImageActiveState(icAddActive);
         break;
-      case Routes.Tab4:
+      case Routes.FavArticles:
         setImageInactiveState(icFavouriteInactive);
         setImageActiveState(icFavouriteActive);
         break;
@@ -57,7 +57,7 @@ export default function TabBar({ currentTab, focused }: Props) {
     setIconImages(currentTab);
   }, [currentTab]);
   return (
-    <View style={[currentTab === Routes.Tab3 && styles.centerTab]}>
+    <View>
       <Image
         source={focused ? imageActiveState : imageInactiveState}
         style={styles.image}
