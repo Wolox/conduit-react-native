@@ -43,8 +43,7 @@ const defaultNavOptions = ({ route }: Navigation) => ({
     ...fonts.baseFont,
     color: white
   },
-  headerTintColor: white,
-  headerTitleAlign: 'center'
+  headerTintColor: white
 });
 
 const defaultStackNavConfig = (initialRoute?: string) => ({
