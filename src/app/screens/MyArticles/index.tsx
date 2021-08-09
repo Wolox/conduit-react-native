@@ -3,22 +3,31 @@ import { FlatList, ListRenderItem, SafeAreaView, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import i18next from 'i18next';
 import ScreenWithLoader from '@components/ScreenWithLoader';
+import CustomText from '@components/CustomText';
+import useNavigation from '@components/AppNavigator/helper';
+import Routes from '@constants/routes';
 import { MyArticlesState, State } from '@interfaces/reduxInterfaces';
 import { Article } from '@interfaces/articlesInterface';
 import { ListKeyExtractor } from '@interfaces/miscelanious';
 import MyActiclesActions from '@redux/myArticles/actions';
-import CustomText from '@components/CustomText';
 import ArticleItem from '@screens/Home/components/ArticleItem';
 
 import './i18n';
-
 import styles from './styles';
 import Header from './Header';
 
 export default function MyArticles() {
+  const navigation = useNavigation();
   const { myArticles, myArticlesLoading } = useSelector<State, MyArticlesState>(state => state.myArticles);
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
-  const renderItem: ListRenderItem<Article> = useCallback(({ item }) => <ArticleItem item={item} />, []);
+  const handlePressArticle = useCallback(
+    (article: Article) => navigation?.navigate(Routes.DetailArticle, { article }),
+    [navigation]
+  );
+  const renderItem: ListRenderItem<Article> = useCallback(
+    ({ item }) => <ArticleItem item={item} onPress={handlePressArticle} />,
+    [handlePressArticle]
+  );
   const keyExtractor: ListKeyExtractor<Article> = useCallback(({ slug }) => `${slug}`, []);
   const renderMessage = useCallback(
     () => (
