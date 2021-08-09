@@ -7,7 +7,7 @@ import icAddInactive from '@assets/TabBar/icAddpostInactive.png';
 import icAddActive from '@assets/TabBar/icAddpostActive.png';
 import icFavouriteInactive from '@assets/TabBar/icFavoriteInactive.png';
 import icFavouriteActive from '@assets/TabBar/icFavoriteActive.png';
-import icDefaultArticleImage from '@assets/icons/defaultArticleImage.jpg';
+import icDefaultArticleImage from '@assets/icons/icDefaultArticleImage.jpg';
 
 import styles from './styles';
 import testIds from './testIds';
