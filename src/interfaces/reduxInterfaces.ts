@@ -31,6 +31,11 @@ export interface AuthState {
   currentUserError: Nullable<string>;
   hasAccessOnBoarding: boolean;
 }
+export interface MyArticlesState {
+  myArticles: [];
+  myArticlesLoading: boolean;
+  myArticlesError: Nullable<string>;
+}
 
 export interface ArtcileAction extends PaginatedList<Article> {}
 export interface ArticlesState {
@@ -42,6 +47,7 @@ export interface ArticlesState {
 export interface State {
   auth: AuthState;
   articles: ArticlesState;
+  myArticles: MyArticlesState;
 }
 
 export interface ReduxObject {

@@ -3,7 +3,7 @@ import { View, Image, TouchableOpacity } from 'react-native';
 import CustomText from '@components/CustomText';
 import { Article } from '@interfaces/articlesInterface';
 import { formatDate } from '@utils/dateUtils';
-import icDefaultArticleImage from '@assets/icons/defaultArticleImage.jpg';
+import icDefaultArticleImage from '@assets/icons/icDefaultArticleImage.jpg';
 
 import styles from './styles';
 
