@@ -38,6 +38,13 @@ const MyArticlesStack = () => (
   </Stack.Navigator>
 );
 
+const MyFavArticlesStack = () => (
+  <Stack.Navigator {...appStackNavConfig}>
+    {inferRoute(Tab)({ [Routes.FavArticles]: FavArticles })}
+    {inferRoute(Stack)({ [Routes.DetailArticle]: DetailArticle })}
+  </Stack.Navigator>
+);
+
 const ProfileStack = () => (
   <Stack.Navigator {...profileStackConfig}>
     {inferRoute(Stack)({ [Routes.Profile]: Profile })}
@@ -54,7 +61,7 @@ function HomeTabs() {
       {inferRoute(Tab)({ [Routes.Tab1]: HomeStack })}
       {inferRoute(Tab)({ [Routes.MyArticles]: MyArticlesStack })}
       {inferRoute(Tab)({ [Routes.Tab3]: NewArticle })}
-      {inferRoute(Tab)({ [Routes.FavArticles]: FavArticles })}
+      {inferRoute(Tab)({ [Routes.FavArticles]: MyFavArticlesStack })}
       {inferRoute(Tab)({ [Routes.Tab5]: ProfileStack })}
     </Tab.Navigator>
   );

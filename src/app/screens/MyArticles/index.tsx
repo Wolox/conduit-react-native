@@ -10,7 +10,7 @@ import { MyArticlesState, State } from '@interfaces/reduxInterfaces';
 import { Article } from '@interfaces/articlesInterface';
 import { ListKeyExtractor } from '@interfaces/miscelanious';
 import MyActiclesActions from '@redux/myArticles/actions';
-import ArticleItem from '@screens/Home/components/ArticleItem';
+import ArticleItem from '@components/ArticleItem';
 
 import './i18n';
 import styles from './styles';

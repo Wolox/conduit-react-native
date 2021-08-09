@@ -57,7 +57,7 @@ export default function TabBar({ currentTab, focused }: Props) {
     setIconImages(currentTab);
   }, [currentTab]);
   return (
-    <View style={[currentTab === Routes.Tab3 && styles.centerTab]}>
+    <View>
       <Image
         source={focused ? imageActiveState : imageInactiveState}
         style={styles.image}

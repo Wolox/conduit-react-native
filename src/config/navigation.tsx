@@ -3,7 +3,7 @@ import { NavigationStackOptions } from 'react-navigation-stack';
 import i18next from 'i18next';
 import Routes from '@constants/routes';
 import { isAndroid, isIos } from '@constants/platform';
-import { green, lightGray, white } from '@constants/colors';
+import { green, white } from '@constants/colors';
 import statusBarConfig from '@constants/statusBar';
 import { Navigation } from '@interfaces/navigation';
 
@@ -13,18 +13,12 @@ export const withoutHeader = (): NavigationStackOptions => ({ headerShown: false
 
 const HEIGHT_TAB_NAV = isIos ? 70 : 55;
 const PADDING_BUTTON_TAB_NAV = isAndroid ? 20 : 25;
-const COMMON_VALUE_25 = 25;
 const styles = StyleSheet.create({
   styleTabNav: {
     height: HEIGHT_TAB_NAV,
     paddingTop: 5,
-    borderTopLeftRadius: COMMON_VALUE_25,
-    borderTopRightRadius: COMMON_VALUE_25,
     backgroundColor: white,
-    elevation: 1,
-    paddingBottom: PADDING_BUTTON_TAB_NAV,
-    shadowOpacity: 0.4,
-    shadowColor: lightGray
+    paddingBottom: PADDING_BUTTON_TAB_NAV
   }
 });
 // Default nav options for all screens
@@ -81,7 +75,8 @@ export const appScreensNavOptions = {
   [Routes.Login]: withoutHeader,
   [Routes.Home]: withoutHeader,
   [Routes.NewArticle]: withoutHeader,
-  [Routes.MyArticles]: withoutHeader
+  [Routes.MyArticles]: withoutHeader,
+  [Routes.FavArticles]: withoutHeader
 };
 
 export const statusBarStyles = {
