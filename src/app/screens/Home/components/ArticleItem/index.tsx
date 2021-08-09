@@ -1,26 +1,27 @@
 import React from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, TouchableOpacity } from 'react-native';
 import CustomText from '@components/CustomText';
 import { Article } from '@interfaces/articlesInterface';
 import { formatDate } from '@utils/dateUtils';
+import icDefaultArticleImage from '@assets/icons/defaultArticleImage.jpg';
 
-import icDefaultArticleImage from './assets/default_article_image.jpg';
 import styles from './styles';
 
 interface Props {
   item: Article;
+  onPress: (item: Article) => void;
 }
 
-function ArticleItem({
-  item: {
+function ArticleItem({ item, onPress }: Props) {
+  const handlePress = () => onPress(item);
+  const {
     title,
     description,
     updatedAt,
     author: { image, username }
-  }
-}: Props) {
+  } = item;
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={handlePress}>
       <View style={styles.containerImage}>
         <Image source={image ? { uri: image } : icDefaultArticleImage} style={styles.image} />
         <View>
@@ -30,7 +31,7 @@ function ArticleItem({
       </View>
       <CustomText>{title}</CustomText>
       <CustomText label>{description}</CustomText>
-    </View>
+    </TouchableOpacity>
   );
 }
 

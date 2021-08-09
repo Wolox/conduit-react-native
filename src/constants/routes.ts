@@ -13,7 +13,8 @@ const Routes: StringObject = {
   App: 'App',
   Home: 'Home',
   Profile: 'Profile',
-  NewArticle: 'NewArticle'
+  NewArticle: 'NewArticle',
+  DetailArticle: 'DetailArticle'
 };
 
 export default Routes;
