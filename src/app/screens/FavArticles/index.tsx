@@ -1,24 +1,25 @@
-import React, { useCallback, useEffect } from 'react';
-import { FlatList, ListRenderItem, SafeAreaView, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useCallback } from 'react';
+import { SafeAreaView, FlatList, ListRenderItem, View } from 'react-native';
 import i18next from 'i18next';
-import ScreenWithLoader from '@components/ScreenWithLoader';
+import { useDispatch, useSelector } from 'react-redux';
 import CustomText from '@components/CustomText';
+import ScreenWithLoader from '@components/ScreenWithLoader';
+import ArticleItem from '@components/ArticleItem';
 import useNavigation from '@components/AppNavigator/helper';
 import Routes from '@constants/routes';
-import { MyArticlesState, State } from '@interfaces/reduxInterfaces';
-import { Article } from '@interfaces/articlesInterface';
 import { ListKeyExtractor } from '@interfaces/miscelanious';
-import MyActiclesActions from '@redux/myArticles/actions';
-import ArticleItem from '@components/ArticleItem';
+import { FavouritesState, State } from '@interfaces/reduxInterfaces';
+import { Article } from '@interfaces/articlesInterface';
+import FavouritesActions from '@redux/favourites/actions';
 
 import './i18n';
 import styles from './styles';
-import Header from './Header';
 
-export default function MyArticles() {
+export default function FavArticles() {
   const navigation = useNavigation();
-  const { myArticles, myArticlesLoading } = useSelector<State, MyArticlesState>(state => state.myArticles);
+  const { favouritesarticlesList, favouritesarticlesListLoading } = useSelector<State, FavouritesState>(
+    state => state.favourites
+  );
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
   const handlePressArticle = useCallback(
     (article: Article) => navigation?.navigate(Routes.DetailArticle, { article }),
@@ -29,12 +30,13 @@ export default function MyArticles() {
     [handlePressArticle]
   );
   const keyExtractor: ListKeyExtractor<Article> = useCallback(({ slug }) => `${slug}`, []);
+  const dispatch = useDispatch();
   const renderMessage = useCallback(
     () => (
       <>
-        {myArticles.length ? (
+        {favouritesarticlesList.length ? (
           <FlatList<Article>
-            data={myArticles}
+            data={favouritesarticlesList}
             keyExtractor={keyExtractor}
             renderItem={renderItem}
             ItemSeparatorComponent={renderSeparator}
@@ -42,22 +44,24 @@ export default function MyArticles() {
           />
         ) : (
           <View style={styles.noItemMessage}>
-            <CustomText>{i18next.t('MY_ARTICLES:NO_ARTICLES')}</CustomText>
+            <CustomText>{i18next.t('FAV_ARTICLES:NO_ARTICLES')}</CustomText>
           </View>
         )}
       </>
     ),
-    [keyExtractor, myArticles, renderItem, renderSeparator]
+    [keyExtractor, favouritesarticlesList, renderItem, renderSeparator]
   );
-  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(MyActiclesActions.getMyArticles());
+    dispatch(FavouritesActions.getFavouritesArticles());
   }, [dispatch]);
-
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
-      <ScreenWithLoader loading={myArticlesLoading} withInitialLoading={false}>
+      <View style={styles.statusNavBar}>
+        <View style={styles.textTitle}>
+          <CustomText medium>{i18next.t('FAV_ARTICLES:FAVORITED_ARTICLES')}</CustomText>
+        </View>
+      </View>
+      <ScreenWithLoader loading={favouritesarticlesListLoading} withInitialLoading={false}>
         {renderMessage()}
       </ScreenWithLoader>
     </SafeAreaView>

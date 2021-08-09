@@ -9,6 +9,7 @@ import { inferRoute } from '@utils/navUtils';
 import Login from '@authScreens/Login';
 import SignUp from '@authScreens/SignUp';
 import Home from '@screens/Home';
+import FavArticles from '@screens/FavArticles';
 import Profile from '@screens/Profile';
 import NewArticle from '@screens/NewArticle';
 import MyArticles from '@screens/MyArticles';
@@ -37,6 +38,13 @@ const MyArticlesStack = () => (
   </Stack.Navigator>
 );
 
+const MyFavArticlesStack = () => (
+  <Stack.Navigator {...appStackNavConfig}>
+    {inferRoute(Tab)({ [Routes.FavArticles]: FavArticles })}
+    {inferRoute(Stack)({ [Routes.DetailArticle]: DetailArticle })}
+  </Stack.Navigator>
+);
+
 const ProfileStack = () => (
   <Stack.Navigator {...profileStackConfig}>
     {inferRoute(Stack)({ [Routes.Profile]: Profile })}
@@ -53,7 +61,7 @@ function HomeTabs() {
       {inferRoute(Tab)({ [Routes.Tab1]: HomeStack })}
       {inferRoute(Tab)({ [Routes.MyArticles]: MyArticlesStack })}
       {inferRoute(Tab)({ [Routes.Tab3]: NewArticle })}
-      {inferRoute(Tab)({ [Routes.Tab4]: HomeStack })}
+      {inferRoute(Tab)({ [Routes.FavArticles]: MyFavArticlesStack })}
       {inferRoute(Tab)({ [Routes.Tab5]: ProfileStack })}
     </Tab.Navigator>
   );

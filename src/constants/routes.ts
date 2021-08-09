@@ -8,7 +8,7 @@ const Routes: StringObject = {
   Tab1: 'Tab1',
   MyArticles: 'MyArticles',
   Tab3: 'Tab3',
-  Tab4: 'Tab4',
+  FavArticles: 'FavArticles',
   Tab5: 'Tab5',
   App: 'App',
   Home: 'Home',
