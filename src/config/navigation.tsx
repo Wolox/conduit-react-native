@@ -80,7 +80,8 @@ export const appScreensNavOptions = {
   [Routes.Profile]: withoutHeader,
   [Routes.Login]: withoutHeader,
   [Routes.Home]: withoutHeader,
-  [Routes.NewArticle]: withoutHeader
+  [Routes.NewArticle]: withoutHeader,
+  [Routes.MyArticles]: withoutHeader
 };
 
 export const statusBarStyles = {

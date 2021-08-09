@@ -12,6 +12,8 @@ import Home from '@screens/Home';
 import FavArticles from '@screens/FavArticles';
 import Profile from '@screens/Profile';
 import NewArticle from '@screens/NewArticle';
+import MyArticles from '@screens/MyArticles';
+import DetailArticle from '@screens/DetailArticle';
 
 import TabBar from '../TabBar';
 
@@ -23,7 +25,17 @@ const renderTab = (focused: boolean, name: string, key: string): ReactElement =>
 );
 
 const HomeStack = () => (
-  <Stack.Navigator {...appStackNavConfig}>{inferRoute(Stack)({ [Routes.Home]: Home })}</Stack.Navigator>
+  <Stack.Navigator {...appStackNavConfig}>
+    {inferRoute(Stack)({ [Routes.Home]: Home })}
+    {inferRoute(Stack)({ [Routes.DetailArticle]: DetailArticle })}
+  </Stack.Navigator>
+);
+
+const MyArticlesStack = () => (
+  <Stack.Navigator {...appStackNavConfig}>
+    {inferRoute(Stack)({ [Routes.MyArticles]: MyArticles })}
+    {inferRoute(Stack)({ [Routes.DetailArticle]: DetailArticle })}
+  </Stack.Navigator>
 );
 
 const ProfileStack = () => (
@@ -40,7 +52,7 @@ function HomeTabs() {
         tabBarIcon: ({ focused }) => renderTab(focused, name, key)
       })}>
       {inferRoute(Tab)({ [Routes.Tab1]: HomeStack })}
-      {inferRoute(Tab)({ [Routes.Tab2]: HomeStack })}
+      {inferRoute(Tab)({ [Routes.MyArticles]: MyArticlesStack })}
       {inferRoute(Tab)({ [Routes.Tab3]: NewArticle })}
       {inferRoute(Tab)({ [Routes.FavArticles]: FavArticles })}
       {inferRoute(Tab)({ [Routes.Tab5]: ProfileStack })}
@@ -61,7 +73,7 @@ const AuthTabs = () => (
     screenOptions={({ route: { name, key } }) => ({
       tabBarIcon: ({ focused }) => renderTab(focused, name, key)
     })}>
-    {inferRoute(Tab)({ [Routes.Home]: Home })}
+    {inferRoute(Tab)({ [Routes.Home]: HomeStack })}
     {inferRoute(Tab)({ [Routes.Login]: AuthStackTabs })}
   </Tab.Navigator>
 );

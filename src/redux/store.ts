@@ -14,6 +14,7 @@ import { State } from '@interfaces/reduxInterfaces';
 import auth from './auth/reducer';
 import articles from './articles/reducer';
 import favourites from './favourites/reducer';
+import myArticles from './myArticles/reducer';
 
 const transformerConfig = {
   whitelistPerReducer: {
@@ -34,7 +35,8 @@ configureMergeState((state: ImmutableObject<State>, diff: State) => state.merge(
 const reducers = combineReducers({
   auth,
   articles,
-  favourites
+  favourites,
+  myArticles
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

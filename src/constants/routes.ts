@@ -6,14 +6,15 @@ const Routes: StringObject = {
   SignUp: 'SignUp',
   OnBoarding: 'OnBoarding',
   Tab1: 'Tab1',
-  Tab2: 'Tab2',
+  MyArticles: 'MyArticles',
   Tab3: 'Tab3',
   FavArticles: 'FavArticles',
   Tab5: 'Tab5',
   App: 'App',
   Home: 'Home',
   Profile: 'Profile',
-  NewArticle: 'NewArticle'
+  NewArticle: 'NewArticle',
+  DetailArticle: 'DetailArticle'
 };
 
 export default Routes;
