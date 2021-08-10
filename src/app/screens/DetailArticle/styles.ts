@@ -66,6 +66,11 @@ export default StyleSheet.create({
     padding: SPACING.XXXSMALL,
     marginHorizontal: SPACING.XXXSMALL
   },
+  bodyContainer: {
+    width: '100%',
+    marginTop: 15,
+    marginBottom: 20
+  },
   upup: {
     backgroundColor: white,
     borderRadius: 20,
@@ -82,5 +87,8 @@ export default StyleSheet.create({
   },
   scroll: {
     height: '100%'
+  },
+  inputComment: {
+    height: 125
   }
 });

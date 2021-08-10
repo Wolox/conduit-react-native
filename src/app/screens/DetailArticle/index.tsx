@@ -12,6 +12,7 @@ import icFavouriteActive from '@assets/TabBar/icFavoriteActive.png';
 import icDefaultArticleImage from '@assets/icons/icDefaultArticleImage.jpg';
 import CustomInputMessage from '@app/components/CustomInputMessage';
 
+import Comment from './Components/Comment';
 import styles from './styles';
 import testIds from './testIds';
 
@@ -33,7 +34,6 @@ function DetailArticle({ route }: Props) {
     if (favoriteCount > favoritesCount) setFavoriteCount(favoriteCount - 1);
     else setFavoriteCount(favoriteCount + 1);
   };
-  console.log(description);
 
   return (
     <>
@@ -72,7 +72,10 @@ function DetailArticle({ route }: Props) {
             )}
             <View style={styles.separator} />
             <CustomText>{title}</CustomText>
-            <CustomText label>{body}</CustomText>
+            <CustomText>{description}</CustomText>
+            <View style={styles.bodyContainer}>
+              <CustomText label>{body}</CustomText>
+            </View>
             <View style={styles.interactionButtons}>
               <TouchableOpacity
                 testID={testIds.followButton}
@@ -104,122 +107,9 @@ function DetailArticle({ route }: Props) {
           </View>
         </View>
         <ScrollView>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              width: '92%',
-              alignSelf: 'center',
-              padding: 10,
-              backgroundColor: 'white',
-              // height: 100,
-              justifyContent: 'space-between',
-              borderRadius: 20
-            }}>
-            <View style={{ width: '30%' }}>
-              <Image
-                style={{ height: 20, width: 20, borderRadius: 20 }}
-                resizeMode="contain"
-                source={icDefaultArticleImage}
-              />
-              <Text style={{ fontSize: 10 }}>React</Text>
-              <Text style={{ fontSize: 10 }}>Mon Aug 09 2021</Text>
-            </View>
-            <View style={{ width: '70%' }}>
-              <Text style={{ fontSize: 12 }}>
-                Muy Bueno me encanta, todos los colores en una mano y los recibos en la otra !
-              </Text>
-            </View>
-          </View>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              width: '92%',
-              alignSelf: 'center',
-              padding: 10,
-              backgroundColor: 'white',
-              // height: 100,
-              justifyContent: 'space-between',
-              borderRadius: 20,
-              marginVertical: 10
-            }}>
-            <View style={{ width: '30%' }}>
-              <Image
-                style={{ height: 20, width: 20, borderRadius: 20 }}
-                resizeMode="contain"
-                source={icDefaultArticleImage}
-              />
-              <Text style={{ fontSize: 10 }}>React</Text>
-              <Text style={{ fontSize: 10 }}>Mon Aug 09 2021</Text>
-            </View>
-            <View style={{ width: '70%' }}>
-              <Text style={{ fontSize: 12 }}>
-                Muy Bueno me encanta, todos los colores en una mano y los recibos en la otra !
-              </Text>
-            </View>
-          </View>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              width: '92%',
-              alignSelf: 'center',
-              padding: 10,
-              backgroundColor: 'white',
-              // height: 100,
-              justifyContent: 'space-between',
-              borderRadius: 20
-            }}>
-            <View style={{ width: '30%' }}>
-              <Image
-                style={{ height: 20, width: 20, borderRadius: 20 }}
-                resizeMode="contain"
-                source={icDefaultArticleImage}
-              />
-              <Text style={{ fontSize: 10 }}>React</Text>
-              <Text style={{ fontSize: 10 }}>Mon Aug 09 2021</Text>
-            </View>
-            <View style={{ width: '70%' }}>
-              <Text style={{ fontSize: 12 }}>
-                Muy Bueno me encanta, todos los colores en una mano y los recibos en la otra !
-              </Text>
-            </View>
-          </View>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              width: '92%',
-              alignSelf: 'center',
-              padding: 10,
-              backgroundColor: 'white',
-              // height: 100,
-              justifyContent: 'space-between',
-              borderRadius: 20,
-              marginVertical: 10
-            }}>
-            <View style={{ width: '30%' }}>
-              <Image
-                style={{ height: 20, width: 20, borderRadius: 20 }}
-                resizeMode="contain"
-                source={icDefaultArticleImage}
-              />
-              <Text style={{ fontSize: 10 }}>React</Text>
-              <Text style={{ fontSize: 10 }}>Mon Aug 09 2021</Text>
-            </View>
-            <View style={{ width: '70%' }}>
-              <Text style={{ fontSize: 12 }}>
-                Muy Bueno me encanta, todos los colores en una mano y los recibos en la otra !
-              </Text>
-            </View>
-          </View>
+          <Comment />
+          <Comment />
         </ScrollView>
-        {/* <View style={styles.upup}> */}
-
-        {/* </View> */}
-        {/* </KeyboardAwareScrollView> */}
-        {/* <KeyboardAwareScrollView behavior="position"> */}
         <CustomInputMessage
           // onChangeEventMessage={handleContentSizeChange}
           // messageLabel={'Comentarios'}
@@ -231,7 +121,7 @@ function DetailArticle({ route }: Props) {
             ...validateMaxLength(300)
           }}
           showPlaceholderMessage
-          styleInputText={{ height: 150 }}
+          styleInputText={styles.inputComment}
         />
       </KeyboardAwareScrollView>
     </>

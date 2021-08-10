@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { ControllerProps } from 'react-hook-form';
 import CustomTextInput from '@components/CustomTextInput';
 
@@ -14,5 +14,5 @@ export interface CustomInputMessage {
   showPlaceholderMessage?: boolean;
   onChangeEventMessage?: (message: string) => void;
   automaticScroll?: boolean;
-  styleInputText?: string;
+  styleInputText?: React.CSSProperties;
 }
