@@ -65,5 +65,22 @@ export default StyleSheet.create({
     borderWidth: BORDER_WIDTH.BOLD,
     padding: SPACING.XXXSMALL,
     marginHorizontal: SPACING.XXXSMALL
+  },
+  upup: {
+    backgroundColor: white,
+    borderRadius: 20,
+    // position: 'absolute',
+    // bottom: 0,
+    // left: 0,
+    // height: 70,
+    // padding: 20,
+    ...commonBoxShadow,
+    width: '92%',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  scroll: {
+    height: '100%'
   }
 });

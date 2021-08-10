@@ -82,22 +82,25 @@ function CustomInputMessage({
         contentContainerStyle={{ flex: 1, backgroundColor: 'red', heigth: '100%' }}
         > */}
       {keyboardAwareViewChildren && keyboardAwareViewChildren}
-      <View style={styles.messageLabel}>
-        <CustomText
-          style={styles.customLabel}
-          darkGray
-          darkViolet={
-            (currentFocus === FIELDS.message && !showErrorMessage && !MESSAGE_HAS_ERRORS_MESSAGE,
-            MESSAGE_HAS_ERRORS_MESSAGE)
-          }
-          error={showErrorMessage || ERRORS_MESSAGE}
-          medium>
-          {messageLabel}
-        </CustomText>
-        {/* <CustomText poppins small gray>
+      {messageLabel && (
+        <View style={styles.messageLabel}>
+          <CustomText
+            style={styles.customLabel}
+            darkGray
+            darkViolet={
+              (currentFocus === FIELDS.message && !showErrorMessage && !MESSAGE_HAS_ERRORS_MESSAGE,
+              MESSAGE_HAS_ERRORS_MESSAGE)
+            }
+            error={showErrorMessage || ERRORS_MESSAGE}
+            medium>
+            {messageLabel}
+          </CustomText>
+          {/* <CustomText poppins small gray>
             {'opcional'}
           </CustomText> */}
-      </View>
+        </View>
+      )}
+
       <View style={styles.inputContainer}>
         <ControlledCustomTextInput
           inputContainerStyle={[styles.customInputContainer, styleInputText && styleInputText]}

@@ -3,13 +3,14 @@ import { StyleSheet } from 'react-native';
 // import { SIZES } from '@constants/fonts';
 import { black } from '@constants/colors';
 import { IS_SMALL_DEVICE } from '@constants/platform';
+import { SPACING } from '@constants/dimentions';
 
 const WIDTH_LABEL = IS_SMALL_DEVICE ? '90%' : '100%';
 
 const DEFAULT_SPACE = 16;
 export default StyleSheet.create({
   container: {
-    marginHorizontal: 15
+    marginHorizontal: SPACING.XXXSMALL
     // height: '90%'
   },
   inputContainer: {
@@ -25,11 +26,10 @@ export default StyleSheet.create({
     marginRight: 0
   },
   textInputMessage: {
-    // fontSize: fontScale(SIZES.MEDIUM),
+    fontSize: 14,
     color: black,
     paddingVertical: 0,
     textAlignVertical: 'top',
-    width: '100%',
     marginBottom: 20,
     paddingHorizontal: 8,
     paddingTop: 8
@@ -39,8 +39,8 @@ export default StyleSheet.create({
     marginBottom: 0
   },
   customInputContainer: {
-    // maxHeight: '100%'
-    height: 300
+    height: 300,
+    paddingBottom: 10
   },
   error: {
     marginTop: -15,

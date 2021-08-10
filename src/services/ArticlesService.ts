@@ -6,9 +6,9 @@ const ARTICLES_PATH = '/articles';
 const ARTICLES_MOCK = [
   {
     slug: 'how-to-train-your-drfffffffagon-8-hf0dt5',
-    title: 'How to train your drfffffffagon 8',
-    description: 'Ever wonder howfffff? 8',
-    body: 'Very carefulfly 9',
+    title: 'How to train your dragon 8',
+    description: 'Ever wonder how? 8',
+    body: "Hello i know you, yes ! you are a fantastic trainging Dragon ! oh my gosh, i don't Believe",
     createdAt: '2021-08-04T10:57:07.948Z',
     updatedAt: '2021-08-04T10:57:07.948Z',
     tagList: ['dragons', 'training'],
