@@ -32,10 +32,7 @@ export default function Comment() {
         <Text style={styles.commentDate}>Mon Aug 09 2021</Text>
       </View>
       <View style={styles.commentBody}>
-        <CustomText style={styles.commentText}>
-          {/* {DATA.length > 20 ? DATA.substring(0, 78) : presseded ? DATA : DATA} */}
-          {commentText}
-        </CustomText>
+        <CustomText style={styles.commentText}>{commentText}</CustomText>
         <View>
           <CustomTextPressable
             text={presseded ? 'ver menos' : 'ver más'}

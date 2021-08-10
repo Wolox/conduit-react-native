@@ -109,6 +109,7 @@ function DetailArticle({ route }: Props) {
         <ScrollView>
           <Comment />
           <Comment />
+          <Comment />
         </ScrollView>
         <CustomInputMessage
           // onChangeEventMessage={handleContentSizeChange}
