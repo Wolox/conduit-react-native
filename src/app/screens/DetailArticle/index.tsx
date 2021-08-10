@@ -40,6 +40,7 @@ function DetailArticle({ route }: Props) {
   return (
     <>
       <KeyboardAwareScrollView
+        bounces={false}
         extraHeight={EXTRAHEIGHT}
         showsVerticalScrollIndicator={false}
         automaticallyAdjustContentInsets
