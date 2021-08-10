@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { View, Image, TouchableOpacity, Text, ScrollView } from 'react-native';
-import { validateMinLength, validateMaxLength } from '@utils/validations/validateUtils';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { isIos } from '@constants/platform';
+import { validateMinLength, validateMaxLength } from '@utils/validations/validateUtils';
 import CustomText from '@components/CustomText';
 import { Navigation } from '@interfaces/navigation';
 import { formatDate } from '@utils/dateUtils';
@@ -10,7 +11,7 @@ import icAddActive from '@assets/TabBar/icAddpostActive.png';
 import icFavouriteInactive from '@assets/TabBar/icFavoriteInactive.png';
 import icFavouriteActive from '@assets/TabBar/icFavoriteActive.png';
 import icDefaultArticleImage from '@assets/icons/icDefaultArticleImage.jpg';
-import CustomInputMessage from '@app/components/CustomInputMessage';
+import CustomInputMessage from '@components/CustomInputMessage';
 
 import Comment from './Components/Comment';
 import styles from './styles';
@@ -30,6 +31,7 @@ function DetailArticle({ route }: Props) {
   } = route?.params?.article;
   const [favoriteCount, setFavoriteCount] = useState(favoritesCount || 0);
   const [isFollow, setIsFollow] = useState(following);
+  const EXTRAHEIGHT = isIos ? 400 : 190;
   const handleToggleFavorite = () => {
     if (favoriteCount > favoritesCount) setFavoriteCount(favoriteCount - 1);
     else setFavoriteCount(favoriteCount + 1);
@@ -38,17 +40,14 @@ function DetailArticle({ route }: Props) {
   return (
     <>
       <KeyboardAwareScrollView
-        extraHeight={400}
+        extraHeight={EXTRAHEIGHT}
         showsVerticalScrollIndicator={false}
-        // ref={scrollViewRef}
-        // behavior="position"
         automaticallyAdjustContentInsets
         enableAutomaticScroll
         enableResetScrollToCoords
         enableOnAndroid
         scrollEnabled
         contentInsetAdjustmentBehavior="automatic"
-        // onContentSizeChange={handleContentSizeChange}
         style={styles.scroll}>
         <View style={styles.container}>
           <View style={styles.containerDetail}>
@@ -72,7 +71,7 @@ function DetailArticle({ route }: Props) {
             )}
             <View style={styles.separator} />
             <CustomText>{title}</CustomText>
-            <CustomText>{description}</CustomText>
+            <CustomText label>{description}</CustomText>
             <View style={styles.bodyContainer}>
               <CustomText label>{body}</CustomText>
             </View>
