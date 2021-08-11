@@ -13,7 +13,16 @@ export const login = (_: AuthData) => {
     ok: true,
     problem: null,
     originalError: null,
-    data: { sessionToken: 'token' }
+    data: {
+      sessionToken: 'token',
+      id: 191,
+      email: '123@123.com',
+      username: 'signup',
+      bio: null,
+      image: null,
+      token:
+        'eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MTkxLCJleHAiOjE2MzM4ODA4Njl9.QqpNhMYWmaVG_lsLjtRNYk3YYNg6rQqi5IDhIlxEFmI'
+    }
   });
 };
 

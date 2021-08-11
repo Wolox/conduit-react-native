@@ -86,11 +86,11 @@ function CustomInputMessage({
         <View style={styles.messageLabel}>
           <CustomText
             style={styles.customLabel}
-            darkGray
-            darkViolet={
-              (currentFocus === FIELDS.message && !showErrorMessage && !MESSAGE_HAS_ERRORS_MESSAGE,
-              MESSAGE_HAS_ERRORS_MESSAGE)
-            }
+            // darkGray={true}
+            // darkViolet={
+            //   (currentFocus === FIELDS.message && !showErrorMessage && !MESSAGE_HAS_ERRORS_MESSAGE,
+            //   MESSAGE_HAS_ERRORS_MESSAGE)
+            // }
             error={showErrorMessage || ERRORS_MESSAGE}
             medium>
             {messageLabel}
@@ -121,7 +121,7 @@ function CustomInputMessage({
           showPlaceholderRight={isFocusMessage || showPlaceholderMessage}
           // showPlaceholderRight={true}
           error={showErrorMessage || MESSAGE_HAS_ERRORS_MESSAGE}
-          showIconError={showErrorMessage || MESSAGE_HAS_ERRORS_MESSAGE}
+          // showIconError={showErrorMessage || MESSAGE_HAS_ERRORS_MESSAGE}
           onKeyPress={onKeyPressMessage}
           rules={messageRules}
           style={styles.customTextInput}
@@ -131,12 +131,12 @@ function CustomInputMessage({
           // )}
         />
         {showErrorMessage && (
-          <CustomText error poppinsSemiBold xsmall style={styles.error}>
+          <CustomText error xsmall style={styles.error}>
             {`cantida de caracteres ${maxLengthMessage}`}
           </CustomText>
         )}
         {errors?.message?.message && isFocusMessage && !showErrorMessage && (
-          <CustomText error poppinsSemiBold xsmall style={styles.error}>
+          <CustomText error xsmall style={styles.error}>
             {errors.message.message}
           </CustomText>
         )}

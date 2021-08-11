@@ -3,29 +3,32 @@ import { white } from '@constants/colors';
 import { SPACING } from '@constants/dimentions';
 
 const ALIGN_CENTER = 'center';
+const COMMON_TWENTY = 20;
+const COMMON_TEN = 10;
+const COMMON_SIZE_TRASH = 18;
 
 const styles = StyleSheet.create({
   comment: {
     flexDirection: 'row',
     width: '92%',
     alignSelf: ALIGN_CENTER,
-    padding: 10,
+    padding: COMMON_TEN,
     backgroundColor: white,
     justifyContent: 'space-between',
-    borderRadius: 20,
-    marginBottom: 10
+    borderRadius: COMMON_TWENTY,
+    marginBottom: COMMON_TEN
   },
   containerUser: {
-    width: '30%'
+    width: '20%'
   },
   image: {
-    height: 20,
-    width: 20,
-    borderRadius: 20,
+    height: COMMON_TWENTY,
+    width: COMMON_TWENTY,
+    borderRadius: COMMON_TWENTY,
     alignSelf: ALIGN_CENTER
   },
   userName: {
-    fontSize: 10,
+    fontSize: COMMON_TEN,
     fontWeight: 'bold',
     width: '100%',
     marginBottom: SPACING.XXXSMALL,
@@ -33,19 +36,28 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.XXSMALL
   },
   commentDate: {
-    fontSize: 10,
+    fontSize: COMMON_TEN,
     textAlign: ALIGN_CENTER
   },
   commentBody: {
-    width: '70%'
+    width: '68%'
   },
   commentText: {
     fontSize: 12
   },
   containerImage: {
-    borderRadius: 20,
+    borderRadius: COMMON_TWENTY,
     overflow: 'hidden',
     marginBottom: SPACING.XXXSMALL
+  },
+  containerTrash: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 5
+  },
+  icTrash: {
+    height: COMMON_SIZE_TRASH,
+    width: COMMON_SIZE_TRASH
   }
 });
 

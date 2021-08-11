@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, Image, TouchableOpacity, Text, ScrollView } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { useDispatch, useSelector } from 'react-redux';
 import { isIos } from '@constants/platform';
 import { validateMinLength, validateMaxLength } from '@utils/validations/validateUtils';
 import CustomText from '@components/CustomText';
@@ -12,6 +13,10 @@ import icFavouriteInactive from '@assets/TabBar/icFavoriteInactive.png';
 import icFavouriteActive from '@assets/TabBar/icFavoriteActive.png';
 import icDefaultArticleImage from '@assets/icons/icDefaultArticleImage.jpg';
 import CustomInputMessage from '@components/CustomInputMessage';
+import Actioncreators from '@redux/comments/actions';
+import { State } from '@interfaces/reduxInterfaces';
+import i18next from 'i18next';
+import { iComment } from '@interfaces/commentInterfaces';
 
 import Comment from './Components/Comment';
 import styles from './styles';
@@ -20,6 +25,7 @@ import testIds from './testIds';
 interface Props extends Navigation {}
 
 function DetailArticle({ route }: Props) {
+  const dispatch = useDispatch();
   const {
     title,
     description,
@@ -31,11 +37,73 @@ function DetailArticle({ route }: Props) {
   } = route?.params?.article;
   const [favoriteCount, setFavoriteCount] = useState(favoritesCount || 0);
   const [isFollow, setIsFollow] = useState(following);
+  const { comments } = useSelector((state: State) => state.comments);
+  const currentUser = useSelector((state: State) => state.auth.currentUser);
+  console.log(currentUser);
   const EXTRAHEIGHT = isIos ? 400 : 190;
   const handleToggleFavorite = () => {
     if (favoriteCount > favoritesCount) setFavoriteCount(favoriteCount - 1);
     else setFavoriteCount(favoriteCount + 1);
   };
+
+  const renderMessage = useCallback(
+    () => (
+      <>
+        <ScrollView>
+          {comments.length
+            ? comments.map((item: iComment) => <Comment commentContent={item} key={item.id} />)
+            : currentUser && (
+                <View style={{ marginVertical: 20 }}>
+                  <CustomText green style={{ fontSize: 12, textAlign: 'center' }}>
+                    No hay comentarios aún, !Haz el primero!
+                  </CustomText>
+                </View>
+              )}
+        </ScrollView>
+      </>
+    ),
+    [comments, currentUser]
+  );
+
+  useEffect(() => {
+    dispatch(Actioncreators.getComments());
+  }, [dispatch]);
+  const renderInputMessage = useCallback(
+    () => (
+      <>
+        {currentUser ? (
+          <CustomInputMessage
+            // onChangeEventMessage={handleContentSizeChange}
+            // messageLabel={'Comentarios'}
+            minLengthMessage={5}
+            maxLengthMessage={300}
+            numberOfLinesMessage={10}
+            messageRules={{
+              ...validateMinLength(5),
+              ...validateMaxLength(300)
+            }}
+            showPlaceholderMessage
+            styleInputText={styles.inputComment}
+          />
+        ) : (
+          <View
+            style={{
+              marginVertical: 20,
+              width: '90%',
+              alignSelf: 'center',
+              borderRadius: 15,
+              backgroundColor: 'white',
+              padding: 10,
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}>
+            <CustomText green>Registrate para poder comentar</CustomText>
+          </View>
+        )}
+      </>
+    ),
+    [currentUser]
+  );
 
   return (
     <>
@@ -106,12 +174,9 @@ function DetailArticle({ route }: Props) {
             </View>
           </View>
         </View>
-        <ScrollView>
-          <Comment />
-          <Comment />
-          <Comment />
-        </ScrollView>
-        <CustomInputMessage
+        {renderMessage()}
+        {renderInputMessage()}
+        {/* <CustomInputMessage
           // onChangeEventMessage={handleContentSizeChange}
           // messageLabel={'Comentarios'}
           minLengthMessage={5}
@@ -123,7 +188,7 @@ function DetailArticle({ route }: Props) {
           }}
           showPlaceholderMessage
           styleInputText={styles.inputComment}
-        />
+        /> */}
       </KeyboardAwareScrollView>
     </>
   );

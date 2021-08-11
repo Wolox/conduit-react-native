@@ -10,7 +10,8 @@ export const actions = createTypes(
 );
 
 export const TARGETS = {
-  COMMENTS: 'comments'
+  COMMENTS: 'comments',
+  DELETE_COMMENT: 'DELETE_COMMENT'
 };
 
 type ActionType = Nullable<number>;
@@ -22,6 +23,12 @@ const actionCreators = {
       type: actions.GET_COMMENTS,
       target: TARGETS.COMMENTS,
       service: CommentsService.getMockComments
+    });
+  },
+  deleteComment: () => (dispatch: Dispatch<Action<ActionType> | DispatcheableAction<ActionType>>) => {
+    dispatch({
+      type: actions.DELETE_COMMENT,
+      target: TARGETS.DELETE_COMMENT
     });
   }
 };
