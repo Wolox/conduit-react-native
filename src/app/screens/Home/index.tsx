@@ -9,13 +9,15 @@ import CustomText from '@components/CustomText';
 import { THRESHOLD } from '@constants/pagination';
 import TabList from '@components/TabList';
 import ScreenWithLoader from '@components/ScreenWithLoader';
+import ArticleItem from '@components/ArticleItem';
 import ArticlesActions, { TARGETS } from '@redux/articles/actions';
+import Routes from '@constants/routes';
+import { Navigation } from '@interfaces/navigation';
 
-import ArticleItem from './components/ArticleItem';
 import styles from './styles';
 import './i18n';
 
-function Home() {
+function Home({ navigation }: Navigation) {
   const dispatch = useDispatch();
   const paginated = useRef(false);
   const [currentTab, setCurrentTab] = useState(0);
@@ -25,7 +27,15 @@ function Home() {
 
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
 
-  const renderItem: ListRenderItem<Article> = useCallback(({ item }) => <ArticleItem item={item} />, []);
+  const handlePressArticle = useCallback(
+    (article: Article) => navigation.navigate(Routes.DetailArticle, { article }),
+    [navigation]
+  );
+
+  const renderItem: ListRenderItem<Article> = useCallback(
+    ({ item }) => <ArticleItem item={item} onPress={handlePressArticle} />,
+    [handlePressArticle]
+  );
 
   const keyExtractor: ListKeyExtractor<Article> = useCallback(({ slug }) => `${slug}`, []);
 
