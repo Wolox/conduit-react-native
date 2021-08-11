@@ -4,8 +4,7 @@ import { SPACING } from '@constants/dimentions';
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
-    marginTop: 40
+    flex: 1
   },
   separator: {
     ...BOTTOM_SEPARATOR_LINE,
