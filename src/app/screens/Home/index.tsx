@@ -24,6 +24,7 @@ function Home({ navigation }: Navigation) {
 
   const articles = useSelector<State, Article[]>(state => state.articles.articlesList?.page || []);
   const loading = useSelector<State, boolean>(state => state.articles.articlesListLoading);
+  const currentUser = useSelector((state: State) => state.auth.currentUser);
 
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
 
@@ -76,11 +77,13 @@ function Home({ navigation }: Navigation) {
       <CustomText center big darkBlue bold style={styles.title}>
         {i18next.t('HOME:APP_NAME')}
       </CustomText>
-      <TabList
-        tabs={[i18next.t('HOME:FIRST_TAB'), i18next.t('HOME:SECOND_TAB')]}
-        onPressTab={handlePressTab}
-      />
-      {currentTab === 0 ? (
+      {currentUser && (
+        <TabList
+          tabs={[i18next.t('HOME:FIRST_TAB'), i18next.t('HOME:SECOND_TAB')]}
+          onPressTab={handlePressTab}
+        />
+      )}
+      {currentTab === 0 && currentUser ? (
         <CustomText center style={styles.titleEmptyArticles}>
           {i18next.t('HOME:EMPTY_ARTICLES')}
         </CustomText>
