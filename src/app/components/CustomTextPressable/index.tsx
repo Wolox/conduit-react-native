@@ -3,7 +3,7 @@ import { StyleProp, TouchableOpacity, ViewStyle } from 'react-native';
 import CustomText from '@components/CustomText';
 
 interface Props {
-  text: string;
+  text: string | Element;
   onPress: () => void;
   style?: StyleProp<ViewStyle>;
 }

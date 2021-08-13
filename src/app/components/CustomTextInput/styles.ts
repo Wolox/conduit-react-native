@@ -1,10 +1,11 @@
 import { StyleSheet } from 'react-native';
 import fonts from '@config/fonts';
-import { blue, gray, darkGray, red, white, lightGray } from '@constants/colors';
+import { blue, gray, darkGray, red, white, lightGray, green } from '@constants/colors';
 import { SIZES } from '@constants/fonts';
 import { commonBoxShadow } from '@constants/commonStyles';
 
 const DEFAULT_BORDER = 15;
+const SIZE_IMAGE = 23;
 
 export default StyleSheet.create({
   container: {
@@ -66,5 +67,27 @@ export default StyleSheet.create({
     right: 0,
     bottom: 0,
     margin: 10
+  },
+  widthStretch: {
+    width: '80%'
+  },
+  flexRow: {
+    flexDirection: 'row'
+  },
+  messageButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '20%',
+    height: '100%'
+  },
+  errorIcon: {
+    tintColor: lightGray,
+    height: SIZE_IMAGE,
+    width: SIZE_IMAGE
+  },
+  icon: {
+    tintColor: green,
+    height: SIZE_IMAGE,
+    width: SIZE_IMAGE
   }
 });

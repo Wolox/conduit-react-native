@@ -1,7 +1,9 @@
 import React, { useCallback, useState, memo, forwardRef } from 'react';
-import { TextInput, View } from 'react-native';
+import { Image, TextInput, TouchableOpacity, View } from 'react-native';
 import CustomText from '@components/CustomText';
 import { transparent } from '@constants/colors';
+
+import CustomTextPressable from '../CustomTextPressable';
 
 import InputLabel from './components/InputLabel';
 import ShowPassword from './components/ShowPassword';
@@ -34,7 +36,11 @@ const CustomTextInput = forwardRef<TextInput, Props>(function CustomTextInput(
     showEye,
     style,
     value,
+    messageButton,
+    onPressButton,
     testIDProp,
+    iconButton,
+    errorIcon,
     ...props
   },
   ref
@@ -71,6 +77,34 @@ const CustomTextInput = forwardRef<TextInput, Props>(function CustomTextInput(
     if (showError) return styles.bottomBorderRed;
     return {};
   };
+  const onPress = () => {
+    if (errorIcon || (error as boolean)) {
+      return () => null;
+    } else if (onPressButton) {
+      return onPressButton();
+    }
+    return () => null;
+  };
+  const renderICons = () => (
+    <>
+      {iconButton || messageButton ? (
+        <View style={styles.messageButton}>
+          {iconButton ? (
+            <TouchableOpacity onPress={onPress}>
+              <Image
+                source={iconButton}
+                style={[errorIcon || (error as boolean) ? styles.errorIcon : styles.icon]}
+                resizeMode="contain"
+                resizeMethod="scale"
+              />
+            </TouchableOpacity>
+          ) : messageButton ? (
+            <CustomTextPressable text={messageButton} onPress={onPress} />
+          ) : null}
+        </View>
+      ) : null}
+    </>
+  );
 
   return (
     <View style={[styles.container, animated && !!label && styles.withAnimatedLabel, style]}>
@@ -88,7 +122,8 @@ const CustomTextInput = forwardRef<TextInput, Props>(function CustomTextInput(
         style={[
           multiline ? styles.multilineContainer : styles.inputContainer,
           borderColorStyle(),
-          inputContainerStyle
+          inputContainerStyle,
+          messageButton || iconButton ? styles.flexRow : inputContainerStyle
         ]}>
         <TextInput
           {...props}
@@ -102,18 +137,26 @@ const CustomTextInput = forwardRef<TextInput, Props>(function CustomTextInput(
           placeholder={(isFocused || !animated) && value === '' ? placeholder : ''}
           placeholderTextColor={placeholderColor}
           secureTextEntry={secureTextEntry && !showPassword}
-          style={[styles.inputStyle, !multiline && styles.singleInput, inputTextStyles]}
+          style={[
+            styles.inputStyle,
+            !multiline && styles.singleInput,
+            inputTextStyles,
+            messageButton || iconButton ? styles.widthStretch : inputTextStyles
+          ]}
           value={value}
           testID={testIDProp}
         />
+        {renderICons()}
+
         {showPlaceholderRight && (
           <CustomText xsmall gray style={[styles.placeHolderRigth, multiline && styles.placeHolderMultiline]}>
             {isPlaceholderTextRightSplitted ? (
               <>
-                <CustomText green={isFocused} gray={!isFocused}>
+                <CustomText green={isFocused} error={error as boolean} gray={!isFocused}>
                   {placeholderTextRightMultilne?.[0]}
                 </CustomText>
                 <CustomText
+                  error={error as boolean}
                   green={isFocused}
                   gray={!isFocused}>{` / ${placeholderTextRightMultilne?.[1]}`}</CustomText>
               </>

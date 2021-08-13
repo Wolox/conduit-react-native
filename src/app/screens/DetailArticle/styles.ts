@@ -71,24 +71,30 @@ export default StyleSheet.create({
     marginTop: 15,
     marginBottom: 20
   },
-  upup: {
-    backgroundColor: white,
-    borderRadius: 20,
-    // position: 'absolute',
-    // bottom: 0,
-    // left: 0,
-    // height: 70,
-    // padding: 20,
-    ...commonBoxShadow,
-    width: '92%',
-    alignSelf: 'center',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  scroll: {
+  scrollContainer: {
     height: '100%'
   },
   inputComment: {
     height: 125
+  },
+  noCommentsContainer: {
+    marginVertical: 20
+  },
+  noCommentsText: {
+    fontSize: 12,
+    textAlign: 'center'
+  },
+  noInputAuth: {
+    marginVertical: 20,
+    width: '90%',
+    alignSelf: 'center',
+    borderRadius: 15,
+    backgroundColor: white,
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  contentStyle: {
+    paddingBottom: 30
   }
 });

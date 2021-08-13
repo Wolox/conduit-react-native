@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ViewStyle } from 'react-native';
+import { ImageSourcePropType, ViewStyle } from 'react-native';
 import { ControllerProps } from 'react-hook-form';
 import CustomTextInput from '@components/CustomTextInput';
 
@@ -16,4 +16,7 @@ export interface CustomInputMessage {
   onChangeEventMessage?: (message: string) => void;
   automaticScroll?: boolean;
   styleInputText: ViewStyle;
+  messageButton?: string;
+  onPressButton?: () => void;
+  iconButton?: ImageSourcePropType;
 }

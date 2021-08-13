@@ -18,12 +18,16 @@ import styles from './styles';
 function CustomInputMessage({
   messageLabel,
   maxLengthMessage,
+  // minLengthMessage,
   numberOfLinesMessage,
   keyboardAwareViewChildren,
   messageRules,
   showPlaceholderMessage,
   onChangeEventMessage,
-  styleInputText
+  styleInputText,
+  messageButton,
+  onPressButton,
+  iconButton
 }: Props) {
   const {
     trigger,
@@ -72,32 +76,14 @@ function CustomInputMessage({
     if (isIos && newMessage.length === maxLengthMessage) setShowErrorMessage(true);
     if (isBackSpaceKey) setShowErrorMessage(false);
   };
-
   return (
     <View style={styles.container}>
-      {/* <KeyboardAwareScrollView
-        bounces={false}
-        enableOnAndroid
-        // style={{ flex: 1, height: '100%' }}
-        contentContainerStyle={{ flex: 1, backgroundColor: 'red', heigth: '100%' }}
-        > */}
       {keyboardAwareViewChildren && keyboardAwareViewChildren}
       {messageLabel && (
         <View style={styles.messageLabel}>
-          <CustomText
-            style={styles.customLabel}
-            // darkGray={true}
-            // darkViolet={
-            //   (currentFocus === FIELDS.message && !showErrorMessage && !MESSAGE_HAS_ERRORS_MESSAGE,
-            //   MESSAGE_HAS_ERRORS_MESSAGE)
-            // }
-            error={showErrorMessage || ERRORS_MESSAGE}
-            medium>
+          <CustomText style={styles.customLabel} green error={showErrorMessage || ERRORS_MESSAGE} medium>
             {messageLabel}
           </CustomText>
-          {/* <CustomText poppins small gray>
-            {'opcional'}
-          </CustomText> */}
         </View>
       )}
 
@@ -119,16 +105,14 @@ function CustomInputMessage({
           multiline
           blurOnSubmit
           showPlaceholderRight={isFocusMessage || showPlaceholderMessage}
-          // showPlaceholderRight={true}
+          messageButton={messageButton}
           error={showErrorMessage || MESSAGE_HAS_ERRORS_MESSAGE}
-          // showIconError={showErrorMessage || MESSAGE_HAS_ERRORS_MESSAGE}
+          errorIcon={message?.length <= 0}
           onKeyPress={onKeyPressMessage}
+          onPressButton={onPressButton}
+          iconButton={iconButton}
           rules={messageRules}
           style={styles.customTextInput}
-          // accessibilityLabel={getAccessibilityLabel(
-          //   testIds.messageFeedback,
-          //   i18next.t('FEEDBACK_CUSTOM_INPUT_MESSAGE:MESSAGE_LABEL')
-          // )}
         />
         {showErrorMessage && (
           <CustomText error xsmall style={styles.error}>
@@ -141,7 +125,6 @@ function CustomInputMessage({
           </CustomText>
         )}
       </View>
-      {/* </KeyboardAwareScrollView> */}
     </View>
   );
 }

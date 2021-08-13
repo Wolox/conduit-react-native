@@ -2,29 +2,41 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { View, Image, TouchableOpacity, Text, ScrollView } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useDispatch, useSelector } from 'react-redux';
-import { isIos } from '@constants/platform';
-import { validateMinLength, validateMaxLength } from '@utils/validations/validateUtils';
-import CustomText from '@components/CustomText';
-import { Navigation } from '@interfaces/navigation';
-import { formatDate } from '@utils/dateUtils';
+import i18next from 'i18next';
 import icAddInactive from '@assets/TabBar/icAddpostInactive.png';
 import icAddActive from '@assets/TabBar/icAddpostActive.png';
 import icFavouriteInactive from '@assets/TabBar/icFavoriteInactive.png';
 import icFavouriteActive from '@assets/TabBar/icFavoriteActive.png';
 import icDefaultArticleImage from '@assets/icons/icDefaultArticleImage.jpg';
+import CustomText from '@components/CustomText';
 import CustomInputMessage from '@components/CustomInputMessage';
-import Actioncreators from '@redux/comments/actions';
+import CustomTextPressable from '@components/CustomTextPressable';
+import useNavigation from '@components/AppNavigator/helper';
+import { isIos } from '@constants/platform';
+import Routes from '@constants/routes';
 import { State } from '@interfaces/reduxInterfaces';
-import i18next from 'i18next';
+import { Article } from '@interfaces/articlesInterface';
 import { iComment } from '@interfaces/commentInterfaces';
+import ActionComments from '@redux/comments/actions';
+import { validateMinLength, validateMaxLength } from '@utils/validations/validateUtils';
+import { formatDate } from '@utils/dateUtils';
+import icSendMessage from '@assets/icons/icSendMessage.png';
 
+import './i18n';
 import Comment from './Components/Comment';
 import styles from './styles';
 import testIds from './testIds';
 
-interface Props extends Navigation {}
+interface Props {
+  route: {
+    params: {
+      article: Article;
+    };
+  };
+}
 
 function DetailArticle({ route }: Props) {
+  const navigation = useNavigation();
   const dispatch = useDispatch();
   const {
     title,
@@ -39,42 +51,78 @@ function DetailArticle({ route }: Props) {
   const [isFollow, setIsFollow] = useState(following);
   const { comments } = useSelector((state: State) => state.comments);
   const currentUser = useSelector((state: State) => state.auth.currentUser);
-  console.log(currentUser);
   const EXTRAHEIGHT = isIos ? 400 : 190;
   const handleToggleFavorite = () => {
     if (favoriteCount > favoritesCount) setFavoriteCount(favoriteCount - 1);
     else setFavoriteCount(favoriteCount + 1);
   };
-
+  const handleRedirectToLogin = useCallback(() => {
+    navigation?.navigate(Routes.Login);
+  }, [navigation]);
   const renderMessage = useCallback(
     () => (
-      <>
-        <ScrollView>
-          {comments.length
-            ? comments.map((item: iComment) => <Comment commentContent={item} key={item.id} />)
-            : currentUser && (
-                <View style={{ marginVertical: 20 }}>
-                  <CustomText green style={{ fontSize: 12, textAlign: 'center' }}>
-                    No hay comentarios aún, !Haz el primero!
-                  </CustomText>
-                </View>
-              )}
-        </ScrollView>
-      </>
+      <ScrollView>
+        {comments.length
+          ? comments.map((item: iComment) => <Comment commentContent={item} key={item.id} />)
+          : currentUser && (
+              <View style={styles.noCommentsContainer}>
+                <CustomText green style={styles.noCommentsText}>
+                  {i18next.t('DETAIL_ARTICLE:NO_COMMENTS_TEXT')}
+                </CustomText>
+              </View>
+            )}
+      </ScrollView>
     ),
     [comments, currentUser]
   );
-
+  const renderIcons = () => (
+    <View style={styles.interactionButtons}>
+      <TouchableOpacity
+        testID={testIds.followButton}
+        style={styles.interactionButton}
+        onPress={() => setIsFollow(!isFollow)}>
+        <Image
+          style={styles.interactionButtonImage}
+          source={isFollow ? icAddActive : icAddInactive}
+          resizeMode="contain"
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        testID={testIds.favoriteButton}
+        style={styles.interactionButton}
+        onPress={handleToggleFavorite}>
+        <Image
+          style={styles.interactionButtonImage}
+          source={favoriteCount > favoritesCount ? icFavouriteActive : icFavouriteInactive}
+          resizeMode="contain"
+        />
+        {!!favoriteCount && (
+          <CustomText gray xsmall green={favoriteCount > favoritesCount}>{`(${favoriteCount})`}</CustomText>
+        )}
+      </TouchableOpacity>
+    </View>
+  );
+  const renderTags = () => (
+    <>
+      {tagList.map((tag: string, index: number) => (
+        <Text key={index} style={styles.tag}>
+          {tag}
+        </Text>
+      ))}
+    </>
+  );
   useEffect(() => {
-    dispatch(Actioncreators.getComments());
+    dispatch(ActionComments.getComments());
   }, [dispatch]);
+  const handleSubmit = () => {
+    console.log('enviando');
+    // TODO WHATS HAPPEND WHEN TOUCH SUBMIT? POST
+  };
   const renderInputMessage = useCallback(
     () => (
       <>
         {currentUser ? (
           <CustomInputMessage
-            // onChangeEventMessage={handleContentSizeChange}
-            // messageLabel={'Comentarios'}
             minLengthMessage={5}
             maxLengthMessage={300}
             numberOfLinesMessage={10}
@@ -84,25 +132,17 @@ function DetailArticle({ route }: Props) {
             }}
             showPlaceholderMessage
             styleInputText={styles.inputComment}
+            iconButton={icSendMessage}
+            onPressButton={handleSubmit}
           />
         ) : (
-          <View
-            style={{
-              marginVertical: 20,
-              width: '90%',
-              alignSelf: 'center',
-              borderRadius: 15,
-              backgroundColor: 'white',
-              padding: 10,
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}>
-            <CustomText green>Registrate para poder comentar</CustomText>
+          <View style={styles.noInputAuth}>
+            <CustomTextPressable text="Registrate para poder comentar" onPress={handleRedirectToLogin} />
           </View>
         )}
       </>
     ),
-    [currentUser]
+    [currentUser, handleRedirectToLogin]
   );
 
   return (
@@ -117,7 +157,8 @@ function DetailArticle({ route }: Props) {
         enableOnAndroid
         scrollEnabled
         contentInsetAdjustmentBehavior="automatic"
-        style={styles.scroll}>
+        contentContainerStyle={styles.contentStyle}
+        style={styles.scrollContainer}>
         <View style={styles.container}>
           <View style={styles.containerDetail}>
             <View style={styles.containerUser}>
@@ -131,64 +172,18 @@ function DetailArticle({ route }: Props) {
                 </CustomText>
               </View>
             </View>
-            {!!tagList.length && (
-              <View style={styles.tagContainer}>
-                {tagList.map((tag: string) => (
-                  <Text style={styles.tag}>{tag}</Text>
-                ))}
-              </View>
-            )}
+            {!!tagList.length && <View style={styles.tagContainer}>{renderTags()}</View>}
             <View style={styles.separator} />
             <CustomText>{title}</CustomText>
             <CustomText label>{description}</CustomText>
             <View style={styles.bodyContainer}>
               <CustomText label>{body}</CustomText>
             </View>
-            <View style={styles.interactionButtons}>
-              <TouchableOpacity
-                testID={testIds.followButton}
-                style={styles.interactionButton}
-                onPress={() => setIsFollow(!isFollow)}>
-                <Image
-                  style={styles.interactionButtonImage}
-                  source={isFollow ? icAddActive : icAddInactive}
-                  resizeMode="contain"
-                />
-              </TouchableOpacity>
-              <TouchableOpacity
-                testID={testIds.favoriteButton}
-                style={styles.interactionButton}
-                onPress={handleToggleFavorite}>
-                <Image
-                  style={styles.interactionButtonImage}
-                  source={favoriteCount > favoritesCount ? icFavouriteActive : icFavouriteInactive}
-                  resizeMode="contain"
-                />
-                {!!favoriteCount && (
-                  <CustomText
-                    gray
-                    xsmall
-                    green={favoriteCount > favoritesCount}>{`(${favoriteCount})`}</CustomText>
-                )}
-              </TouchableOpacity>
-            </View>
+            {currentUser && renderIcons()}
           </View>
         </View>
         {renderMessage()}
         {renderInputMessage()}
-        {/* <CustomInputMessage
-          // onChangeEventMessage={handleContentSizeChange}
-          // messageLabel={'Comentarios'}
-          minLengthMessage={5}
-          maxLengthMessage={300}
-          numberOfLinesMessage={10}
-          messageRules={{
-            ...validateMinLength(5),
-            ...validateMaxLength(300)
-          }}
-          showPlaceholderMessage
-          styleInputText={styles.inputComment}
-        /> */}
       </KeyboardAwareScrollView>
     </>
   );
