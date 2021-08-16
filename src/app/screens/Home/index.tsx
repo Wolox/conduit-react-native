@@ -1,12 +1,15 @@
-import React, { useCallback, useRef, useEffect } from 'react';
+import React, { useCallback, useRef, useEffect, useState } from 'react';
 import { SafeAreaView, FlatList, ListRenderItem, View, ActivityIndicator } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
+import i18next from 'i18next';
+import { State } from '@interfaces/reduxInterfaces';
+import { Article } from '@interfaces/articlesInterface';
+import { ListKeyExtractor } from '@interfaces/miscelanious';
+import CustomText from '@components/CustomText';
 import { THRESHOLD } from '@constants/pagination';
+import TabList from '@components/TabList';
 import ScreenWithLoader from '@components/ScreenWithLoader';
 import ArticleItem from '@components/ArticleItem';
-import { ListKeyExtractor } from '@interfaces/miscelanious';
-import { Article } from '@interfaces/articlesInterface';
-import { State } from '@interfaces/reduxInterfaces';
 import ArticlesActions, { TARGETS } from '@redux/articles/actions';
 import Routes from '@constants/routes';
 import { Navigation } from '@interfaces/navigation';
@@ -17,9 +20,11 @@ import './i18n';
 function Home({ navigation }: Navigation) {
   const dispatch = useDispatch();
   const paginated = useRef(false);
+  const [currentTab, setCurrentTab] = useState(0);
 
   const articles = useSelector<State, Article[]>(state => state.articles.articlesList?.page || []);
   const loading = useSelector<State, boolean>(state => state.articles.articlesListLoading);
+  const currentUser = useSelector((state: State) => state.auth.currentUser);
 
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
 
@@ -59,23 +64,46 @@ function Home({ navigation }: Navigation) {
     if (!paginated.current && !!articles.length) paginated.current = true;
   }, [loading, paginated, articles]);
 
+  useEffect(() => {
+    if (currentTab === 1) {
+      getArticles();
+    }
+  }, [currentTab, getArticles]);
+
+  const handlePressTab = (index: number) => setCurrentTab(index);
+
   return (
     <SafeAreaView style={styles.container}>
-      <ScreenWithLoader
-        loading={loading && !articles.length}
-        refreshed={paginated.current}
-        withInitialLoading={false}>
-        <FlatList<Article>
-          style={styles.container}
-          data={articles}
-          keyExtractor={keyExtractor}
-          renderItem={renderItem}
-          ItemSeparatorComponent={renderSeparator}
-          onEndReachedThreshold={THRESHOLD}
-          showsVerticalScrollIndicator={false}
-          ListFooterComponent={renderFooter}
+      <CustomText center big darkBlue bold style={styles.title}>
+        {i18next.t('HOME:APP_NAME')}
+      </CustomText>
+      {currentUser && (
+        <TabList
+          tabs={[i18next.t('HOME:FIRST_TAB'), i18next.t('HOME:SECOND_TAB')]}
+          onPressTab={handlePressTab}
         />
-      </ScreenWithLoader>
+      )}
+      {currentTab === 0 && currentUser ? (
+        <CustomText center style={styles.titleEmptyArticles}>
+          {i18next.t('HOME:EMPTY_ARTICLES')}
+        </CustomText>
+      ) : (
+        <ScreenWithLoader
+          loading={loading && !articles.length}
+          refreshed={paginated.current}
+          withInitialLoading={false}>
+          <FlatList<Article>
+            style={styles.container}
+            data={articles}
+            keyExtractor={keyExtractor}
+            renderItem={renderItem}
+            ItemSeparatorComponent={renderSeparator}
+            onEndReachedThreshold={THRESHOLD}
+            showsVerticalScrollIndicator={false}
+            ListFooterComponent={renderFooter}
+          />
+        </ScreenWithLoader>
+      )}
     </SafeAreaView>
   );
 }
