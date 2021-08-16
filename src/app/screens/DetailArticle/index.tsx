@@ -34,7 +34,13 @@ function DetailArticle({ route, navigation }: Props) {
   };
   const handleDeleteArticle = () => console.log('delete article');
 
-  const handleEditArticle = useCallback(() => navigation?.navigate(Routes.EditArticle), [navigation]);
+  const handleEditArticle = useCallback(
+    () =>
+      navigation?.navigate(Routes.EditArticle, {
+        article: { ...route?.params?.article, isEditArticle: true }
+      }),
+    [navigation, route]
+  );
 
   return (
     <View style={styles.container}>

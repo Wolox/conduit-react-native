@@ -3,5 +3,6 @@ export default {
   descriptionInput: 'description-input',
   tagInput: 'tag-input',
   bodyInput: 'body-input',
-  createArticleButton: 'create-article-button'
+  createArticleButton: 'create-article-button',
+  editArticleButton: 'edit-article-button'
 };
