@@ -26,14 +26,9 @@ const { MIN_LENGHT_FIELD, MAX_TITLE_LENGHT, MAX_DESCRIPTION_LENGHT, MAX_BODY_LEN
   fiedlsValidations();
 
 function NewArticle({ route: { params } }: Props) {
-  /* const {
-    description,
-    body
-    tagList
-  } = route?.params?.article; */
   const { handleSubmit, control, setValue, trigger } = useForm<NewArticleValues>({ mode: 'all' });
-  const [items, setItems] = useState<string[]>([]);
   const isEdit = !!params?.article && params?.article?.isEditArticle;
+  const [items, setItems] = useState<string[]>(isEdit ? params?.article?.tagList : []);
   const handleDeleteTag = (index: number) => {
     const newItems = items.filter((_, key) => key !== index);
     setItems(newItems);
@@ -50,9 +45,8 @@ function NewArticle({ route: { params } }: Props) {
   };
 
   useEffect(() => {
-    if (isEdit) setItems(params?.article?.tagList);
     setValue(FIELDS.tagList, items);
-  }, [items, isEdit, params, setValue]);
+  }, [items, setValue]);
 
   return (
     <FlatList
