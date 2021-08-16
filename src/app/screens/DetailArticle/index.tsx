@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { View, Image, TouchableOpacity, Text } from 'react-native';
 import CustomText from '@components/CustomText';
 import { Navigation } from '@interfaces/navigation';
@@ -8,13 +8,16 @@ import icAddActive from '@assets/TabBar/icAddpostActive.png';
 import icFavouriteInactive from '@assets/TabBar/icFavoriteInactive.png';
 import icFavouriteActive from '@assets/TabBar/icFavoriteActive.png';
 import icDefaultArticleImage from '@assets/icons/icDefaultArticleImage.jpg';
+import icDelete from '@assets/icons/icDelete.png';
+import icEdit from '@assets/icons/icEdit.png';
+import Routes from '@constants/routes';
 
 import styles from './styles';
 import testIds from './testIds';
 
 interface Props extends Navigation {}
 
-function DetailArticle({ route }: Props) {
+function DetailArticle({ route, navigation }: Props) {
   const {
     title,
     description,
@@ -29,8 +32,34 @@ function DetailArticle({ route }: Props) {
     if (favoriteCount > favoritesCount) setFavoriteCount(favoriteCount - 1);
     else setFavoriteCount(favoriteCount + 1);
   };
+  const handleDeleteArticle = () => console.log('delete article');
+
+  const handleEditArticle = useCallback(() => navigation?.navigate(Routes.EditArticle), [navigation]);
+
   return (
     <View style={styles.container}>
+      <View style={styles.containerActions}>
+        <TouchableOpacity
+          testID={testIds.editButton}
+          style={styles.interactionButton}
+          onPress={handleEditArticle}>
+          <Image
+            style={[styles.interactionButtonImage, styles.greenTint]}
+            source={icEdit}
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          testID={testIds.deleteButton}
+          style={styles.interactionButton}
+          onPress={handleDeleteArticle}>
+          <Image
+            style={[styles.interactionButtonImage, styles.redTint]}
+            source={icDelete}
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
+      </View>
       <View style={styles.containerDetail}>
         <View style={styles.containerUser}>
           <Image source={image ? { uri: image } : icDefaultArticleImage} style={styles.image} />
@@ -45,8 +74,10 @@ function DetailArticle({ route }: Props) {
         </View>
         {!!tagList.length && (
           <View style={styles.tagContainer}>
-            {tagList.map((tag: string) => (
-              <Text style={styles.tag}>{tag}</Text>
+            {tagList.map((tag: string, index: number) => (
+              <Text style={styles.tag} key={`key-${tag}-${index}`}>
+                {tag}
+              </Text>
             ))}
           </View>
         )}

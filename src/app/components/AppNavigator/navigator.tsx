@@ -14,6 +14,7 @@ import Profile from '@screens/Profile';
 import NewArticle from '@screens/NewArticle';
 import MyArticles from '@screens/MyArticles';
 import DetailArticle from '@screens/DetailArticle';
+import EditArticle from '@screens/EditArticle';
 
 import TabBar from '../TabBar';
 
@@ -28,6 +29,7 @@ const HomeStack = () => (
   <Stack.Navigator {...appStackNavConfig}>
     {inferRoute(Stack)({ [Routes.Home]: Home })}
     {inferRoute(Stack)({ [Routes.DetailArticle]: DetailArticle })}
+    {inferRoute(Stack)({ [Routes.EditArticle]: EditArticle })}
   </Stack.Navigator>
 );
 
@@ -35,6 +37,7 @@ const MyArticlesStack = () => (
   <Stack.Navigator {...appStackNavConfig}>
     {inferRoute(Stack)({ [Routes.MyArticles]: MyArticles })}
     {inferRoute(Stack)({ [Routes.DetailArticle]: DetailArticle })}
+    {inferRoute(Stack)({ [Routes.EditArticle]: EditArticle })}
   </Stack.Navigator>
 );
 
@@ -42,6 +45,7 @@ const MyFavArticlesStack = () => (
   <Stack.Navigator {...appStackNavConfig}>
     {inferRoute(Tab)({ [Routes.FavArticles]: FavArticles })}
     {inferRoute(Stack)({ [Routes.DetailArticle]: DetailArticle })}
+    {inferRoute(Stack)({ [Routes.EditArticle]: EditArticle })}
   </Stack.Navigator>
 );
 

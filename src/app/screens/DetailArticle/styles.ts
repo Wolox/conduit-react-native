@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { darkGray, lightGray, white } from '@constants/colors';
+import { darkGray, lightGray, white, red, gray, green } from '@constants/colors';
 import { SPACING, BORDER_WIDTH } from '@constants/dimentions';
 import { BOTTOM_SEPARATOR_LINE, commonBoxShadow } from '@constants/commonStyles';
 import { moderateScale } from '@utils/scalingUtils';
@@ -10,8 +10,19 @@ const INTERACION_ICON_SIZE = moderateScale(30);
 
 export default StyleSheet.create({
   container: {
+    flex: 1,
+    position: 'relative',
+    alignItems: 'center',
     padding: SPACING.MEDIUM,
     paddingTop: SPACING.XXBIG * SPACING.XXXSMALL
+  },
+  containerActions: {
+    width: '100%',
+    height: INTERACION_ICON_SIZE,
+    position: 'absolute',
+    top: SPACING.MEDIUM,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   containerDetail: {
     ...commonBoxShadow,
@@ -50,7 +61,8 @@ export default StyleSheet.create({
   interactionButtonImage: {
     width: INTERACION_ICON_SIZE,
     height: INTERACION_ICON_SIZE,
-    marginRight: SPACING.XSMALL
+    marginRight: SPACING.XSMALL,
+    tintColor: gray
   },
   separator: {
     ...BOTTOM_SEPARATOR_LINE,
@@ -65,5 +77,11 @@ export default StyleSheet.create({
     borderWidth: BORDER_WIDTH.BOLD,
     padding: SPACING.XXXSMALL,
     marginHorizontal: SPACING.XXXSMALL
+  },
+  redTint: {
+    tintColor: red
+  },
+  greenTint: {
+    tintColor: green
   }
 });
