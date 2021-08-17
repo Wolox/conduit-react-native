@@ -14,6 +14,7 @@ export const VARIANTS = [
   'justify',
   'right',
   'blue',
+  'darkBlue',
   'gray',
   'green',
   'white',
@@ -37,6 +38,7 @@ export interface VariantsInterface {
   justify?: boolean;
   right?: boolean;
   blue?: boolean;
+  darkBlue?: boolean;
   gray?: boolean;
   green?: boolean;
   white?: boolean;

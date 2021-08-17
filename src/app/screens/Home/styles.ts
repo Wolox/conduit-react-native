@@ -13,5 +13,11 @@ export default StyleSheet.create({
   },
   indicator: {
     marginTop: SPACING.SMALL
+  },
+  titleEmptyArticles: {
+    marginTop: SPACING.MEDIUM
+  },
+  title: {
+    marginVertical: SPACING.SMALL
   }
 });
