@@ -1,9 +1,3 @@
-// import api from '@config/api';
-// import { INITIAL_PAGE, DEFAULT_LIMIT } from '@constants/pagination';
-
-// const COMMENTS_PATH = '/comments';
-// export const customPayLink = (data: LinkCustom) => api.post(`${LINK_PATH}/link`, data);
-
 const COMMENTS_MOCK = [
   {
     author: {
@@ -12,7 +6,7 @@ const COMMENTS_MOCK = [
       image: 'https://static.productionready.io/images/smiley-cyrus.jpg',
       username: 'signup'
     },
-    body: 'gods?',
+    body: 'No way ! this is fantastic',
     createdAt: '2021-08-06T18:16:15.699Z',
     id: 106,
     updatedAt: '2021-08-06T18:16:15.699Z'
@@ -24,7 +18,7 @@ const COMMENTS_MOCK = [
       image: 'https://static.productionready.io/images/smiley-cyrus.jpg',
       username: 'signup'
     },
-    body: 'La verdad es que me parece fantástico este articulo, especialmente la parte de los perros y los dragones Wow ! amazing, ig del dragoncito?',
+    body: 'This is a great idea, i need more information for my current job and this is inspired me a lot, thanks for all, please contact with me when you have a minute. best regards ',
     createdAt: '2021-08-06T18:16:15.699Z',
     id: 107,
     updatedAt: '2021-08-06T18:16:15.699Z'
@@ -36,7 +30,7 @@ const COMMENTS_MOCK = [
       image: 'https://static.productionready.io/images/smiley-cyrus.jpg',
       username: 'signup'
     },
-    body: 'gods?',
+    body: 'Hello, Great job ! i love your books i learned all of them, thanks',
     createdAt: '2021-08-06T18:16:15.699Z',
     id: 108,
     updatedAt: '2021-08-06T18:16:15.699Z'
@@ -48,7 +42,7 @@ const COMMENTS_MOCK = [
       image: 'https://static.productionready.io/images/smiley-cyrus.jpg',
       username: 'react'
     },
-    body: 'gods?',
+    body: 'allways good, cool!',
     createdAt: '2021-08-06T18:16:15.699Z',
     id: 109,
     updatedAt: '2021-08-06T18:16:15.699Z'
@@ -56,11 +50,6 @@ const COMMENTS_MOCK = [
 ];
 
 const ArticlesService = {
-  // getArticles: (nextPage = INITIAL_PAGE) =>
-  //   api.get(COMMENTS_PATH, {
-  //     page: nextPage,
-  //     limit: DEFAULT_LIMIT
-  //   }),
   getMockComments: () =>
     Promise.resolve({
       ok: true,

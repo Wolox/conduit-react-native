@@ -1,7 +1,7 @@
 import { createReducer, completeReducer, completeState } from 'redux-recompose';
-import Immutable from 'seamless-immutable';
-import { ArticlesState } from '@interfaces/reduxInterfaces';
-// import { onPagination } from '@utils/reduxUtils';
+import Immutable, { ImmutableObject } from 'seamless-immutable';
+import { ArticlesState, CommentsState } from '@interfaces/reduxInterfaces';
+import { iComment } from '@interfaces/commentInterfaces';
 
 import { actions } from './actions';
 
@@ -15,23 +15,19 @@ export const initialState: ArticlesState = completeState(stateDescription);
 
 const reducerDescription = {
   primaryActions: [actions.GET_COMMENTS],
-  // override: {
-  //   [actions.GET_COMMENTS_SUCCESS]: onPagination()
-  // }
+  // TODO: THIS GOING BE REPLACED WITH PRIMARYACTIONS WHEN SERVICE WILL BE UP
   override: {
-    [actions.DELETE_COMMENT]: (state: any, action: typeof actions) => {
-      const { commentId } = action;
-      return {
-        ...state,
-        comments: state.comments.filter((comment: any) => comment.id !== commentId)
-      };
+    [actions.DELETE_COMMENT]: (state: ImmutableObject<CommentsState>, action: typeof actions) => {
+      return state.merge({
+        comments: state.comments.filter((comment: iComment) => comment.id !== action.payload)
+      });
+    },
+    [actions.CREATE_COMMENT]: (state: ImmutableObject<CommentsState>, action: typeof actions) => {
+      return state.merge({
+        comments: [...state.comments, action.payload]
+      });
     }
   }
-  // const commentId = action.commentId
-  //     return {
-  //       ...state,
-  //       comments: state.comments.filter(comment => comment.id !== commentId)
-  //     };
 };
 
 export default createReducer(Immutable(initialState), completeReducer(reducerDescription));

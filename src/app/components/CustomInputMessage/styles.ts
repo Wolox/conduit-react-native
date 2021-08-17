@@ -1,20 +1,18 @@
 import { StyleSheet } from 'react-native';
-// import { grayDark10, grayishBlue } from '@constants/colors';
-// import { SIZES } from '@constants/fonts';
 import { black } from '@constants/colors';
 import { IS_SMALL_DEVICE } from '@constants/platform';
 import { SPACING } from '@constants/dimentions';
 
 const WIDTH_LABEL = IS_SMALL_DEVICE ? '90%' : '100%';
 
-const DEFAULT_SPACE = 16;
+const COMMON_PADDING_INPUT: number = 8;
+
 export default StyleSheet.create({
   container: {
     marginHorizontal: SPACING.XXXSMALL
-    // height: '90%'
   },
   inputContainer: {
-    marginTop: 4
+    marginTop: SPACING.XXSMALL
   },
   messageLabel: {
     paddingTop: 24,
@@ -23,20 +21,20 @@ export default StyleSheet.create({
     flexDirection: 'row'
   },
   customLabel: {
-    marginRight: 0
+    marginRight: SPACING.NONE
   },
   textInputMessage: {
     fontSize: 14,
     color: black,
-    paddingVertical: 0,
+    paddingVertical: SPACING.NONE,
     textAlignVertical: 'top',
     marginBottom: 20,
-    paddingHorizontal: 8,
-    paddingTop: 8
+    paddingHorizontal: COMMON_PADDING_INPUT,
+    paddingTop: COMMON_PADDING_INPUT
   },
   customTextInput: {
-    paddingBottom: 0,
-    marginBottom: 0
+    paddingBottom: SPACING.NONE,
+    marginBottom: SPACING.NONE
   },
   customInputContainer: {
     height: 300,
@@ -44,7 +42,7 @@ export default StyleSheet.create({
   },
   error: {
     marginTop: -15,
-    marginLeft: DEFAULT_SPACE,
+    marginLeft: SPACING.MEDIUM,
     width: '80%'
   }
 });

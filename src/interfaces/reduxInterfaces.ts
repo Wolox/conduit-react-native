@@ -48,10 +48,16 @@ export interface FavouritesState {
   favouritesarticlesListLoading: boolean;
   favouritesarticlesListError: Nullable<string>;
 }
+
+export interface CommentsState {
+  comments: [];
+  commentLoading: boolean;
+  commentsError: Nullable<string>;
+}
 export interface State {
   auth: AuthState;
   articles: ArticlesState;
-  comments: any;
+  comments: CommentsState;
   favourites: FavouritesState;
   myArticles: MyArticlesState;
 }

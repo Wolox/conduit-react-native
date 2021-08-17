@@ -3,6 +3,7 @@ import fonts from '@config/fonts';
 import { blue, gray, darkGray, red, white, lightGray, green } from '@constants/colors';
 import { SIZES } from '@constants/fonts';
 import { commonBoxShadow } from '@constants/commonStyles';
+import { SPACING } from '@constants/dimentions';
 
 const DEFAULT_BORDER = 15;
 const SIZE_IMAGE = 23;
@@ -24,7 +25,7 @@ export default StyleSheet.create({
   },
   inputContainer: {
     alignItems: 'center',
-    borderBottomWidth: 0,
+    borderBottomWidth: SPACING.NONE,
     borderColor: darkGray,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -48,8 +49,8 @@ export default StyleSheet.create({
     ...fonts.baseFont,
     fontSize: SIZES.SMALL,
     color: darkGray,
-    padding: 0,
-    margin: 0
+    padding: SPACING.NONE,
+    margin: SPACING.NONE
   },
   singleInput: {
     flex: 1
@@ -64,8 +65,8 @@ export default StyleSheet.create({
   },
   placeHolderMultiline: {
     position: 'absolute',
-    right: 0,
-    bottom: 0,
+    right: SPACING.NONE,
+    bottom: SPACING.NONE,
     margin: 10
   },
   widthStretch: {

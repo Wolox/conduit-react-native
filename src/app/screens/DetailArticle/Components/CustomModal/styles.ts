@@ -1,4 +1,5 @@
 import { darkGray, grayTransparent, green, scarletRed, white } from '@constants/colors';
+import { SPACING } from '@constants/dimentions';
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -19,17 +20,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     shadowColor: darkGray,
     shadowOffset: {
-      width: 0,
-      height: 2
+      width: SPACING.NONE,
+      height: SPACING.XXXSMALL
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
+    shadowOpacity: 0.3,
+    shadowRadius: SPACING.XXSMALL,
     elevation: 5
   },
   button: {
     borderRadius: 20,
     padding: 15,
-    elevation: 2
+    elevation: SPACING.XXXSMALL
   },
   buttonClose: {
     backgroundColor: green

@@ -12,6 +12,7 @@ export interface CustomInputMessage {
   messageRules?: Controller['rules'];
   numberOfLinesMessage?: number;
   keyboardAwareViewChildren?: ReactNode;
+  placeHolder?: string;
   showPlaceholderMessage?: boolean;
   onChangeEventMessage?: (message: string) => void;
   automaticScroll?: boolean;

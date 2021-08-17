@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
+import i18next from 'i18next';
 import { useSelector } from 'react-redux';
 import icDefaultArticleImage from '@assets/icons/icDefaultArticleImage.jpg';
 import icTrash from '@assets/icons/icTrash.png';
@@ -12,6 +13,7 @@ import { formatDate } from '@utils/dateUtils';
 import CustomModal from '../CustomModal';
 
 import styles from './styles';
+import './i18n';
 
 interface Props {
   commentContent: iComment;
@@ -21,31 +23,25 @@ export default function Comment({
   commentContent: {
     author: { username },
     body,
-    // updatedAt,
+    id,
     createdAt
   }
 }: Props) {
-  // const dispatch = useDispatch();
   const [presseded, setPresseded] = useState<boolean>(false);
   const [commentText, setCommentText] = useState<string>('');
   const [showModal, setShowModal] = useState<boolean>(false);
-
   const currentUser = useSelector((state: State) => state?.auth?.currentUser?.username);
   useEffect(() => {
-    const handleComment = () => {
-      // const DATA =
-      //   'Muy Bueno me encanta, todos los colores en una mano y los recibos en la otra ! estamos probando nuevas cosas y estos comentarios nos re sirven! muchas gracias besiis';
+    const handleComment = async () => {
       if (presseded) {
-        setCommentText(body);
+        await setCommentText(body);
       } else {
-        setCommentText(body.substring(0, 78));
+        await setCommentText(body.substring(0, 78));
       }
     };
     handleComment();
   }, [body, presseded]);
-
   const onPress = () => setShowModal(!showModal);
-
   const renderTrash = () => (
     <>
       {username && currentUser === username && (
@@ -55,29 +51,32 @@ export default function Comment({
       )}
     </>
   );
-
   return (
-    <View style={styles.comment}>
-      <CustomModal showModal={showModal} setShowModal={setShowModal} />
-      <View style={styles.containerUser}>
-        <View style={styles.containerImage}>
-          <Image style={styles.image} resizeMode="contain" source={icDefaultArticleImage} />
-        </View>
-        <Text style={styles.userName}>{username}</Text>
-        <Text style={styles.commentDate}>{formatDate(createdAt)}</Text>
-      </View>
-      <View style={styles.commentBody}>
-        <CustomText style={styles.commentText}>{commentText}</CustomText>
-        {body.length > 70 && (
-          <View>
-            <CustomTextPressable
-              text={presseded ? 'ver menos' : 'ver más'}
-              onPress={() => setPresseded(!presseded)}
-            />
+    <View style={styles.container}>
+      <View style={styles.content}>
+        <CustomModal showModal={showModal} setShowModal={setShowModal} idComment={id} />
+        <View style={styles.containerUser}>
+          <View style={styles.containerImage}>
+            <Image style={styles.image} resizeMode="contain" source={icDefaultArticleImage} />
           </View>
-        )}
+          <Text style={styles.userName}>{username}</Text>
+          <Text style={styles.commentDate}>{formatDate(createdAt)}</Text>
+        </View>
+        <View style={styles.commentBody}>
+          <CustomText style={[styles.commentText, currentUser !== username && styles.fullCommentBody]}>
+            {commentText}
+          </CustomText>
+          {body.length > 70 && (
+            <View>
+              <CustomTextPressable
+                text={presseded ? i18next.t('COMMENTS:VIEW_LESS') : i18next.t('COMMENTS:VIEW_MORE')}
+                onPress={() => setPresseded(!presseded)}
+              />
+            </View>
+          )}
+        </View>
+        {renderTrash()}
       </View>
-      {renderTrash()}
     </View>
   );
 }

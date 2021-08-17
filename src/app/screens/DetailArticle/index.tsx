@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import i18next from 'i18next';
 import icAddInactive from '@assets/TabBar/icAddpostInactive.png';
 import icAddActive from '@assets/TabBar/icAddpostActive.png';
+import icSendMessage from '@assets/icons/icSendMessage.png';
 import icFavouriteInactive from '@assets/TabBar/icFavoriteInactive.png';
 import icFavouriteActive from '@assets/TabBar/icFavoriteActive.png';
 import icDefaultArticleImage from '@assets/icons/icDefaultArticleImage.jpg';
@@ -20,12 +21,12 @@ import { iComment } from '@interfaces/commentInterfaces';
 import ActionComments from '@redux/comments/actions';
 import { validateMinLength, validateMaxLength } from '@utils/validations/validateUtils';
 import { formatDate } from '@utils/dateUtils';
-import icSendMessage from '@assets/icons/icSendMessage.png';
 
 import './i18n';
 import Comment from './Components/Comment';
 import styles from './styles';
 import testIds from './testIds';
+import { MOCK_DATA } from './constants';
 
 interface Props {
   route: {
@@ -49,6 +50,7 @@ function DetailArticle({ route }: Props) {
   } = route?.params?.article;
   const [favoriteCount, setFavoriteCount] = useState(favoritesCount || 0);
   const [isFollow, setIsFollow] = useState(following);
+  const [comment, setCommment] = useState<string>('');
   const { comments } = useSelector((state: State) => state.comments);
   const currentUser = useSelector((state: State) => state.auth.currentUser);
   const EXTRAHEIGHT = isIos ? 400 : 190;
@@ -114,15 +116,19 @@ function DetailArticle({ route }: Props) {
   useEffect(() => {
     dispatch(ActionComments.getComments());
   }, [dispatch]);
-  const handleSubmit = () => {
-    console.log('enviando');
-    // TODO WHATS HAPPEND WHEN TOUCH SUBMIT? POST
-  };
+  const handleSubmit = useCallback(() => {
+    if (currentUser) {
+      dispatch(ActionComments.createComment(MOCK_DATA(currentUser.username, comment)));
+      setCommment('');
+    }
+  }, [comment, currentUser, dispatch]);
+
   const renderInputMessage = useCallback(
     () => (
       <>
         {currentUser ? (
           <CustomInputMessage
+            onChangeEventMessage={setCommment}
             minLengthMessage={5}
             maxLengthMessage={300}
             numberOfLinesMessage={10}
@@ -134,15 +140,19 @@ function DetailArticle({ route }: Props) {
             styleInputText={styles.inputComment}
             iconButton={icSendMessage}
             onPressButton={handleSubmit}
+            placeHolder={i18next.t('DETAIL_ARTICLE:PLACE_HOLDER_INPUT')}
           />
         ) : (
           <View style={styles.noInputAuth}>
-            <CustomTextPressable text="Registrate para poder comentar" onPress={handleRedirectToLogin} />
+            <CustomTextPressable
+              text={i18next.t('DETAIL_ARTICLE:NO_AUTHENTICATED')}
+              onPress={handleRedirectToLogin}
+            />
           </View>
         )}
       </>
     ),
-    [currentUser, handleRedirectToLogin]
+    [currentUser, handleRedirectToLogin, handleSubmit]
   );
 
   return (

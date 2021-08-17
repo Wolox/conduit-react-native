@@ -1,30 +1,28 @@
 import React, { memo, useRef, useState } from 'react';
 import { TextInput, View } from 'react-native';
 import { useForm } from 'react-hook-form';
-// import i18next from 'i18next';
+import i18next from 'i18next';
 import CustomText from '@components/CustomText';
 import ControlledCustomTextInput from '@components/CustomTextInput/controller';
 import { Nullable } from '@interfaces/globalInterfaces';
-// import { getAccessibilityLabel } from '@utils/accessibilityUtils';
-// import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { isIos } from '@constants/platform';
 
+import './i18n';
 import { FIELDS, validations, TextInputKeyEvent, CustomInputMessageInterface } from './constants';
 import { CustomInputMessage as Props } from './interfaces';
 import testIds from './testIds';
-import './i18n';
 import styles from './styles';
 
 function CustomInputMessage({
   messageLabel,
   maxLengthMessage,
-  // minLengthMessage,
   numberOfLinesMessage,
   keyboardAwareViewChildren,
   messageRules,
   showPlaceholderMessage,
   onChangeEventMessage,
   styleInputText,
+  placeHolder,
   messageButton,
   onPressButton,
   iconButton
@@ -33,6 +31,7 @@ function CustomInputMessage({
     trigger,
     control,
     getValues,
+    setValue,
     formState: { errors }
   } = useForm<CustomInputMessageInterface>({
     mode: 'all',
@@ -76,6 +75,12 @@ function CustomInputMessage({
     if (isIos && newMessage.length === maxLengthMessage) setShowErrorMessage(true);
     if (isBackSpaceKey) setShowErrorMessage(false);
   };
+  const handlePressButton = () => {
+    if (onPressButton) {
+      onPressButton();
+      setValue('message', '');
+    }
+  };
   return (
     <View style={styles.container}>
       {keyboardAwareViewChildren && keyboardAwareViewChildren}
@@ -94,7 +99,7 @@ function CustomInputMessage({
           testID={testIds.messageFeedback}
           control={control}
           name={FIELDS.message}
-          placeholder={'deja tu comentario'}
+          placeholder={placeHolder}
           onChange={onChangeTextMessage}
           onFocus={() => onFocus(FIELDS.message)}
           onBlur={() => onBlur(FIELDS.message)}
@@ -109,14 +114,14 @@ function CustomInputMessage({
           error={showErrorMessage || MESSAGE_HAS_ERRORS_MESSAGE}
           errorIcon={message?.length <= 0}
           onKeyPress={onKeyPressMessage}
-          onPressButton={onPressButton}
+          onPressButton={handlePressButton}
           iconButton={iconButton}
           rules={messageRules}
           style={styles.customTextInput}
         />
         {showErrorMessage && (
           <CustomText error xsmall style={styles.error}>
-            {`cantida de caracteres ${maxLengthMessage}`}
+            {i18next.t('FEEDBACK_CUSTOM_INPUT_MESSAGE:MAX_MESSAGE', { max: maxLengthMessage })}
           </CustomText>
         )}
         {errors?.message?.message && isFocusMessage && !showErrorMessage && (

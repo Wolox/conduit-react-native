@@ -29,5 +29,5 @@ export interface CustomTextInputProps extends TextInputProps, TextProps {
   messageButton?: string;
   iconButton?: ImageSourcePropType;
   onPressButton?: () => void;
-  errorIcon: boolean;
+  errorIcon?: boolean;
 }

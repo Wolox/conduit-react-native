@@ -8,18 +8,22 @@ const COMMON_TEN = 10;
 const COMMON_SIZE_TRASH = 18;
 
 const styles = StyleSheet.create({
-  comment: {
+  container: {
     flexDirection: 'row',
     width: '92%',
     alignSelf: ALIGN_CENTER,
     padding: COMMON_TEN,
     backgroundColor: white,
-    justifyContent: 'space-between',
     borderRadius: COMMON_TWENTY,
     marginBottom: COMMON_TEN
   },
+  content: {
+    flexDirection: 'row',
+    width: '100%',
+    alignSelf: ALIGN_CENTER
+  },
   containerUser: {
-    width: '20%'
+    width: '24%'
   },
   image: {
     height: COMMON_TWENTY,
@@ -40,7 +44,11 @@ const styles = StyleSheet.create({
     textAlign: ALIGN_CENTER
   },
   commentBody: {
-    width: '68%'
+    width: '68%',
+    textAlign: 'left'
+  },
+  fullCommentBody: {
+    width: '100%'
   },
   commentText: {
     fontSize: 12
@@ -53,7 +61,8 @@ const styles = StyleSheet.create({
   containerTrash: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 5
+    paddingHorizontal: 5,
+    width: '8%'
   },
   icTrash: {
     height: COMMON_SIZE_TRASH,
