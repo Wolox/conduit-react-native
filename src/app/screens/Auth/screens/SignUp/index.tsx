@@ -1,26 +1,26 @@
 import React from 'react';
 import { Keyboard, TouchableWithoutFeedback, ScrollView, View } from 'react-native';
-import KeyboardSpacer from 'react-native-keyboard-spacer';
 import i18next from 'i18next';
 import { useForm } from 'react-hook-form';
 import CustomButton from '@components/CustomButton';
 import CustomText from '@components/CustomText';
 import ControlledCustomTextInput from '@components/CustomTextInput/controller';
-import { isIos } from '@constants/platform';
 import { useAsyncRequest } from '@hooks/useRequest';
-import { Navigation } from '@interfaces/navigation';
 import { FIELDS, SignupFormValues } from '@screens/Auth/constants';
 import * as AuthService from '@services/AuthService';
 import { validateRequired, validateEmail, validateMinLength } from '@utils/validations/validateUtils';
+import useNavigation from '@components/AppNavigator/helper';
+import Routes from '@constants/routes';
 
 import { MIN_LENGTH_PASS } from './constants';
 import './i18n';
 import styles from './styles';
 
-function SignUp({ navigation }: Navigation) {
+function SignUp() {
+  const navigation = useNavigation();
   const [, , error, signUp] = useAsyncRequest({
     request: AuthService.signup,
-    withPostSuccess: () => navigation.goBack()
+    withPostSuccess: () => navigation?.navigate(Routes.Login)
   });
 
   const {
@@ -30,9 +30,9 @@ function SignUp({ navigation }: Navigation) {
   } = useForm<SignupFormValues>({ mode: 'onBlur' });
 
   const hasSignUpError = !!error;
-  const handleSignUp = (values: SignupFormValues) => {
+  const handleSignUp = async (values: SignupFormValues) => {
     Keyboard.dismiss();
-    signUp(values);
+    await signUp(values);
   };
 
   return (
@@ -97,7 +97,6 @@ function SignUp({ navigation }: Navigation) {
           </View>
         </TouchableWithoutFeedback>
       </ScrollView>
-      {isIos && <KeyboardSpacer />}
     </>
   );
 }
