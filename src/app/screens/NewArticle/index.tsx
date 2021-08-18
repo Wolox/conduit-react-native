@@ -3,7 +3,6 @@ import { FlatList, ListRenderItem, View } from 'react-native';
 import i18next from 'i18next';
 import { useForm } from 'react-hook-form';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { Navigation } from '@interfaces/navigation';
 import ControlledCustomTextInput from '@components/CustomTextInput/controller';
 import CustomButton from '@components/CustomButton';
 import CustomText from '@components/CustomText';
@@ -14,13 +13,15 @@ import {
   validateMaxLength
 } from '@utils/validations/validateUtils';
 
+import { Props as DetailArticleProps } from '../DetailArticle';
+
 import { FIELDS, NewArticleValues, fiedlsValidations } from './constants';
 import './i18n';
 import styles from './styles';
 import Tag from './components/Tag';
 import testIds from './testIds';
 
-interface Props extends Navigation {}
+interface Props extends DetailArticleProps {}
 
 const { MIN_LENGHT_FIELD, MAX_TITLE_LENGHT, MAX_DESCRIPTION_LENGHT, MAX_BODY_LENGHT, MIN_LENGTH_TAG } =
   fiedlsValidations();

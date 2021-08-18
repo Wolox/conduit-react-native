@@ -16,4 +16,5 @@ export interface Article {
   tagList: string[];
   title: string;
   updatedAt: string;
+  isEditArticle?: boolean;
 }

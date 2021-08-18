@@ -1,7 +1,10 @@
 import React, { useState, useCallback } from 'react';
 import { View, Image, TouchableOpacity, Text } from 'react-native';
+import { useSelector } from 'react-redux';
 import CustomText from '@components/CustomText';
-import { Navigation } from '@interfaces/navigation';
+import useNavigation from '@components/AppNavigator/helper';
+import { State } from '@interfaces/reduxInterfaces';
+import { Article } from '@interfaces/articlesInterface';
 import { formatDate } from '@utils/dateUtils';
 import icAddInactive from '@assets/TabBar/icAddpostInactive.png';
 import icAddActive from '@assets/TabBar/icAddpostActive.png';
@@ -15,9 +18,15 @@ import Routes from '@constants/routes';
 import styles from './styles';
 import testIds from './testIds';
 
-interface Props extends Navigation {}
+export interface Props {
+  route: {
+    params: {
+      article: Article;
+    };
+  };
+}
 
-function DetailArticle({ route, navigation }: Props) {
+function DetailArticle({ route }: Props) {
   const {
     title,
     description,
@@ -26,6 +35,8 @@ function DetailArticle({ route, navigation }: Props) {
     author: { image, username, following },
     tagList
   } = route?.params?.article;
+  const currentUser = useSelector((state: State) => state.auth.currentUser);
+  const navigation = useNavigation();
   const [favoriteCount, setFavoriteCount] = useState(favoritesCount || 0);
   const [isFollow, setIsFollow] = useState(following);
   const handleToggleFavorite = () => {
@@ -44,28 +55,30 @@ function DetailArticle({ route, navigation }: Props) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.containerActions}>
-        <TouchableOpacity
-          testID={testIds.editButton}
-          style={styles.interactionButton}
-          onPress={handleEditArticle}>
-          <Image
-            style={[styles.interactionButtonImage, styles.greenTint]}
-            source={icEdit}
-            resizeMode="contain"
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          testID={testIds.deleteButton}
-          style={styles.interactionButton}
-          onPress={handleDeleteArticle}>
-          <Image
-            style={[styles.interactionButtonImage, styles.redTint]}
-            source={icDelete}
-            resizeMode="contain"
-          />
-        </TouchableOpacity>
-      </View>
+      {currentUser && (
+        <View style={styles.containerActions}>
+          <TouchableOpacity
+            testID={testIds.editButton}
+            style={styles.interactionButton}
+            onPress={handleEditArticle}>
+            <Image
+              style={[styles.interactionButtonImage, styles.greenTint]}
+              source={icEdit}
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            testID={testIds.deleteButton}
+            style={styles.interactionButton}
+            onPress={handleDeleteArticle}>
+            <Image
+              style={[styles.interactionButtonImage, styles.redTint]}
+              source={icDelete}
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
+        </View>
+      )}
       <View style={styles.containerDetail}>
         <View style={styles.containerUser}>
           <Image source={image ? { uri: image } : icDefaultArticleImage} style={styles.image} />
