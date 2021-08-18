@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import i18next from 'i18next';
 import { useSelector } from 'react-redux';
 import icDefaultArticleImage from '@assets/icons/icDefaultArticleImage.jpg';
-import icTrash from '@assets/icons/icTrash.png';
 import CustomTextPressable from '@components/CustomTextPressable';
 import CustomText from '@components/CustomText';
 import { State } from '@interfaces/reduxInterfaces';
@@ -11,6 +10,7 @@ import { iComment } from '@interfaces/commentInterfaces';
 import { formatDate } from '@utils/dateUtils';
 
 import CustomModal from '../CustomModal';
+import Trash from '../Trash';
 
 import styles from './styles';
 import './i18n';
@@ -42,15 +42,7 @@ export default function Comment({
     handleComment();
   }, [body, presseded]);
   const onPress = () => setShowModal(!showModal);
-  const renderTrash = () => (
-    <>
-      {username && currentUser === username && (
-        <TouchableOpacity style={styles.containerTrash} onPress={onPress}>
-          <Image source={icTrash} resizeMode="contain" resizeMethod="scale" style={styles.icTrash} />
-        </TouchableOpacity>
-      )}
-    </>
-  );
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -75,7 +67,7 @@ export default function Comment({
             </View>
           )}
         </View>
-        {renderTrash()}
+        <Trash currentUser={currentUser} username={username} onPress={onPress} />
       </View>
     </View>
   );

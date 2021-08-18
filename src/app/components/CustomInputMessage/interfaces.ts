@@ -1,9 +1,8 @@
 import { ReactNode } from 'react';
 import { ImageSourcePropType, ViewStyle } from 'react-native';
 import { ControllerProps } from 'react-hook-form';
-import CustomTextInput from '@components/CustomTextInput';
 
-type Controller = ControllerProps<typeof CustomTextInput | any>;
+type Controller = ControllerProps;
 
 export interface CustomInputMessage {
   messageLabel?: string;

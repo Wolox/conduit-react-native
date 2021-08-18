@@ -5,7 +5,6 @@ import { SPACING } from '@constants/dimentions';
 const ALIGN_CENTER = 'center';
 const COMMON_TWENTY = 20;
 const COMMON_TEN = 10;
-const COMMON_SIZE_TRASH = 18;
 
 const styles = StyleSheet.create({
   container: {
@@ -57,16 +56,6 @@ const styles = StyleSheet.create({
     borderRadius: COMMON_TWENTY,
     overflow: 'hidden',
     marginBottom: SPACING.XXXSMALL
-  },
-  containerTrash: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 5,
-    width: '8%'
-  },
-  icTrash: {
-    height: COMMON_SIZE_TRASH,
-    width: COMMON_SIZE_TRASH
   }
 });
 

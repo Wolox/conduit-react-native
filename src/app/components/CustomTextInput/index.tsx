@@ -89,7 +89,7 @@ const CustomTextInput = forwardRef<TextInput, Props>(function CustomTextInput(
     <>
       {iconButton || messageButton ? (
         <View style={styles.messageButton}>
-          {iconButton ? (
+          {iconButton && (
             <TouchableOpacity onPress={onPress}>
               <Image
                 source={iconButton}
@@ -98,9 +98,8 @@ const CustomTextInput = forwardRef<TextInput, Props>(function CustomTextInput(
                 resizeMethod="scale"
               />
             </TouchableOpacity>
-          ) : messageButton ? (
-            <CustomTextPressable text={messageButton} onPress={onPress} />
-          ) : null}
+          )}
+          {messageButton && <CustomTextPressable text={messageButton} onPress={onPress} />}
         </View>
       ) : null}
     </>
