@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { create, NETWORK_ERROR } from 'apisauce';
 import Config from 'react-native-config';
 import Reactotron from 'reactotron-react-native';
@@ -5,11 +6,14 @@ import { camelCaseSerializer, snakeCaseSerializer } from '@constants/serializers
 
 const AUTHORIZATION_HEADER = 'Authorization';
 const BEARER = 'Bearer';
+const baseURL = Config.API_BASE_URL || 'http://wolox.com';
 
 const api = create({
-  baseURL: Config.API_BASE_URL,
-  timeout: 5000
+  baseURL,
+  timeout: 15000
 });
+
+api.setBaseURL(baseURL);
 
 export const setApiHeaders = (token: string) => {
   api.setHeader(AUTHORIZATION_HEADER, `${BEARER} ${token}`);
@@ -18,6 +22,9 @@ export const setApiHeaders = (token: string) => {
 export const removeApiHeaders = () => {
   api.deleteHeader(AUTHORIZATION_HEADER);
 };
+if (baseURL === 'http://wolox.com') {
+  console.warn('API baseURL has not been properly initialized');
+}
 
 export const apiSetup = () => {
   api.addResponseTransform(response => {
