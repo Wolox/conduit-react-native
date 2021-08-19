@@ -13,6 +13,7 @@ import { Article } from '@interfaces/articlesInterface';
 import FavouritesActions from '@redux/favourites/actions';
 
 import './i18n';
+
 import styles from './styles';
 
 export default function FavArticles() {
@@ -20,6 +21,9 @@ export default function FavArticles() {
   const { favouritesarticlesList, favouritesarticlesListLoading } = useSelector<State, FavouritesState>(
     state => state.favourites
   );
+  // const currentUser = useSelector<State, CurrentUser>(state => state.auth.currentUser);
+  const currentUser = useSelector((state: State) => state.auth.currentUser);
+
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
   const handlePressArticle = useCallback(
     (article: Article) => navigation?.navigate(Routes.DetailArticle, { article }),
@@ -51,9 +55,11 @@ export default function FavArticles() {
     ),
     [keyExtractor, favouritesarticlesList, renderItem, renderSeparator]
   );
-  useEffect(() => {
-    dispatch(FavouritesActions.getFavouritesArticles());
-  }, [dispatch]);
+
+  // TODO UNCCOMENT WHEN THIS WORK UP
+  // useEffect(() => {
+  //   dispatch(FavouritesActions.getFavouritesArticles(currentUser));
+  // }, [currentUser, dispatch]);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.statusNavBar}>
