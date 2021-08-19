@@ -41,7 +41,6 @@ export default StyleSheet.create({
     paddingBottom: 10
   },
   error: {
-    marginTop: -15,
     marginLeft: SPACING.MEDIUM,
     width: '80%'
   }
