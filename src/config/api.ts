@@ -6,7 +6,7 @@ import { camelCaseSerializer, snakeCaseSerializer } from '@constants/serializers
 
 const AUTHORIZATION_HEADER = 'Authorization';
 const BEARER = 'Bearer';
-const baseURL = Config.API_BASE_URL || 'http://wolox.com';
+const baseURL = Config.API_BASE_URL;
 
 const api = create({
   baseURL,
@@ -22,11 +22,11 @@ export const setApiHeaders = (token: string) => {
 export const removeApiHeaders = () => {
   api.deleteHeader(AUTHORIZATION_HEADER);
 };
-if (baseURL === 'http://wolox.com') {
-  console.warn('API baseURL has not been properly initialized');
-}
 
 export const apiSetup = () => {
+  if (baseURL === 'http://wolox.com') {
+    console.warn('API baseURL has not been properly initialized');
+  }
   api.addResponseTransform(response => {
     if (response.data) response.data = camelCaseSerializer.serialize(response.data);
   });

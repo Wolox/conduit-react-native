@@ -7,6 +7,9 @@ export interface CurrentUser {
   image: string;
   token: string;
 }
+export interface UserResponse extends CurrentUser {
+  user: CurrentUser;
+}
 export interface AuthData {
   email: string;
   password: string;

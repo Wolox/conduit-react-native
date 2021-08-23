@@ -2067,20 +2067,20 @@ anymatch@^3.0.3:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
+apisauce@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/apisauce/-/apisauce-2.0.1.tgz#cf5af56ea6ff5145e6eeb8d4ba471c7e0662b8c4"
+  integrity sha512-mJBw3pKmtfVoP6oifnf7/iRJQtNkVb6GkYsVOXN2pidootj1mhGBtzYHOX9FVBzAz5QV2GMu8IJtiNIgZ44kHQ==
+  dependencies:
+    axios "^0.21.1"
+    ramda "^0.25.0"
+
 apisauce@^0.16.0:
   version "0.16.0"
   resolved "https://registry.yarnpkg.com/apisauce/-/apisauce-0.16.0.tgz#5620624ffe56d755f66a7ab738138e5ff74f25f6"
   integrity sha512-aDHJLhpBjIpv9hxZPsajkYqLtNZAkcWHBqeJZfVNrDE9pj0HZVv60HQUqs6vjGsb5p2WR26exdGA5SdoAWAH5A==
   dependencies:
     axios "^0.18.0"
-    ramda "^0.25.0"
-
-apisauce@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/apisauce/-/apisauce-2.1.1.tgz#0b8bc7f2544e6ef710a6fa1d6f49583856940dd2"
-  integrity sha512-P4SsLvmsH8BLLruBn/nsO+65j+ChZlGQ2zC5avCIjbWstYS4PgjxeVWtbeVwFGEWX7dEkLp85OvdapGXy1zS8g==
-  dependencies:
-    axios "^0.21.1"
     ramda "^0.25.0"
 
 appdirsjs@^1.2.4:

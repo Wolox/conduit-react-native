@@ -6,7 +6,7 @@ import { actions } from './actions';
 
 const stateDescription = {
   description: {
-    favouritesarticlesList: {}
+    favouritesarticlesList: []
   }
 };
 
@@ -15,5 +15,4 @@ export const initialState: FavouritesState = completeState(stateDescription);
 const reducerDescription = {
   primaryActions: [actions.FAVOURITES_ARTICLES_LIST]
 };
-
 export default createReducer(Immutable(initialState), completeReducer(reducerDescription));

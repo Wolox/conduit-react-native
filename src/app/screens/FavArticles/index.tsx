@@ -10,6 +10,7 @@ import Routes from '@constants/routes';
 import { ListKeyExtractor } from '@interfaces/miscelanious';
 import { FavouritesState, State } from '@interfaces/reduxInterfaces';
 import { Article } from '@interfaces/articlesInterface';
+import { CurrentUser } from '@interfaces/authInterfaces';
 import FavouritesActions from '@redux/favourites/actions';
 
 import './i18n';
@@ -21,9 +22,8 @@ export default function FavArticles() {
   const { favouritesarticlesList, favouritesarticlesListLoading } = useSelector<State, FavouritesState>(
     state => state.favourites
   );
-  // const currentUser = useSelector<State, CurrentUser>(state => state.auth.currentUser);
-  const currentUser = useSelector((state: State) => state.auth.currentUser);
-
+  const { articles } = favouritesarticlesList;
+  const currentUser = useSelector<State, CurrentUser>(state => state.auth.currentUser as CurrentUser);
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
   const handlePressArticle = useCallback(
     (article: Article) => navigation?.navigate(Routes.DetailArticle, { article }),
@@ -38,9 +38,9 @@ export default function FavArticles() {
   const renderMessage = useCallback(
     () => (
       <>
-        {favouritesarticlesList.length ? (
+        {articles?.length ? (
           <FlatList<Article>
-            data={favouritesarticlesList}
+            data={articles}
             keyExtractor={keyExtractor}
             renderItem={renderItem}
             ItemSeparatorComponent={renderSeparator}
@@ -53,13 +53,13 @@ export default function FavArticles() {
         )}
       </>
     ),
-    [keyExtractor, favouritesarticlesList, renderItem, renderSeparator]
+    [articles, keyExtractor, renderItem, renderSeparator]
   );
-
-  // TODO UNCCOMENT WHEN THIS WORK UP
-  // useEffect(() => {
-  //   dispatch(FavouritesActions.getFavouritesArticles(currentUser));
-  // }, [currentUser, dispatch]);
+  useEffect(() => {
+    if (currentUser) {
+      dispatch(FavouritesActions.getFavouritesArticles(currentUser));
+    }
+  }, [dispatch, currentUser]);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.statusNavBar}>
