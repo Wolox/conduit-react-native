@@ -25,12 +25,10 @@ import { UserResponse } from '@interfaces/authInterfaces';
 const baseURL = Config.API_BASE_URL;
 const api = create({ baseURL });
 const FavoriteService = {
-  getFavorites: async ({ user: { username } }: UserResponse) => {
-    const data = await api.get(FAVORITE_PATH, {
+  getFavorites: ({ user: { username } }: UserResponse) =>
+    api.get(FAVORITE_PATH, {
       favorited: username
-    });
-    return data;
-  }
+    })
 
   // TODO: TEST API OK:
   // getMocked: () =>
