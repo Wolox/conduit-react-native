@@ -6,7 +6,7 @@ import { camelCaseSerializer, snakeCaseSerializer } from '@constants/serializers
 
 const AUTHORIZATION_HEADER = 'Authorization';
 const BEARER = 'Bearer';
-const baseURL = Config.API_BASE_URL;
+const baseURL = Config.API_BASE_URL || 'http://wolox.com';
 
 const api = create({
   baseURL,
