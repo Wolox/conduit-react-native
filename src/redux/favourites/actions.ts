@@ -1,8 +1,6 @@
 import { createTypes, completeTypes } from 'redux-recompose';
-import { Nullable } from '@interfaces/globalInterfaces';
 import FavoriteService from '@services/FavouritesArticlesService';
 import { CurrentUser } from '@interfaces/authInterfaces';
-// import { CurrentUser } from '@interfaces/authInterfaces';
 
 export const actions = createTypes(
   completeTypes({ primaryActions: ['FAVOURITES_ARTICLES_LIST'] }),
@@ -12,8 +10,6 @@ export const actions = createTypes(
 export const TARGETS = {
   FAVOURITES_ARTICLES_LIST: 'favouritesarticlesList'
 };
-
-type ActionType = Nullable<number>;
 
 const actionCreators = {
   getFavouritesArticles: (currentUser: CurrentUser) => ({
