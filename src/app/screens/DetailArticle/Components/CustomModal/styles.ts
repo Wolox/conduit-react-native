@@ -2,6 +2,8 @@ import { darkGray, grayTransparent, green, scarletRed, white } from '@constants/
 import { SPACING } from '@constants/dimentions';
 import { StyleSheet } from 'react-native';
 
+const SPACING_TWENTY = 20;
+
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
@@ -11,9 +13,9 @@ const styles = StyleSheet.create({
     backgroundColor: grayTransparent
   },
   modalView: {
-    margin: 20,
+    margin: SPACING_TWENTY,
     backgroundColor: white,
-    borderRadius: 20,
+    borderRadius: SPACING_TWENTY,
     padding: 35,
     width: '93%',
     height: 180,
@@ -28,7 +30,7 @@ const styles = StyleSheet.create({
     elevation: 5
   },
   button: {
-    borderRadius: 20,
+    borderRadius: SPACING_TWENTY,
     padding: 15,
     elevation: SPACING.XXXSMALL
   },
@@ -51,7 +53,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     width: '100%',
-    marginTop: 20
+    marginTop: SPACING_TWENTY
   }
 });
 export default styles;
