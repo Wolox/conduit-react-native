@@ -56,9 +56,7 @@ export default function FavArticles() {
     [articles, keyExtractor, renderItem, renderSeparator]
   );
   useEffect(() => {
-    if (currentUser) {
-      dispatch(FavouritesActions.getFavouritesArticles(currentUser));
-    }
+    dispatch(FavouritesActions.getFavouritesArticles(currentUser));
   }, [dispatch, currentUser]);
   return (
     <SafeAreaView style={styles.container}>
