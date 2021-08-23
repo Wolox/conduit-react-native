@@ -18,3 +18,11 @@ export interface Article {
   updatedAt: string;
   isEditArticle?: boolean;
 }
+
+export interface ArticleInParams {
+  route: {
+    params: {
+      article: Article;
+    };
+  };
+}

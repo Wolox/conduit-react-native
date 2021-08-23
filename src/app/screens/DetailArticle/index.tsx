@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import CustomText from '@components/CustomText';
 import useNavigation from '@components/AppNavigator/helper';
 import { State } from '@interfaces/reduxInterfaces';
-import { Article } from '@interfaces/articlesInterface';
+import { ArticleInParams } from '@interfaces/articlesInterface';
 import { formatDate } from '@utils/dateUtils';
 import icAddInactive from '@assets/TabBar/icAddpostInactive.png';
 import icAddActive from '@assets/TabBar/icAddpostActive.png';
@@ -18,13 +18,7 @@ import Routes from '@constants/routes';
 import styles from './styles';
 import testIds from './testIds';
 
-export interface Props {
-  route: {
-    params: {
-      article: Article;
-    };
-  };
-}
+interface Props extends ArticleInParams {}
 
 function DetailArticle({ route }: Props) {
   const {
