@@ -19,10 +19,10 @@ import styles from './styles';
 
 export default function FavArticles() {
   const navigation = useNavigation();
-  const { favouritesarticlesList, favouritesarticlesListLoading } = useSelector<State, FavouritesState>(
-    state => state.favourites
-  );
-  const { articles } = favouritesarticlesList;
+  const {
+    favouritesarticlesList: { articles },
+    favouritesarticlesListLoading
+  } = useSelector<State, FavouritesState>(state => state.favourites);
   const currentUser = useSelector<State, CurrentUser>(state => state.auth.currentUser as CurrentUser);
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
   const handlePressArticle = useCallback(
