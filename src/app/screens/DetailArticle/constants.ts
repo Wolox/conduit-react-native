@@ -1,4 +1,6 @@
-export function MOCK_DATA(username: string, comment: string) {
+import { UserResponse } from '@interfaces/authInterfaces';
+
+export function MOCK_DATA({ user: { username } }: UserResponse, comment: string) {
   return {
     author: {
       bio: 'Bio de prebas',

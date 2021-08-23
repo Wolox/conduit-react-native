@@ -23,6 +23,7 @@ import { validateMinLength, validateMaxLength } from '@utils/validations/validat
 import { formatDate } from '@utils/dateUtils';
 
 import './i18n';
+
 import Comment from './Components/Comment';
 import styles from './styles';
 import testIds from './testIds';
@@ -116,9 +117,10 @@ function DetailArticle({ route }: Props) {
   useEffect(() => {
     dispatch(ActionComments.getComments());
   }, [dispatch]);
+
   const handleSubmit = useCallback(() => {
     if (currentUser) {
-      dispatch(ActionComments.createComment(MOCK_DATA(currentUser.username, comment)));
+      dispatch(ActionComments.createComment(MOCK_DATA(currentUser, comment)));
       setCommment('');
     }
   }, [comment, currentUser, dispatch]);

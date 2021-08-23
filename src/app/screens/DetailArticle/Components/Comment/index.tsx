@@ -30,7 +30,7 @@ export default function Comment({
   const [presseded, setPresseded] = useState<boolean>(false);
   const [commentText, setCommentText] = useState<string>('');
   const [showModal, setShowModal] = useState<boolean>(false);
-  const currentUser = useSelector((state: State) => state?.auth?.currentUser?.username);
+  const currentUser = useSelector((state: State) => state?.auth?.currentUser?.user.username);
   useEffect(() => {
     const handleComment = async () => {
       if (presseded) {
