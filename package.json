@@ -36,7 +36,7 @@
     "@react-navigation/bottom-tabs": "^5.11.11",
     "@react-navigation/native": "^5.9.4",
     "@react-navigation/stack": "^5.14.5",
-    "apisauce": "2.0.1",
+    "apisauce": "^2.1.1",
     "cerealizr": "^1.0.1-alpha",
     "dayjs": "^1.10.6",
     "detox": "^18.18.1",
