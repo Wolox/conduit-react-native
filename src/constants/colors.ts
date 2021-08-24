@@ -4,7 +4,9 @@ export const darkBlue: string = '#36424a';
 export const green: string = '#5CB85C';
 
 export const red: string = '#FF0000';
+export const scarletRed: string = '#FF2400';
 export const transparent: string = 'transparent';
+export const grayTransparent: string = '#00000033';
 export const white: string = '#FFF';
 export const black: string = '#000';
 

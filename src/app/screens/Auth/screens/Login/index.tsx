@@ -5,6 +5,7 @@ import i18next from 'i18next';
 import { useForm } from 'react-hook-form';
 import CustomButton from '@components/CustomButton';
 import CustomText from '@components/CustomText';
+import CustomTextPressable from '@components/CustomTextPressable';
 import ControlledCustomTextInput from '@components/CustomTextInput/controller';
 import Routes from '@constants/routes';
 import { Navigation } from '@interfaces/navigation';
@@ -14,9 +15,9 @@ import { FIELDS, LoginFormValues } from '@screens/Auth/constants';
 import { validateRequired, validateEmail, validateMinLength } from '@utils/validations/validateUtils';
 
 import './i18n';
+
 import styles from './styles';
 import { MIN_LENGTH_PASS } from './constants';
-import CustomTextPressable from './components/CustomTextPressable';
 import Header from './components/Header';
 import LogoConduit from './components/LogoConduit';
 import testIds from './testIds';

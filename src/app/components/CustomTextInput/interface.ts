@@ -1,4 +1,4 @@
-import { TextProps, TextInputProps, TextStyle, ViewProps } from 'react-native';
+import { TextProps, TextInputProps, TextStyle, ViewProps, ImageSourcePropType } from 'react-native';
 
 export interface CustomTextInputProps extends TextInputProps, TextProps {
   animated?: boolean;
@@ -16,6 +16,8 @@ export interface CustomTextInputProps extends TextInputProps, TextProps {
   onBlur?: TextInputProps['onBlur'];
   onChange?(e: any): any;
   onFocus?: TextInputProps['onFocus'];
+  placeholderRightText?: string;
+  showPlaceholderRight?: boolean;
   placeholder?: string;
   placeholderColor?: string;
   secureTextEntry?: boolean;
@@ -24,4 +26,8 @@ export interface CustomTextInputProps extends TextInputProps, TextProps {
   style?: ViewProps['style'];
   value?: string;
   testIDProp?: string;
+  messageButton?: string;
+  iconButton?: ImageSourcePropType;
+  onPressButton?: () => void;
+  errorIcon?: boolean;
 }

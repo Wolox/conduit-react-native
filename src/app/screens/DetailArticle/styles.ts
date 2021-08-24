@@ -78,6 +78,37 @@ export default StyleSheet.create({
     padding: SPACING.XXXSMALL,
     marginHorizontal: SPACING.XXXSMALL
   },
+  bodyContainer: {
+    width: '100%',
+    marginTop: 15,
+    marginBottom: 20
+  },
+  scrollContainer: {
+    height: '100%'
+  },
+  inputComment: {
+    height: 125
+  },
+  noCommentsContainer: {
+    marginVertical: 20
+  },
+  noCommentsText: {
+    fontSize: 12,
+    textAlign: 'center'
+  },
+  noInputAuth: {
+    marginVertical: 20,
+    width: '90%',
+    alignSelf: 'center',
+    borderRadius: 15,
+    backgroundColor: white,
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  contentStyle: {
+    paddingBottom: 30
+  },
   redTint: {
     tintColor: red
   },

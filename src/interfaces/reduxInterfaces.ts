@@ -1,6 +1,6 @@
 import { Dispatch } from 'react';
 import { ApiOkResponse, ApiErrorResponse } from 'apisauce';
-import { CurrentUser } from '@interfaces/authInterfaces';
+import { UserResponse } from '@interfaces/authInterfaces';
 import { Nullable } from '@interfaces/globalInterfaces';
 import { PaginatedList } from '@interfaces/miscelanious';
 
@@ -26,7 +26,7 @@ export type DispatcheableAction<T = null, P = null, K = null> = (
 
 export interface AuthState {
   initialLoading: boolean;
-  currentUser: Nullable<CurrentUser>;
+  currentUser: Nullable<UserResponse>;
   currentUserLoading: boolean;
   currentUserError: Nullable<string>;
   hasAccessOnBoarding: boolean;
@@ -48,9 +48,16 @@ export interface FavouritesState {
   favouritesarticlesListLoading: boolean;
   favouritesarticlesListError: Nullable<string>;
 }
+
+export interface CommentsState {
+  comments: [];
+  commentLoading: boolean;
+  commentsError: Nullable<string>;
+}
 export interface State {
   auth: AuthState;
   articles: ArticlesState;
+  comments: CommentsState;
   favourites: FavouritesState;
   myArticles: MyArticlesState;
 }

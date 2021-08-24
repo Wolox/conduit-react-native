@@ -1,13 +1,15 @@
 export interface CurrentUser {
-  sessionToken: string;
-  id: number;
-  email: string;
-  username: string;
-  bio: string;
-  image: string;
-  token: string;
+  sessionToken?: string;
+  id?: number;
+  email?: string;
+  username?: string;
+  bio?: string;
+  image?: string;
+  token?: string;
 }
-
+export interface UserResponse {
+  user?: CurrentUser;
+}
 export interface AuthData {
   email: string;
   password: string;
