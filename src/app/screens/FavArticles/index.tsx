@@ -24,8 +24,6 @@ export default function FavArticles() {
     favoritesArticlesList: { articles },
     favoritesArticlesListLoading
   } = useSelector<State, FavouritesState>(state => state.favourites);
-  const algo = useSelector<State, Nullable<UserResponse>>(state => state.favourites);
-  console.log(algo);
 
   const currentUser = useSelector<State, Nullable<UserResponse>>(state => state.auth.currentUser);
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);

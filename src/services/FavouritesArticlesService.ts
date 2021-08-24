@@ -1,5 +1,4 @@
-import { create } from 'apisauce';
-import Config from 'react-native-config';
+import api from '@config/api';
 import { FAVORITE_PATH } from '@constants/favoriteServiceConstants';
 import { CurrentUser } from '@interfaces/authInterfaces';
 
@@ -22,8 +21,8 @@ import { CurrentUser } from '@interfaces/authInterfaces';
 //     favoritesCount: 1
 //   },
 // ];
-const baseURL = Config.API_BASE_URL;
-const api = create({ baseURL });
+// const baseURL = Config.API_BASE_URL;
+// const api = create({ baseURL });
 const FavoriteService = {
   getFavorites: ({ username }: CurrentUser) =>
     api.get(FAVORITE_PATH, {
