@@ -16,4 +16,13 @@ export interface Article {
   tagList: string[];
   title: string;
   updatedAt: string;
+  isEditArticle?: boolean;
+}
+
+export interface ArticleInParams {
+  route: {
+    params: {
+      article: Article;
+    };
+  };
 }

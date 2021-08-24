@@ -14,7 +14,8 @@ const Routes: StringObject = {
   Home: 'Home',
   Profile: 'Profile',
   NewArticle: 'NewArticle',
-  DetailArticle: 'DetailArticle'
+  DetailArticle: 'DetailArticle',
+  EditArticle: 'EditArticle'
 };
 
 export default Routes;
