@@ -15,10 +15,8 @@ import { iComment } from '@interfaces/commentInterfaces';
 import ActionComments from '@redux/comments/actions';
 import { validateMinLength, validateMaxLength } from '@utils/validations/validateUtils';
 import icAddInactive from '@assets/TabBar/icAddpostInactive.png';
-import icAddActive from '@assets/TabBar/icAddpostActive.png';
 import icSendMessage from '@assets/icons/icSendMessage.png';
 import icFavouriteInactive from '@assets/TabBar/icFavoriteInactive.png';
-import icFavouriteActive from '@assets/TabBar/icFavoriteActive.png';
 import icDefaultArticleImage from '@assets/icons/icDefaultArticleImage.jpg';
 import icDelete from '@assets/icons/icDelete.png';
 import icEdit from '@assets/icons/icEdit.png';
@@ -89,8 +87,8 @@ function DetailArticle({ route }: Props) {
         style={styles.interactionButton}
         onPress={() => setIsFollow(!isFollow)}>
         <Image
-          style={styles.interactionButtonImage}
-          source={isFollow ? icAddActive : icAddInactive}
+          style={[styles.interactionButtonImage, isFollow && styles.greenTint]}
+          source={icAddInactive}
           resizeMode="contain"
         />
       </TouchableOpacity>
@@ -99,8 +97,11 @@ function DetailArticle({ route }: Props) {
         style={styles.interactionButton}
         onPress={handleToggleFavorite}>
         <Image
-          style={styles.interactionButtonImage}
-          source={favoriteCount > favoritesCount ? icFavouriteActive : icFavouriteInactive}
+          style={[
+            styles.interactionButtonImage,
+            favoriteCount > favoritesCount ? styles.greenTint : styles.interactionButtonImage
+          ]}
+          source={icFavouriteInactive}
           resizeMode="contain"
         />
         {!!favoriteCount && (
