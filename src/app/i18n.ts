@@ -14,5 +14,6 @@ i18next.addResources('en', 'app', {
   [Routes.Home]: 'Home',
   [Routes.OnBoarding]: 'OnBoarding',
   [Routes.Profile]: 'Profile',
-  [Routes.DetailArticle]: 'Article detail'
+  [Routes.DetailArticle]: 'Article detail',
+  [Routes.EditArticle]: 'Article edit'
 });

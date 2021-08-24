@@ -10,5 +10,6 @@ i18next.addResources('en', 'NEW_ARTICLE', {
   PLACHEHOLDER_TAGS: 'Enter tags',
   BODY: 'Body',
   PLACEHOLDER_BODY: 'Write you article (in markdown)',
-  CREATE_BUTTON: 'Publish Article'
+  CREATE_BUTTON: 'Publish Article',
+  EDIT_BUTTON: 'Update Article'
 });

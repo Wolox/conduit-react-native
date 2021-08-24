@@ -6,6 +6,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import ControlledCustomTextInput from '@components/CustomTextInput/controller';
 import CustomButton from '@components/CustomButton';
 import CustomText from '@components/CustomText';
+import { ArticleInParams } from '@interfaces/articlesInterface';
 import {
   validateRequired,
   validateAlphanumeric,
@@ -19,12 +20,15 @@ import styles from './styles';
 import Tag from './components/Tag';
 import testIds from './testIds';
 
+interface Props extends ArticleInParams {}
+
 const { MIN_LENGHT_FIELD, MAX_TITLE_LENGHT, MAX_DESCRIPTION_LENGHT, MAX_BODY_LENGHT, MIN_LENGTH_TAG } =
   fiedlsValidations();
 
-function NewArticle() {
+function NewArticle({ route: { params } }: Props) {
   const { handleSubmit, control, setValue, trigger } = useForm<NewArticleValues>({ mode: 'all' });
-  const [items, setItems] = useState<string[]>([]);
+  const isEdit = !!params?.article && params?.article?.isEditArticle;
+  const [items, setItems] = useState<string[]>(isEdit ? params?.article?.tagList : []);
   const handleDeleteTag = (index: number) => {
     const newItems = items.filter((_, key) => key !== index);
     setItems(newItems);
@@ -33,8 +37,9 @@ function NewArticle() {
   const renderItem: ListRenderItem<string> = ({ item, index }) => (
     <Tag text={item} index={index} onDeleteTag={handleDeleteTag} />
   );
+
   // @TODO: do the quest when you already have the token in the headers
-  const handleNewArticle = (values: NewArticleValues) => {
+  const handleSubmitArticle = (values: NewArticleValues) => {
     trigger();
     console.log(values);
   };
@@ -50,10 +55,13 @@ function NewArticle() {
       ListHeaderComponent={
         <View style={styles.container}>
           <KeyboardAwareScrollView bounces={false} enableOnAndroid>
-            <CustomText green bold style={styles.title}>
-              {i18next.t('NEW_ARTICLE:CREATE_ARTICLE')}
-            </CustomText>
+            {!isEdit && (
+              <CustomText green bold style={styles.title}>
+                {i18next.t('NEW_ARTICLE:CREATE_ARTICLE')}
+              </CustomText>
+            )}
             <ControlledCustomTextInput
+              defaultValue={isEdit ? params?.article?.title : ''}
               testIDProp={testIds.titleInput}
               control={control}
               label={i18next.t('NEW_ARTICLE:TITLE')}
@@ -69,6 +77,7 @@ function NewArticle() {
               maxLength={MAX_TITLE_LENGHT}
             />
             <ControlledCustomTextInput
+              defaultValue={isEdit ? params?.article?.description : ''}
               testIDProp={testIds.descriptionInput}
               control={control}
               labelStyle={styles.labelStyle}
@@ -85,6 +94,7 @@ function NewArticle() {
             />
 
             <ControlledCustomTextInput
+              defaultValue={isEdit ? params?.article?.body : ''}
               testIDProp={testIds.bodyInput}
               control={control}
               multiline
@@ -121,10 +131,10 @@ function NewArticle() {
               />
             </View>
             <CustomButton
-              testID={testIds.createArticleButton}
+              testID={isEdit ? testIds.editArticleButton : testIds.createArticleButton}
               primary
-              onPress={handleSubmit(handleNewArticle)}
-              title={i18next.t('NEW_ARTICLE:CREATE_BUTTON')}
+              onPress={handleSubmit(handleSubmitArticle)}
+              title={i18next.t(isEdit ? 'NEW_ARTICLE:EDIT_BUTTON' : 'NEW_ARTICLE:CREATE_BUTTON')}
               style={styles.createButton}
             />
           </KeyboardAwareScrollView>

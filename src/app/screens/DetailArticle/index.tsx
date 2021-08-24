@@ -3,24 +3,26 @@ import { View, Image, TouchableOpacity, Text, ScrollView } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useDispatch, useSelector } from 'react-redux';
 import i18next from 'i18next';
+import CustomText from '@components/CustomText';
+import useNavigation from '@components/AppNavigator/helper';
+import { State } from '@interfaces/reduxInterfaces';
+import { ArticleInParams } from '@interfaces/articlesInterface';
+import { formatDate } from '@utils/dateUtils';
+import CustomInputMessage from '@components/CustomInputMessage';
+import CustomTextPressable from '@components/CustomTextPressable';
+import { isIos } from '@constants/platform';
+import { iComment } from '@interfaces/commentInterfaces';
+import ActionComments from '@redux/comments/actions';
+import { validateMinLength, validateMaxLength } from '@utils/validations/validateUtils';
 import icAddInactive from '@assets/TabBar/icAddpostInactive.png';
 import icAddActive from '@assets/TabBar/icAddpostActive.png';
 import icSendMessage from '@assets/icons/icSendMessage.png';
 import icFavouriteInactive from '@assets/TabBar/icFavoriteInactive.png';
 import icFavouriteActive from '@assets/TabBar/icFavoriteActive.png';
 import icDefaultArticleImage from '@assets/icons/icDefaultArticleImage.jpg';
-import CustomText from '@components/CustomText';
-import CustomInputMessage from '@components/CustomInputMessage';
-import CustomTextPressable from '@components/CustomTextPressable';
-import useNavigation from '@components/AppNavigator/helper';
-import { isIos } from '@constants/platform';
+import icDelete from '@assets/icons/icDelete.png';
+import icEdit from '@assets/icons/icEdit.png';
 import Routes from '@constants/routes';
-import { State } from '@interfaces/reduxInterfaces';
-import { Article } from '@interfaces/articlesInterface';
-import { iComment } from '@interfaces/commentInterfaces';
-import ActionComments from '@redux/comments/actions';
-import { validateMinLength, validateMaxLength } from '@utils/validations/validateUtils';
-import { formatDate } from '@utils/dateUtils';
 
 import './i18n';
 
@@ -29,13 +31,7 @@ import styles from './styles';
 import testIds from './testIds';
 import { MOCK_DATA } from './constants';
 
-interface Props {
-  route: {
-    params: {
-      article: Article;
-    };
-  };
-}
+interface Props extends ArticleInParams {}
 
 function DetailArticle({ route }: Props) {
   const navigation = useNavigation();
@@ -59,6 +55,14 @@ function DetailArticle({ route }: Props) {
     if (favoriteCount > favoritesCount) setFavoriteCount(favoriteCount - 1);
     else setFavoriteCount(favoriteCount + 1);
   };
+  const handleDeleteArticle = () => console.log('delete article');
+  const handleEditArticle = useCallback(
+    () =>
+      navigation?.navigate(Routes.EditArticle, {
+        article: { ...route?.params?.article, isEditArticle: true }
+      }),
+    [navigation, route]
+  );
   const handleRedirectToLogin = useCallback(() => {
     navigation?.navigate(Routes.Login);
   }, [navigation]);
@@ -172,6 +176,30 @@ function DetailArticle({ route }: Props) {
         contentContainerStyle={styles.contentStyle}
         style={styles.scrollContainer}>
         <View style={styles.container}>
+          {currentUser && (
+            <View style={styles.containerActions}>
+              <TouchableOpacity
+                testID={testIds.editButton}
+                style={styles.interactionButton}
+                onPress={handleEditArticle}>
+                <Image
+                  style={[styles.interactionButtonImage, styles.greenTint]}
+                  source={icEdit}
+                  resizeMode="contain"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                testID={testIds.deleteButton}
+                style={styles.interactionButton}
+                onPress={handleDeleteArticle}>
+                <Image
+                  style={[styles.interactionButtonImage, styles.redTint]}
+                  source={icDelete}
+                  resizeMode="contain"
+                />
+              </TouchableOpacity>
+            </View>
+          )}
           <View style={styles.containerDetail}>
             <View style={styles.containerUser}>
               <Image source={image ? { uri: image } : icDefaultArticleImage} style={styles.image} />
