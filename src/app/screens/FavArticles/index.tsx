@@ -21,9 +21,12 @@ import styles from './styles';
 export default function FavArticles() {
   const navigation = useNavigation();
   const {
-    favouritesarticlesList: { articles },
-    favouritesarticlesListLoading
+    favoritesArticlesList: { articles },
+    favoritesArticlesListLoading
   } = useSelector<State, FavouritesState>(state => state.favourites);
+  const algo = useSelector<State, Nullable<UserResponse>>(state => state.favourites);
+  console.log(algo);
+
   const currentUser = useSelector<State, Nullable<UserResponse>>(state => state.auth.currentUser);
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
   const handlePressArticle = useCallback(
@@ -68,7 +71,7 @@ export default function FavArticles() {
           <CustomText medium>{i18next.t('FAV_ARTICLES:FAVORITED_ARTICLES')}</CustomText>
         </View>
       </View>
-      <ScreenWithLoader loading={favouritesarticlesListLoading} withInitialLoading={false}>
+      <ScreenWithLoader loading={favoritesArticlesListLoading} withInitialLoading={false}>
         {renderMessage()}
       </ScreenWithLoader>
     </SafeAreaView>

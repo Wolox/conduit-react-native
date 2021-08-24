@@ -3,18 +3,18 @@ import FavoriteService from '@services/FavouritesArticlesService';
 import { UserResponse } from '@interfaces/authInterfaces';
 
 export const actions = createTypes(
-  completeTypes({ primaryActions: ['FAVOURITES_ARTICLES_LIST'] }),
+  completeTypes({ primaryActions: ['FAVORITES_ARTICLES_LIST'] }),
   '@@ARTICLES'
 );
 
 export const TARGETS = {
-  FAVOURITES_ARTICLES_LIST: 'favouritesarticlesList'
+  FAVORITES_ARTICLES_LIST: 'favoritesArticlesList'
 };
 
 const actionCreators = {
   getFavouritesArticles: ({ user }: UserResponse) => ({
-    type: actions.FAVOURITES_ARTICLES_LIST,
-    target: TARGETS.FAVOURITES_ARTICLES_LIST,
+    type: actions.FAVORITES_ARTICLES_LIST,
+    target: TARGETS.FAVORITES_ARTICLES_LIST,
     service: FavoriteService.getFavorites,
     payload: user
   })

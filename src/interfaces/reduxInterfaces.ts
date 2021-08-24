@@ -44,11 +44,11 @@ export interface ArticlesState {
   articlesListError: Nullable<String>;
 }
 export interface FavouritesState {
-  favouritesarticlesList: {
+  favoritesArticlesList: {
     articles: [];
   };
-  favouritesarticlesListLoading: boolean;
-  favouritesarticlesListError: Nullable<string>;
+  favoritesArticlesListLoading: boolean;
+  favoritesArticlesListError: Nullable<string>;
 }
 export interface State {
   auth: AuthState;
