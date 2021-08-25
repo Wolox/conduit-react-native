@@ -17,7 +17,7 @@ const actionCreators = {
     dispatch({
       type: actions.MY_ARTICLES,
       target: TARGETS.MY_ARTICLES,
-      service: MyArticlesService.getMockMyArticles
+      service: MyArticlesService.getMyArticles
     });
   }
 };
