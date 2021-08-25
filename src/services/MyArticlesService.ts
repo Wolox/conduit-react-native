@@ -23,10 +23,14 @@ const baseURL = Config.API_BASE_URL;
 const api = create({ baseURL });
 const MyArticlesService = {
   //* TODO, REPLACE WITH CORRECT BASE API WHEN VERIFY ALL EPS
-  getMockMyArticles: () =>
-    api.get('articles', {
+  getMockMyArticles: async () => {
+    const response = await api.get('articles', {
       author: 'hola5'
-    })
+    });
+    console.log(response.data);
+    return response;
+  }
+
   // IF YOU WANT TEST PROMISE OK UNCCOMENT
   // Promise.resolve({
   //   ok: true,

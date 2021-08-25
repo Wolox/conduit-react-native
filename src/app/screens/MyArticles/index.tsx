@@ -18,7 +18,10 @@ import Header from './Header';
 
 export default function MyArticles() {
   const navigation = useNavigation();
-  const { myArticles, myArticlesLoading } = useSelector<State, MyArticlesState>(state => state.myArticles);
+  const {
+    myArticles: { articles },
+    myArticlesLoading
+  } = useSelector<State, MyArticlesState>(state => state.myArticles);
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
   const handlePressArticle = useCallback(
     (article: Article) => navigation?.navigate(Routes.DetailArticle, { article }),
@@ -32,9 +35,9 @@ export default function MyArticles() {
   const renderMessage = useCallback(
     () => (
       <>
-        {myArticles.length ? (
+        {articles?.length ? (
           <FlatList<Article>
-            data={myArticles}
+            data={articles}
             keyExtractor={keyExtractor}
             renderItem={renderItem}
             ItemSeparatorComponent={renderSeparator}
@@ -47,7 +50,7 @@ export default function MyArticles() {
         )}
       </>
     ),
-    [keyExtractor, myArticles, renderItem, renderSeparator]
+    [keyExtractor, articles, renderItem, renderSeparator]
   );
   const dispatch = useDispatch();
   useEffect(() => {

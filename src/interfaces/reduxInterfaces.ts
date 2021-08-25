@@ -32,7 +32,9 @@ export interface AuthState {
   hasAccessOnBoarding: boolean;
 }
 export interface MyArticlesState {
-  myArticles: [];
+  myArticles: {
+    articles: [];
+  };
   myArticlesLoading: boolean;
   myArticlesError: Nullable<string>;
 }

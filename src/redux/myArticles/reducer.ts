@@ -6,7 +6,9 @@ import { actions } from './actions';
 
 const stateDescription = {
   description: {
-    myArticles: {}
+    myArticles: {
+      articles: []
+    }
   }
 };
 
