@@ -5,12 +5,14 @@ import i18next from 'i18next';
 import ScreenWithLoader from '@components/ScreenWithLoader';
 import CustomText from '@components/CustomText';
 import useNavigation from '@components/AppNavigator/helper';
+import ArticleItem from '@components/ArticleItem';
 import Routes from '@constants/routes';
 import { MyArticlesState, State } from '@interfaces/reduxInterfaces';
 import { Article } from '@interfaces/articlesInterface';
 import { ListKeyExtractor } from '@interfaces/miscelanious';
 import MyActiclesActions from '@redux/myArticles/actions';
-import ArticleItem from '@components/ArticleItem';
+import { UserResponse } from '@interfaces/authInterfaces';
+import { Nullable } from '@interfaces/globalInterfaces';
 
 import './i18n';
 import styles from './styles';
@@ -22,6 +24,7 @@ export default function MyArticles() {
     myArticles: { articles },
     myArticlesLoading
   } = useSelector<State, MyArticlesState>(state => state.myArticles);
+  const currentUser = useSelector<State, Nullable<UserResponse>>(state => state.auth.currentUser);
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
   const handlePressArticle = useCallback(
     (article: Article) => navigation?.navigate(Routes.DetailArticle, { article }),
@@ -54,8 +57,10 @@ export default function MyArticles() {
   );
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(MyActiclesActions.getMyArticles());
-  }, [dispatch]);
+    if (currentUser) {
+      dispatch(MyActiclesActions.getMyArticles(currentUser));
+    }
+  }, [currentUser, dispatch]);
 
   return (
     <SafeAreaView style={styles.container}>

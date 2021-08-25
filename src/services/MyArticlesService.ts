@@ -1,6 +1,8 @@
+import { CurrentUser } from '@interfaces/authInterfaces';
 import { create } from 'apisauce';
 import Config from 'react-native-config';
-// const MY_ARTICLES_MOCK = [
+// const MY_ARTICLES_MOCK = {
+// articles:[
 //   {
 //     title: 'Argentina vs Brasil',
 //     slug: 'argentina-vs-brasil-p5q4e4',
@@ -17,15 +19,14 @@ import Config from 'react-native-config';
 //     },
 //     favorited: false,
 //     favoritesCount: 1
-//   }
-// ];
+//   }]
+// };
 const baseURL = Config.API_BASE_URL;
 const api = create({ baseURL });
 const MyArticlesService = {
-  //* TODO, REPLACE WITH CORRECT BASE API WHEN VERIFY ALL EPS
-  getMyArticles: () =>
+  getMyArticles: ({ username }: CurrentUser) =>
     api.get('articles', {
-      author: 'test20'
+      author: username
     })
 
   // IF YOU WANT TEST PROMISE OK UNCCOMENT
