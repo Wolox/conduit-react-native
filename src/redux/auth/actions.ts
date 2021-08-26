@@ -2,7 +2,7 @@ import { ApiOkResponse } from 'apisauce';
 import { Dispatch } from 'react';
 import { createTypes, completeTypes, withPostSuccess } from 'redux-recompose';
 import { setApiHeaders, removeApiHeaders } from '@config/api';
-import { CurrentUser, AuthData } from '@interfaces/authInterfaces';
+import { CurrentUser, AuthData, UserResponse } from '@interfaces/authInterfaces';
 import { Nullable } from '@interfaces/globalInterfaces';
 import { Action, State } from '@interfaces/reduxInterfaces';
 import { login, logout } from '@services/AuthService';
@@ -18,9 +18,9 @@ const TARGETS = {
 };
 
 export const actionCreators = {
-  init: () => (dispatch: Dispatch<Action<Nullable<CurrentUser>>>, getState: () => State) => {
+  init: () => (dispatch: Dispatch<Action<Nullable<UserResponse>>>, getState: () => State) => {
     const { currentUser, hasAccessOnBoarding } = getState().auth;
-    if (currentUser) setApiHeaders(currentUser.sessionToken);
+    if (currentUser?.user?.token) setApiHeaders(currentUser.user?.token);
     dispatch({
       type: actions.AUTH_INIT,
       target: TARGETS.CURRENT_USER,
@@ -35,7 +35,7 @@ export const actionCreators = {
     payload: authData,
     injections: [
       withPostSuccess((_: any, response: ApiOkResponse<CurrentUser>) => {
-        setApiHeaders(response.data?.sessionToken!);
+        setApiHeaders(response.data?.token!);
       })
     ]
   }),

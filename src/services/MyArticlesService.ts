@@ -1,6 +1,6 @@
+import api from '@config/api';
 import { CurrentUser } from '@interfaces/authInterfaces';
-import { create } from 'apisauce';
-import Config from 'react-native-config';
+
 // const MY_ARTICLES_MOCK = {
 // articles:[
 //   {
@@ -21,8 +21,7 @@ import Config from 'react-native-config';
 //     favoritesCount: 1
 //   }]
 // };
-const baseURL = Config.API_BASE_URL;
-const api = create({ baseURL });
+
 const MyArticlesService = {
   getMyArticles: ({ username }: CurrentUser) =>
     api.get('articles', {
