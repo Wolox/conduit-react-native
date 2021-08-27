@@ -1,6 +1,8 @@
 import api from '@config/api';
 import { CurrentUser } from '@interfaces/authInterfaces';
 
+const MY_ARTICLES_PATH = '/articles';
+
 // const MY_ARTICLES_MOCK = {
 // articles:[
 //   {
@@ -21,10 +23,15 @@ import { CurrentUser } from '@interfaces/authInterfaces';
 //     favoritesCount: 1
 //   }]
 // };
+// const baseURL = Config.API_BASE_URL;
+// const api2 = create({
+//   baseURL,
+//   timeout: 15000
+// });
 
 const MyArticlesService = {
   getMyArticles: ({ username }: CurrentUser) =>
-    api.get('articles', {
+    api.get(`${MY_ARTICLES_PATH}`, {
       author: username
     })
 

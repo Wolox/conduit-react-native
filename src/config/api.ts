@@ -15,18 +15,18 @@ const api = create({
 
 api.setBaseURL(baseURL);
 
-export const setApiHeaders = (token: string) => {
-  api.setHeader(AUTHORIZATION_HEADER, `${BEARER} ${token}`);
+export const setApiHeaders = async (token: string) => {
+  await api.setHeader(AUTHORIZATION_HEADER, `${BEARER} ${token}`);
 };
 
-export const removeApiHeaders = () => {
-  api.deleteHeader(AUTHORIZATION_HEADER);
+export const removeApiHeaders = async () => {
+  await api.deleteHeader(AUTHORIZATION_HEADER);
 };
-if (baseURL === 'http://wolox.com') {
-  console.warn('API baseURL has not been properly initialized');
-}
 
 export const apiSetup = () => {
+  if (baseURL === 'http://wolox.com') {
+    console.warn('API baseURL has not been properly initialized');
+  }
   api.addResponseTransform(response => {
     if (response.data) response.data = camelCaseSerializer.serialize(response.data);
   });
