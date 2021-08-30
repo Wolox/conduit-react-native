@@ -46,9 +46,11 @@ export interface ArticlesState {
   articlesListError: Nullable<String>;
 }
 export interface FavouritesState {
-  favouritesarticlesList: [];
-  favouritesarticlesListLoading: boolean;
-  favouritesarticlesListError: Nullable<string>;
+  favoritesArticlesList: {
+    articles: [];
+  };
+  favoritesArticlesListLoading: boolean;
+  favoritesArticlesListError: Nullable<string>;
 }
 
 export interface CommentsState {
