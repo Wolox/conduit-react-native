@@ -15,12 +15,12 @@ const api = create({
 
 api.setBaseURL(baseURL);
 
-export const setApiHeaders = (token: string) => {
-  api.setHeader(AUTHORIZATION_HEADER, `${BEARER} ${token}`);
+export const setApiHeaders = async (token: string) => {
+  await api.setHeader(AUTHORIZATION_HEADER, `${BEARER} ${token}`);
 };
 
-export const removeApiHeaders = () => {
-  api.deleteHeader(AUTHORIZATION_HEADER);
+export const removeApiHeaders = async () => {
+  await api.deleteHeader(AUTHORIZATION_HEADER);
 };
 
 export const apiSetup = () => {
