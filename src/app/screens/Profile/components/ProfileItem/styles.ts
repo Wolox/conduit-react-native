@@ -5,13 +5,16 @@ import { scale } from '@utils/scalingUtils';
 
 const ICON_CONTAINER_SIZE = scale(25);
 const ICON_SIZE = scale(23);
+const COMMON_SPACE = 10;
 
 export default StyleSheet.create({
   rowElement: {
     justifyContent: 'space-between',
-    paddingRight: 15
+    paddingRight: COMMON_SPACE,
+    paddingTop: COMMON_SPACE
   },
   rowContainer: {
+    width: '95%',
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 4

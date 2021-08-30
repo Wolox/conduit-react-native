@@ -1,7 +1,7 @@
 import React from 'react';
 import { Keyboard, ScrollView, TouchableOpacity, View } from 'react-native';
 import i18next from 'i18next';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import WithHeader from '@components/WithHeader';
 import CustomButton from '@components/CustomButton';
@@ -16,6 +16,7 @@ import * as AuthService from '@services/AuthService';
 import { useAsyncRequest } from '@hooks/useRequest';
 import { validateRequired, validateEmail, validateOnlyText } from '@utils/validations/validateUtils';
 import signUpStyles from '@screens/Auth/screens/SignUp/styles';
+import { State } from '@interfaces/reduxInterfaces';
 
 import './i18n';
 import styles from './styles';
@@ -27,7 +28,7 @@ interface Props extends Navigation {}
 function Profile() {
   const dispatch = useDispatch();
   const handlePressLogout = () => dispatch(AuthActions.logout());
-
+  const currentUser = useSelector((state: State) => state.auth.currentUser);
   const [, , error, updateProfile] = useAsyncRequest({
     request: AuthService.updateProfile
   });
@@ -44,8 +45,10 @@ function Profile() {
     updateProfile(values);
   };
 
+  const avatar = { uri: currentUser?.user?.image as string };
+
   return (
-    <WithHeader title={i18next.t(`app:${Routes.Profile}`)} withAvatar>
+    <WithHeader title={i18next.t(`app:${Routes.Profile}`)} withAvatar avatar={avatar}>
       <View style={styles.container}>
         <ScrollView
           bounces={false}
@@ -68,6 +71,7 @@ function Profile() {
               errorContainerStyle={signUpStyles.errorContainer}
               showError={hasError}
               rules={{ ...validateRequired, ...validateOnlyText }}
+              defaultValue={currentUser?.user?.username}
             />
             <ControlledCustomTextInput
               name={FIELDS.email}
@@ -79,6 +83,7 @@ function Profile() {
               errorContainerStyle={signUpStyles.errorContainer}
               showError={hasError}
               rules={{ ...validateRequired, ...validateEmail }}
+              defaultValue={currentUser?.user?.email}
             />
             <ControlledCustomTextInput
               name={FIELDS.description}
@@ -90,6 +95,7 @@ function Profile() {
               errorContainerStyle={signUpStyles.errorContainer}
               showError={hasError}
               rules={{ ...validateOnlyText }}
+              defaultValue={currentUser?.user?.bio}
             />
             <CustomButton
               disabled={!(isValid && isDirty)}
@@ -99,8 +105,12 @@ function Profile() {
               title={i18next.t('PROFILE:UPDATE_PROFILE')}
             />
           </TouchableOpacity>
+          <ProfileListItem
+            title={i18next.t('PROFILE:LOGOUT')}
+            icon={logoutIcon}
+            onPress={handlePressLogout}
+          />
         </ScrollView>
-        <ProfileListItem title={i18next.t('PROFILE:LOGOUT')} icon={logoutIcon} onPress={handlePressLogout} />
       </View>
     </WithHeader>
   );
