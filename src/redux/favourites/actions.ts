@@ -1,28 +1,23 @@
-import { Dispatch } from 'react';
 import { createTypes, completeTypes } from 'redux-recompose';
-import { Action, DispatcheableAction } from '@interfaces/reduxInterfaces';
-import { Nullable } from '@interfaces/globalInterfaces';
-import FavouritesArticlesService from '@services/FavouritesArticlesService';
+import FavoriteService from '@services/FavouritesArticlesService';
+import { UserResponse } from '@interfaces/authInterfaces';
 
 export const actions = createTypes(
-  completeTypes({ primaryActions: ['FAVOURITES_ARTICLES_LIST'] }),
+  completeTypes({ primaryActions: ['FAVORITES_ARTICLES_LIST'] }),
   '@@ARTICLES'
 );
 
 export const TARGETS = {
-  FAVOURITES_ARTICLES_LIST: 'favouritesarticlesList'
+  FAVORITES_ARTICLES_LIST: 'favoritesArticlesList'
 };
 
-type ActionType = Nullable<number>;
-
 const actionCreators = {
-  getFavouritesArticles: () => (dispatch: Dispatch<Action<ActionType> | DispatcheableAction<ActionType>>) => {
-    dispatch({
-      type: actions.FAVOURITES_ARTICLES_LIST,
-      target: TARGETS.FAVOURITES_ARTICLES_LIST,
-      service: FavouritesArticlesService.getMockFavourites
-    });
-  }
+  getFavouritesArticles: ({ user }: UserResponse) => ({
+    type: actions.FAVORITES_ARTICLES_LIST,
+    target: TARGETS.FAVORITES_ARTICLES_LIST,
+    service: FavoriteService.getFavorites,
+    payload: user
+  })
 };
 
 export default actionCreators;
