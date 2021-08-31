@@ -28,7 +28,7 @@ interface Props extends Navigation {}
 function Profile() {
   const dispatch = useDispatch();
   const handlePressLogout = () => dispatch(AuthActions.logout());
-  const currentUser = useSelector((state: State) => state.auth.currentUser);
+  const currentUser = useSelector((state: State) => state.auth.currentUser?.user);
   const [, , error, updateProfile] = useAsyncRequest({
     request: AuthService.updateProfile
   });
@@ -45,7 +45,7 @@ function Profile() {
     updateProfile(values);
   };
 
-  const avatar = { uri: currentUser?.user?.image as string };
+  const avatar = { uri: currentUser?.image as string };
 
   return (
     <WithHeader title={i18next.t(`app:${Routes.Profile}`)} withAvatar avatar={avatar}>
@@ -71,7 +71,7 @@ function Profile() {
               errorContainerStyle={signUpStyles.errorContainer}
               showError={hasError}
               rules={{ ...validateRequired, ...validateOnlyText }}
-              defaultValue={currentUser?.user?.username}
+              defaultValue={currentUser?.username}
             />
             <ControlledCustomTextInput
               name={FIELDS.email}
@@ -83,7 +83,7 @@ function Profile() {
               errorContainerStyle={signUpStyles.errorContainer}
               showError={hasError}
               rules={{ ...validateRequired, ...validateEmail }}
-              defaultValue={currentUser?.user?.email}
+              defaultValue={currentUser?.email}
             />
             <ControlledCustomTextInput
               name={FIELDS.description}
@@ -95,7 +95,7 @@ function Profile() {
               errorContainerStyle={signUpStyles.errorContainer}
               showError={hasError}
               rules={{ ...validateOnlyText }}
-              defaultValue={currentUser?.user?.bio}
+              defaultValue={currentUser?.bio}
             />
             <CustomButton
               disabled={!(isValid && isDirty)}
