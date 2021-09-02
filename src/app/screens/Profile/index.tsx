@@ -17,8 +17,10 @@ import { useAsyncRequest } from '@hooks/useRequest';
 import { validateRequired, validateEmail, validateOnlyText } from '@utils/validations/validateUtils';
 import signUpStyles from '@screens/Auth/screens/SignUp/styles';
 import { State } from '@interfaces/reduxInterfaces';
+import { CurrentUser } from '@interfaces/authInterfaces';
 
 import './i18n';
+
 import styles from './styles';
 import ProfileListItem from './components/ProfileItem';
 import { ANDROID_SCROLLVIEW_PROPS, ProfileFormValues, FIELDS } from './constants';
@@ -29,7 +31,7 @@ function Profile() {
   const dispatch = useDispatch();
   const handlePressLogout = () => dispatch(AuthActions.logout());
   const currentUser = useSelector((state: State) => state.auth.currentUser?.user);
-  const [, , error, updateProfile] = useAsyncRequest({
+  const [, , error] = useAsyncRequest({
     request: AuthService.updateProfile
   });
 
@@ -42,7 +44,14 @@ function Profile() {
   const hasError = !!error;
   const handleUpdateProfile = (values: ProfileFormValues) => {
     Keyboard.dismiss();
-    updateProfile(values);
+    // updateProfile(values);
+    const user: CurrentUser = {
+      email: values.email,
+      token: currentUser?.token,
+      username: values.username,
+      bio: values.description
+    };
+    dispatch(AuthActions.getUserProfile({ user }));
   };
 
   const avatar = { uri: currentUser?.image as string };
