@@ -1,4 +1,4 @@
-import { ApiErrorResponse, ApiOkResponse } from 'apisauce';
+import { ApiOkResponse } from 'apisauce';
 import { Dispatch } from 'react';
 import { createTypes, completeTypes, withPostSuccess, withPostFailure } from 'redux-recompose';
 import { setApiHeaders, removeApiHeaders } from '@config/api';
@@ -76,13 +76,18 @@ export const actionCreators = {
     target: TARGETS.ONBOARDING,
     payload: value
   }),
-  updateCurrentUser: (user: UserResponse) => ({
+  updateCurrentUser: (user: UserResponse, failedFunction: Function) => ({
     type: actions.UPDATE_CURRENT_USER,
     target: TARGETS.CURRENT_USER,
     payload: user,
-    service: updateCurrentUser
+    service: updateCurrentUser,
+    injections: [
+      withPostFailure((_dispatch: Dispatch<any>) => {
+        failedFunction();
+      })
+    ]
   }),
-  getUserProfile: (user: UserResponse) => ({
+  getUserProfile: (user: UserResponse, successFunction: Function, updateFailed: Function) => ({
     type: actions.GET_USER_PROFILE,
     target: TARGETS.USER_PROFILE,
     payload: user.user?.username,
@@ -90,11 +95,11 @@ export const actionCreators = {
     injections: [
       withPostSuccess((dispatch: Dispatch<any>, response: ApiOkResponse<ProfileData>) => {
         if (response.data?.profile?.username === user.user?.username) {
-          console.tron.log('Username already exist');
+          successFunction();
         }
       }),
       withPostFailure((dispatch: Dispatch<any>) => {
-        dispatch(actionCreators.updateCurrentUser(user));
+        dispatch(actionCreators.updateCurrentUser(user, updateFailed));
       })
     ]
   })

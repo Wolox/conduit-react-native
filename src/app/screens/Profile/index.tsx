@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Keyboard, ScrollView, TouchableOpacity, View } from 'react-native';
 import i18next from 'i18next';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import WithHeader from '@components/WithHeader';
 import CustomButton from '@components/CustomButton';
 import ControlledCustomTextInput from '@components/CustomTextInput/controller';
+import CustomText from '@app/components/CustomText';
 import Routes from '@constants/routes';
 import { isIos } from '@constants/platform';
 import { OPACITY } from '@constants/commonStyles';
@@ -34,13 +35,17 @@ function Profile() {
   const [, , error] = useAsyncRequest({
     request: AuthService.updateProfile
   });
-
+  const [usernameError, setUsernameError] = useState('');
+  const [emailError, setEmailError] = useState('');
   const {
     handleSubmit,
     control,
     formState: { isValid, isDirty }
   } = useForm<ProfileFormValues>({ mode: 'onBlur' });
 
+  const usernameExist = () => setUsernameError(i18next.t('PROFILE:USERNAME_EXIST'));
+
+  const emailExist = () => setEmailError(i18next.t('PROFILE:EMAIL_EXIST'));
   const hasError = !!error;
   const handleUpdateProfile = (values: ProfileFormValues) => {
     Keyboard.dismiss();
@@ -51,10 +56,16 @@ function Profile() {
       username: values.username,
       bio: values.description
     };
-    dispatch(AuthActions.getUserProfile({ user }));
+    if (currentUser?.username === values.username) {
+      dispatch(AuthActions.updateCurrentUser({ user }, emailExist));
+    } else {
+      dispatch(AuthActions.getUserProfile({ user }, usernameExist, emailExist));
+    }
   };
 
   const avatar = { uri: currentUser?.image as string };
+  const onEmailFocus = () => setEmailError('');
+  const onUsenameFocus = () => setUsernameError('');
 
   return (
     <WithHeader title={i18next.t(`app:${Routes.Profile}`)} withAvatar avatar={avatar}>
@@ -81,7 +92,11 @@ function Profile() {
               showError={hasError}
               rules={{ ...validateRequired, ...validateOnlyText }}
               defaultValue={currentUser?.username}
+              onFocus={onUsenameFocus}
             />
+            <CustomText error xsmall style={styles.otherErrorStyle}>
+              {usernameError}
+            </CustomText>
             <ControlledCustomTextInput
               name={FIELDS.email}
               control={control}
@@ -93,7 +108,11 @@ function Profile() {
               showError={hasError}
               rules={{ ...validateRequired, ...validateEmail }}
               defaultValue={currentUser?.email}
+              onFocus={onEmailFocus}
             />
+            <CustomText error xsmall style={styles.otherErrorStyle}>
+              {emailError}
+            </CustomText>
             <ControlledCustomTextInput
               name={FIELDS.description}
               control={control}
