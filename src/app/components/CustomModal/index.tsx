@@ -1,10 +1,6 @@
 import React, { ReactNode } from 'react';
 import { View, TouchableWithoutFeedback, StyleProp, ViewStyle } from 'react-native';
-// TODO REPLACE WITH CORRECT TRANSLATE
-// import i18next from 'i18next';
 import CustomText from '@components/CustomText';
-
-import CustomTextPressable from '../CustomTextPressable';
 
 import styles from './styles';
 
@@ -18,15 +14,7 @@ interface Props {
   style?: StyleProp<ViewStyle>;
 }
 
-const CustomModal = ({
-  body,
-  title,
-  titleComplement,
-  description,
-  style,
-  handleCloseModal,
-  numberLineArrayBold
-}: Props) => {
+const CustomModal = ({ body, title, titleComplement, description, style, numberLineArrayBold }: Props) => {
   return (
     <TouchableWithoutFeedback>
       <View style={[styles.container, style]}>
@@ -51,9 +39,6 @@ const CustomModal = ({
           </CustomText>
         )}
         {body}
-        {handleCloseModal && (
-          <CustomTextPressable onPress={handleCloseModal} style={styles.cancelButton} text="Cancel" />
-        )}
       </View>
     </TouchableWithoutFeedback>
   );

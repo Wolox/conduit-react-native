@@ -49,7 +49,8 @@ export const logout = () => {
     problem: null,
     originalError: null,
     data: null,
-    currentUser: null
+    currentUser: null,
+    token: null
   });
 };
 
