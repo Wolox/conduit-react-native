@@ -1,11 +1,15 @@
+import React, { Dispatch } from 'react';
+import i18next from 'i18next';
 import { ApiOkResponse } from 'apisauce';
-import { Dispatch } from 'react';
 import { createTypes, completeTypes, withPostSuccess, withPostFailure } from 'redux-recompose';
 import { setApiHeaders, removeApiHeaders } from '@config/api';
 import { CurrentUser, AuthData, UserResponse } from '@interfaces/authInterfaces';
 import { Nullable } from '@interfaces/globalInterfaces';
 import { Action, State } from '@interfaces/reduxInterfaces';
 import { login, logout } from '@services/AuthService';
+import { actionCreators as FeedbackActions } from '@redux/feedback/actions';
+import CustomModal from '@app/components/CustomModal';
+import CustomModalConfirm from '@app/components/CustomModalConfirm';
 
 export const actions = createTypes(
   completeTypes({ primaryActions: ['LOGIN', 'LOGOUT'], ignoredActions: ['AUTH_INIT', 'HAS_ACCESS'] }),
@@ -49,6 +53,22 @@ export const actionCreators = {
         } else {
           actionCreators.login(authData);
         }
+      }),
+      withPostFailure((dispatch: Dispatch<any>) => {
+        dispatch(
+          FeedbackActions.showModal(
+            <CustomModal
+              title={i18next.t('SIGNUP:ERROR_SIGN_IN')}
+              body={
+                <CustomModalConfirm
+                  text={i18next.t('SIGNUP:ERROR_MESSAGE')}
+                  onPress={() => dispatch(FeedbackActions.hideModal())}
+                  buttonText={i18next.t('SIGNUP:CLOSE_MODAL')}
+                />
+              }
+            />
+          )
+        );
       })
     ]
   }),
