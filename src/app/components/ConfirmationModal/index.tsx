@@ -12,20 +12,21 @@ interface Props {
   onCancel: () => void;
   onConfirm: () => void;
 }
-export default function CustomModal({ showModal, onCancel, onConfirm, title }: Props) {
+
+function ConfirmationModal({ showModal, onCancel, onConfirm, title }: Props) {
   return (
     <Modal animationType="fade" visible={showModal} transparent={true}>
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           <CustomText bold style={styles.modalText}>
-            {title || i18next.t('CUSTOM_COMMENT_MODAL:TITLE')}
+            {title || i18next.t('CONFIRMATION_MODAL:TITLE')}
           </CustomText>
           <View style={styles.containerButtons}>
             <Pressable style={[styles.button, styles.buttonClose]} onPress={onCancel}>
-              <Text style={styles.textStyle}>{i18next.t('CUSTOM_COMMENT_MODAL:CANCEL')}</Text>
+              <Text style={styles.textStyle}>{i18next.t('CONFIRMATION_MODAL:CANCEL')}</Text>
             </Pressable>
             <Pressable style={[styles.button, styles.buttonRemove]} onPress={onConfirm}>
-              <Text style={styles.textStyle}>{i18next.t('CUSTOM_COMMENT_MODAL:DELETE')}</Text>
+              <Text style={styles.textStyle}>{i18next.t('CONFIRMATION_MODAL:DELETE')}</Text>
             </Pressable>
           </View>
         </View>
@@ -33,3 +34,5 @@ export default function CustomModal({ showModal, onCancel, onConfirm, title }: P
     </Modal>
   );
 }
+
+export default ConfirmationModal;
