@@ -4,7 +4,7 @@ import { UserResponse } from '@interfaces/authInterfaces';
 import { Nullable } from '@interfaces/globalInterfaces';
 import { PaginatedList } from '@interfaces/miscelanious';
 
-import { Article } from './articlesInterface';
+import { Article, ArticleResponse, MyArticles } from './articlesInterface';
 
 export interface Action<T = null, P = null, K = null> {
   [key: string]: any;
@@ -44,6 +44,15 @@ export interface ArticlesState {
   articlesList: Nullable<ArtcileAction>;
   articlesListLoading: boolean;
   articlesListError: Nullable<String>;
+  myArticlesList: MyArticles;
+  myArticlesListLoading: boolean;
+  myArticlesListError: Nullable<String>;
+  createArticle: Nullable<ArticleResponse>;
+  createArticleLoading: boolean;
+  createArticleError: Nullable<String>;
+  deleteArticle: Nullable<String>;
+  deleteArticleLoading: boolean;
+  deleteArticleError: Nullable<String>;
 }
 export interface FavouritesState {
   favoritesArticlesList: {
