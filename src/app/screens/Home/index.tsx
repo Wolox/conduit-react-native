@@ -5,14 +5,16 @@ import i18next from 'i18next';
 import { State } from '@interfaces/reduxInterfaces';
 import { Article } from '@interfaces/articlesInterface';
 import { ListKeyExtractor } from '@interfaces/miscelanious';
+import { Navigation } from '@interfaces/navigation';
 import CustomText from '@components/CustomText';
-import { THRESHOLD } from '@constants/pagination';
 import TabList from '@components/TabList';
 import ScreenWithLoader from '@components/ScreenWithLoader';
 import ArticleItem from '@components/ArticleItem';
+import CustomButton from '@components/CustomButton';
+import { THRESHOLD } from '@constants/pagination';
 import ArticlesActions, { TARGETS } from '@redux/articles/actions';
 import Routes from '@constants/routes';
-import { Navigation } from '@interfaces/navigation';
+import icSort from '@assets/icons/icSort.png';
 
 import styles from './styles';
 import './i18n';
@@ -32,6 +34,8 @@ function Home({ navigation }: Navigation) {
     (article: Article) => navigation.navigate(Routes.DetailArticle, { article }),
     [navigation]
   );
+
+  const handlePressTagsButton = useCallback(() => navigation.navigate(Routes.Tags), [navigation]);
 
   const renderItem: ListRenderItem<Article> = useCallback(
     ({ item }) => <ArticleItem item={item} onPress={handlePressArticle} />,
@@ -83,6 +87,15 @@ function Home({ navigation }: Navigation) {
           onPressTab={handlePressTab}
         />
       )}
+      <View style={styles.containerTagButton}>
+        <CustomButton
+          link
+          icon={icSort}
+          title={i18next.t('HOME:TAGS')}
+          style={styles.tagButton}
+          onPress={handlePressTagsButton}
+        />
+      </View>
       {currentTab === 0 && currentUser ? (
         <CustomText center style={styles.titleEmptyArticles}>
           {i18next.t('HOME:EMPTY_ARTICLES')}

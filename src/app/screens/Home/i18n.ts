@@ -5,5 +5,6 @@ i18next.addResources('en', 'HOME', {
   APP_NAME: 'Conduit',
   FIRST_TAB: 'Your feed',
   SECOND_TAB: 'Global feed',
-  EMPTY_ARTICLES: 'No articles are here... yet'
+  EMPTY_ARTICLES: 'No articles are here... yet',
+  TAGS: 'Tags'
 });

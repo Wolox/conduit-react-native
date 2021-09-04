@@ -19,5 +19,12 @@ export default StyleSheet.create({
   },
   title: {
     marginVertical: SPACING.SMALL
+  },
+  containerTagButton: {
+    paddingHorizontal: SPACING.MEDIUM
+  },
+  tagButton: {
+    width: 80,
+    alignSelf: 'flex-end'
   }
 });
