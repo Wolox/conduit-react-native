@@ -19,7 +19,7 @@ const stateDescription = {
 export const initialState = completeState(stateDescription);
 
 const reducerDescription = {
-  primaryActions: [actions.LOGIN, actions.LOGOUT],
+  primaryActions: [actions.LOGIN],
   override: {
     [actions.HAS_ACCESS]: onReadValue(),
     [actions.AUTH_INIT]: (state: ImmutableObject<AuthState>, action: Action<Nullable<CurrentUser>>) =>
@@ -27,7 +27,12 @@ const reducerDescription = {
         initialLoading: false,
         [action.target as string]: action.payload,
         hasAccessOnBoarding: action.hasAccessOnBoarding
-      })
+      }),
+    [actions.LOGOUT]: (state: ImmutableObject<AuthState>) => {
+      return state.merge({
+        currentUser: null
+      });
+    }
   }
 };
 

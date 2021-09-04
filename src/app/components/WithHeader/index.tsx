@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { View, Image, ImageSourcePropType } from 'react-native';
+import { View, Image } from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import CustomText from '@components/CustomText';
 import userIcon from '@assets/Profile/icUser.png';
@@ -11,7 +11,7 @@ interface Props {
   subtitle?: string;
   withAvatar?: boolean;
   children: ReactNode;
-  avatar?: ImageSourcePropType;
+  avatar?: { uri: string };
 }
 
 function WithHeader({ title, children, withAvatar, avatar }: Props) {
@@ -37,7 +37,7 @@ function WithHeader({ title, children, withAvatar, avatar }: Props) {
         <View style={[styles.childrenContainer, withAvatar && styles.longChildrenContainer]}>{children}</View>
         {withAvatar && (
           <View style={styles.avatarContainer}>
-            <Image source={avatar || userIcon} resizeMode="contain" style={styles.avatar} />
+            <Image source={avatar?.uri ? avatar : userIcon} resizeMode="contain" style={styles.avatar} />
           </View>
         )}
       </View>

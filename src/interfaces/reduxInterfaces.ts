@@ -32,7 +32,9 @@ export interface AuthState {
   hasAccessOnBoarding: boolean;
 }
 export interface MyArticlesState {
-  myArticles: [];
+  myArticles: {
+    articles: [];
+  };
   myArticlesLoading: boolean;
   myArticlesError: Nullable<string>;
 }
@@ -44,9 +46,11 @@ export interface ArticlesState {
   articlesListError: Nullable<String>;
 }
 export interface FavouritesState {
-  favouritesarticlesList: [];
-  favouritesarticlesListLoading: boolean;
-  favouritesarticlesListError: Nullable<string>;
+  favoritesArticlesList: {
+    articles: [];
+  };
+  favoritesArticlesListLoading: boolean;
+  favoritesArticlesListError: Nullable<string>;
 }
 
 export interface CommentsState {

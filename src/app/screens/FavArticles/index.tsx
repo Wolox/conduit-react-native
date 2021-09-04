@@ -10,16 +10,22 @@ import Routes from '@constants/routes';
 import { ListKeyExtractor } from '@interfaces/miscelanious';
 import { FavouritesState, State } from '@interfaces/reduxInterfaces';
 import { Article } from '@interfaces/articlesInterface';
+import { UserResponse } from '@interfaces/authInterfaces';
 import FavouritesActions from '@redux/favourites/actions';
+import { Nullable } from '@interfaces/globalInterfaces';
 
 import './i18n';
+
 import styles from './styles';
 
 export default function FavArticles() {
   const navigation = useNavigation();
-  const { favouritesarticlesList, favouritesarticlesListLoading } = useSelector<State, FavouritesState>(
-    state => state.favourites
-  );
+  const {
+    favoritesArticlesList: { articles },
+    favoritesArticlesListLoading
+  } = useSelector<State, FavouritesState>(state => state.favourites);
+
+  const currentUser = useSelector<State, Nullable<UserResponse>>(state => state.auth.currentUser);
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
   const handlePressArticle = useCallback(
     (article: Article) => navigation?.navigate(Routes.DetailArticle, { article }),
@@ -34,9 +40,9 @@ export default function FavArticles() {
   const renderMessage = useCallback(
     () => (
       <>
-        {favouritesarticlesList.length ? (
+        {articles?.length ? (
           <FlatList<Article>
-            data={favouritesarticlesList}
+            data={articles}
             keyExtractor={keyExtractor}
             renderItem={renderItem}
             ItemSeparatorComponent={renderSeparator}
@@ -49,11 +55,13 @@ export default function FavArticles() {
         )}
       </>
     ),
-    [keyExtractor, favouritesarticlesList, renderItem, renderSeparator]
+    [articles, keyExtractor, renderItem, renderSeparator]
   );
   useEffect(() => {
-    dispatch(FavouritesActions.getFavouritesArticles());
-  }, [dispatch]);
+    if (currentUser?.user) {
+      dispatch(FavouritesActions.getFavouritesArticles(currentUser));
+    }
+  }, [dispatch, currentUser]);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.statusNavBar}>
@@ -61,7 +69,7 @@ export default function FavArticles() {
           <CustomText medium>{i18next.t('FAV_ARTICLES:FAVORITED_ARTICLES')}</CustomText>
         </View>
       </View>
-      <ScreenWithLoader loading={favouritesarticlesListLoading} withInitialLoading={false}>
+      <ScreenWithLoader loading={favoritesArticlesListLoading} withInitialLoading={false}>
         {renderMessage()}
       </ScreenWithLoader>
     </SafeAreaView>
