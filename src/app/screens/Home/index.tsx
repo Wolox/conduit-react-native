@@ -93,8 +93,9 @@ function Home({ navigation }: Navigation) {
     setArticleToDelete(null);
   };
   const onConfirmDeleteAticle = () => {
-    const { slug = '' } = articleToDelete || {};
-    dispatch(ArticlesActions.deleteArticle(slug));
+    // uncomment this when error of the EP is fixed
+    // const { slug = '' } = articleToDelete || {};
+    // dispatch(ArticlesActions.deleteArticle(slug));
   };
 
   return (
