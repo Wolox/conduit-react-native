@@ -1,6 +1,6 @@
 import { green, white, mediumGray, extraLightGray, gray, transparent } from '@constants/colors';
 
-import styles from './styles';
+import styles, { commonButtonStyles } from './styles';
 
 const getBackgroundColor = (secondary: boolean = false, link: boolean, disabled?: boolean) => {
   if (secondary) return white;
@@ -24,6 +24,7 @@ export const getStyles = (secondary: boolean = false, link: boolean = false, dis
   return {
     BUTTON_STYLE: {
       ...(link || !secondary ? styles.borderless : {}),
+      ...(secondary ? { ...commonButtonStyles } : {}),
       backgroundColor,
       borderColor
     },

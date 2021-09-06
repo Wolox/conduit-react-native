@@ -8,6 +8,12 @@ const borderlessStyle = {
   backgroundColor: transparent
 };
 
+export const commonButtonStyles = {
+  padding: 10,
+  borderRadius: 25,
+  marginTop: 5
+};
+
 export default StyleSheet.create({
   container: {
     flexDirection: 'row',
@@ -51,9 +57,7 @@ export default StyleSheet.create({
     color: white
   },
   primary: {
-    backgroundColor: green,
-    padding: 10,
-    borderRadius: 25,
-    marginTop: 2
+    ...commonButtonStyles,
+    backgroundColor: green
   }
 });

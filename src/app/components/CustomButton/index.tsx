@@ -41,7 +41,7 @@ const CustomButton = (props: CustomButtonProps) => {
       {title && (
         <CustomText
           white={primary}
-          bold={primary}
+          bold={primary || secondary}
           {...textProps}
           style={[customTextStyles(), textStyle, TEXT_STYLE]}>
           {title}

@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useEffect, useState } from 'react';
-import { SafeAreaView, FlatList, ListRenderItem, View, ActivityIndicator } from 'react-native';
+import { SafeAreaView, FlatList, ListRenderItem, View, ActivityIndicator, Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import i18next from 'i18next';
 import { State } from '@interfaces/reduxInterfaces';
@@ -15,6 +15,7 @@ import { THRESHOLD } from '@constants/pagination';
 import ArticlesActions, { TARGETS } from '@redux/articles/actions';
 import Routes from '@constants/routes';
 import icSort from '@assets/icons/icSort.png';
+import detailArticleStyles from '@screens/DetailArticle/styles';
 
 import styles from './styles';
 import './i18n';
@@ -27,6 +28,7 @@ function Home({ navigation }: Navigation) {
   const articles = useSelector<State, Article[]>(state => state.articles.articlesList?.page || []);
   const loading = useSelector<State, boolean>(state => state.articles.articlesListLoading);
   const currentUser = useSelector((state: State) => state.auth.currentUser);
+  const selectedTags = useSelector<State, string[]>(state => state.articles.selectedTags || []);
 
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
 
@@ -96,6 +98,13 @@ function Home({ navigation }: Navigation) {
           style={styles.tagButton}
           onPress={handlePressTagsButton}
         />
+      </View>
+      <View style={styles.containerSelectedTags}>
+        {selectedTags.map((tag: string, index: number) => (
+          <Text key={index} style={detailArticleStyles.tag}>
+            {tag}
+          </Text>
+        ))}
       </View>
       {currentTab === 0 && currentUser ? (
         <CustomText center style={styles.titleEmptyArticles}>

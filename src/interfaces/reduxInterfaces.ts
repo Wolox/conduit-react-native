@@ -53,6 +53,7 @@ export interface ArticlesState {
   tagList: string[];
   tagListLoading: boolean;
   tagListError: Nullable<String>;
+  selectedTags: string[];
 }
 export interface FavouritesState {
   favoritesArticlesList: {

@@ -26,5 +26,9 @@ export default StyleSheet.create({
   tagButton: {
     width: 80,
     alignSelf: 'flex-end'
+  },
+  containerSelectedTags: {
+    paddingHorizontal: SPACING.MEDIUM,
+    flexDirection: 'row'
   }
 });
