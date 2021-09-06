@@ -62,12 +62,11 @@ function Profile() {
     }
   };
 
-  const avatar = { uri: currentUser?.image as string };
   const onEmailFocus = () => setEmailError('');
   const onUsenameFocus = () => setUsernameError('');
 
   return (
-    <WithHeader title={i18next.t(`app:${Routes.Profile}`)} withAvatar avatar={avatar}>
+    <WithHeader title={i18next.t(`app:${Routes.Profile}`)} withAvatar avatar={currentUser?.image}>
       <View style={styles.container}>
         <ScrollView
           bounces={false}
