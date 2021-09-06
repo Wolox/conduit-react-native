@@ -1,8 +1,8 @@
 import { darkGray, white } from '@constants/colors';
 import { StyleSheet } from 'react-native';
 
-const commonMargin = 16;
-const commonPadding = 20;
+const COMMON_MARGIN = 16;
+const COMMON_PADDING = 20;
 
 const styles = StyleSheet.create({
   container: {
@@ -15,19 +15,19 @@ const styles = StyleSheet.create({
   },
   exitButton: {
     position: 'absolute',
-    right: commonMargin,
-    top: commonMargin
+    right: COMMON_MARGIN,
+    top: COMMON_MARGIN
   },
   title: {
-    paddingVertical: commonPadding,
-    paddingHorizontal: commonPadding
+    paddingVertical: COMMON_PADDING,
+    paddingHorizontal: COMMON_PADDING
   },
   cancelButton: {
-    paddingBottom: commonPadding
+    paddingBottom: COMMON_PADDING
   },
   description: {
     paddingHorizontal: 24,
-    paddingBottom: commonMargin,
+    paddingBottom: COMMON_MARGIN,
     borderColor: darkGray
   }
 });
