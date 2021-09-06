@@ -4,9 +4,11 @@ import { transparent, green, white } from '@constants/colors';
 const COMMON_VALUE_25 = 25;
 const SMALL_SPACING = 10;
 const SPACING = 30;
+const COMMON_VALUE_5 = 5;
+const COMMON_VALUE_20 = 20;
 
 const FORM_ELEMENT_COMMON_PROPS = {
-  margin: 5,
+  margin: COMMON_VALUE_5,
   backgroundColor: transparent,
   height: SPACING
 };
@@ -16,7 +18,7 @@ export default StyleSheet.create({
     padding: 16,
     paddingTop: 0,
     flex: 1,
-    paddingBottom: 80,
+    paddingBottom: COMMON_VALUE_5,
     justifyContent: 'space-between'
   },
   containerData: {
@@ -55,5 +57,9 @@ export default StyleSheet.create({
   },
   textFormCustomText: {
     marginTop: COMMON_VALUE_25
+  },
+  otherErrorStyle: {
+    paddingLeft: COMMON_VALUE_20,
+    marginTop: -COMMON_VALUE_20
   }
 });

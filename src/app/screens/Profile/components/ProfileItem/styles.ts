@@ -9,9 +9,11 @@ const ICON_SIZE = scale(23);
 export default StyleSheet.create({
   rowElement: {
     justifyContent: 'space-between',
-    paddingRight: 15
+    paddingRight: 10,
+    paddingTop: 20
   },
   rowContainer: {
+    width: '95%',
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 4
