@@ -49,7 +49,6 @@ function Profile() {
   const hasError = !!error;
   const handleUpdateProfile = (values: ProfileFormValues) => {
     Keyboard.dismiss();
-    // updateProfile(values);
     const user: CurrentUser = {
       email: values.email,
       token: currentUser?.token,
