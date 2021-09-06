@@ -10,7 +10,7 @@ import { ArticleInParams } from '@interfaces/articlesInterface';
 import { formatDate } from '@utils/dateUtils';
 import CustomInputMessage from '@components/CustomInputMessage';
 import CustomTextPressable from '@components/CustomTextPressable';
-import { isIos } from '@constants/platform';
+import { isIos, WINDOW_WIDTH } from '@constants/platform';
 import { iComment } from '@interfaces/commentInterfaces';
 import ActionComments from '@redux/comments/actions';
 import { validateMinLength, validateMaxLength } from '@utils/validations/validateUtils';
@@ -21,6 +21,8 @@ import icDefaultArticleImage from '@assets/icons/icDefaultArticleImage.jpg';
 import icDelete from '@assets/icons/icDelete.png';
 import icEdit from '@assets/icons/icEdit.png';
 import Routes from '@constants/routes';
+import RenderHtml from 'react-native-render-html';
+import { renderHTML } from '@utils/htmlUtils';
 
 import './i18n';
 
@@ -218,7 +220,14 @@ function DetailArticle({ route }: Props) {
             <CustomText>{title}</CustomText>
             <CustomText label>{description}</CustomText>
             <View style={styles.bodyContainer}>
-              <CustomText label>{body}</CustomText>
+              <RenderHtml
+                contentWidth={WINDOW_WIDTH}
+                source={renderHTML(body)}
+                enableExperimentalMarginCollapsing={true}
+                enableExperimentalGhostLinesPrevention={true}
+              />
+
+              {/* <CustomText label>{body}</CustomText> */}
             </View>
             {currentUser && renderIcons()}
           </View>
