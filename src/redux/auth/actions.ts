@@ -93,7 +93,7 @@ export const actionCreators = {
     payload: user.user?.username,
     service: getUserProfile,
     injections: [
-      withPostSuccess((dispatch: Dispatch<any>, response: ApiOkResponse<ProfileData>) => {
+      withPostSuccess((_: Dispatch<any>, response: ApiOkResponse<ProfileData>) => {
         if (response.data?.profile?.username === user.user?.username) {
           successFunction();
         }
