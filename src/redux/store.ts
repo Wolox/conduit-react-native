@@ -15,6 +15,7 @@ import auth from './auth/reducer';
 import articles from './articles/reducer';
 import comments from './comments/reducer';
 import favourites from './favourites/reducer';
+import feedBack from './feedback/reducer';
 import myArticles from './myArticles/reducer';
 
 const transformerConfig = {
@@ -38,6 +39,7 @@ const reducers = combineReducers({
   articles,
   comments,
   favourites,
+  feedBack,
   myArticles
 });
 
