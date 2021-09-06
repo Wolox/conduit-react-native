@@ -26,8 +26,8 @@ function Tags() {
   }, [navigation]);
 
   const handleFilterByTags = useCallback(() => {
-    dispatch(ArticleActions.filterByTags(selectedTags));
-  }, [dispatch, selectedTags]);
+    dispatch(ArticleActions.filterByTags(selectedTags, navigation));
+  }, [dispatch, selectedTags, navigation]);
 
   const handlePress = (option: string) => {
     const optionSelected = selectedTags.find(tag => option === tag);
