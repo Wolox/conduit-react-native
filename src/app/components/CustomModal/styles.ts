@@ -1,5 +1,5 @@
-import { darkGray, white } from '@constants/colors';
 import { StyleSheet } from 'react-native';
+import { darkGray, white } from '@constants/colors';
 
 const COMMON_MARGIN = 16;
 const COMMON_PADDING = 20;

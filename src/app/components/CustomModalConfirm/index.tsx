@@ -1,8 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
-
-import CustomButton from '../CustomButton';
-import CustomText from '../CustomText';
+import CustomText from '@components/CustomText';
+import CustomButton from '@components/CustomButton';
 
 import styles from './styles';
 

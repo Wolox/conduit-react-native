@@ -1,6 +1,6 @@
+import { StyleSheet } from 'react-native';
 import { extraLightGray, white } from '@constants/colors';
 import { SPACING } from '@constants/dimentions';
-import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
