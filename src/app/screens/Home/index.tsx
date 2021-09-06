@@ -106,7 +106,7 @@ function Home({ navigation }: Navigation) {
         onConfirm={onConfirmDeleteAticle}
       />
       <CustomText center big darkBlue bold style={styles.title}>
-        {i18next.t('HOME:APP_NAME')} - {currentTab}
+        {i18next.t('HOME:APP_NAME')}
       </CustomText>
       {currentUser && (
         <TabList

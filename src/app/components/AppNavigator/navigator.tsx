@@ -103,7 +103,6 @@ const AppStack = () => (
   <>
     {inferRoute(Stack)({ [Routes.Home]: HomeTabs })}
     {inferRoute(Stack)({ [Routes.NewArticle]: NewArticle })}
-    {/* {inferRoute(Stack)({ [Routes.Confirmation]: Confirmation })} */}
   </>
 );
 
