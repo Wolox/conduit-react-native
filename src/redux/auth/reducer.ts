@@ -8,7 +8,8 @@ import { actions } from './actions';
 
 const stateDescription = {
   description: {
-    currentUser: null
+    currentUser: null,
+    userProfile: null
   },
   ignoredTargets: {
     initialLoading: true,
@@ -19,7 +20,7 @@ const stateDescription = {
 export const initialState = completeState(stateDescription);
 
 const reducerDescription = {
-  primaryActions: [actions.LOGIN],
+  primaryActions: [actions.LOGIN, actions.UPDATE_CURRENT_USER, actions.GET_USER_PROFILE],
   override: {
     [actions.HAS_ACCESS]: onReadValue(),
     [actions.AUTH_INIT]: (state: ImmutableObject<AuthState>, action: Action<Nullable<CurrentUser>>) =>
