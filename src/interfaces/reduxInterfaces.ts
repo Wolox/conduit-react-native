@@ -39,11 +39,20 @@ export interface MyArticlesState {
   myArticlesError: Nullable<string>;
 }
 
+export interface ProfileState {
+  followUser: any;
+  followUserLoading: boolean;
+  followUserError: Nullable<string>;
+}
+
 export interface ArtcileAction extends PaginatedList<Article> {}
 export interface ArticlesState {
   articlesList: Nullable<ArtcileAction>;
   articlesListLoading: boolean;
   articlesListError: Nullable<String>;
+  tagList: string[];
+  tagListLoading: boolean;
+  tagListError: Nullable<String>;
 }
 export interface FavouritesState {
   favoritesArticlesList: {
@@ -64,6 +73,7 @@ export interface State {
   comments: CommentsState;
   favourites: FavouritesState;
   myArticles: MyArticlesState;
+  profile: ProfileState;
 }
 
 export interface ReduxObject {

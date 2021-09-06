@@ -7,14 +7,15 @@ import { actions } from './actions';
 
 const stateDescription = {
   description: {
-    articlesList: {}
+    articlesList: {},
+    tagList: []
   }
 };
 
 export const initialState: ArticlesState = completeState(stateDescription);
 
 const reducerDescription = {
-  primaryActions: [actions.GET_ARTICLES],
+  primaryActions: [actions.GET_ARTICLES, actions.GET_TAGS],
   override: {
     [actions.CLEAR_TARGET]: onClearTarget(),
     [actions.GET_ARTICLES_SUCCESS]: onPagination()

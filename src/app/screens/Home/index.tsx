@@ -42,7 +42,10 @@ function Home({ navigation }: Navigation) {
     [handlePressArticle]
   );
 
-  const keyExtractor: ListKeyExtractor<Article> = useCallback(({ slug }) => `${slug}`, []);
+  const keyExtractor: ListKeyExtractor<Article> = useCallback(
+    ({ slug, author: { username } }, index) => `${index}-${slug}-${username}`,
+    []
+  );
 
   const renderFooter = useCallback(
     () => (
@@ -69,10 +72,8 @@ function Home({ navigation }: Navigation) {
   }, [loading, paginated, articles]);
 
   useEffect(() => {
-    if (currentTab === 1) {
-      getArticles();
-    }
-  }, [currentTab, getArticles]);
+    dispatch(ArticlesActions.getTags());
+  }, [dispatch]);
 
   const handlePressTab = (index: number) => setCurrentTab(index);
 

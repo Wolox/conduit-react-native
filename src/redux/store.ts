@@ -16,6 +16,7 @@ import articles from './articles/reducer';
 import comments from './comments/reducer';
 import favourites from './favourites/reducer';
 import myArticles from './myArticles/reducer';
+import profile from './profile/reducer';
 
 const transformerConfig = {
   whitelistPerReducer: {
@@ -38,7 +39,8 @@ const reducers = combineReducers({
   articles,
   comments,
   favourites,
-  myArticles
+  myArticles,
+  profile
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

@@ -1,29 +1,34 @@
-import { Dispatch } from 'react';
 import { createTypes, completeTypes } from 'redux-recompose';
-import { Action, DispatcheableAction } from '@interfaces/reduxInterfaces';
-import { Nullable } from '@interfaces/globalInterfaces';
 import ArticlesService from '@services/ArticlesService';
+import { ApiOkResponse } from 'apisauce';
 
 export const actions = createTypes(
-  completeTypes({ primaryActions: ['GET_ARTICLES'], ignoredActions: ['CLEAR_TARGET'] }),
+  completeTypes({ primaryActions: ['GET_ARTICLES', 'GET_TAGS'], ignoredActions: ['CLEAR_TARGET'] }),
   '@@ARTICLES'
 );
 
 export const TARGETS = {
-  ARTICLES_LIST: 'articlesList'
+  ARTICLES_LIST: 'articlesList',
+  TAG_LIST: 'tagList'
 };
-
-type ActionType = Nullable<number>;
 
 const actionCreators = {
   clearTarget: (target: string) => ({ type: actions.CLEAR_TARGET, target }),
-  getArticles: () => (dispatch: Dispatch<Action<ActionType> | DispatcheableAction<ActionType>>) => {
-    dispatch({
-      type: actions.GET_ARTICLES,
-      target: TARGETS.ARTICLES_LIST,
-      service: ArticlesService.getMockArticles
-    });
-  }
+  getArticles: () => ({
+    successSelector: (response: ApiOkResponse<any>) => ({
+      page: response.data.articles,
+      totalCount: response.data.articlesCount
+    }),
+    type: actions.GET_ARTICLES,
+    target: TARGETS.ARTICLES_LIST,
+    service: ArticlesService.getArticles
+  }),
+  getTags: () => ({
+    successSelector: (response: ApiOkResponse<any>) => response.data.tags,
+    type: actions.GET_TAGS,
+    target: TARGETS.TAG_LIST,
+    service: ArticlesService.getTags
+  })
 };
 
 export default actionCreators;
