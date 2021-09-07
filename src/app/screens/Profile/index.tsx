@@ -32,6 +32,7 @@ function Profile() {
   const dispatch = useDispatch();
   const handlePressLogout = () => dispatch(AuthActions.logout());
   const currentUser = useSelector((state: State) => state.auth.currentUser?.user);
+  const { userProfileLoading, currentUserLoading } = useSelector((state: State) => state.auth);
   const [, , error] = useAsyncRequest({
     request: AuthService.updateProfile
   });
@@ -129,6 +130,7 @@ function Profile() {
               style={styles.formButton}
               textStyle={styles.textFormButton}
               title={i18next.t('PROFILE:UPDATE_PROFILE')}
+              loading={userProfileLoading || currentUserLoading}
             />
           </TouchableOpacity>
           <ProfileListItem

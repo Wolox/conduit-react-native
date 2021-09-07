@@ -25,6 +25,7 @@ import testIds from './testIds';
 function Login({ navigation }: Navigation) {
   const dispatch = useDispatch();
   const hasLoginError = useSelector<State, boolean>((state: State) => !!state.auth.currentUserError);
+  const { currentUserLoading } = useSelector((state: State) => state.auth);
 
   const { handleSubmit, control } = useForm<LoginFormValues>({ mode: 'onBlur' });
 
@@ -78,6 +79,7 @@ function Login({ navigation }: Navigation) {
           style={styles.formButton}
           textStyle={styles.textFormButton}
           title={i18next.t('LOGIN:LOG_IN')}
+          loading={currentUserLoading}
         />
         <CustomTextPressable
           text={i18next.t('LOGIN:SIGN_UP')}
