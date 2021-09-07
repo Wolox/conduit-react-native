@@ -1,6 +1,6 @@
 import { Dispatch, ReactNode } from 'react';
 import { ApiOkResponse, ApiErrorResponse } from 'apisauce';
-import { UserResponse } from '@interfaces/authInterfaces';
+import { ProfileData, UserResponse } from '@interfaces/authInterfaces';
 import { Nullable } from '@interfaces/globalInterfaces';
 import { PaginatedList } from '@interfaces/miscelanious';
 
@@ -30,6 +30,9 @@ export interface AuthState {
   currentUserLoading: boolean;
   currentUserError: Nullable<string>;
   hasAccessOnBoarding: boolean;
+  userProfile: Nullable<ProfileData>;
+  userProfileLoading: boolean;
+  userProfileError: Nullable<string>;
 }
 export interface MyArticlesState {
   myArticles: {
