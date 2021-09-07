@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Keyboard, TouchableWithoutFeedback, ScrollView, View } from 'react-native';
 import i18next from 'i18next';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import CustomButton from '@components/CustomButton';
 import CustomText from '@components/CustomText';
 import ControlledCustomTextInput from '@components/CustomTextInput/controller';
@@ -10,17 +11,61 @@ import { FIELDS, SignupFormValues } from '@screens/Auth/constants';
 import * as AuthService from '@services/AuthService';
 import { validateRequired, validateEmail, validateMinLength } from '@utils/validations/validateUtils';
 import useNavigation from '@components/AppNavigator/helper';
+import CustomModal from '@components/CustomModal';
+import CustomModalConfirm from '@components/CustomModalConfirm';
 import Routes from '@constants/routes';
+import { actionCreators as FeedbackActions } from '@redux/feedback/actions';
 
 import { MIN_LENGTH_PASS } from './constants';
 import './i18n';
 import styles from './styles';
 
 function SignUp() {
+  const dispatch = useDispatch();
   const navigation = useNavigation();
+
+  const closeModal = useCallback(() => {
+    dispatch(FeedbackActions.hideModal());
+    navigation?.navigate(Routes.Login);
+  }, [dispatch, navigation]);
+  const renderError = () => {
+    dispatch(
+      FeedbackActions.showModal(
+        <CustomModal
+          title={i18next.t('SIGNUP:ERROR_SIGN_IN')}
+          body={
+            <CustomModalConfirm
+              text={i18next.t('SIGNUP:ERROR_MESSAGE')}
+              onPress={closeModal}
+              buttonText={i18next.t('SIGNUP:CLOSE_MODAL')}
+            />
+          }
+        />
+      )
+    );
+  };
+  const renderConfirm = () => {
+    navigation?.navigate(Routes.Login);
+    dispatch(
+      FeedbackActions.showModal(
+        <CustomModal
+          title={i18next.t('SIGNUP:SUCCESS_CREATE_TITLE')}
+          body={
+            <CustomModalConfirm
+              text={i18next.t('SIGNUP:SUCCESS_MESSAGE')}
+              onPress={closeModal}
+              buttonText={i18next.t('SIGNUP:CLOSE_MODAL')}
+            />
+          }
+        />
+      )
+    );
+  };
+
   const [, , error, signUp] = useAsyncRequest({
     request: AuthService.signup,
-    withPostSuccess: () => navigation?.navigate(Routes.Login)
+    withPostSuccess: () => renderConfirm(),
+    withPostFailure: () => renderError()
   });
 
   const {

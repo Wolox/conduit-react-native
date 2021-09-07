@@ -1,7 +1,9 @@
 import api from '@config/api';
 import { INITIAL_PAGE, DEFAULT_LIMIT } from '@constants/pagination';
+import { NewArticleValues } from '@screens/NewArticle/constants';
 
 const ARTICLES_PATH = '/articles';
+const FEED_PATH = '/feed';
 
 const ARTICLES_MOCK = [
   {
@@ -178,7 +180,10 @@ const ArticlesService = {
       problem: null,
       originalError: null,
       data: { page: ARTICLES_MOCK }
-    })
+    }),
+  createArticle: (article: NewArticleValues) => api.post(ARTICLES_PATH, { article }),
+  getMyArticles: () => api.get(`${ARTICLES_PATH}${FEED_PATH}`),
+  deleteArticle: (slug: string) => api.delete(`${ARTICLES_PATH}/${slug}`)
 };
 
 export default ArticlesService;

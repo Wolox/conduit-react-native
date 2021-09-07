@@ -64,8 +64,10 @@ export default StyleSheet.create({
     height: AVATAR_SIZE,
     borderRadius: AVATAR_SIZE / 2,
     borderColor: white,
-    tintColor: white,
     borderWidth: BORDER_WIDTH.THIN,
     backgroundColor: green
+  },
+  defaultAvatar: {
+    tintColor: white
   }
 });

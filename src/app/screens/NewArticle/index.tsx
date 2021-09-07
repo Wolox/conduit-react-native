@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, ListRenderItem, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import i18next from 'i18next';
 import { useForm } from 'react-hook-form';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -7,12 +8,17 @@ import ControlledCustomTextInput from '@components/CustomTextInput/controller';
 import CustomButton from '@components/CustomButton';
 import CustomText from '@components/CustomText';
 import { ArticleInParams } from '@interfaces/articlesInterface';
+import { State } from '@interfaces/reduxInterfaces';
+import ArticlesActions from '@redux/articles/actions';
+import { ConfirmationTypes } from '@screens/Confirmation/constants';
+import Routes from '@constants/routes';
 import {
   validateRequired,
   validateAlphanumeric,
   validateMinLength,
   validateMaxLength
 } from '@utils/validations/validateUtils';
+import { useNavigationWithParams } from '@utils/navUtils';
 
 import { FIELDS, NewArticleValues, fiedlsValidations } from './constants';
 import './i18n';
@@ -26,7 +32,10 @@ const { MIN_LENGHT_FIELD, MAX_TITLE_LENGHT, MAX_DESCRIPTION_LENGHT, MAX_BODY_LEN
   fiedlsValidations();
 
 function NewArticle({ route: { params } }: Props) {
-  const { handleSubmit, control, setValue, trigger } = useForm<NewArticleValues>({ mode: 'all' });
+  const { handleSubmit, control, setValue, trigger, reset } = useForm<NewArticleValues>({ mode: 'all' });
+  const navigation = useNavigationWithParams<Routes.NewArticle>();
+  const createArticleLoading = useSelector<State, boolean>(state => state.articles.createArticleLoading);
+  const dispatch = useDispatch();
   const isEdit = !!params?.article && params?.article?.isEditArticle;
   const [items, setItems] = useState<string[]>(isEdit ? params?.article?.tagList : []);
   const handleDeleteTag = (index: number) => {
@@ -38,10 +47,37 @@ function NewArticle({ route: { params } }: Props) {
     <Tag text={item} index={index} onDeleteTag={handleDeleteTag} />
   );
 
+  const cleanForm = () => {
+    reset({
+      title: '',
+      description: '',
+      body: '',
+      tagList: []
+    });
+  };
+
   // @TODO: do the quest when you already have the token in the headers
   const handleSubmitArticle = (values: NewArticleValues) => {
     trigger();
-    console.log(values);
+    dispatch(
+      ArticlesActions.createArticle(
+        values,
+        () => {
+          cleanForm();
+          navigation.navigate(Routes.Confirmation, {
+            type: ConfirmationTypes.SUCCESS_REGISTER_ARTICLE,
+            typeError: false
+          });
+        },
+        () => {
+          cleanForm();
+          navigation.navigate(Routes.Confirmation, {
+            type: ConfirmationTypes.ERROR_REGISTER_ARTICLE,
+            typeError: true
+          });
+        }
+      )
+    );
   };
 
   useEffect(() => {
@@ -131,6 +167,7 @@ function NewArticle({ route: { params } }: Props) {
               />
             </View>
             <CustomButton
+              loading={createArticleLoading}
               testID={isEdit ? testIds.editArticleButton : testIds.createArticleButton}
               primary
               onPress={handleSubmit(handleSubmitArticle)}

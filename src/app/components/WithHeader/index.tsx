@@ -11,7 +11,7 @@ interface Props {
   subtitle?: string;
   withAvatar?: boolean;
   children: ReactNode;
-  avatar?: { uri: string };
+  avatar?: string;
 }
 
 function WithHeader({ title, children, withAvatar, avatar }: Props) {
@@ -37,7 +37,11 @@ function WithHeader({ title, children, withAvatar, avatar }: Props) {
         <View style={[styles.childrenContainer, withAvatar && styles.longChildrenContainer]}>{children}</View>
         {withAvatar && (
           <View style={styles.avatarContainer}>
-            <Image source={avatar?.uri ? avatar : userIcon} resizeMode="contain" style={styles.avatar} />
+            <Image
+              source={avatar ? { uri: avatar } : userIcon}
+              resizeMode="contain"
+              style={[styles.avatar, !avatar && styles.defaultAvatar]}
+            />
           </View>
         )}
       </View>

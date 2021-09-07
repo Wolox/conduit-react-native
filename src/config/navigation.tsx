@@ -74,6 +74,7 @@ export const appScreensNavOptions = {
   [Routes.Profile]: withoutHeader,
   [Routes.Login]: withoutHeader,
   [Routes.Home]: withoutHeader,
+  [Routes.Confirmation]: withoutHeader,
   [Routes.NewArticle]: withoutHeader,
   [Routes.MyArticles]: withoutHeader,
   [Routes.FavArticles]: withoutHeader

@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native';
-import { darkGray } from '@constants/colors';
+import { darkGray, red } from '@constants/colors';
 import { SPACING } from '@constants/dimentions';
 import { moderateScale } from '@utils/scalingUtils';
 
 const IMAGE_SIZE = moderateScale(40);
+const ICON_SIZE = 30;
 
 export default StyleSheet.create({
   container: {
@@ -19,5 +20,14 @@ export default StyleSheet.create({
     backgroundColor: darkGray,
     borderRadius: SPACING.XBIG,
     marginRight: SPACING.SMALL
+  },
+  iconContainer: {
+    flexDirection: 'row'
+  },
+  deleteIcon: {
+    width: ICON_SIZE,
+    height: ICON_SIZE,
+    tintColor: red,
+    marginLeft: 10
   }
 });

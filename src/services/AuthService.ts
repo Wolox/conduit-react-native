@@ -1,7 +1,7 @@
 import { ApiResponse } from 'apisauce';
 import api from '@config/api';
-import { AuthData, SignUpData, UpdateProfileData } from '@interfaces/authInterfaces';
-import { LOGIN_PATH, REGISTER_PATH } from '@constants/authServiceConstants';
+import { AuthData, SignUpData, UpdateProfileData, UserResponse } from '@interfaces/authInterfaces';
+import { LOGIN_PATH, REGISTER_PATH, UPDATE_PATH, PROFILES_PATH } from '@constants/authServiceConstants';
 
 export const login = ({ email, password }: AuthData) => {
   const data = {
@@ -48,7 +48,9 @@ export const logout = () => {
     ok: true,
     problem: null,
     originalError: null,
-    data: null
+    data: null,
+    currentUser: null,
+    token: null
   });
 };
 
@@ -93,4 +95,12 @@ export const updateProfile = (_: UpdateProfileData) => {
     originalError: null,
     data: {}
   }) as Promise<ApiResponse<any, any>>;
+};
+
+export const updateCurrentUser = (user: UserResponse) => {
+  return api.put(`${UPDATE_PATH}`, user);
+};
+
+export const getUserProfile = (userName: string) => {
+  return api.get(`${PROFILES_PATH}/${userName}`);
 };
