@@ -29,11 +29,7 @@ function Tags() {
     dispatch(ArticleActions.filterByTags(selectedTags, navigation));
   }, [dispatch, selectedTags, navigation]);
 
-  const handlePress = (option: string) => {
-    const optionSelected = selectedTags.find(tag => option === tag);
-    if (optionSelected) setSelectedTags(selectedTags.filter(tag => tag !== option));
-    else setSelectedTags([...selectedTags, option]);
-  };
+  const handlePress = (option: string) => setSelectedTags([option]);
 
   return (
     <View style={styles.container}>
