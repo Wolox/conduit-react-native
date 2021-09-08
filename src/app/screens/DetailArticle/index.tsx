@@ -22,6 +22,7 @@ import icDefaultArticleImage from '@assets/icons/icDefaultArticleImage.jpg';
 import icDelete from '@assets/icons/icDelete.png';
 import icEdit from '@assets/icons/icEdit.png';
 import Routes from '@constants/routes';
+import { validatorHTML } from '@utils/htmlUtils';
 
 import './i18n';
 
@@ -44,6 +45,7 @@ function DetailArticle({ route }: Props) {
     author: { image, username, following },
     tagList
   } = route?.params?.article;
+
   const [favoriteCount, setFavoriteCount] = useState(favoritesCount || 0);
   const [isFollow, setIsFollow] = useState(following);
   const [comment, setCommment] = useState<string>('');
@@ -222,9 +224,7 @@ function DetailArticle({ route }: Props) {
             <View style={styles.separator} />
             <CustomText>{title}</CustomText>
             <CustomText label>{description}</CustomText>
-            <View style={styles.bodyContainer}>
-              <CustomText label>{body}</CustomText>
-            </View>
+            <View style={styles.bodyContainer}>{validatorHTML(body)}</View>
             {currentUser && renderIcons()}
           </View>
         </View>
