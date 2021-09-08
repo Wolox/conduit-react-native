@@ -1,3 +1,9 @@
+import api from '@config/api';
+import { iComment } from '@interfaces/commentInterfaces';
+
+const ARTICLES_PATH = '/articles';
+const COMMENTS_PATH = '/comments';
+
 const COMMENTS_MOCK = [
   {
     author: {
@@ -56,7 +62,10 @@ const ArticlesService = {
       problem: null,
       originalError: null,
       data: COMMENTS_MOCK
-    })
+    }),
+  getComments: (slug: string) => api.get(`${ARTICLES_PATH}/${slug}${COMMENTS_PATH}`),
+  createComment: ({ data, slug }: { data: iComment; slug: string }) =>
+    api.post(`${ARTICLES_PATH}/${slug}${COMMENTS_PATH}`, data)
 };
 
 export default ArticlesService;

@@ -40,6 +40,7 @@ function DetailArticle({ route }: Props) {
     updatedAt,
     body,
     favoritesCount,
+    slug,
     author: { image, username, following },
     tagList
   } = route?.params?.article;
@@ -120,15 +121,15 @@ function DetailArticle({ route }: Props) {
     </>
   );
   useEffect(() => {
-    dispatch(ActionComments.getComments());
-  }, [dispatch]);
+    dispatch(ActionComments.getComments(slug));
+  }, [dispatch, slug]);
 
   const handleSubmit = useCallback(() => {
     if (currentUser) {
-      dispatch(ActionComments.createComment(MOCK_DATA(currentUser, comment)));
+      dispatch(ActionComments.createComment(MOCK_DATA(currentUser, comment), slug));
       setCommment('');
     }
-  }, [comment, currentUser, dispatch]);
+  }, [comment, currentUser, dispatch, slug]);
 
   const renderInputMessage = useCallback(
     () => (
