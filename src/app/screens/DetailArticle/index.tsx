@@ -13,6 +13,7 @@ import CustomTextPressable from '@components/CustomTextPressable';
 import { isIos } from '@constants/platform';
 import { iComment } from '@interfaces/commentInterfaces';
 import ActionComments from '@redux/comments/actions';
+import ProfileActions from '@redux/profile/actions';
 import { validateMinLength, validateMaxLength } from '@utils/validations/validateUtils';
 import icAddInactive from '@assets/TabBar/icAddpostInactive.png';
 import icSendMessage from '@assets/icons/icSendMessage.png';
@@ -80,12 +81,16 @@ function DetailArticle({ route }: Props) {
     ),
     [comments, currentUser]
   );
+  const handleClickFollow = useCallback(() => {
+    dispatch(ProfileActions.followUser(username, isFollow));
+    setIsFollow(!isFollow);
+  }, [dispatch, isFollow, username]);
   const renderIcons = () => (
     <View style={styles.interactionButtons}>
       <TouchableOpacity
         testID={testIds.followButton}
         style={styles.interactionButton}
-        onPress={() => setIsFollow(!isFollow)}>
+        onPress={handleClickFollow}>
         <Image
           style={[styles.interactionButtonImage, isFollow && styles.greenTint]}
           source={icAddInactive}

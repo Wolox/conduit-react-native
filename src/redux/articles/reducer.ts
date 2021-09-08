@@ -1,13 +1,17 @@
-import { createReducer, completeReducer, completeState } from 'redux-recompose';
+import { createReducer, completeReducer, completeState, onReadValue } from 'redux-recompose';
 import Immutable from 'seamless-immutable';
 import { ArticlesState } from '@interfaces/reduxInterfaces';
-import { onPagination, onClearTarget } from '@utils/reduxUtils';
+import { onClearTarget } from '@utils/reduxUtils';
 
 import { actions } from './actions';
 
 const stateDescription = {
   description: {
     articlesList: {},
+    tagList: []
+  },
+  ignoredTargets: {
+    selectedTags: [],
     myArticlesList: [],
     createArticle: null
   }
@@ -20,11 +24,12 @@ const reducerDescription = {
     actions.GET_ARTICLES,
     actions.GET_MY_ARTICLES,
     actions.CREATE_ARTICLE,
-    actions.DELETE_ARTICLE
+    actions.DELETE_ARTICLE,
+    actions.GET_TAGS
   ],
   override: {
     [actions.CLEAR_TARGET]: onClearTarget(),
-    [actions.GET_ARTICLES_SUCCESS]: onPagination()
+    [actions.ADD_SELECTED_TAGS]: onReadValue()
   }
 };
 

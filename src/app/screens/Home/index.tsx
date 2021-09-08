@@ -1,19 +1,22 @@
 import React, { useCallback, useRef, useEffect, useState } from 'react';
-import { SafeAreaView, FlatList, ListRenderItem, View, ActivityIndicator } from 'react-native';
+import { SafeAreaView, FlatList, ListRenderItem, View, ActivityIndicator, Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import i18next from 'i18next';
 import { State } from '@interfaces/reduxInterfaces';
 import { Article } from '@interfaces/articlesInterface';
 import { ListKeyExtractor } from '@interfaces/miscelanious';
+import { Navigation } from '@interfaces/navigation';
 import CustomText from '@components/CustomText';
-import { THRESHOLD } from '@constants/pagination';
 import TabList from '@components/TabList';
 import ConfirmationModal from '@components/ConfirmationModal';
 import ScreenWithLoader from '@components/ScreenWithLoader';
 import ArticleItem from '@components/ArticleItem';
+import CustomButton from '@components/CustomButton';
+import { THRESHOLD } from '@constants/pagination';
 import ArticlesActions from '@redux/articles/actions';
 import Routes from '@constants/routes';
-import { Navigation } from '@interfaces/navigation';
+import icSort from '@assets/icons/icSort.png';
+import detailArticleStyles from '@screens/DetailArticle/styles';
 
 import styles from './styles';
 import './i18n';
@@ -30,6 +33,7 @@ function Home({ navigation }: Navigation) {
   const loadingMyArticles = useSelector<State, boolean>(state => state.articles.myArticlesListLoading);
   const loading = useSelector<State, boolean>(state => state.articles.articlesListLoading);
   const currentUser = useSelector((state: State) => state.auth.currentUser);
+  const selectedTags = useSelector<State, string[]>(state => state.articles.selectedTags || []);
 
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
 
@@ -37,6 +41,8 @@ function Home({ navigation }: Navigation) {
     (article: Article) => navigation.navigate(Routes.DetailArticle, { article }),
     [navigation]
   );
+
+  const handlePressTagsButton = useCallback(() => navigation.navigate(Routes.Tags), [navigation]);
 
   const onPressDeleteArticle = (item: Article) => {
     setDeleteArticleModal(true);
@@ -55,7 +61,10 @@ function Home({ navigation }: Navigation) {
     [currentTab, currentUser, handlePressArticle]
   );
 
-  const keyExtractor: ListKeyExtractor<Article> = useCallback(({ slug }) => `${slug}`, []);
+  const keyExtractor: ListKeyExtractor<Article> = useCallback(
+    ({ slug, author: { username } }, index) => `${index}-${slug}-${username}`,
+    []
+  );
 
   const renderFooter = useCallback(
     () => (
@@ -74,17 +83,22 @@ function Home({ navigation }: Navigation) {
     dispatch(ArticlesActions.getMyArticles());
   }, [dispatch]);
 
+  const getTags = useCallback(() => {
+    dispatch(ArticlesActions.getTags());
+  }, [dispatch]);
+
   useEffect(() => {
     if (!paginated.current && !!articles.length) paginated.current = true;
   }, [loading, paginated, articles]);
 
   useEffect(() => {
+    getTags();
     if (currentTab === 1) {
       getArticles();
     } else {
       getMyArticles();
     }
-  }, [currentTab, getArticles, getMyArticles]);
+  }, [currentTab, getArticles, getMyArticles, getTags]);
 
   const handlePressTab = (index: number) => setCurrentTab(index);
 
@@ -115,6 +129,22 @@ function Home({ navigation }: Navigation) {
           onPressTab={handlePressTab}
         />
       )}
+      <View style={styles.containerTagButton}>
+        <CustomButton
+          link
+          icon={icSort}
+          title={i18next.t('HOME:TAGS')}
+          style={styles.tagButton}
+          onPress={handlePressTagsButton}
+        />
+      </View>
+      <View style={styles.containerSelectedTags}>
+        {selectedTags.map((tag: string, index: number) => (
+          <Text key={index} style={detailArticleStyles.tag}>
+            {tag}
+          </Text>
+        ))}
+      </View>
       {currentTab === 0 && currentUser ? (
         <>
           <ScreenWithLoader loading={loadingMyArticles && !myArticles.length} withInitialLoading={false}>
