@@ -27,6 +27,7 @@ export default StyleSheet.create({
   containerDetail: {
     ...commonBoxShadow,
     position: 'relative',
+    width: '100%',
     padding: SPACING.MEDIUM,
     borderRadius: SPACING.MEDIUM,
     backgroundColor: white,
@@ -79,7 +80,7 @@ export default StyleSheet.create({
     marginHorizontal: SPACING.XXXSMALL
   },
   bodyContainer: {
-    width: '100%',
+    minWidth: '90%',
     marginTop: 15,
     marginBottom: 20
   },

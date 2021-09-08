@@ -14,7 +14,8 @@ enum Routes {
   NewArticle = 'NewArticle',
   DetailArticle = 'DetailArticle',
   EditArticle = 'EditArticle',
-  Confirmation = 'Confirmation'
+  Confirmation = 'Confirmation',
+  Tags = 'Tags'
 }
 
 export default Routes;
