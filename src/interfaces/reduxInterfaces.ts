@@ -1,10 +1,10 @@
-import { Dispatch } from 'react';
+import { Dispatch, ReactNode } from 'react';
 import { ApiOkResponse, ApiErrorResponse } from 'apisauce';
-import { UserResponse } from '@interfaces/authInterfaces';
+import { ProfileData, UserResponse } from '@interfaces/authInterfaces';
 import { Nullable } from '@interfaces/globalInterfaces';
 import { PaginatedList } from '@interfaces/miscelanious';
 
-import { Article } from './articlesInterface';
+import { Article, ArticleResponse, MyArticles } from './articlesInterface';
 
 export interface Action<T = null, P = null, K = null> {
   [key: string]: any;
@@ -30,6 +30,9 @@ export interface AuthState {
   currentUserLoading: boolean;
   currentUserError: Nullable<string>;
   hasAccessOnBoarding: boolean;
+  userProfile: Nullable<ProfileData>;
+  userProfileLoading: boolean;
+  userProfileError: Nullable<string>;
 }
 export interface MyArticlesState {
   myArticles: {
@@ -54,6 +57,15 @@ export interface ArticlesState {
   tagListLoading: boolean;
   tagListError: Nullable<String>;
   selectedTags: string[];
+  myArticlesList: MyArticles;
+  myArticlesListLoading: boolean;
+  myArticlesListError: Nullable<String>;
+  createArticle: Nullable<ArticleResponse>;
+  createArticleLoading: boolean;
+  createArticleError: Nullable<String>;
+  deleteArticle: Nullable<String>;
+  deleteArticleLoading: boolean;
+  deleteArticleError: Nullable<String>;
 }
 export interface FavouritesState {
   favoritesArticlesList: {
@@ -68,6 +80,14 @@ export interface CommentsState {
   commentLoading: boolean;
   commentsError: Nullable<string>;
 }
+export interface FullScreenModal {
+  data: ReactNode;
+  onPressOut?: () => void;
+  noCanClose?: boolean;
+}
+export interface FeedBackState {
+  modal: Nullable<FullScreenModal>;
+}
 export interface State {
   auth: AuthState;
   articles: ArticlesState;
@@ -75,6 +95,7 @@ export interface State {
   favourites: FavouritesState;
   myArticles: MyArticlesState;
   profile: ProfileState;
+  feedBack: FeedBackState;
 }
 
 export interface ReduxObject {

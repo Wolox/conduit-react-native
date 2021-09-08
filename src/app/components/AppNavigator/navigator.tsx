@@ -6,6 +6,7 @@ import { State } from '@interfaces/reduxInterfaces';
 import Routes from '@constants/routes';
 import { authStackNavConfig, appStackNavConfig, tabNavConfig, profileStackConfig } from '@config/navigation';
 import { inferRoute } from '@utils/navUtils';
+import { AppStackParamList } from '@config/appParamList';
 import Login from '@authScreens/Login';
 import SignUp from '@authScreens/SignUp';
 import Home from '@screens/Home';
@@ -15,10 +16,11 @@ import NewArticle from '@screens/NewArticle';
 import MyArticles from '@screens/MyArticles';
 import DetailArticle from '@screens/DetailArticle';
 import Tags from '@screens/Tags';
+import Confirmation from '@screens/Confirmation';
 
 import TabBar from '../TabBar';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<AppStackParamList | any>();
 const Tab = createBottomTabNavigator();
 
 const renderTab = (focused: boolean, name: string, key: string): ReactElement => (
@@ -50,6 +52,13 @@ const MyFavArticlesStack = () => (
   </Stack.Navigator>
 );
 
+const ArticlesStack = () => (
+  <Stack.Navigator {...appStackNavConfig}>
+    {inferRoute(Tab)({ [Routes.FavArticles]: NewArticle })}
+    {inferRoute(Stack)({ [Routes.Confirmation]: Confirmation })}
+  </Stack.Navigator>
+);
+
 const ProfileStack = () => (
   <Stack.Navigator {...profileStackConfig}>
     {inferRoute(Stack)({ [Routes.Profile]: Profile })}
@@ -65,7 +74,7 @@ function HomeTabs() {
       })}>
       {inferRoute(Tab)({ [Routes.Tab1]: HomeStack })}
       {inferRoute(Tab)({ [Routes.MyArticles]: MyArticlesStack })}
-      {inferRoute(Tab)({ [Routes.Tab3]: NewArticle })}
+      {inferRoute(Tab)({ [Routes.Tab3]: ArticlesStack })}
       {inferRoute(Tab)({ [Routes.FavArticles]: MyFavArticlesStack })}
       {inferRoute(Tab)({ [Routes.Tab5]: ProfileStack })}
     </Tab.Navigator>

@@ -8,11 +8,12 @@ import { ListKeyExtractor } from '@interfaces/miscelanious';
 import { Navigation } from '@interfaces/navigation';
 import CustomText from '@components/CustomText';
 import TabList from '@components/TabList';
+import ConfirmationModal from '@components/ConfirmationModal';
 import ScreenWithLoader from '@components/ScreenWithLoader';
 import ArticleItem from '@components/ArticleItem';
 import CustomButton from '@components/CustomButton';
 import { THRESHOLD } from '@constants/pagination';
-import ArticlesActions, { TARGETS } from '@redux/articles/actions';
+import ArticlesActions from '@redux/articles/actions';
 import Routes from '@constants/routes';
 import icSort from '@assets/icons/icSort.png';
 import detailArticleStyles from '@screens/DetailArticle/styles';
@@ -24,8 +25,12 @@ function Home({ navigation }: Navigation) {
   const dispatch = useDispatch();
   const paginated = useRef(false);
   const [currentTab, setCurrentTab] = useState(0);
+  const [deleteArticleModal, setDeleteArticleModal] = useState(false);
+  const [articleToDelete, setArticleToDelete] = useState<Article | null>(null);
 
   const articles = useSelector<State, Article[]>(state => state.articles.articlesList?.page || []);
+  const myArticles = useSelector<State, Article[]>(state => state.articles.myArticlesList.articles || []);
+  const loadingMyArticles = useSelector<State, boolean>(state => state.articles.myArticlesListLoading);
   const loading = useSelector<State, boolean>(state => state.articles.articlesListLoading);
   const currentUser = useSelector((state: State) => state.auth.currentUser);
   const selectedTags = useSelector<State, string[]>(state => state.articles.selectedTags || []);
@@ -39,9 +44,21 @@ function Home({ navigation }: Navigation) {
 
   const handlePressTagsButton = useCallback(() => navigation.navigate(Routes.Tags), [navigation]);
 
+  const onPressDeleteArticle = (item: Article) => {
+    setDeleteArticleModal(true);
+    setArticleToDelete(item);
+  };
+
   const renderItem: ListRenderItem<Article> = useCallback(
-    ({ item }) => <ArticleItem item={item} onPress={handlePressArticle} />,
-    [handlePressArticle]
+    ({ item }) => (
+      <ArticleItem
+        item={item}
+        onPress={handlePressArticle}
+        showDeleteIcon={currentTab === 0 && currentUser !== null}
+        onDeletePress={onPressDeleteArticle}
+      />
+    ),
+    [currentTab, currentUser, handlePressArticle]
   );
 
   const keyExtractor: ListKeyExtractor<Article> = useCallback(
@@ -62,25 +79,47 @@ function Home({ navigation }: Navigation) {
     dispatch(ArticlesActions.getArticles());
   }, [dispatch]);
 
-  useEffect(() => {
-    getArticles();
-    return () => {
-      dispatch(ArticlesActions.clearTarget(TARGETS.ARTICLES_LIST));
-    };
-  }, [dispatch, getArticles]);
+  const getMyArticles = useCallback(() => {
+    dispatch(ArticlesActions.getMyArticles());
+  }, [dispatch]);
+
+  const getTags = useCallback(() => {
+    dispatch(ArticlesActions.getTags());
+  }, [dispatch]);
 
   useEffect(() => {
     if (!paginated.current && !!articles.length) paginated.current = true;
   }, [loading, paginated, articles]);
 
   useEffect(() => {
-    dispatch(ArticlesActions.getTags());
-  }, [dispatch]);
+    getTags();
+    if (currentTab === 1) {
+      getArticles();
+    } else {
+      getMyArticles();
+    }
+  }, [currentTab, getArticles, getMyArticles, getTags]);
 
   const handlePressTab = (index: number) => setCurrentTab(index);
 
+  const showDeleteModal = () => {
+    setDeleteArticleModal(false);
+    setArticleToDelete(null);
+  };
+  const onConfirmDeleteAticle = () => {
+    // uncomment this when error of the EP is fixed
+    // const { slug = '' } = articleToDelete || {};
+    // dispatch(ArticlesActions.deleteArticle(slug));
+  };
+
   return (
     <SafeAreaView style={styles.container}>
+      <ConfirmationModal
+        title={i18next.t('HOME:CONFIRM_DELETE_ARTICLE')}
+        showModal={deleteArticleModal}
+        onCancel={showDeleteModal}
+        onConfirm={onConfirmDeleteAticle}
+      />
       <CustomText center big darkBlue bold style={styles.title}>
         {i18next.t('HOME:APP_NAME')}
       </CustomText>
@@ -107,9 +146,25 @@ function Home({ navigation }: Navigation) {
         ))}
       </View>
       {currentTab === 0 && currentUser ? (
-        <CustomText center style={styles.titleEmptyArticles}>
-          {i18next.t('HOME:EMPTY_ARTICLES')}
-        </CustomText>
+        <>
+          <ScreenWithLoader loading={loadingMyArticles && !myArticles.length} withInitialLoading={false}>
+            {myArticles.length ? (
+              <FlatList<Article>
+                style={styles.container}
+                data={myArticles}
+                keyExtractor={keyExtractor}
+                renderItem={renderItem}
+                ItemSeparatorComponent={renderSeparator}
+                showsVerticalScrollIndicator={false}
+                ListFooterComponent={renderFooter}
+              />
+            ) : (
+              <CustomText center style={styles.titleEmptyArticles}>
+                {i18next.t('HOME:EMPTY_ARTICLES')}
+              </CustomText>
+            )}
+          </ScreenWithLoader>
+        </>
       ) : (
         <ScreenWithLoader
           loading={loading && !articles.length}

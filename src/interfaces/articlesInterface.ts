@@ -26,3 +26,12 @@ export interface ArticleInParams {
     };
   };
 }
+
+export interface ArticleResponse {
+  article: Article;
+}
+
+export interface MyArticles {
+  articles: Article[];
+  articlesCount: number;
+}

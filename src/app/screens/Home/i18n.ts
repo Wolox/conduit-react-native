@@ -6,5 +6,6 @@ i18next.addResources('en', 'HOME', {
   FIRST_TAB: 'Your feed',
   SECOND_TAB: 'Global feed',
   EMPTY_ARTICLES: 'No articles are here... yet',
-  TAGS: 'Tags'
+  TAGS: 'Tags',
+  CONFIRM_DELETE_ARTICLE: 'Are you sure to delete\n this article?'
 });

@@ -1,6 +1,7 @@
 import React, { useCallback, memo, useMemo } from 'react';
-import { TouchableOpacity, Image } from 'react-native';
+import { TouchableOpacity, Image, ActivityIndicator } from 'react-native';
 import { getCustomStyles } from '@utils/styleUtils';
+import { white } from '@constants/colors';
 
 import CustomText from '../CustomText';
 
@@ -24,6 +25,8 @@ const CustomButton = (props: CustomButtonProps) => {
     secondary,
     link,
     primary,
+    loading,
+    loadingColor,
     ...textProps
   } = props;
   const { BUTTON_STYLE, TEXT_STYLE, ICON_STYLE } = useMemo(
@@ -36,9 +39,10 @@ const CustomButton = (props: CustomButtonProps) => {
       onPress={onPress}
       style={[styles.container, customStyles(), primary && styles.primary, style, BUTTON_STYLE]}
       activeOpacity={activeOpacity}
-      disabled={disabled}>
+      disabled={disabled || loading}>
       {icon && <Image source={icon} resizeMode="contain" style={[styles.icon, iconStyle, ICON_STYLE]} />}
-      {title && (
+      {loading && <ActivityIndicator size="small" color={loadingColor || white} />}
+      {title && !loading && (
         <CustomText
           white={primary}
           bold={primary || secondary}

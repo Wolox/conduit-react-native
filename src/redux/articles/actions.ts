@@ -1,14 +1,15 @@
 import { Dispatch } from 'react';
-import { createTypes, completeTypes, withPostSuccess } from 'redux-recompose';
-import { ApiOkResponse } from 'apisauce';
-import { NavigationContainerRef } from '@react-navigation/native';
-import ArticlesService from '@services/ArticlesService';
+import { createTypes, completeTypes, withPostSuccess, withPostFailure } from 'redux-recompose';
 import { Action, DispatcheableAction } from '@interfaces/reduxInterfaces';
 import { Nullable } from '@interfaces/globalInterfaces';
+import ArticlesService from '@services/ArticlesService';
+import { NewArticleValues } from '@screens/NewArticle/constants';
+import { NavigationContainerRef } from '@react-navigation/native';
+import { ApiOkResponse } from 'apisauce';
 
 export const actions = createTypes(
   completeTypes({
-    primaryActions: ['GET_ARTICLES', 'GET_TAGS'],
+    primaryActions: ['GET_ARTICLES', 'GET_MY_ARTICLES', 'CREATE_ARTICLE', 'DELETE_ARTICLE', 'GET_TAGS'],
     ignoredActions: ['CLEAR_TARGET', 'ADD_SELECTED_TAGS']
   }),
   '@@ARTICLES'
@@ -17,7 +18,10 @@ export const actions = createTypes(
 export const TARGETS = {
   ARTICLES_LIST: 'articlesList',
   TAG_LIST: 'tagList',
-  SELECTED_TAGS: 'selectedTags'
+  SELECTED_TAGS: 'selectedTags',
+  MY_ARTICLES_LIST: 'myArticlesList',
+  CREATE_ARTICLE: 'createArticle',
+  DELETE_ARTICLE: 'deleteArticle'
 };
 
 const articlesSuccesSelector = (response: ApiOkResponse<any>) => ({
@@ -57,6 +61,31 @@ const actionCreators = {
         }
       )
     ]
+  }),
+  createArticle: (article: NewArticleValues, postSuccess?: () => void, postFailure?: () => void) => ({
+    type: actions.CREATE_ARTICLE,
+    target: TARGETS.CREATE_ARTICLE,
+    payload: article,
+    service: ArticlesService.createArticle,
+    injections: [
+      withPostSuccess((_: Dispatch<any>) => {
+        if (postSuccess) postSuccess();
+      }),
+      withPostFailure((_: Dispatch<any>) => {
+        if (postFailure) postFailure();
+      })
+    ]
+  }),
+  getMyArticles: () => ({
+    type: actions.GET_MY_ARTICLES,
+    target: TARGETS.MY_ARTICLES_LIST,
+    service: ArticlesService.getMyArticles
+  }),
+  deleteArticle: (slug: string) => ({
+    type: actions.DELETE_ARTICLE,
+    target: TARGETS.DELETE_ARTICLE,
+    payload: slug,
+    service: ArticlesService.deleteArticle
   })
 };
 
