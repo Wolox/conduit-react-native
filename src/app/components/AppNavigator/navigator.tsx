@@ -15,6 +15,7 @@ import Profile from '@screens/Profile';
 import NewArticle from '@screens/NewArticle';
 import MyArticles from '@screens/MyArticles';
 import DetailArticle from '@screens/DetailArticle';
+import Tags from '@screens/Tags';
 import Confirmation from '@screens/Confirmation';
 
 import TabBar from '../TabBar';
@@ -31,6 +32,7 @@ const HomeStack = () => (
     {inferRoute(Stack)({ [Routes.Home]: Home })}
     {inferRoute(Stack)({ [Routes.DetailArticle]: DetailArticle })}
     {inferRoute(Stack)({ [Routes.EditArticle]: NewArticle })}
+    {inferRoute(Stack)({ [Routes.Tags]: Tags })}
   </Stack.Navigator>
 );
 
