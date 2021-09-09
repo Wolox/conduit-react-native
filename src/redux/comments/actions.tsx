@@ -2,7 +2,6 @@ import React, { Dispatch } from 'react';
 import { createTypes, completeTypes, withPostSuccess, withPostFailure } from 'redux-recompose';
 import { ApiOkResponse } from 'apisauce';
 import i18next from 'i18next';
-import { Action, CommentsState, DispatcheableAction } from '@interfaces/reduxInterfaces';
 import { Nullable } from '@interfaces/globalInterfaces';
 import CommentsService from '@services/CommentsService';
 import { iComment } from '@interfaces/commentInterfaces';
@@ -32,7 +31,7 @@ const actionCreators = {
     service: CommentsService.getComments
   }),
   // TODO : changed with correct api service
-  createComment: (data: iComment, slug: string) => ({
+  createComment: (data: string, slug: string) => ({
     type: actions.CREATE_COMMENT,
     target: TARGETS.CREATE_COMMENT,
     payload: { data, slug },
@@ -59,10 +58,32 @@ const actionCreators = {
       })
     ]
   }),
-  deleteComment: (id: number) => ({
+  deleteComment: (slug: string, id: number) => ({
     type: actions.DELETE_COMMENT,
     target: TARGETS.DELETE_COMMENT,
-    payload: id
+    service: CommentsService.deleteComment,
+    payload: { slug, id },
+    injections: [
+      withPostSuccess((dispatch: any, _: ApiOkResponse<iComment>) => {
+        dispatch(actionCreators.getComments(slug));
+      }),
+      withPostFailure((dispatch: Dispatch<any>) => {
+        dispatch(
+          FeedbackActions.showModal(
+            <CustomModal
+              title={i18next.t('SIGNUP:ERROR_SIGN_IN')}
+              body={
+                <CustomModalConfirm
+                  text={i18next.t('SIGNUP:ERROR_MESSAGE')}
+                  onPress={() => dispatch(FeedbackActions.hideModal())}
+                  buttonText={i18next.t('SIGNUP:CLOSE_MODAL')}
+                />
+              }
+            />
+          )
+        );
+      })
+    ]
   })
 };
 

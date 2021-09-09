@@ -1,3 +1,5 @@
+import { Author } from './articlesInterface';
+
 export interface CurrentUser {
   sessionToken?: string;
   id?: number;
@@ -28,10 +30,5 @@ export interface UpdateProfileData {
 }
 
 export interface ProfileData {
-  profile: {
-    username: string;
-    bio: string;
-    image: string;
-    following: boolean;
-  };
+  profile: Author;
 }

@@ -5,6 +5,7 @@ import { Nullable } from '@interfaces/globalInterfaces';
 import { PaginatedList } from '@interfaces/miscelanious';
 
 import { Article, ArticleResponse, MyArticles } from './articlesInterface';
+import { iComment } from './commentInterfaces';
 
 export interface Action<T = null, P = null, K = null> {
   [key: string]: any;
@@ -76,7 +77,9 @@ export interface FavouritesState {
 }
 
 export interface CommentsState {
-  comments: [];
+  comments: {
+    comments: iComment[];
+  };
   commentLoading: boolean;
   commentsError: Nullable<string>;
 }

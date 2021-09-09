@@ -29,7 +29,6 @@ import './i18n';
 import Comment from './Components/Comment';
 import styles from './styles';
 import testIds from './testIds';
-import { MOCK_DATA } from './constants';
 
 interface Props extends ArticleInParams {}
 
@@ -50,7 +49,8 @@ function DetailArticle({ route }: Props) {
   const [favoriteCount, setFavoriteCount] = useState(favoritesCount || 0);
   const [isFollow, setIsFollow] = useState(following);
   const [comment, setCommment] = useState<string>('');
-  const { comments } = useSelector((state: State) => state.comments);
+
+  const comments = useSelector((state: State) => state.comments.comments);
   const currentUser = useSelector((state: State) => state.auth.currentUser);
   const EXTRAHEIGHT = isIos ? 400 : 190;
   const handleToggleFavorite = () => {
@@ -71,8 +71,10 @@ function DetailArticle({ route }: Props) {
   const renderMessage = useCallback(
     () => (
       <ScrollView>
-        {comments.length
-          ? comments.map((item: iComment) => <Comment commentContent={item} key={item.id} />)
+        {comments
+          ? comments.comments.map((item: iComment) => (
+              <Comment commentContent={item} key={item.id} articleSlug={slug} />
+            ))
           : currentUser && (
               <View style={styles.noCommentsContainer}>
                 <CustomText green style={styles.noCommentsText}>
@@ -82,7 +84,7 @@ function DetailArticle({ route }: Props) {
             )}
       </ScrollView>
     ),
-    [comments, currentUser]
+    [comments, currentUser, slug]
   );
   const handleClickFollow = useCallback(() => {
     dispatch(ProfileActions.followUser(username, isFollow));
@@ -133,7 +135,7 @@ function DetailArticle({ route }: Props) {
 
   const handleSubmit = useCallback(() => {
     if (currentUser) {
-      dispatch(ActionComments.createComment(MOCK_DATA(currentUser, comment), slug));
+      dispatch(ActionComments.createComment(comment, slug));
       setCommment('');
     }
   }, [comment, currentUser, dispatch, slug]);
