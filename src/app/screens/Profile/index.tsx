@@ -85,7 +85,7 @@ function Profile() {
               control={control}
               label={i18next.t('PROFILE:USERNAME')}
               placeholder={i18next.t('PROFILE:USERNAME')}
-              inputContainerStyle={signUpStyles.input}
+              inputContainerStyle={[signUpStyles.input, styles.inputCustom]}
               labelStyle={signUpStyles.labelText}
               errorContainerStyle={signUpStyles.errorContainer}
               showError={hasError}
@@ -101,7 +101,7 @@ function Profile() {
               control={control}
               label={i18next.t('PROFILE:EMAIL')}
               placeholder={i18next.t('PROFILE:EMAIL')}
-              inputContainerStyle={signUpStyles.input}
+              inputContainerStyle={[signUpStyles.input, styles.inputCustom]}
               labelStyle={signUpStyles.labelText}
               errorContainerStyle={signUpStyles.errorContainer}
               showError={hasError}
@@ -117,7 +117,7 @@ function Profile() {
               control={control}
               label={i18next.t('PROFILE:DESCRIPTION')}
               placeholder={i18next.t('PROFILE:DESCRIPTION')}
-              inputContainerStyle={signUpStyles.input}
+              inputContainerStyle={[signUpStyles.input, styles.inputCustom]}
               labelStyle={signUpStyles.labelText}
               errorContainerStyle={signUpStyles.errorContainer}
               showError={hasError}

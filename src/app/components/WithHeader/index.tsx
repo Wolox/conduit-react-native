@@ -3,6 +3,7 @@ import { View, Image } from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import CustomText from '@components/CustomText';
 import userIcon from '@assets/Profile/icUser.png';
+import { isAndroid } from '@constants/platform';
 
 import styles from './styles';
 
@@ -37,11 +38,21 @@ function WithHeader({ title, children, withAvatar, avatar }: Props) {
         <View style={[styles.childrenContainer, withAvatar && styles.longChildrenContainer]}>{children}</View>
         {withAvatar && (
           <View style={styles.avatarContainer}>
-            <Image
-              source={avatar ? { uri: avatar } : userIcon}
-              resizeMode="contain"
-              style={[styles.avatar, !avatar && styles.defaultAvatar]}
-            />
+            {isAndroid ? (
+              <View style={styles.avatarBorder}>
+                <Image
+                  source={avatar ? { uri: avatar } : userIcon}
+                  resizeMode="contain"
+                  style={[styles.avatar, !avatar && styles.defaultAvatar]}
+                />
+              </View>
+            ) : (
+              <Image
+                source={avatar ? { uri: avatar } : userIcon}
+                resizeMode="contain"
+                style={[styles.avatar, !avatar && styles.defaultAvatar]}
+              />
+            )}
           </View>
         )}
       </View>

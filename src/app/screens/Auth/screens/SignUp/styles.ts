@@ -28,7 +28,7 @@ export default StyleSheet.create({
     width: COMMON_PERCENTAJE_100,
     height: 40,
     borderRadius: 15,
-    elevation: 1,
+    elevation: 8,
     shadowColor: lightGray,
     shadowOpacity: 1,
     shadowOffset: {
