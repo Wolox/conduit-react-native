@@ -42,7 +42,7 @@ function WithHeader({ title, children, withAvatar, avatar }: Props) {
               <View style={styles.avatarBorder}>
                 <Image
                   source={avatar ? { uri: avatar } : userIcon}
-                  resizeMode="contain"
+                  resizeMode="cover"
                   style={[styles.avatar, !avatar && styles.defaultAvatar]}
                 />
               </View>
