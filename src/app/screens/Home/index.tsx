@@ -79,8 +79,8 @@ function Home({ navigation }: Navigation) {
     dispatch(ArticlesActions.getArticles());
   }, [dispatch]);
 
-  const getMyArticles = useCallback(() => {
-    dispatch(ArticlesActions.getMyArticles());
+  const getMyArticles = useCallback(async () => {
+    await dispatch(ArticlesActions.getMyArticles());
   }, [dispatch]);
 
   const getTags = useCallback(() => {
@@ -93,12 +93,14 @@ function Home({ navigation }: Navigation) {
 
   useEffect(() => {
     getTags();
-    if (currentTab === 1) {
+    if (currentTab === 1 || !currentUser) {
       getArticles();
     } else {
-      getMyArticles();
+      setTimeout(() => {
+        getMyArticles();
+      }, 300);
     }
-  }, [currentTab, getArticles, getMyArticles, getTags]);
+  }, [currentTab, currentUser, getArticles, getMyArticles, getTags]);
 
   const handlePressTab = (index: number) => setCurrentTab(index);
 
