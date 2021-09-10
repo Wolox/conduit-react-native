@@ -1,11 +1,15 @@
-import { Dispatch } from 'react';
+import React, { Dispatch } from 'react';
 import { createTypes, completeTypes, withPostSuccess, withPostFailure } from 'redux-recompose';
+import i18next from 'i18next';
+import { ApiOkResponse } from 'apisauce';
 import { Action, DispatcheableAction } from '@interfaces/reduxInterfaces';
 import { Nullable } from '@interfaces/globalInterfaces';
 import ArticlesService from '@services/ArticlesService';
 import { NewArticleValues } from '@screens/NewArticle/constants';
 import { NavigationContainerRef } from '@react-navigation/native';
-import { ApiOkResponse } from 'apisauce';
+import { actionCreators as FeedbackActions } from '@redux/feedback/actions';
+import CustomModal from '@components/CustomModal';
+import CustomModalConfirm from '@components/CustomModalConfirm';
 
 export const actions = createTypes(
   completeTypes({
@@ -85,7 +89,25 @@ const actionCreators = {
     type: actions.DELETE_ARTICLE,
     target: TARGETS.DELETE_ARTICLE,
     payload: slug,
-    service: ArticlesService.deleteArticle
+    service: ArticlesService.deleteArticle,
+    injections: [
+      withPostFailure((dispatch: Dispatch<any>) => {
+        dispatch(
+          FeedbackActions.showModal(
+            <CustomModal
+              title={i18next.t('SIGNUP:ERROR_SIGN_IN')}
+              body={
+                <CustomModalConfirm
+                  text={i18next.t('SIGNUP:ERROR_MESSAGE')}
+                  onPress={() => dispatch(FeedbackActions.hideModal())}
+                  buttonText={i18next.t('SIGNUP:CLOSE_MODAL')}
+                />
+              }
+            />
+          )
+        );
+      })
+    ]
   })
 };
 

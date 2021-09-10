@@ -50,15 +50,20 @@ function Home({ navigation }: Navigation) {
   };
 
   const renderItem: ListRenderItem<Article> = useCallback(
-    ({ item }) => (
+    ({
+      item,
+      item: {
+        author: { username }
+      }
+    }) => (
       <ArticleItem
         item={item}
         onPress={handlePressArticle}
-        showDeleteIcon={currentTab === 0 && currentUser !== null}
+        showDeleteIcon={username === currentUser?.user?.username}
         onDeletePress={onPressDeleteArticle}
       />
     ),
-    [currentTab, currentUser, handlePressArticle]
+    [currentUser, handlePressArticle]
   );
 
   const keyExtractor: ListKeyExtractor<Article> = useCallback(
@@ -109,9 +114,10 @@ function Home({ navigation }: Navigation) {
     setArticleToDelete(null);
   };
   const onConfirmDeleteAticle = () => {
-    // uncomment this when error of the EP is fixed
-    // const { slug = '' } = articleToDelete || {};
-    // dispatch(ArticlesActions.deleteArticle(slug));
+    // uncomment but the EP return a 500 error
+    const { slug = '' } = articleToDelete || {};
+    dispatch(ArticlesActions.deleteArticle(slug));
+    setDeleteArticleModal(false);
   };
 
   return (
