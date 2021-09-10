@@ -7,12 +7,18 @@ const RADIUS = 14;
 
 const AVATAR_SIZE = scale(100);
 const AVATAR_OVERLAP = AVATAR_SIZE / 2;
+
+const HIDDEN = 'hidden';
+const TOTAL_ROUNDED = 100;
+
+const TOTAL_PERCENT = '100%';
+
 export const HEADER_SIZE = moderateScale(107);
 
 export default StyleSheet.create({
   container: {
     backgroundColor: green,
-    width: '100%'
+    width: TOTAL_PERCENT
   },
   headerContent: {
     paddingHorizontal: 16,
@@ -30,12 +36,12 @@ export default StyleSheet.create({
     flex: 1
   },
   childrenContainer: {
-    width: '100%',
-    height: '100%',
+    width: TOTAL_PERCENT,
+    height: TOTAL_PERCENT,
     backgroundColor: white,
     borderTopLeftRadius: RADIUS,
     borderTopRightRadius: RADIUS,
-    overflow: 'hidden',
+    overflow: HIDDEN,
     position: 'absolute',
     top: 0
   },
@@ -44,7 +50,7 @@ export default StyleSheet.create({
   },
   borderContainer: {
     height: RADIUS,
-    width: '100%',
+    width: TOTAL_PERCENT,
     position: 'absolute',
     top: 0,
     flexDirection: 'row'
@@ -57,7 +63,7 @@ export default StyleSheet.create({
     position: 'absolute',
     top: -AVATAR_OVERLAP - 10,
     alignItems: 'center',
-    width: '100%'
+    width: TOTAL_PERCENT
   },
   avatar: {
     width: AVATAR_SIZE,
@@ -66,6 +72,12 @@ export default StyleSheet.create({
     borderColor: white,
     borderWidth: BORDER_WIDTH.THIN,
     backgroundColor: green
+  },
+  avatarBorder: {
+    height: TOTAL_PERCENT,
+    overflow: HIDDEN,
+    borderRadius: TOTAL_ROUNDED,
+    elevation: 10
   },
   defaultAvatar: {
     tintColor: white

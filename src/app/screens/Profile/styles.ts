@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { transparent, green, white } from '@constants/colors';
+import { transparent, green, white, extraLightGray } from '@constants/colors';
 
 const COMMON_VALUE_25 = 25;
 const SMALL_SPACING = 10;
@@ -29,6 +29,10 @@ export default StyleSheet.create({
   form: {
     paddingTop: SPACING,
     paddingHorizontal: SMALL_SPACING
+  },
+  inputCustom: {
+    borderWidth: 1,
+    borderColor: extraLightGray
   },
   stretchAndFlex: {
     alignSelf: 'stretch'
