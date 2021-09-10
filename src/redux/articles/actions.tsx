@@ -10,6 +10,10 @@ import { NavigationContainerRef } from '@react-navigation/native';
 import { actionCreators as FeedbackActions } from '@redux/feedback/actions';
 import CustomModal from '@components/CustomModal';
 import CustomModalConfirm from '@components/CustomModalConfirm';
+import { navigationRef } from '@components/AppNavigator/helper';
+import Routes from '@constants/routes';
+
+import './i18n';
 
 export const actions = createTypes(
   completeTypes({
@@ -101,6 +105,25 @@ const actionCreators = {
                   text={i18next.t('SIGNUP:ERROR_MESSAGE')}
                   onPress={() => dispatch(FeedbackActions.hideModal())}
                   buttonText={i18next.t('SIGNUP:CLOSE_MODAL')}
+                />
+              }
+            />
+          )
+        );
+      }),
+      withPostSuccess((dispatch: Dispatch<any>) => {
+        dispatch(
+          FeedbackActions.showModal(
+            <CustomModal
+              title={i18next.t('ARTICLES_ACTION:TITLE')}
+              body={
+                <CustomModalConfirm
+                  text={i18next.t('ARTICLES_ACTION:MESSAGE')}
+                  onPress={() => {
+                    dispatch(FeedbackActions.hideModal());
+                    navigationRef.current?.navigate(Routes.Home);
+                  }}
+                  buttonText={i18next.t('ARTICLES_ACTION:CLOSE')}
                 />
               }
             />

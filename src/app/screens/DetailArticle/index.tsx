@@ -22,6 +22,7 @@ import icDefaultArticleImage from '@assets/icons/icDefaultArticleImage.jpg';
 import icDelete from '@assets/icons/icDelete.png';
 import icEdit from '@assets/icons/icEdit.png';
 import Routes from '@constants/routes';
+import ArticlesActions from '@redux/articles/actions';
 import { validatorHTML } from '@utils/htmlUtils';
 
 import './i18n';
@@ -57,7 +58,7 @@ function DetailArticle({ route }: Props) {
     if (favoriteCount > favoritesCount) setFavoriteCount(favoriteCount - 1);
     else setFavoriteCount(favoriteCount + 1);
   };
-  const handleDeleteArticle = () => console.log('delete article');
+  const handleDeleteArticle = () => dispatch(ArticlesActions.deleteArticle(slug));
   const handleEditArticle = useCallback(
     () =>
       navigation?.navigate(Routes.EditArticle, {
@@ -171,7 +172,6 @@ function DetailArticle({ route }: Props) {
     ),
     [currentUser, handleRedirectToLogin, handleSubmit]
   );
-
   return (
     <>
       <KeyboardAwareScrollView
@@ -187,7 +187,7 @@ function DetailArticle({ route }: Props) {
         contentContainerStyle={styles.contentStyle}
         style={styles.scrollContainer}>
         <View style={styles.container}>
-          {currentUser && (
+          {currentUser?.user?.username === username && (
             <View style={styles.containerActions}>
               <TouchableOpacity
                 testID={testIds.editButton}
