@@ -17,6 +17,7 @@ import './i18n';
 
 interface Props {
   commentContent: iComment;
+  articleSlug: string;
 }
 
 export default function Comment({
@@ -25,12 +26,13 @@ export default function Comment({
     body,
     id,
     createdAt
-  }
+  },
+  articleSlug
 }: Props) {
   const [presseded, setPresseded] = useState<boolean>(false);
   const [commentText, setCommentText] = useState<string>('');
   const [showModal, setShowModal] = useState<boolean>(false);
-  const currentUser = useSelector((state: State) => state?.auth?.currentUser?.user.username);
+  const currentUser = useSelector((state: State) => state?.auth?.currentUser?.user?.username);
   useEffect(() => {
     const handleComment = async () => {
       if (presseded) {
@@ -46,7 +48,12 @@ export default function Comment({
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <CustomModal showModal={showModal} setShowModal={setShowModal} idComment={id} />
+        <CustomModal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          idComment={id}
+          articleSlug={articleSlug}
+        />
         <View style={styles.containerUser}>
           <View style={styles.containerImage}>
             <Image style={styles.image} resizeMode="contain" source={icDefaultArticleImage} />

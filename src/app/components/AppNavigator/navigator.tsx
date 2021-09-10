@@ -109,7 +109,7 @@ const AppStack = () => (
 );
 
 const Navigator = () => {
-  const currentUser = useSelector((state: State) => state.auth.currentUser);
+  const currentUser = useSelector((state: State) => state.auth.currentUser?.user?.token);
   const defaultStackConfig = currentUser ? appStackNavConfig : authStackNavConfig;
   return <Stack.Navigator {...defaultStackConfig}>{currentUser ? AppStack() : AuthStack()}</Stack.Navigator>;
 };

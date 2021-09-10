@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { red } from '@constants/colors';
 
 const COMMON_SIZE_TRASH = 18;
 
@@ -11,7 +12,8 @@ const styles = StyleSheet.create({
   },
   icTrash: {
     height: COMMON_SIZE_TRASH,
-    width: COMMON_SIZE_TRASH
+    width: COMMON_SIZE_TRASH,
+    tintColor: red
   }
 });
 

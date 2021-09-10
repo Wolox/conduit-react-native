@@ -3,7 +3,7 @@ import i18next from 'i18next';
 import { ApiOkResponse } from 'apisauce';
 import { createTypes, completeTypes, withPostSuccess, withPostFailure } from 'redux-recompose';
 import { setApiHeaders, removeApiHeaders } from '@config/api';
-import { CurrentUser, AuthData, UserResponse, ProfileData } from '@interfaces/authInterfaces';
+import { AuthData, UserResponse, ProfileData } from '@interfaces/authInterfaces';
 import { Nullable } from '@interfaces/globalInterfaces';
 import { Action, State } from '@interfaces/reduxInterfaces';
 import { login, logout, updateCurrentUser, getUserProfile } from '@services/AuthService';
@@ -27,12 +27,11 @@ const TARGETS = {
 
 export const actionCreators = {
   init: () => (dispatch: Dispatch<Action<Nullable<UserResponse>>>, getState: () => State) => {
-    const { currentUser, hasAccessOnBoarding } = getState().auth;
+    const { currentUser } = getState().auth;
     if (currentUser?.user?.token) setApiHeaders(currentUser.user.token);
     dispatch({
       type: actions.AUTH_INIT,
       target: TARGETS.CURRENT_USER,
-      hasAccessOnBoarding,
       payload: currentUser
     });
   },
@@ -45,37 +44,35 @@ export const actionCreators = {
     removeApiHeaders();
     dispatch(actionCreators.removeLoginData);
   },
-  login: (authData: AuthData) => ({
-    type: actions.LOGIN,
-    target: TARGETS.CURRENT_USER,
-    service: login,
-    payload: authData,
-    injections: [
-      withPostSuccess(async (_: any, response: ApiOkResponse<CurrentUser>) => {
-        if (response.data?.token) {
-          await setApiHeaders(response.data.token);
-        } else {
-          actionCreators.login(authData);
-        }
-      }),
-      withPostFailure((dispatch: Dispatch<any>) => {
-        dispatch(
-          FeedbackActions.showModal(
-            <CustomModal
-              title={i18next.t('SIGNUP:ERROR_SIGN_IN')}
-              body={
-                <CustomModalConfirm
-                  text={i18next.t('SIGNUP:ERROR_MESSAGE')}
-                  onPress={() => dispatch(FeedbackActions.hideModal())}
-                  buttonText={i18next.t('SIGNUP:CLOSE_MODAL')}
-                />
-              }
-            />
-          )
-        );
-      })
-    ]
-  }),
+  login: (authData: AuthData) => {
+    return {
+      type: actions.LOGIN,
+      target: TARGETS.CURRENT_USER,
+      service: login,
+      payload: authData,
+      injections: [
+        withPostSuccess(async (_: any, response: ApiOkResponse<UserResponse>) => {
+          if (response.data?.user?.token) await setApiHeaders(response.data?.user?.token);
+        }),
+        withPostFailure((dispatch: Dispatch<any>) => {
+          dispatch(
+            FeedbackActions.showModal(
+              <CustomModal
+                title={i18next.t('SIGNUP:ERROR_SIGN_IN')}
+                body={
+                  <CustomModalConfirm
+                    text={i18next.t('SIGNUP:ERROR_MESSAGE')}
+                    onPress={() => dispatch(FeedbackActions.hideModal())}
+                    buttonText={i18next.t('SIGNUP:CLOSE_MODAL')}
+                  />
+                }
+              />
+            )
+          );
+        })
+      ]
+    };
+  },
   logout: () => ({
     type: actions.LOGOUT,
     target: TARGETS.CURRENT_USER,
