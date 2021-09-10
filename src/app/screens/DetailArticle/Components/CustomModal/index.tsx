@@ -12,12 +12,13 @@ interface Props {
   showModal: boolean;
   setShowModal: Function;
   idComment: number;
+  articleSlug: string;
 }
-export default function CustomModal({ showModal, setShowModal, idComment }: Props) {
+export default function CustomModal({ showModal, setShowModal, idComment, articleSlug }: Props) {
   const dispatch = useDispatch();
-  const handleDelete = async (id: number) => {
-    await dispatch(ActionComments?.deleteComment(id));
-    await setShowModal(false);
+  const handleDelete = () => {
+    dispatch(ActionComments?.deleteComment(articleSlug, idComment));
+    setShowModal(false);
   };
   return (
     <Modal animationType="fade" visible={showModal} transparent={true}>
@@ -30,7 +31,7 @@ export default function CustomModal({ showModal, setShowModal, idComment }: Prop
             <Pressable style={[styles.button, styles.buttonClose]} onPress={() => setShowModal(false)}>
               <Text style={styles.textStyle}>{i18next.t('CUSTOM_COMMENT_MODAL:CANCEL')}</Text>
             </Pressable>
-            <Pressable style={[styles.button, styles.buttonRemove]} onPress={() => handleDelete(idComment)}>
+            <Pressable style={[styles.button, styles.buttonRemove]} onPress={handleDelete}>
               <Text style={styles.textStyle}>{i18next.t('CUSTOM_COMMENT_MODAL:DELETE')}</Text>
             </Pressable>
           </View>
