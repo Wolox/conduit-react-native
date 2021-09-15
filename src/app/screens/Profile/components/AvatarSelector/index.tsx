@@ -3,8 +3,8 @@ import { View, FlatList, ImageSourcePropType, Image, ListRenderItem, TouchableOp
 import { useDispatch } from 'react-redux';
 import { actionCreators as FeedbackActions } from '@redux/feedback/actions';
 import { ListKeyExtractor } from '@interfaces/miscelanious';
+import { avatarsIcons } from '@constants/iconsConstants';
 
-import { avatarsIcons } from './constants';
 import styles from './styles';
 
 interface ItemAvatarSelector {

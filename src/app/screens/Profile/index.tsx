@@ -21,6 +21,7 @@ import signUpStyles from '@screens/Auth/screens/SignUp/styles';
 import { State } from '@interfaces/reduxInterfaces';
 import { CurrentUser } from '@interfaces/authInterfaces';
 import CustomModal from '@components/CustomModal';
+import { getAvatar } from '@constants/iconsConstants';
 
 import './i18n';
 
@@ -28,7 +29,6 @@ import styles from './styles';
 import ProfileListItem from './components/ProfileItem';
 import { ANDROID_SCROLLVIEW_PROPS, ProfileFormValues, FIELDS } from './constants';
 import AvatarSelector from './components/AvatarSelector';
-import { getAvatar } from './components/AvatarSelector/constants';
 
 interface Props extends Navigation {}
 
