@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { white, green } from '@constants/colors';
+import { white, green, extraLightGray } from '@constants/colors';
 import { moderateScale, scale } from '@utils/scalingUtils';
 import { BORDER_WIDTH } from '@constants/dimentions';
 
@@ -71,7 +71,7 @@ export default StyleSheet.create({
     borderRadius: AVATAR_SIZE / 2,
     borderColor: white,
     borderWidth: BORDER_WIDTH.THIN,
-    backgroundColor: green
+    backgroundColor: extraLightGray
   },
   avatarBorder: {
     height: TOTAL_PERCENT,

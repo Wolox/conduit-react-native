@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, Pressable, ImageSourcePropType } from 'react-native';
 import SafeAreaView from 'react-native-safe-area-view';
 import CustomText from '@components/CustomText';
 import userIcon from '@assets/Profile/icUser.png';
@@ -12,10 +12,11 @@ interface Props {
   subtitle?: string;
   withAvatar?: boolean;
   children: ReactNode;
-  avatar?: string;
+  avatar?: ImageSourcePropType | null;
+  onPressAvatar?: () => void;
 }
 
-function WithHeader({ title, children, withAvatar, avatar }: Props) {
+function WithHeader({ title, children, withAvatar, avatar, onPressAvatar }: Props) {
   return (
     <>
       <View style={styles.container}>
@@ -37,23 +38,23 @@ function WithHeader({ title, children, withAvatar, avatar }: Props) {
         </View>
         <View style={[styles.childrenContainer, withAvatar && styles.longChildrenContainer]}>{children}</View>
         {withAvatar && (
-          <View style={styles.avatarContainer}>
+          <Pressable style={styles.avatarContainer} onPress={onPressAvatar}>
             {isAndroid ? (
               <View style={styles.avatarBorder}>
                 <Image
-                  source={avatar ? { uri: avatar } : userIcon}
+                  source={avatar ? avatar : userIcon}
                   resizeMode="cover"
                   style={[styles.avatar, !avatar && styles.defaultAvatar]}
                 />
               </View>
             ) : (
               <Image
-                source={avatar ? { uri: avatar } : userIcon}
+                source={avatar ? avatar : userIcon}
                 resizeMode="contain"
                 style={[styles.avatar, !avatar && styles.defaultAvatar]}
               />
             )}
-          </View>
+          </Pressable>
         )}
       </View>
     </>

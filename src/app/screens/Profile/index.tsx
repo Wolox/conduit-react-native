@@ -12,6 +12,7 @@ import { isIos } from '@constants/platform';
 import { OPACITY } from '@constants/commonStyles';
 import { Navigation } from '@interfaces/navigation';
 import { actionCreators as AuthActions } from '@redux/auth/actions';
+import { actionCreators as FeedbackActions } from '@redux/feedback/actions';
 import logoutIcon from '@assets/Profile/icLogout.png';
 import * as AuthService from '@services/AuthService';
 import { useAsyncRequest } from '@hooks/useRequest';
@@ -19,12 +20,15 @@ import { validateRequired, validateEmail, validateOnlyText } from '@utils/valida
 import signUpStyles from '@screens/Auth/screens/SignUp/styles';
 import { State } from '@interfaces/reduxInterfaces';
 import { CurrentUser } from '@interfaces/authInterfaces';
+import CustomModal from '@components/CustomModal';
 
 import './i18n';
 
 import styles from './styles';
 import ProfileListItem from './components/ProfileItem';
 import { ANDROID_SCROLLVIEW_PROPS, ProfileFormValues, FIELDS } from './constants';
+import AvatarSelector from './components/AvatarSelector';
+import { getAvatar } from './components/AvatarSelector/constants';
 
 interface Props extends Navigation {}
 
@@ -62,12 +66,25 @@ function Profile() {
       dispatch(AuthActions.getUserProfile({ user }, usernameExist, emailExist));
     }
   };
-
   const onEmailFocus = () => setEmailError('');
   const onUsenameFocus = () => setUsernameError('');
-
+  const [avatarSelected, setAvatarSelected] = useState(currentUser?.image || '');
+  const handleChangeAvatar = () =>
+    dispatch(
+      FeedbackActions.showModal(
+        <CustomModal
+          title={i18next.t('PROFILE:SELECT_AVATAR')}
+          body={<AvatarSelector selected={avatarSelected} setSelected={setAvatarSelected} />}
+          style={styles.modalContainer}
+        />
+      )
+    );
   return (
-    <WithHeader title={i18next.t(`app:${Routes.Profile}`)} withAvatar avatar={currentUser?.image}>
+    <WithHeader
+      title={i18next.t(`app:${Routes.Profile}`)}
+      withAvatar
+      avatar={getAvatar(avatarSelected)}
+      onPressAvatar={handleChangeAvatar}>
       <View style={styles.container}>
         <ScrollView
           bounces={false}
