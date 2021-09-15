@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Keyboard, ScrollView, TouchableOpacity, View } from 'react-native';
 import i18next from 'i18next';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import WithHeader from '@components/WithHeader';
 import CustomButton from '@components/CustomButton';
 import ControlledCustomTextInput from '@components/CustomTextInput/controller';
-import CustomText from '@app/components/CustomText';
+import CustomText from '@components/CustomText';
 import Routes from '@constants/routes';
 import { isIos } from '@constants/platform';
 import { OPACITY } from '@constants/commonStyles';
@@ -52,13 +52,17 @@ function Profile() {
 
   const emailExist = () => setEmailError(i18next.t('PROFILE:EMAIL_EXIST'));
   const hasError = !!error;
+
+  const [avatarSelected, setAvatarSelected] = useState(currentUser?.image || '');
+  const [isAvatarChanged, setIsAvatarChanged] = useState(false);
   const handleUpdateProfile = (values: ProfileFormValues) => {
     Keyboard.dismiss();
     const user: CurrentUser = {
       email: values.email,
       token: currentUser?.token,
       username: values.username,
-      bio: values.description
+      bio: values.description,
+      image: avatarSelected
     };
     if (currentUser?.username === values.username) {
       dispatch(AuthActions.updateCurrentUser({ user }, emailExist));
@@ -68,7 +72,6 @@ function Profile() {
   };
   const onEmailFocus = () => setEmailError('');
   const onUsenameFocus = () => setUsernameError('');
-  const [avatarSelected, setAvatarSelected] = useState(currentUser?.image || '');
   const handleChangeAvatar = () =>
     dispatch(
       FeedbackActions.showModal(
@@ -79,6 +82,9 @@ function Profile() {
         />
       )
     );
+  useEffect(() => {
+    setIsAvatarChanged(avatarSelected !== currentUser?.image);
+  }, [avatarSelected, currentUser]);
   return (
     <WithHeader
       title={i18next.t(`app:${Routes.Profile}`)}
@@ -142,7 +148,7 @@ function Profile() {
               defaultValue={currentUser?.bio}
             />
             <CustomButton
-              disabled={!(isValid && isDirty)}
+              disabled={!isAvatarChanged && !(isValid && isDirty)}
               onPress={handleSubmit(handleUpdateProfile)}
               style={styles.formButton}
               textStyle={styles.textFormButton}
