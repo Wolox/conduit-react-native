@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Keyboard, ScrollView, TouchableOpacity, View } from 'react-native';
 import i18next from 'i18next';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,12 +6,13 @@ import { useForm } from 'react-hook-form';
 import WithHeader from '@components/WithHeader';
 import CustomButton from '@components/CustomButton';
 import ControlledCustomTextInput from '@components/CustomTextInput/controller';
-import CustomText from '@app/components/CustomText';
+import CustomText from '@components/CustomText';
 import Routes from '@constants/routes';
 import { isIos } from '@constants/platform';
 import { OPACITY } from '@constants/commonStyles';
 import { Navigation } from '@interfaces/navigation';
 import { actionCreators as AuthActions } from '@redux/auth/actions';
+import { actionCreators as FeedbackActions } from '@redux/feedback/actions';
 import logoutIcon from '@assets/Profile/icLogout.png';
 import * as AuthService from '@services/AuthService';
 import { useAsyncRequest } from '@hooks/useRequest';
@@ -19,12 +20,15 @@ import { validateRequired, validateEmail, validateOnlyText } from '@utils/valida
 import signUpStyles from '@screens/Auth/screens/SignUp/styles';
 import { State } from '@interfaces/reduxInterfaces';
 import { CurrentUser } from '@interfaces/authInterfaces';
+import CustomModal from '@components/CustomModal';
+import { getAvatar } from '@constants/iconsConstants';
 
 import './i18n';
 
 import styles from './styles';
 import ProfileListItem from './components/ProfileItem';
 import { ANDROID_SCROLLVIEW_PROPS, ProfileFormValues, FIELDS } from './constants';
+import AvatarSelector from './components/AvatarSelector';
 
 interface Props extends Navigation {}
 
@@ -48,13 +52,17 @@ function Profile() {
 
   const emailExist = () => setEmailError(i18next.t('PROFILE:EMAIL_EXIST'));
   const hasError = !!error;
+
+  const [avatarSelected, setAvatarSelected] = useState(currentUser?.image || '');
+  const [isAvatarChanged, setIsAvatarChanged] = useState(false);
   const handleUpdateProfile = (values: ProfileFormValues) => {
     Keyboard.dismiss();
     const user: CurrentUser = {
       email: values.email,
       token: currentUser?.token,
       username: values.username,
-      bio: values.description
+      bio: values.description,
+      image: avatarSelected
     };
     if (currentUser?.username === values.username) {
       dispatch(AuthActions.updateCurrentUser({ user }, emailExist));
@@ -62,12 +70,27 @@ function Profile() {
       dispatch(AuthActions.getUserProfile({ user }, usernameExist, emailExist));
     }
   };
-
   const onEmailFocus = () => setEmailError('');
   const onUsenameFocus = () => setUsernameError('');
-
+  const handleChangeAvatar = () =>
+    dispatch(
+      FeedbackActions.showModal(
+        <CustomModal
+          title={i18next.t('PROFILE:SELECT_AVATAR')}
+          body={<AvatarSelector selected={avatarSelected} setSelected={setAvatarSelected} />}
+          style={styles.modalContainer}
+        />
+      )
+    );
+  useEffect(() => {
+    setIsAvatarChanged(avatarSelected !== currentUser?.image);
+  }, [avatarSelected, currentUser]);
   return (
-    <WithHeader title={i18next.t(`app:${Routes.Profile}`)} withAvatar avatar={currentUser?.image}>
+    <WithHeader
+      title={i18next.t(`app:${Routes.Profile}`)}
+      withAvatar
+      avatar={getAvatar(avatarSelected)}
+      onPressAvatar={handleChangeAvatar}>
       <View style={styles.container}>
         <ScrollView
           bounces={false}
@@ -125,7 +148,7 @@ function Profile() {
               defaultValue={currentUser?.bio}
             />
             <CustomButton
-              disabled={!(isValid && isDirty)}
+              disabled={!isAvatarChanged && !(isValid && isDirty)}
               onPress={handleSubmit(handleUpdateProfile)}
               style={styles.formButton}
               textStyle={styles.textFormButton}

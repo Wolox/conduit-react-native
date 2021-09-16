@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { darkGray, red } from '@constants/colors';
+import { extraLightGray, red } from '@constants/colors';
 import { SPACING } from '@constants/dimentions';
 import { moderateScale } from '@utils/scalingUtils';
 
@@ -17,7 +17,7 @@ export default StyleSheet.create({
   image: {
     width: IMAGE_SIZE,
     height: IMAGE_SIZE,
-    backgroundColor: darkGray,
+    backgroundColor: extraLightGray,
     borderRadius: SPACING.XBIG,
     marginRight: SPACING.SMALL
   },

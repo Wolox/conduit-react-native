@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { darkGray, lightGray, white, red, gray, green } from '@constants/colors';
+import { lightGray, white, red, gray, green, extraLightGray } from '@constants/colors';
 import { SPACING, BORDER_WIDTH } from '@constants/dimentions';
 import { BOTTOM_SEPARATOR_LINE, commonBoxShadow } from '@constants/commonStyles';
 import { moderateScale } from '@utils/scalingUtils';
@@ -43,7 +43,7 @@ export default StyleSheet.create({
     top: -SPACING.XXBIG * SPACING.XXXSMALL,
     width: IMAGE_USER_SIZE,
     height: IMAGE_USER_SIZE,
-    backgroundColor: darkGray,
+    backgroundColor: extraLightGray,
     borderRadius: SPACING.XXBIG
   },
   interactionButtons: {
