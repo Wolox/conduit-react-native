@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Reactotron from 'reactotron-react-native';
 import SplashScreen from 'react-native-splash-screen';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppNavigator from '@components/AppNavigator';
 import FullScreenModalReducer from '@components/FullScreenModalReducer';
 import { apiSetup } from '@config/api';
@@ -24,10 +25,10 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <SafeAreaProvider>
       <AppNavigator />
       <FullScreenModalReducer content={modal} />
-    </>
+    </SafeAreaProvider>
   );
 };
 

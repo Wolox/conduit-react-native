@@ -6,7 +6,8 @@ describe('testing reducers', () => {
     const action = {
       type: actions.AUTH_INIT,
       payload: { id: '', email: '' },
-      target: 'currentUser'
+      target: 'currentUser',
+      hasAccessOnBoarding: false
     };
     await expect(authReducer(undefined, action)).toEqual({
       ...initialState,
@@ -23,7 +24,7 @@ describe('testing reducers', () => {
       ...initialState,
       currentUserLoading: false,
       currentUserError: null,
-      currentUser: undefined
+      currentUser: null
     });
   });
 });
