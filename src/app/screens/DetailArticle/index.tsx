@@ -18,12 +18,12 @@ import { validateMinLength, validateMaxLength } from '@utils/validations/validat
 import icAddInactive from '@assets/TabBar/icAddpostInactive.png';
 import icSendMessage from '@assets/icons/icSendMessage.png';
 import icFavouriteInactive from '@assets/TabBar/icFavoriteInactive.png';
-import icDefaultArticleImage from '@assets/icons/icDefaultArticleImage.jpg';
 import icDelete from '@assets/icons/icDelete.png';
 import icEdit from '@assets/icons/icEdit.png';
 import Routes from '@constants/routes';
 import ArticlesActions from '@redux/articles/actions';
 import { validatorHTML } from '@utils/htmlUtils';
+import { getAvatar } from '@constants/iconsConstants';
 
 import './i18n';
 
@@ -213,7 +213,7 @@ function DetailArticle({ route }: Props) {
           )}
           <View style={styles.containerDetail}>
             <View style={styles.containerUser}>
-              <Image source={image ? { uri: image } : icDefaultArticleImage} style={styles.image} />
+              <Image source={image && getAvatar(image)} style={styles.image} />
               <View>
                 <CustomText center green>
                   {username}

@@ -65,5 +65,8 @@ export default StyleSheet.create({
   otherErrorStyle: {
     paddingLeft: COMMON_VALUE_20,
     marginTop: -COMMON_VALUE_20
+  },
+  modalContainer: {
+    justifyContent: 'flex-start'
   }
 });
