@@ -1,9 +1,9 @@
-import { fetchMiddleware } from 'redux-recompose';
-import { actionCreators, actions, TARGETS } from '@redux/auth/actions';
-import { actions as feedbackactions } from '@redux/feedback/actions';
-import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import { fetchMiddleware } from 'redux-recompose';
 import api from '@config/api';
+import { actions as feedbackactions } from '@redux/feedback/actions';
+import { actions, actionCreators, TARGETS } from '@redux/auth/actions';
 import { initialState } from '@redux/auth/reducer';
 
 import { mapActionsToTypes } from '../utils';
