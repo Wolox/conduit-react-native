@@ -6,7 +6,7 @@ import SignUp from '@screens/Auth/screens/SignUp';
 describe('test SIGNUP_SCREEN', () => {
   test('to match with snapshot', async () => {
     const tree = await renderer.create(<MockedNavigator component={SignUp} />).toJSON();
-
     expect(tree).toMatchSnapshot();
+    expect(tree).not.toBeNull();
   });
 });

@@ -14,5 +14,6 @@ describe('test LOGING_SCREEN', () => {
   test('to match with snapshot', () => {
     const tree = renderer.create(<MockedNavigator component={Login} />).toJSON();
     expect(tree).toMatchSnapshot();
+    expect(tree).not.toBeNull();
   });
 });
