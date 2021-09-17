@@ -2,17 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Image } from 'react-native';
 import i18next from 'i18next';
 import { useSelector } from 'react-redux';
-import icDefaultArticleImage from '@assets/icons/icDefaultArticleImage.jpg';
 import CustomTextPressable from '@components/CustomTextPressable';
 import CustomText from '@components/CustomText';
 import { State } from '@interfaces/reduxInterfaces';
 import { iComment } from '@interfaces/commentInterfaces';
 import { formatDate } from '@utils/dateUtils';
+import { getAvatar } from '@constants/iconsConstants';
 
 import CustomModal from '../CustomModal';
 import Trash from '../Trash';
 
 import styles from './styles';
+
 import './i18n';
 
 interface Props {
@@ -22,7 +23,7 @@ interface Props {
 
 export default function Comment({
   commentContent: {
-    author: { username },
+    author: { username, image },
     body,
     id,
     createdAt
@@ -56,7 +57,7 @@ export default function Comment({
         />
         <View style={styles.containerUser}>
           <View style={styles.containerImage}>
-            <Image style={styles.image} resizeMode="contain" source={icDefaultArticleImage} />
+            <Image style={styles.image} resizeMode="contain" source={getAvatar(image)} />
           </View>
           <Text style={styles.userName}>{username}</Text>
           <Text style={styles.commentDate}>{formatDate(createdAt)}</Text>
