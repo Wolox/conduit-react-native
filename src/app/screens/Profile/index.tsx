@@ -14,8 +14,6 @@ import { Navigation } from '@interfaces/navigation';
 import { actionCreators as AuthActions } from '@redux/auth/actions';
 import { actionCreators as FeedbackActions } from '@redux/feedback/actions';
 import logoutIcon from '@assets/Profile/icLogout.png';
-import * as AuthService from '@services/AuthService';
-import { useAsyncRequest } from '@hooks/useRequest';
 import { validateRequired, validateEmail, validateOnlyText } from '@utils/validations/validateUtils';
 import signUpStyles from '@screens/Auth/screens/SignUp/styles';
 import { State } from '@interfaces/reduxInterfaces';
@@ -36,10 +34,9 @@ function Profile() {
   const dispatch = useDispatch();
   const handlePressLogout = () => dispatch(AuthActions.logout());
   const currentUser = useSelector((state: State) => state.auth.currentUser?.user);
-  const { userProfileLoading, currentUserLoading } = useSelector((state: State) => state.auth);
-  const [, , error] = useAsyncRequest({
-    request: AuthService.updateProfile
-  });
+  const { userProfileLoading, currentUserLoading, currentUserError } = useSelector(
+    (state: State) => state.auth
+  );
   const [usernameError, setUsernameError] = useState('');
   const [emailError, setEmailError] = useState('');
   const {
@@ -51,7 +48,7 @@ function Profile() {
   const usernameExist = () => setUsernameError(i18next.t('PROFILE:USERNAME_EXIST'));
 
   const emailExist = () => setEmailError(i18next.t('PROFILE:EMAIL_EXIST'));
-  const hasError = !!error;
+  const hasError = !!currentUserError;
 
   const [avatarSelected, setAvatarSelected] = useState(currentUser?.image || '');
   const [isAvatarChanged, setIsAvatarChanged] = useState(false);
