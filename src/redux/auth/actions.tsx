@@ -8,8 +8,8 @@ import { Nullable } from '@interfaces/globalInterfaces';
 import { Action, State } from '@interfaces/reduxInterfaces';
 import { login, logout, updateCurrentUser, getUserProfile } from '@services/AuthService';
 import { actionCreators as FeedbackActions } from '@redux/feedback/actions';
-import CustomModal from '@app/components/CustomModal';
-import CustomModalConfirm from '@app/components/CustomModalConfirm';
+import CustomModal from '@components/CustomModal';
+import CustomModalConfirm from '@components/CustomModalConfirm';
 
 export const actions = createTypes(
   completeTypes({
@@ -19,7 +19,7 @@ export const actions = createTypes(
   '@@AUTH'
 );
 
-const TARGETS = {
+export const TARGETS = {
   ONBOARDING: 'hasAccessOnBoarding',
   CURRENT_USER: 'currentUser',
   USER_PROFILE: 'userProfile'
@@ -27,22 +27,30 @@ const TARGETS = {
 
 export const actionCreators = {
   init: () => (dispatch: Dispatch<Action<Nullable<UserResponse>>>, getState: () => State) => {
-    const { currentUser } = getState().auth;
-    if (currentUser?.user?.token) setApiHeaders(currentUser.user.token);
-    dispatch({
-      type: actions.AUTH_INIT,
-      target: TARGETS.CURRENT_USER,
-      payload: currentUser
-    });
+    if (getState().auth) {
+      const { currentUser } = getState().auth;
+      if (currentUser?.user?.token) setApiHeaders(currentUser.user.token);
+      dispatch({
+        type: actions.AUTH_INIT,
+        target: TARGETS.CURRENT_USER,
+        payload: currentUser
+      });
+    } else {
+      dispatch({
+        type: actions.AUTH_INIT,
+        target: TARGETS.CURRENT_USER,
+        payload: getState()?.auth?.currentUser
+      });
+    }
   },
   removeLoginData: () => ({
     type: actions.LOGOUT,
     target: TARGETS.CURRENT_USER,
-    payload: null
+    payload: null,
+    currentUser: null
   }),
   cleanUserData: (dispatch: Dispatch<any>) => {
-    removeApiHeaders();
-    dispatch(actionCreators.removeLoginData);
+    return dispatch(actionCreators.removeLoginData());
   },
   login: (authData: AuthData) => {
     return {
@@ -79,12 +87,12 @@ export const actionCreators = {
     service: logout,
     successSelector: () => null,
     injections: [
-      withPostSuccess((dispatch: Dispatch<any>) => {
-        dispatch(actionCreators.setHasAccessOnBoarding(false));
-        actionCreators.cleanUserData(dispatch);
+      withPostSuccess(async (dispatch: Dispatch<any>) => {
+        await dispatch(actionCreators.cleanUserData(dispatch));
+        await removeApiHeaders();
       }),
-      withPostFailure((dispatchAction: Dispatch<any>) => {
-        actionCreators.cleanUserData(dispatchAction);
+      withPostFailure(async (dispatchAction: Dispatch<any>) => {
+        await dispatchAction(actionCreators.cleanUserData(dispatchAction));
       })
     ]
   }),
