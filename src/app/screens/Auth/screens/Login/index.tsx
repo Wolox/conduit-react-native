@@ -22,7 +22,7 @@ import Header from './components/Header';
 import LogoConduit from './components/LogoConduit';
 import testIds from './testIds';
 
-export function Login({ navigation }: Navigation) {
+function Login({ navigation }: Navigation) {
   const dispatch = useDispatch();
   const hasLoginError = useSelector<State, boolean>((state: State) => !!state.auth.currentUserError);
   const { currentUserLoading } = useSelector((state: State) => state.auth);
