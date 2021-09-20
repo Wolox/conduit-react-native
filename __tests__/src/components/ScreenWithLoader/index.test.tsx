@@ -2,8 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import renderer from 'react-test-renderer';
 import MockedNavigator from '@mocks/MockedNavigator';
-
-import ScreenWithLoader from '../../../../src/app/components/ScreenWithLoader';
+import ScreenWithLoader from '@components/ScreenWithLoader';
 
 describe('test ArticleItem', () => {
   const MOCKED_DATA = {

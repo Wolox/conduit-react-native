@@ -1,8 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import MockedNavigator from '@mocks/MockedNavigator';
-
-import ConfirmationModal from '../../../../src/app/components/ConfirmationModal';
+import ConfirmationModal from '@components/ConfirmationModal';
 
 describe('test ArticleItem', () => {
   const MOCKED_DATA = {
