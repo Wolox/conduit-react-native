@@ -1,0 +1,435 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AvatarSelector AvatarSelector Snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "paddingBottom": 15,
+      "width": "100%",
+    }
+  }
+>
+  <RCTScrollView
+    data={
+      Array [
+        Object {
+          "icon": Object {
+            "process": [Function],
+          },
+          "name": "Man1",
+        },
+        Object {
+          "icon": Object {
+            "process": [Function],
+          },
+          "name": "Man2",
+        },
+        Object {
+          "icon": Object {
+            "process": [Function],
+          },
+          "name": "Man3",
+        },
+        Object {
+          "icon": Object {
+            "process": [Function],
+          },
+          "name": "Man4",
+        },
+        Object {
+          "icon": Object {
+            "process": [Function],
+          },
+          "name": "Woman1",
+        },
+        Object {
+          "icon": Object {
+            "process": [Function],
+          },
+          "name": "Woman2",
+        },
+        Object {
+          "icon": Object {
+            "process": [Function],
+          },
+          "name": "Woman3",
+        },
+        Object {
+          "icon": Object {
+            "process": [Function],
+          },
+          "name": "Woman4",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "marginBottom": 10,
+                "marginHorizontal": 15,
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={
+                Object {
+                  "backgroundColor": "#5CB85C",
+                  "borderTopLeftRadius": 80,
+                  "borderTopRightRadius": 80,
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 40,
+                }
+              }
+            />
+            <Image
+              source={
+                Object {
+                  "process": [Function],
+                }
+              }
+              style={
+                Object {
+                  "height": 214.28571428571428,
+                  "width": 214.28571428571428,
+                }
+              }
+            />
+          </View>
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "marginBottom": 10,
+                "marginHorizontal": 15,
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={false}
+            />
+            <Image
+              source={
+                Object {
+                  "process": [Function],
+                }
+              }
+              style={
+                Object {
+                  "height": 214.28571428571428,
+                  "width": 214.28571428571428,
+                }
+              }
+            />
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "marginBottom": 10,
+                "marginHorizontal": 15,
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={false}
+            />
+            <Image
+              source={
+                Object {
+                  "process": [Function],
+                }
+              }
+              style={
+                Object {
+                  "height": 214.28571428571428,
+                  "width": 214.28571428571428,
+                }
+              }
+            />
+          </View>
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "marginBottom": 10,
+                "marginHorizontal": 15,
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={false}
+            />
+            <Image
+              source={
+                Object {
+                  "process": [Function],
+                }
+              }
+              style={
+                Object {
+                  "height": 214.28571428571428,
+                  "width": 214.28571428571428,
+                }
+              }
+            />
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "marginBottom": 10,
+                "marginHorizontal": 15,
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={false}
+            />
+            <Image
+              source={
+                Object {
+                  "process": [Function],
+                }
+              }
+              style={
+                Object {
+                  "height": 214.28571428571428,
+                  "width": 214.28571428571428,
+                }
+              }
+            />
+          </View>
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "marginBottom": 10,
+                "marginHorizontal": 15,
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={false}
+            />
+            <Image
+              source={
+                Object {
+                  "process": [Function],
+                }
+              }
+              style={
+                Object {
+                  "height": 214.28571428571428,
+                  "width": 214.28571428571428,
+                }
+              }
+            />
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "marginBottom": 10,
+                "marginHorizontal": 15,
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={false}
+            />
+            <Image
+              source={
+                Object {
+                  "process": [Function],
+                }
+              }
+              style={
+                Object {
+                  "height": 214.28571428571428,
+                  "width": 214.28571428571428,
+                }
+              }
+            />
+          </View>
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "marginBottom": 10,
+                "marginHorizontal": 15,
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={false}
+            />
+            <Image
+              source={
+                Object {
+                  "process": [Function],
+                }
+              }
+              style={
+                Object {
+                  "height": 214.28571428571428,
+                  "width": 214.28571428571428,
+                }
+              }
+            />
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

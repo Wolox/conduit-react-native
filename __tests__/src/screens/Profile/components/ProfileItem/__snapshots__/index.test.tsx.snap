@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileItem ProfileItem Snapshot 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "justifyContent": "space-between",
+          "paddingRight": 10,
+          "paddingTop": 20,
+        },
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingVertical": 4,
+          "width": "95%",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingVertical": 4,
+          "width": "95%",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "borderColor": "#5CB85C",
+            "borderRadius": 26.785714285714285,
+            "borderWidth": 0.5,
+            "height": 53.57142857142857,
+            "justifyContent": "center",
+            "marginRight": 14,
+            "width": 53.57142857142857,
+          }
+        }
+      >
+        <Image
+          resizeMode="contain"
+          source={
+            Object {
+              "process": [Function],
+            }
+          }
+          style={
+            Object {
+              "height": 49.285714285714285,
+              "tintColor": "#5CB85C",
+              "width": 49.285714285714285,
+            }
+          }
+        />
+      </View>
+      <Text
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "color": "#000",
+              "fontFamily": "Nunito",
+              "fontSize": 25.142857142857142,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+            },
+            Array [],
+            undefined,
+          ]
+        }
+      >
+        Logout
+      </Text>
+    </View>
+    <Image
+      source={
+        Object {
+          "process": [Function],
+        }
+      }
+      style={
+        Object {
+          "height": 25.714285714285715,
+          "tintColor": "#E5E5E5",
+          "width": 15,
+        }
+      }
+    />
+  </View>
+</View>
+`;

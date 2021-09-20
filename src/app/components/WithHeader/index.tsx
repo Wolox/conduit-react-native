@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
-import { View, Image, Pressable, ImageSourcePropType } from 'react-native';
-import SafeAreaView from 'react-native-safe-area-view';
+import { View, Image, Pressable, ImageSourcePropType, SafeAreaView } from 'react-native';
 import CustomText from '@components/CustomText';
 import userIcon from '@assets/Profile/icUser.png';
 import { isAndroid } from '@constants/platform';
@@ -21,7 +20,7 @@ function WithHeader({ title, children, withAvatar, avatar, onPressAvatar }: Prop
     <>
       <View style={styles.container}>
         {!!title && (
-          <SafeAreaView forceInset={{ bottom: 'never' }}>
+          <SafeAreaView>
             <View style={styles.headerContent}>
               <View style={styles.textContainer}>
                 <CustomText headerTitle style={styles.title}>
