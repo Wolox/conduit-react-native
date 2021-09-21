@@ -1405,6 +1405,11 @@ exports[`test NEW_ARTICLE_SNAPSHOT to match with snapshot 1`] = `
                               />
                             </View>
                             <Memo(CustomButton)
+                              loading={
+                                Object {
+                                  "createArticleLoading": false,
+                                }
+                              }
                               onPress={[Function]}
                               primary={true}
                               style={
@@ -2064,41 +2069,12 @@ exports[`test NEW_ARTICLE_SNAPSHOT to match with snapshot 1`] = `
                               }
                               testID="create-article-button"
                             >
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "backgroundColor": "transparent",
-                                      "color": "#000",
-                                      "fontFamily": "Nunito",
-                                      "fontSize": 25.142857142857142,
-                                      "fontStyle": "normal",
-                                      "fontWeight": "400",
-                                    },
-                                    Array [
-                                      Object {
-                                        "color": "#000",
-                                        "fontFamily": "Nunito",
-                                        "fontSize": 25.142857142857142,
-                                        "fontStyle": "normal",
-                                        "fontWeight": "700",
-                                      },
-                                      Object {
-                                        "color": "#FFF",
-                                      },
-                                    ],
-                                    Array [
-                                      Array [],
-                                      undefined,
-                                      Object {
-                                        "color": "#FFF",
-                                      },
-                                    ],
-                                  ]
-                                }
-                              >
-                                NEW_ARTICLE:CREATE_BUTTON
-                              </Text>
+                              <ActivityIndicator
+                                animating={true}
+                                color="#FFF"
+                                hidesWhenStopped={true}
+                                size="small"
+                              />
                             </View>
                           </View>
                         </View>
