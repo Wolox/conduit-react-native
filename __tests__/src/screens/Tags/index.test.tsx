@@ -5,7 +5,7 @@ import Tags from '@screens/Tags';
 
 jest.mock('react-redux', () => {
   return {
-    useSelector: jest.fn().mockImplementation(() => ({ tags: [] })),
+    useSelector: jest.fn().mockImplementation(() => []),
     useDispatch: () => jest.fn()
   };
 });
