@@ -17,7 +17,7 @@ import './i18n';
 function Tags() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const tags = useSelector<State, string[]>(state => state.articles.tagList || []);
+  const tags = useSelector<State, string[]>(state => state.articles.tagList);
   const storeSelectedTags = useSelector<State, string[]>(state => state.articles.selectedTags || []);
   const [selectedTags, setSelectedTags] = useState<string[]>(storeSelectedTags);
 
@@ -45,17 +45,18 @@ function Tags() {
           />
         </TouchableOpacity>
         <View style={styles.containerTags}>
-          {tags.map((tag: string, index: number) => {
-            const optionSelected = selectedTags.find(option => option === tag);
-            return (
-              <Checkbox
-                key={`key-${tag}-${index}`}
-                selected={!!optionSelected}
-                option={tag}
-                onPress={handlePress}
-              />
-            );
-          })}
+          {tags &&
+            tags.map((tag: string, index: number) => {
+              const optionSelected = selectedTags.find(option => option === tag);
+              return (
+                <Checkbox
+                  key={`key-${tag}-${index}`}
+                  selected={!!optionSelected}
+                  option={tag}
+                  onPress={handlePress}
+                />
+              );
+            })}
         </View>
       </View>
       <View>
