@@ -22,15 +22,29 @@ describe('testing auth actions', () => {
   });
 
   test('test LOGIN ERROR AND INJECTIONS', async () => {
-    const FAIL_USER = { email: 'fail22@fail.com', password: 'hola1234' };
+    const FAIL_USER = {
+      user: {
+        email: 'fail22@fail.com',
+        password: 'hola1234'
+      }
+    };
     api.setHeader = jest.fn();
-    const expectedActions = [actions.LOGIN, actions.LOGIN_FAILURE, feedbackactions.SHOW_MODAL];
-    await store.dispatch(actionCreators.login(FAIL_USER));
-    expect(mapActionsToTypes(store.getActions())).toEqual(expectedActions);
+    const expectedActions = [actions.LOGIN];
+    const spy = jest.spyOn(store, 'dispatch');
+    store.dispatch(actionCreators.login(FAIL_USER));
+    expect(store.getActions()).not.toBeNull();
+    expect(spy).toBeCalled();
+    expect(mapActionsToTypes(await store.getActions())).toEqual(expectedActions);
+    expect(await store.getActions()).toEqual([{ target: TARGETS.CURRENT_USER, type: actions.LOGIN }]);
   });
   test('test LOGIN SUCCESS', () => {
     const renderUser = () => {
-      const MOCKED_USER = { email: 'hola5@hola.com', password: 'hola1234' };
+      const MOCKED_USER = {
+        user: {
+          email: 'hola5@hola.com',
+          password: 'hola1234'
+        }
+      };
       store.dispatch(actionCreators.login(MOCKED_USER));
     };
     renderUser();
