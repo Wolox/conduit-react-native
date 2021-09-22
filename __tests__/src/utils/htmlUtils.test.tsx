@@ -35,13 +35,12 @@ describe('validatorHTML', () => {
 });
 
 describe('test RenderHTML', () => {
+  const body='Hello World';
   test('renderHTML Result not be null', () => {
-    const body='Hello World';
     const result=renderHTML(body);
     expect(result).not.toBeNull();
   })
   test('renderHTML result strictEqual', () => {
-    const body='Hello World';
     const result=renderHTML(body);
     expect(result).toStrictEqual({
       html: body
