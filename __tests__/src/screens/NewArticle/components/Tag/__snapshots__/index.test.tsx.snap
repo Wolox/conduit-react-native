@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tag Tag Snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#818A91",
+      "borderRadius": 20,
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "height": 30,
+      "justifyContent": "center",
+      "marginVertical": 5,
+      "maxWidth": 200,
+      "paddingHorizontal": 10,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "color": "#000",
+          "fontFamily": "Nunito",
+          "fontSize": 25.142857142857142,
+          "fontStyle": "normal",
+          "fontWeight": "400",
+        },
+        Array [
+          Object {
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#FFF",
+          },
+        ],
+        Object {
+          "marginLeft": 5,
+        },
+      ]
+    }
+  >
+    
+  </Text>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "borderRadius": 10,
+        "marginLeft": 5,
+        "width": 20,
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+            "color": "#000",
+            "fontFamily": "Nunito",
+            "fontSize": 25.142857142857142,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+          },
+          Array [
+            Object {
+              "color": "#000",
+              "fontFamily": "Nunito",
+              "fontSize": 25.142857142857142,
+              "fontStyle": "normal",
+              "fontWeight": "700",
+            },
+            Object {
+              "textAlign": "center",
+            },
+            Object {
+              "color": "#FFF",
+            },
+          ],
+          undefined,
+        ]
+      }
+    >
+      x
+    </Text>
+  </View>
+</View>
+`;

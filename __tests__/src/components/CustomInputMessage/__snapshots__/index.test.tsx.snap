@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomInputMessage CustomInputMessage Snapshot 1`] = `
+<View
+  style={
+    Object {
+      "marginHorizontal": 2,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "marginTop": 4,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "marginBottom": 5,
+            "padding": 10,
+          },
+          false,
+          Object {
+            "marginBottom": 0,
+            "paddingBottom": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#FFF",
+              "borderRadius": 15,
+              "elevation": 1,
+              "height": 75,
+              "paddingHorizontal": 5,
+              "shadowColor": "#E5E5E5",
+              "shadowOffset": Object {
+                "height": 3,
+                "width": 0,
+              },
+              "shadowOpacity": 1,
+            },
+            Object {},
+            Array [
+              Object {
+                "height": 300,
+                "paddingBottom": 10,
+              },
+              Object {},
+            ],
+            Array [
+              Object {
+                "height": 300,
+                "paddingBottom": 10,
+              },
+              Object {},
+            ],
+          ]
+        }
+      >
+        <TextInput
+          allowFontScaling={false}
+          autoCapitalize="none"
+          autoCompleteType="off"
+          autoCorrect={false}
+          blurOnSubmit={true}
+          clearButtonMode="never"
+          editable={true}
+          keyboardType="default"
+          maxLength={5}
+          multiline={true}
+          name="message"
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          onFocus={[Function]}
+          onKeyPress={[Function]}
+          placeholder=""
+          rejectResponderTermination={true}
+          returnKeyType="done"
+          style={
+            Array [
+              Object {
+                "color": "#555555",
+                "fontFamily": "Nunito",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "margin": 0,
+                "padding": 0,
+              },
+              false,
+              Object {
+                "color": "#000",
+                "fontSize": 14,
+                "marginBottom": 20,
+                "paddingHorizontal": 8,
+                "paddingTop": 8,
+                "paddingVertical": 0,
+                "textAlignVertical": "top",
+              },
+              Object {
+                "color": "#000",
+                "fontSize": 14,
+                "marginBottom": 20,
+                "paddingHorizontal": 8,
+                "paddingTop": 8,
+                "paddingVertical": 0,
+                "textAlignVertical": "top",
+              },
+            ]
+          }
+          underlineColorAndroid="transparent"
+          value=""
+        />
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "height": 15,
+              "marginTop": 3,
+            },
+            undefined,
+          ]
+        }
+      />
+    </View>
+  </View>
+</View>
+`;
