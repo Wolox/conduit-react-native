@@ -5,7 +5,7 @@ import { ApiOkResponse } from 'apisauce';
 import { Action, DispatcheableAction } from '@interfaces/reduxInterfaces';
 import { Nullable } from '@interfaces/globalInterfaces';
 import ArticlesService from '@services/ArticlesService';
-import { NewArticleValues } from '@screens/NewArticle/constants';
+import { NewArticleValues, UpdateArticle } from '@screens/NewArticle/constants';
 import { NavigationContainerRef } from '@react-navigation/native';
 import { actionCreators as FeedbackActions } from '@redux/feedback/actions';
 import CustomModal from '@components/CustomModal';
@@ -17,7 +17,14 @@ import './i18n';
 
 export const actions = createTypes(
   completeTypes({
-    primaryActions: ['GET_ARTICLES', 'GET_MY_ARTICLES', 'CREATE_ARTICLE', 'DELETE_ARTICLE', 'GET_TAGS'],
+    primaryActions: [
+      'GET_ARTICLES',
+      'GET_MY_ARTICLES',
+      'CREATE_ARTICLE',
+      'DELETE_ARTICLE',
+      'GET_TAGS',
+      'UPDATE_ARTICLE'
+    ],
     ignoredActions: ['CLEAR_TARGET', 'ADD_SELECTED_TAGS']
   }),
   '@@ARTICLES'
@@ -29,7 +36,8 @@ export const TARGETS = {
   SELECTED_TAGS: 'selectedTags',
   MY_ARTICLES_LIST: 'myArticlesList',
   CREATE_ARTICLE: 'createArticle',
-  DELETE_ARTICLE: 'deleteArticle'
+  DELETE_ARTICLE: 'deleteArticle',
+  UPDATE_ARTICLE: 'updateArticle'
 };
 
 const articlesSuccesSelector = (response: ApiOkResponse<any>) => ({
@@ -75,6 +83,20 @@ const actionCreators = {
     target: TARGETS.CREATE_ARTICLE,
     payload: article,
     service: ArticlesService.createArticle,
+    injections: [
+      withPostSuccess((_: Dispatch<any>) => {
+        if (postSuccess) postSuccess();
+      }),
+      withPostFailure((_: Dispatch<any>) => {
+        if (postFailure) postFailure();
+      })
+    ]
+  }),
+  updateArticle: (article: UpdateArticle, postSuccess?: () => void, postFailure?: () => void) => ({
+    type: actions.UPDATE_ARTICLE,
+    target: TARGETS.UPDATE_ARTICLE,
+    payload: article,
+    service: ArticlesService.updateArticle,
     injections: [
       withPostSuccess((_: Dispatch<any>) => {
         if (postSuccess) postSuccess();

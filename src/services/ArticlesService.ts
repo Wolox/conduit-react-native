@@ -1,7 +1,7 @@
 import api from '@config/api';
 import { INITIAL_PAGE, DEFAULT_LIMIT } from '@constants/pagination';
 import { formatParams } from '@utils/serviceUtils';
-import { NewArticleValues } from '@screens/NewArticle/constants';
+import { NewArticleValues, UpdateArticle } from '@screens/NewArticle/constants';
 
 const ARTICLES_PATH = '/articles';
 const TAGS_PATH = '/tags';
@@ -17,7 +17,8 @@ const ArticlesService = {
   getArticlesByTags: (tags: string[]) => api.get(`${ARTICLES_PATH}${formatParams(tags, 'tag')}`),
   createArticle: (article: NewArticleValues) => api.post(ARTICLES_PATH, { article }),
   getMyArticles: () => api.get(`${ARTICLES_PATH}${FEED_PATH}`),
-  deleteArticle: (slug: string) => api.delete(`${ARTICLES_PATH}/${slug}`)
+  deleteArticle: (slug: string) => api.delete(`${ARTICLES_PATH}/${slug}`),
+  updateArticle: ({ slug, article }: UpdateArticle) => api.put(`${ARTICLES_PATH}/${slug}`, { article })
 };
 
 export default ArticlesService;

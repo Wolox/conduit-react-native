@@ -67,6 +67,9 @@ export interface ArticlesState {
   deleteArticle: Nullable<String>;
   deleteArticleLoading: boolean;
   deleteArticleError: Nullable<String>;
+  updateArticle: Nullable<ArticleResponse>;
+  updateArticleLoading: boolean;
+  updateArticleError: Nullable<String>;
 }
 export interface FavouritesState {
   favoritesArticlesList: {
