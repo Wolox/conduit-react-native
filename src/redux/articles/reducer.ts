@@ -25,7 +25,8 @@ const reducerDescription = {
     actions.GET_MY_ARTICLES,
     actions.CREATE_ARTICLE,
     actions.DELETE_ARTICLE,
-    actions.GET_TAGS
+    actions.GET_TAGS,
+    actions.UPDATE_ARTICLE
   ],
   override: {
     [actions.CLEAR_TARGET]: onClearTarget(),

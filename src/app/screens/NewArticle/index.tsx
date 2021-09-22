@@ -35,6 +35,7 @@ function NewArticle({ route: { params } }: Props) {
   const { handleSubmit, control, setValue, trigger, reset } = useForm<NewArticleValues>({ mode: 'all' });
   const navigation = useNavigationWithParams<Routes.NewArticle>();
   const createArticleLoading = useSelector<State, boolean>(state => state.articles.createArticleLoading);
+  const updateArticleLoading = useSelector<State, boolean>(state => state.articles.updateArticleLoading);
   const dispatch = useDispatch();
   const isEdit = !!params?.article && params?.article?.isEditArticle;
   const [items, setItems] = useState<string[]>(isEdit ? params?.article?.tagList : []);
@@ -59,25 +60,51 @@ function NewArticle({ route: { params } }: Props) {
   // @TODO: do the quest when you already have the token in the headers
   const handleSubmitArticle = (values: NewArticleValues) => {
     trigger();
-    dispatch(
-      ArticlesActions.createArticle(
-        values,
-        () => {
-          cleanForm();
-          navigation.navigate(Routes.Confirmation, {
-            type: ConfirmationTypes.SUCCESS_REGISTER_ARTICLE,
-            typeError: false
-          });
-        },
-        () => {
-          cleanForm();
-          navigation.navigate(Routes.Confirmation, {
-            type: ConfirmationTypes.ERROR_REGISTER_ARTICLE,
-            typeError: true
-          });
-        }
-      )
-    );
+    if (isEdit) {
+      const {
+        article: { slug }
+      } = params;
+
+      const article = values;
+
+      dispatch(
+        ArticlesActions.updateArticle(
+          { slug, article },
+          () => {
+            navigation.navigate(Routes.Confirmation, {
+              type: ConfirmationTypes.SUCCESS_UPDATE_ARTICLE,
+              typeError: false
+            });
+          },
+          () => {
+            navigation.navigate(Routes.Confirmation, {
+              type: ConfirmationTypes.ERROR_REGISTER_ARTICLE,
+              typeError: true
+            });
+          }
+        )
+      );
+    } else {
+      dispatch(
+        ArticlesActions.createArticle(
+          values,
+          () => {
+            cleanForm();
+            navigation.navigate(Routes.Confirmation, {
+              type: ConfirmationTypes.SUCCESS_REGISTER_ARTICLE,
+              typeError: false
+            });
+          },
+          () => {
+            cleanForm();
+            navigation.navigate(Routes.Confirmation, {
+              type: ConfirmationTypes.ERROR_REGISTER_ARTICLE,
+              typeError: true
+            });
+          }
+        )
+      );
+    }
   };
 
   useEffect(() => {
@@ -167,7 +194,7 @@ function NewArticle({ route: { params } }: Props) {
               />
             </View>
             <CustomButton
-              loading={createArticleLoading}
+              loading={createArticleLoading || updateArticleLoading}
               testID={isEdit ? testIds.editArticleButton : testIds.createArticleButton}
               primary
               onPress={handleSubmit(handleSubmitArticle)}

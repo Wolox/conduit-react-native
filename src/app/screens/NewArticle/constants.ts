@@ -12,6 +12,11 @@ export interface NewArticleValues {
   [FIELDS.tagList]: string[];
 }
 
+export interface UpdateArticle {
+  slug: string;
+  article: NewArticleValues;
+}
+
 export interface TextInputKeyEvent {
   nativeEvent: {
     key: string;
