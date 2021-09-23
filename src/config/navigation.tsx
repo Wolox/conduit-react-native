@@ -5,23 +5,18 @@ import Routes from '@constants/routes';
 import { green, white } from '@constants/colors';
 import statusBarConfig from '@constants/statusBar';
 import { Navigation } from '@interfaces/navigation';
-import { NavigationProp } from '@react-navigation/core';
 import CrossBack from '@components/CrossBack';
-import { AppStackParamList } from '@config/appParamList';
 import { customStyles, styles } from '@constants/navigationHelper';
 
 import fonts from './fonts';
 
 export const withoutHeader = (): NavigationStackOptions => ({ headerShown: false });
-type Props = {
-  navigation: NavigationProp<AppStackParamList>;
-};
 
-export const withCustomHeader = ({ navigation }: Props): NavigationStackOptions => ({
+export const withCustomHeader = (): NavigationStackOptions => ({
   headerStyle: customStyles().headerStyle,
   headerTitleStyle: customStyles().headerTitleStyle,
   headerLeft: () => {
-    return <CrossBack navigation={navigation} />;
+    return <CrossBack />;
   }
 });
 // Default nav options for all screens
