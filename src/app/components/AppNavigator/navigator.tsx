@@ -55,7 +55,6 @@ const MyFavArticlesStack = () => (
 const ArticlesStack = () => (
   <Stack.Navigator {...appStackNavConfig}>
     {inferRoute(Tab)({ [Routes.FavArticles]: NewArticle })}
-    {inferRoute(Stack)({ [Routes.Confirmation]: Confirmation })}
   </Stack.Navigator>
 );
 
@@ -105,6 +104,7 @@ const AppStack = () => (
   <>
     {inferRoute(Stack)({ [Routes.Home]: HomeTabs })}
     {inferRoute(Stack)({ [Routes.NewArticle]: NewArticle })}
+    {inferRoute(Stack)({ [Routes.Confirmation]: Confirmation })}
   </>
 );
 
