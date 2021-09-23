@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { NavigationProp } from '@react-navigation/core';
-import { onResetStack } from '@utils/navUtils';
 import { useDispatch } from 'react-redux';
+import { NavigationProp } from '@react-navigation/core';
 import actionCreators from '@redux/articles/actions';
+import { onResetStack } from '@utils/navUtils';
 
 import styles from './styles';
 

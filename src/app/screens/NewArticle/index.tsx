@@ -119,11 +119,9 @@ function NewArticle({ route: { params } }: Props) {
       );
     }
   };
-  const handleContentSizeChange = () => {
-    if (isIos) {
-      scrollViewRef?.current?.scrollToPosition(0, height - height / 1.2, true);
-    }
-  };
+  const handleContentSizeChange = () =>
+    isIos && scrollViewRef?.current?.scrollToPosition(0, height - height / 1.2, true);
+
   const handleGET = async () => {
     const delta = await editorRef.current?.getHtml();
     setBody(delta);
