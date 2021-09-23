@@ -1,15 +1,14 @@
 import React from 'react';
-import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import { NavigationStackOptions } from 'react-navigation-stack';
 import i18next from 'i18next';
 import Routes from '@constants/routes';
-import { isAndroid, isIos } from '@constants/platform';
-import { black, extraLightGray, green, white } from '@constants/colors';
+import { green, white } from '@constants/colors';
 import statusBarConfig from '@constants/statusBar';
 import { Navigation } from '@interfaces/navigation';
 import { NavigationProp } from '@react-navigation/core';
 import CrossBack from '@components/CrossBack';
 import { AppStackParamList } from '@config/appParamList';
+import { customStyles, styles } from '@constants/navigationHelper';
 
 import fonts from './fonts';
 
@@ -17,37 +16,12 @@ export const withoutHeader = (): NavigationStackOptions => ({ headerShown: false
 type Props = {
   navigation: NavigationProp<AppStackParamList>;
 };
-const customStyles = () => {
-  const customWidth = isAndroid ? '50%' : '100%';
-  const headerStyle: ViewStyle = {
-    backgroundColor: extraLightGray
-  };
-  const headerTitleStyle: TextStyle = {
-    color: black,
-    alignSelf: 'center',
-    width: customWidth
-  };
-  return {
-    headerStyle,
-    headerTitleStyle
-  };
-};
+
 export const withCustomHeader = ({ navigation }: Props): NavigationStackOptions => ({
   headerStyle: customStyles().headerStyle,
   headerTitleStyle: customStyles().headerTitleStyle,
   headerLeft: () => {
     return <CrossBack navigation={navigation} />;
-  }
-});
-
-const HEIGHT_TAB_NAV = isIos ? 70 : 55;
-const PADDING_BUTTON_TAB_NAV = isAndroid ? 20 : 25;
-const styles = StyleSheet.create({
-  styleTabNav: {
-    height: HEIGHT_TAB_NAV,
-    paddingTop: 5,
-    backgroundColor: white,
-    paddingBottom: PADDING_BUTTON_TAB_NAV
   }
 });
 // Default nav options for all screens
