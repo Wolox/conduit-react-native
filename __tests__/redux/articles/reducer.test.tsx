@@ -35,10 +35,38 @@ export const articleActions = {
     type: actions.GET_ARTICLES_FAILURE,
     target: TARGETS.ARTICLES_LIST,
     payload: true
+  },
+  updateArticle: {
+    type: actions.UPDATE_ARTICLE,
+    target: TARGETS.UPDATE_ARTICLE
+  },
+  updateArticleSuccess: {
+    type: actions.UPDATE_ARTICLE_SUCCESS,
+    target: TARGETS.UPDATE_ARTICLE,
+    payload: MOCKED_DATA
+  },
+  updateArticleFailure: {
+    type: actions.UPDATE_ARTICLE_FAILURE,
+    target: TARGETS.UPDATE_ARTICLE,
+    payload: true
+  },
+  getTags: {
+    type: actions.GET_TAGS,
+    target: TARGETS.TAG_LIST
+  },
+  getTagsSuccess: {
+    type: actions.GET_TAGS_SUCCESS,
+    target: TARGETS.TAG_LIST,
+    payload: []
+  },
+  getTagsFailure: {
+    type: actions.GET_TAGS_FAILURE,
+    target: TARGETS.TAG_LIST,
+    payload: true
   }
 };
-describe('case ARTICLE', () => {
-  test('test Login', () => {
+describe('case getArticles', () => {
+  test('test Articles_INIT', () => {
     expect(ArticlesReducer(undefined, articleActions.getArticles)).toMatchObject({
       ...initialState,
       articlesListLoading: true
@@ -55,6 +83,44 @@ describe('case ARTICLE', () => {
     expect(await ArticlesReducer(undefined, articleActions.getArticleFailure)).toMatchObject({
       ...initialState,
       articlesListError: true
+    });
+  });
+});
+describe('case uploadArticles', () => {
+  test('UPDATE_ARTICLE_INIT', async () => {
+    expect(await ArticlesReducer(undefined, articleActions.updateArticle)).toMatchObject({
+      ...initialState,
+      updateArticleLoading: true
+    });
+  });
+  test('UPDATE_ARTICLE_SUCCESS', async () => {
+    expect(await ArticlesReducer(undefined, articleActions.updateArticleSuccess)).toMatchObject({
+      ...initialState,
+      updateArticle: MOCKED_DATA
+    });
+  });
+  test('UPDATE_ARTICLE_FAILURE', async () => {
+    expect(await ArticlesReducer(undefined, articleActions.updateArticleFailure)).toMatchObject({
+      ...initialState,
+      updateArticleError: true
+    });
+  });
+  test('GET_TAGS_INIT', async () => {
+    expect(await ArticlesReducer(undefined, articleActions.getTags)).toMatchObject({
+      ...initialState,
+      tagListLoading: true
+    });
+  });
+  test('GET_TAGS_SUCCESS', async () => {
+    expect(await ArticlesReducer(undefined, articleActions.getTagsSuccess)).toMatchObject({
+      ...initialState,
+      tagList: []
+    });
+  });
+  test('GET_TAGS_FAILURE', async () => {
+    expect(await ArticlesReducer(undefined, articleActions.getTagsFailure)).toMatchObject({
+      ...initialState,
+      tagListError: true
     });
   });
 });

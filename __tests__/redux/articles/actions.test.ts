@@ -19,40 +19,136 @@ function articlesSuccess() {
 describe('testing article actions', () => {
   beforeEach(() => {
     store.clearActions();
+    jest.useFakeTimers();
   });
   test('getArticlesInit', () => {
     store.dispatch(actionCreators.getArticles());
-    expect(store.getActions()).toEqual([{ target: TARGETS.ARTICLES_LIST, type: actions.GET_ARTICLES }]);
+    const actionsStore = store.getActions();
+    expect(actionsStore).toEqual([{ target: TARGETS.ARTICLES_LIST, type: actions.GET_ARTICLES }]);
+    expect(actionsStore).not.toBeNull();
+    expect(actionsStore).toBeDefined();
   });
   test('getArticlesSuccess', () => {
-    const stored = mockStore({});
-    return stored.dispatch(actionCreators.getArticles()).then(() => {
-      const actionss = stored.getActions();
-      expect(actionss[1]).toEqual(articlesSuccess());
+    const storeClean = mockStore({});
+    return storeClean.dispatch(actionCreators.getArticles()).then(() => {
+      const actionsStore = storeClean.getActions();
+      expect(actionsStore[1]).toEqual(articlesSuccess());
+      expect(actionsStore).not.toBeNull();
+      expect(actionsStore).toBeDefined();
     });
   });
   test('getMyArticles', () => {
     store.dispatch(actionCreators.getMyArticles());
-    expect(store.getActions()).toEqual([{ target: TARGETS.MY_ARTICLES_LIST, type: actions.GET_MY_ARTICLES }]);
-    expect(store.getActions()).not.toBeNull();
+    const actionsStore = store.getActions();
+    expect(actionsStore).toEqual([{ target: TARGETS.MY_ARTICLES_LIST, type: actions.GET_MY_ARTICLES }]);
+    expect(actionsStore).not.toBeNull();
+    expect(actionsStore).toBeDefined();
   });
-  test('get_My_Articles_Success', () => {
-    const stored = mockStore({});
-    return stored.dispatch(actionCreators.getMyArticles()).then(() => {
-      const actionss = stored.getActions();
-      expect(actionss[1].type).toEqual(actions.GET_MY_ARTICLES_SUCCESS);
-      expect(actionss[1].target).toEqual(TARGETS.MY_ARTICLES_LIST);
+  test('getMyArticlesSuccess', () => {
+    const storeClean = mockStore({});
+    return storeClean.dispatch(actionCreators.getMyArticles()).then(() => {
+      const actionsStore = storeClean.getActions();
+      expect(actionsStore[1].type).toEqual(actions.GET_MY_ARTICLES_SUCCESS);
+      expect(actionsStore[1].target).toEqual(TARGETS.MY_ARTICLES_LIST);
+      expect(actionsStore).not.toBeNull();
+      expect(actionsStore).toBeDefined();
     });
   });
   test('updateArticle', () => {
     store.dispatch(actionCreators.updateArticle());
-    expect(store.getActions()).toEqual([{ target: TARGETS.UPDATE_ARTICLE, type: actions.UPDATE_ARTICLE }]);
-    expect(store.getActions()).not.toBeNull();
+    const actionsStore = store.getActions();
+    expect(actionsStore).toEqual([{ target: TARGETS.UPDATE_ARTICLE, type: actions.UPDATE_ARTICLE }]);
+    expect(actionsStore).not.toBeNull();
+    expect(actionsStore).toBeDefined();
   });
-  // test('updateArticle_Success', async () => {
-  //   await store.dispatch(actionCreators.updateArticle());
-  //   const res = mapActionsToTypes(await store.getActions());
-  //   expect(res).toStrictEqual([actions.UPDATE_ARTICLE, actions.UPDATE_ARTICLE_SUCCESS]);
-  //   expect(res).not.toBeNull();
-  // });
+  test('updateFailure', async () => {
+    const storeClean = mockStore({});
+    const MOCK_DATA = {
+      article: {
+        addTag: '',
+        body: '',
+        description: '',
+        tagList: [],
+        title: ''
+      },
+      slug: 'testing'
+    };
+    await storeClean.dispatch(actionCreators.updateArticle(MOCK_DATA));
+    const actionsStore = await storeClean.getActions();
+    expect(actionsStore[1].type).toEqual(actions.UPDATE_ARTICLE_FAILURE);
+    expect(actionsStore[1].target).toEqual(TARGETS.UPDATE_ARTICLE);
+    expect(actionsStore).not.toBeNull();
+  });
+  test('deleteArticle', () => {
+    store.dispatch(actionCreators.deleteArticle());
+    const actionsStore = store.getActions();
+    expect(actionsStore).toEqual([{ target: TARGETS.DELETE_ARTICLE, type: actions.DELETE_ARTICLE }]);
+    expect(actionsStore).not.toBeNull();
+    expect(actionsStore).toBeDefined();
+  });
+  test('deleteArticleFailure', async () => {
+    const storeClean = mockStore({});
+    await storeClean.dispatch(actionCreators.deleteArticle('testing'));
+    const actionsStore = await storeClean.getActions();
+    expect(actionsStore[1].type).toEqual(actions.DELETE_ARTICLE_FAILURE);
+    expect(actionsStore[1].target).toEqual(TARGETS.DELETE_ARTICLE);
+    expect(actionsStore).not.toBeNull();
+    expect(actionsStore).toBeDefined();
+  });
+  test('createArticle', () => {
+    store.dispatch(actionCreators.createArticle());
+    const actionsStore = store.getActions();
+    expect(actionsStore).toEqual([{ target: TARGETS.CREATE_ARTICLE, type: actions.CREATE_ARTICLE }]);
+    expect(actionsStore).not.toBeNull();
+    expect(actionsStore).toBeDefined();
+  });
+  test('createArticleSuccess', async () => {
+    const storeClean = mockStore({});
+    const MOCK_DATA = {
+      article: {
+        addTag: '',
+        body: 'estoy editando un articulo viejo se podrà?',
+        description: '22ooooo',
+        tagList: [],
+        title: 'test222'
+      },
+      slug: 'test222-hoi6dp'
+    };
+    await storeClean.dispatch(actionCreators.createArticle(MOCK_DATA));
+    const actionsStore = await storeClean.getActions();
+    expect(actionsStore[1].type).toEqual(actions.CREATE_ARTICLE_SUCCESS);
+    expect(actionsStore[1].target).toEqual(TARGETS.CREATE_ARTICLE);
+    expect(actionsStore).not.toBeNull();
+    expect(actionsStore).toBeDefined();
+  });
+
+  test('createArticleFailure', async () => {
+    const storeClean = mockStore({});
+    await storeClean.dispatch(actionCreators.createArticle({}));
+    storeClean
+      .dispatch(actionCreators.createArticle())
+      .then(() => expect(storeClean.getActions()).toContainEqual({ type: actions.CREATE_ARTICLE_FAILURE }));
+  });
+  test('clearTargets', async () => {
+    const TARGET_MOCK = 'testing';
+    const storeClean = mockStore({});
+    const actionsStore = await storeClean.dispatch(actionCreators.clearTarget(TARGET_MOCK));
+    expect(actionsStore).not.toBeNull();
+    expect(actionsStore).toBeDefined();
+    expect(actionsStore).toStrictEqual({ type: actions.CLEAR_TARGET, target: TARGET_MOCK });
+  });
+  test('getTags', () => {
+    store.dispatch(actionCreators.getTags());
+    const actionsStore = store.getActions();
+    expect(actionsStore).toEqual([{ type: actions.GET_TAGS, target: TARGETS.TAG_LIST }]);
+    expect(actionsStore).not.toBeNull();
+    expect(actionsStore).toBeDefined();
+  });
+  test('filterByTags', () => {
+    store.dispatch(actionCreators.filterByTags([]));
+    const actionsStore = store.getActions();
+    expect(actionsStore).toEqual([{ type: actions.GET_ARTICLES, target: TARGETS.ARTICLES_LIST }]);
+    expect(actionsStore).not.toBeNull();
+    expect(actionsStore).toBeDefined();
+  });
 });
