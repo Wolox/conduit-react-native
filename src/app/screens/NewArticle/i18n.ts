@@ -9,7 +9,7 @@ i18next.addResources('en', 'NEW_ARTICLE', {
   TAGS: 'Add tags',
   PLACHEHOLDER_TAGS: 'Enter tags',
   BODY: 'Body',
-  PLACEHOLDER_BODY: 'Write you article (in markdown)',
+  PLACEHOLDER_BODY: 'Write you article',
   CREATE_BUTTON: 'Publish Article',
   EDIT_BUTTON: 'Update Article'
 });
