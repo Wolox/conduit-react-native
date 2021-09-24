@@ -1,5 +1,5 @@
 import React from 'react';
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { CommonActions, NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { appScreensNavOptions } from '@config/navigation';
 import { AppStackParamList } from '@config/appParamList';
@@ -24,6 +24,18 @@ export function inferRoute(NavigationStructure: any) {
     );
   };
 }
+export const onResetStack = (
+  navigation: NavigationProp<AppStackParamList | any>,
+  nextRoutes: { name: string; params?: any }[],
+  initialRoute = Routes.Home
+) => {
+  navigation.dispatch(
+    CommonActions.reset({
+      index: 0,
+      routes: [{ name: initialRoute }, ...nextRoutes]
+    })
+  );
+};
 
 type TypedParams = keyof AppStackParamList;
 export type RouteType<T extends TypedParams> = RouteProp<AppStackParamList, T>;
