@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { StatusBar } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import Reactotron from 'reactotron-react-native';
 import SplashScreen from 'react-native-splash-screen';
@@ -7,6 +8,7 @@ import FullScreenModalReducer from '@components/FullScreenModalReducer';
 import { apiSetup } from '@config/api';
 import { actionCreators as AuthActions } from '@redux/auth/actions';
 import { State } from '@interfaces/reduxInterfaces';
+import { isIos } from '@constants/platform';
 
 import './i18n';
 
@@ -25,6 +27,7 @@ const App = () => {
 
   return (
     <>
+      {isIos && <StatusBar barStyle="light-content" />}
       <AppNavigator />
       <FullScreenModalReducer content={modal} />
     </>
