@@ -61,24 +61,23 @@ describe('testing article actions', () => {
     expect(actionsStore).not.toBeNull();
     expect(actionsStore).toBeDefined();
   });
-  test('updateFailure', async () => {
+  test('updateArticleSuccess', async () => {
     const storeClean = mockStore({});
     const MOCK_DATA = {
       article: {
         addTag: '',
-        body: '',
-        description: '',
+        body: 'estoy editando un articulo viejo se podrà?',
+        description: '22ooooo',
         tagList: [],
-        title: ''
+        title: 'test222'
       },
-      slug: 'testing'
+      slug: 'test222-hoi6dp'
     };
     await storeClean.dispatch(actionCreators.updateArticle(MOCK_DATA));
     const actionsStore = await storeClean.getActions();
-    expect(actionsStore[1].type).toEqual(actions.UPDATE_ARTICLE_FAILURE);
-    expect(actionsStore[1].target).toEqual(TARGETS.UPDATE_ARTICLE);
-    expect(actionsStore).not.toBeNull();
+    expect(actionsStore[1].type).toEqual(actions.UPDATE_ARTICLE_SUCCESS);
   });
+
   test('deleteArticle', () => {
     store.dispatch(actionCreators.deleteArticle());
     const actionsStore = store.getActions();
@@ -86,11 +85,12 @@ describe('testing article actions', () => {
     expect(actionsStore).not.toBeNull();
     expect(actionsStore).toBeDefined();
   });
-  test('deleteArticleFailure', async () => {
+  test('deleteArticleSuccess', async () => {
+    const slug: string = 'test222-hoi6dp';
     const storeClean = mockStore({});
-    await storeClean.dispatch(actionCreators.deleteArticle('testing'));
+    await storeClean.dispatch(actionCreators.deleteArticle(slug));
     const actionsStore = await storeClean.getActions();
-    expect(actionsStore[1].type).toEqual(actions.DELETE_ARTICLE_FAILURE);
+    expect(actionsStore[1].type).toEqual(actions.DELETE_ARTICLE_SUCCESS);
     expect(actionsStore[1].target).toEqual(TARGETS.DELETE_ARTICLE);
     expect(actionsStore).not.toBeNull();
     expect(actionsStore).toBeDefined();
