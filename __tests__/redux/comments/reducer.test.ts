@@ -1,5 +1,5 @@
 import { actions, TARGETS } from '@redux/comments/actions';
-import AuthReducer, { initialState } from '@redux/comments/reducer';
+import CommentReducer, { initialState } from '@redux/comments/reducer';
 import { iComment } from '@interfaces/articlesInterface';
 
 const MOCKED_DATA: iComment = {
@@ -17,37 +17,37 @@ const MOCKED_DATA: iComment = {
 };
 
 export const authActions = {
-  createComment: {
-    type: actions.LOGIN,
-    target: TARGETS.CREATE_COMMENT
+  getComments: {
+    type: actions.GET_COMMENTS,
+    target: TARGETS.COMMENTS
   },
-  createCommentSuccess: {
-    type: actions.CREATE_COMMENT_SUCCESS,
-    target: TARGETS.CREATE_COMMENT,
+  getCommentsSuccess: {
+    type: actions.GET_COMMENTS_SUCCESS,
+    target: TARGETS.COMMENTS,
     payload: MOCKED_DATA
   },
-  createCommentFailure: {
-    type: actions.CREATE_COMMENT_FAILURE,
-    target: TARGETS.CREATE_COMMENT,
+  getCommentsFailure: {
+    type: actions.GET_COMMENTS_FAILURE,
+    target: TARGETS.COMMENTS,
     payload: true
   }
 };
-describe('case COMMENT_INIT', () => {
-  test('test Login', () => {
-    expect(AuthReducer(undefined, authActions.createComment)).toMatchObject({
+describe('case COMMENTS', () => {
+  test('test COMMENT_INIT', () => {
+    expect(CommentReducer(undefined, authActions.getComments)).toMatchObject({
       ...initialState,
       commentsLoading: true
     });
   });
   test('test COMMENT_SUCCESS', async () => {
-    expect(await AuthReducer(undefined, authActions.createCommentSuccess)).toMatchObject({
+    expect(await CommentReducer(undefined, authActions.getCommentsSuccess)).toMatchObject({
       ...initialState,
       comments: MOCKED_DATA
     });
-    expect(await AuthReducer(undefined, authActions.createCommentSuccess)).not.toBeNull();
+    expect(await CommentReducer(undefined, authActions.getCommentsSuccess)).not.toBeNull();
   });
   test('test COMMENT_FAILURE ', async () => {
-    expect(await AuthReducer(undefined, authActions.createCommentFailure)).toMatchObject({
+    expect(await CommentReducer(undefined, authActions.getCommentsFailure)).toMatchObject({
       ...initialState,
       commentsError: true
     });
