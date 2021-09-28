@@ -2,8 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import renderer from 'react-test-renderer';
 import MockedNavigator from '@mocks/MockedNavigator';
-
-import LoadableWrapper, { Loading } from '../../../../src/app/components/Loadable';
+import LoadableWrapper, { Loading } from '@components/Loadable';
 
 describe('customStatusBar', () => {
   test('loadable', () => {
