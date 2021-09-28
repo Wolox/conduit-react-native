@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import MockedNavigator from '@mocks/MockedNavigator';
 import TabList from '@components/TabList';
 
-describe('test ArticleItem', () => {
+describe('test TabList', () => {
   const tabs = ['Your feed', 'Global feed'];
   const RenderCustom = {
     renderTabList: () => <TabList tabs={tabs} onPressTab={() => null} />,

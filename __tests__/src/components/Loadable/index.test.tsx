@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import MockedNavigator from '@mocks/MockedNavigator';
 import LoadableWrapper, { Loading } from '@components/Loadable';
 
-describe('customStatusBar', () => {
+describe('test Loadable', () => {
   test('loadable', () => {
     const RenderCustom = {
       renderTabList: () => <Loading />,

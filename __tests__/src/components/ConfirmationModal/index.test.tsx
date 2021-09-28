@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import MockedNavigator from '@mocks/MockedNavigator';
 import ConfirmationModal from '@components/ConfirmationModal';
 
-describe('test ArticleItem', () => {
+describe('test ConfirmationModal', () => {
   const MOCKED_DATA = {
     title: 'ok',
     showModal: true,

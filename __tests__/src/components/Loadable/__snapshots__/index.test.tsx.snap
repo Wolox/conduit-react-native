@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`customStatusBar loadable 1`] = `
+exports[`test Loadable loadable 1`] = `
 <View
   style={
     Object {

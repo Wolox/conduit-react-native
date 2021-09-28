@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test ArticleItem match with Snapshot 1`] = `
+exports[`test ScreenWithLoader match with Snapshot 1`] = `
 <View
   style={
     Object {
