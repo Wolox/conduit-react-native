@@ -1,5 +1,5 @@
 import { actions, TARGETS } from '@redux/favourites/actions';
-import CommentReducer, { initialState } from '@redux/favourites/reducer';
+import FavoritesReducer, { initialState } from '@redux/favourites/reducer';
 import { CurrentUser } from '@interfaces/authInterfaces.ts';
 
 const MOCKED_DATA: CurrentUser = {
