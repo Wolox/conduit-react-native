@@ -23,7 +23,6 @@ export const TARGETS = {
 type ActionType = Nullable<number>;
 
 const actionCreators = {
-  clearTarget: (target: string) => ({ type: actions.CLEAR_TARGET, target }),
   getComments: (slug: string) => ({
     type: actions.GET_COMMENTS,
     target: TARGETS.COMMENTS,
