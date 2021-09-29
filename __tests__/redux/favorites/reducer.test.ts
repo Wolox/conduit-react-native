@@ -31,20 +31,20 @@ const favouritesActions = {
 
 describe('case COMMENTS', () => {
   test('test FAVORITES_ARTICLES_LIST_INIT', () => {
-    expect(CommentReducer(undefined, favouritesActions.getFavouritesArticles)).toMatchObject({
+    expect(FavoritesReducer(undefined, favouritesActions.getFavouritesArticles)).toMatchObject({
       ...initialState,
       favoritesArticlesListLoading: true
     });
   });
   test('test FAVORITES_ARTICLES_LIST_SUCCESS', async () => {
-    expect(await CommentReducer(undefined, favouritesActions.getFavouritesArticlesSuccess)).toMatchObject({
+    expect(await FavoritesReducer(undefined, favouritesActions.getFavouritesArticlesSuccess)).toMatchObject({
       ...initialState,
       favoritesArticlesList: MOCKED_DATA
     });
-    expect(await CommentReducer(undefined, favouritesActions.getFavouritesArticlesSuccess)).not.toBeNull();
+    expect(await FavoritesReducer(undefined, favouritesActions.getFavouritesArticlesSuccess)).not.toBeNull();
   });
   test('test FAVORITES_ARTICLES_LIST_FAILURE ', async () => {
-    expect(await CommentReducer(undefined, favouritesActions.getFavouritesArticlesFailure)).toMatchObject({
+    expect(await FavoritesReducer(undefined, favouritesActions.getFavouritesArticlesFailure)).toMatchObject({
       ...initialState,
       favoritesArticlesListError: true
     });
