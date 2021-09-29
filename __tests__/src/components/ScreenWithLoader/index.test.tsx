@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 import MockedNavigator from '@mocks/MockedNavigator';
 import ScreenWithLoader from '@components/ScreenWithLoader';
 
-describe('test ArticleItem', () => {
+describe('test ScreenWithLoader', () => {
   const MOCKED_DATA = {
     loading: false,
     refreshed: false,

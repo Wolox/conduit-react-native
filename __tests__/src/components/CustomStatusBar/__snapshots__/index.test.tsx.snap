@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test TabList match with Snapshot 1`] = `
+exports[`customStatusBar customStatusBar passedAllProps 1`] = `
 <View
   style={
     Object {
@@ -286,122 +286,7 @@ exports[`test TabList match with Snapshot 1`] = `
                         "flex": 1,
                       }
                     }
-                  >
-                    <View
-                      style={
-                        Object {
-                          "flexDirection": "row",
-                          "paddingHorizontal": 16,
-                        }
-                      }
-                    >
-                      <View
-                        style={
-                          Object {
-                            "width": "50%",
-                          }
-                        }
-                      >
-                        <View
-                          accessible={true}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            Object {
-                              "borderBottomColor": "#5CB85C",
-                              "borderBottomWidth": 3,
-                              "opacity": 1,
-                            }
-                          }
-                        >
-                          <Text
-                            style={
-                              Array [
-                                Object {
-                                  "backgroundColor": "transparent",
-                                  "color": "#000",
-                                  "fontFamily": "Nunito",
-                                  "fontSize": 25.142857142857142,
-                                  "fontStyle": "normal",
-                                  "fontWeight": "400",
-                                },
-                                Array [
-                                  Object {
-                                    "textAlign": "center",
-                                  },
-                                  Object {
-                                    "color": "#5CB85C",
-                                  },
-                                ],
-                                Object {
-                                  "margin": 10,
-                                },
-                              ]
-                            }
-                          >
-                            Your feed
-                          </Text>
-                        </View>
-                      </View>
-                      <View
-                        style={
-                          Object {
-                            "width": "50%",
-                          }
-                        }
-                      >
-                        <View
-                          accessible={true}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            Object {
-                              "borderBottomColor": "#E5E5E5",
-                              "borderBottomWidth": 3,
-                              "opacity": 1,
-                            }
-                          }
-                        >
-                          <Text
-                            style={
-                              Array [
-                                Object {
-                                  "backgroundColor": "transparent",
-                                  "color": "#000",
-                                  "fontFamily": "Nunito",
-                                  "fontSize": 25.142857142857142,
-                                  "fontStyle": "normal",
-                                  "fontWeight": "400",
-                                },
-                                Array [
-                                  Object {
-                                    "textAlign": "center",
-                                  },
-                                ],
-                                Object {
-                                  "margin": 10,
-                                },
-                              ]
-                            }
-                          >
-                            Global feed
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
+                  />
                 </View>
               </View>
             </View>

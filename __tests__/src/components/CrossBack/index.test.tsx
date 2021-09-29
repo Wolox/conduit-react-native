@@ -1,12 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import MockedNavigator from '@mocks/MockedNavigator';
-import TabList from '@components/TabList';
+import CrossBack from '@components/CrossBack';
 
-describe('test TabList', () => {
-  const tabs = ['Your feed', 'Global feed'];
+describe('test CroosBack', () => {
   const RenderCustom = {
-    renderTabList: () => <TabList tabs={tabs} onPressTab={() => null} />,
+    renderTabList: () => <CrossBack />,
     renderCompleteTabList: () => <MockedNavigator component={RenderCustom.renderTabList} />
   };
 
@@ -15,8 +14,6 @@ describe('test TabList', () => {
     const tree = renderer.create(RenderCustom.renderCompleteTabList()).toJSON();
     expect(tree).toMatchSnapshot();
     expect(tree).not.toBeNull();
-    expect(tabs).not.toBeNull();
-    expect(treeInstance.root.findByType(TabList).props.tabs).not.toBeNull();
-    expect(treeInstance.root.findByType(TabList).props.tabs).toBe(tabs);
+    expect(treeInstance.root.findByType(CrossBack).props).toStrictEqual({});
   });
 });

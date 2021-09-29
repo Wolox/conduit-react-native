@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test TabList match with Snapshot 1`] = `
+exports[`test CroosBack match with Snapshot 1`] = `
 <View
   style={
     Object {
@@ -288,117 +288,41 @@ exports[`test TabList match with Snapshot 1`] = `
                     }
                   >
                     <View
+                      accessible={true}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
                       style={
                         Object {
-                          "flexDirection": "row",
-                          "paddingHorizontal": 16,
+                          "opacity": 1,
                         }
                       }
                     >
                       <View
                         style={
                           Object {
-                            "width": "50%",
+                            "backgroundColor": "#FFF",
+                            "borderRadius": 50,
+                            "elevation": 1,
+                            "marginLeft": 10,
+                            "padding": 13,
+                            "shadowColor": "#F1F1F1",
+                            "shadowOffset": Object {
+                              "height": 3,
+                              "width": 1,
+                            },
+                            "shadowOpacity": 0.1,
                           }
                         }
                       >
-                        <View
-                          accessible={true}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            Object {
-                              "borderBottomColor": "#5CB85C",
-                              "borderBottomWidth": 3,
-                              "opacity": 1,
-                            }
-                          }
-                        >
-                          <Text
-                            style={
-                              Array [
-                                Object {
-                                  "backgroundColor": "transparent",
-                                  "color": "#000",
-                                  "fontFamily": "Nunito",
-                                  "fontSize": 25.142857142857142,
-                                  "fontStyle": "normal",
-                                  "fontWeight": "400",
-                                },
-                                Array [
-                                  Object {
-                                    "textAlign": "center",
-                                  },
-                                  Object {
-                                    "color": "#5CB85C",
-                                  },
-                                ],
-                                Object {
-                                  "margin": 10,
-                                },
-                              ]
-                            }
-                          >
-                            Your feed
-                          </Text>
-                        </View>
-                      </View>
-                      <View
-                        style={
-                          Object {
-                            "width": "50%",
-                          }
-                        }
-                      >
-                        <View
-                          accessible={true}
-                          focusable={true}
-                          onClick={[Function]}
-                          onResponderGrant={[Function]}
-                          onResponderMove={[Function]}
-                          onResponderRelease={[Function]}
-                          onResponderTerminate={[Function]}
-                          onResponderTerminationRequest={[Function]}
-                          onStartShouldSetResponder={[Function]}
-                          style={
-                            Object {
-                              "borderBottomColor": "#E5E5E5",
-                              "borderBottomWidth": 3,
-                              "opacity": 1,
-                            }
-                          }
-                        >
-                          <Text
-                            style={
-                              Array [
-                                Object {
-                                  "backgroundColor": "transparent",
-                                  "color": "#000",
-                                  "fontFamily": "Nunito",
-                                  "fontSize": 25.142857142857142,
-                                  "fontStyle": "normal",
-                                  "fontWeight": "400",
-                                },
-                                Array [
-                                  Object {
-                                    "textAlign": "center",
-                                  },
-                                ],
-                                Object {
-                                  "margin": 10,
-                                },
-                              ]
-                            }
-                          >
-                            Global feed
-                          </Text>
-                        </View>
+                        <Text>
+                          X
+                        </Text>
                       </View>
                     </View>
                   </View>
