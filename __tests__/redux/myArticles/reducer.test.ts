@@ -13,16 +13,16 @@ const MOCKED_DATA: CurrentUser = {
   username: 'hola5'
 };
 const myArticlesActions = {
-  getFavouritesArticles: {
+  getMyArticles: {
     type: actions.MY_ARTICLES,
     target: TARGETS.MY_ARTICLES
   },
-  getFavouritesArticlesSuccess: {
+  getMyArticlesSuccess: {
     type: actions.MY_ARTICLES_SUCCESS,
     target: TARGETS.MY_ARTICLES,
     payload: MOCKED_DATA
   },
-  getFavouritesArticlesFailure: {
+  getMyArticlesFailure: {
     type: actions.MY_ARTICLES_FAILURE,
     target: TARGETS.MY_ARTICLES,
     payload: true
@@ -31,20 +31,20 @@ const myArticlesActions = {
 
 describe('case myArticlesReducer', () => {
   test('test GET_MY_ARTICLES_INIT', () => {
-    expect(MyArticlesReducer(undefined, myArticlesActions.getFavouritesArticles)).toMatchObject({
+    expect(MyArticlesReducer(undefined, myArticlesActions.getMyArticles)).toMatchObject({
       ...initialState,
       myArticlesLoading: true
     });
   });
   test('test GET_MY_ARTICLES_SUCCESS', async () => {
-    expect(await MyArticlesReducer(undefined, myArticlesActions.getFavouritesArticlesSuccess)).toMatchObject({
+    expect(await MyArticlesReducer(undefined, myArticlesActions.getMyArticlesSuccess)).toMatchObject({
       ...initialState,
       myArticles: MOCKED_DATA
     });
-    expect(await MyArticlesReducer(undefined, myArticlesActions.getFavouritesArticlesSuccess)).not.toBeNull();
+    expect(await MyArticlesReducer(undefined, myArticlesActions.getMyArticlesSuccess)).not.toBeNull();
   });
   test('test GET_MY_ARTICLES_FAILURE ', async () => {
-    expect(await MyArticlesReducer(undefined, myArticlesActions.getFavouritesArticlesFailure)).toMatchObject({
+    expect(await MyArticlesReducer(undefined, myArticlesActions.getMyArticlesFailure)).toMatchObject({
       ...initialState,
       myArticlesError: true
     });
