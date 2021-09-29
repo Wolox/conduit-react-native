@@ -29,7 +29,7 @@ const favouritesActions = {
   }
 };
 
-describe('case COMMENTS', () => {
+describe('case favoritesReducer', () => {
   test('test FAVORITES_ARTICLES_LIST_INIT', () => {
     expect(FavoritesReducer(undefined, favouritesActions.getFavouritesArticles)).toMatchObject({
       ...initialState,

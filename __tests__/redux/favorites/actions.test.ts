@@ -9,7 +9,7 @@ const middleware = [thunk, fetchMiddleware];
 const mockStore = configureStore(middleware);
 const store = mockStore(initialState);
 
-describe('testCommentsActions', () => {
+describe('case FavoritesActions', () => {
   beforeEach(() => {
     store.clearActions();
     jest.useFakeTimers();
