@@ -20,5 +20,8 @@ export default StyleSheet.create({
   },
   title: {
     marginVertical: DEFAULT_SPACE
+  },
+  btnBack: {
+    marginTop: '15%'
   }
 });
