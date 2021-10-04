@@ -72,8 +72,9 @@ export default StyleSheet.create({
     height: INTERACION_ICON_SIZE
   },
   icTrash: {
-    width: IC_TRASH,
-    height: IC_TRASH
+    width: SPACING.BIG,
+    height: SPACING.BIG,
+    marginRight: SPACING.XXSMALL
   },
   separator: {
     ...BOTTOM_SEPARATOR_LINE,
