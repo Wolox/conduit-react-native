@@ -4,11 +4,11 @@ import { isIos } from '@constants/platform';
 
 const PADDING_VERTICAL = isIos ? 8 : 4;
 const PADDING_HORIZONTAL = isIos ? 10 : 8;
-
+const COMMON_SPACING = 10;
 const styles = StyleSheet.create({
   container: {
-    marginLeft: 10,
-    borderRadius: 10,
+    marginLeft: COMMON_SPACING,
+    borderRadius: COMMON_SPACING,
     backgroundColor: white,
     paddingVertical: PADDING_VERTICAL,
     paddingHorizontal: PADDING_HORIZONTAL,
