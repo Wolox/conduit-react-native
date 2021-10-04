@@ -23,7 +23,8 @@ export default StyleSheet.create({
     position: 'absolute',
     top: SPACING.MEDIUM,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   containerDetail: {
     ...commonBoxShadow,
