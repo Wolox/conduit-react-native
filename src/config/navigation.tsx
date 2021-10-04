@@ -13,6 +13,7 @@ import fonts from './fonts';
 export const withoutHeader = (): NavigationStackOptions => ({ headerShown: false });
 
 export const withCustomHeader = (): NavigationStackOptions => ({
+  headerTitle: '',
   headerStyle: customStyles().headerStyle,
   headerTitleStyle: customStyles().headerTitleStyle,
   headerLeft: () => {
