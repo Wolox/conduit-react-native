@@ -21,11 +21,9 @@ function Confirmation() {
   const { type = ConfirmationTypes.SUCCESS_REGISTER_ARTICLE, typeError } =
     useRouteWithParams<Routes.Confirmation>().params || {};
 
-  const handlePress = () => {
-    setTimeout(async () => {
-      await onResetStack(navigation, []);
-      await dispatch(actionCreators.getArticles());
-    }, 500);
+  const handlePress = async () => {
+    await onResetStack(navigation, []);
+    await dispatch(actionCreators.getArticles());
   };
 
   return (

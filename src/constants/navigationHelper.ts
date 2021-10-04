@@ -1,13 +1,12 @@
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
-import { black, extraLightGray, red, transparent, white } from './colors';
+import { black, extraLightGray, transparent, white } from './colors';
 import { isAndroid, isIos } from './platform';
 
 export const customStyles = () => {
   const customWidth = isAndroid ? '50%' : '100%';
   const headerStyle: ViewStyle = {
     borderWidth: 0,
-    borderColor: red,
     shadowColor: transparent,
     backgroundColor: extraLightGray
   };
