@@ -18,8 +18,8 @@ import { validateMinLength, validateMaxLength } from '@utils/validations/validat
 import icAddInactive from '@assets/TabBar/icAddpostInactive.png';
 import icSendMessage from '@assets/icons/icSendMessage.png';
 import icFavouriteInactive from '@assets/TabBar/icFavoriteInactive.png';
-import icDelete from '@assets/icons/icDelete.png';
-import icEdit from '@assets/icons/icEdit.png';
+import icDelete from '@assets/icons/icTrash.png';
+import icEdit from '@assets/icons/icEditNew.png';
 import Routes from '@constants/routes';
 import ArticlesActions from '@redux/articles/actions';
 import { validatorHTML } from '@utils/htmlUtils';
@@ -193,21 +193,13 @@ function DetailArticle({ route }: Props) {
                 testID={testIds.editButton}
                 style={styles.interactionButton}
                 onPress={handleEditArticle}>
-                <Image
-                  style={[styles.interactionButtonImage, styles.greenTint]}
-                  source={icEdit}
-                  resizeMode="contain"
-                />
+                <Image style={[styles.icEdit, styles.greenTint]} source={icEdit} resizeMode="contain" />
               </TouchableOpacity>
               <TouchableOpacity
                 testID={testIds.deleteButton}
                 style={styles.interactionButton}
                 onPress={handleDeleteArticle}>
-                <Image
-                  style={[styles.interactionButtonImage, styles.redTint]}
-                  source={icDelete}
-                  resizeMode="contain"
-                />
+                <Image style={[styles.icTrash, styles.redTint]} source={icDelete} resizeMode="contain" />
               </TouchableOpacity>
             </View>
           )}

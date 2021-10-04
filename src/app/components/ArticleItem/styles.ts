@@ -4,7 +4,7 @@ import { SPACING } from '@constants/dimentions';
 import { moderateScale } from '@utils/scalingUtils';
 
 const IMAGE_SIZE = moderateScale(40);
-const ICON_SIZE = 30;
+const ICON_SIZE = 20;
 
 export default StyleSheet.create({
   container: {
@@ -22,12 +22,19 @@ export default StyleSheet.create({
     marginRight: SPACING.SMALL
   },
   iconContainer: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    width: '100%'
   },
   deleteIcon: {
     width: ICON_SIZE,
     height: ICON_SIZE,
-    tintColor: red,
-    marginLeft: 10
+    tintColor: red
+  },
+  textUserName: {
+    width: '82%'
+  },
+  icDelete: {
+    width: '10%',
+    alignItems: 'center'
   }
 });

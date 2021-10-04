@@ -7,6 +7,7 @@ import fonts from '@config/fonts';
 
 const IMAGE_USER_SIZE = moderateScale(80);
 const INTERACION_ICON_SIZE = moderateScale(30);
+const IC_TRASH = 24;
 
 export default StyleSheet.create({
   container: {
@@ -64,6 +65,14 @@ export default StyleSheet.create({
     height: INTERACION_ICON_SIZE,
     marginRight: SPACING.XSMALL,
     tintColor: gray
+  },
+  icEdit: {
+    width: INTERACION_ICON_SIZE,
+    height: INTERACION_ICON_SIZE
+  },
+  icTrash: {
+    width: IC_TRASH,
+    height: IC_TRASH
   },
   separator: {
     ...BOTTOM_SEPARATOR_LINE,
