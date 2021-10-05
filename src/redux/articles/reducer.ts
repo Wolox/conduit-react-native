@@ -8,7 +8,9 @@ import { actions } from './actions';
 const stateDescription = {
   description: {
     articlesList: {},
-    tagList: []
+    tagList: [],
+    articlesAuthor: {},
+    favoritedAuthor: {}
   },
   ignoredTargets: {
     selectedTags: [],
@@ -26,7 +28,9 @@ const reducerDescription = {
     actions.CREATE_ARTICLE,
     actions.DELETE_ARTICLE,
     actions.GET_TAGS,
-    actions.UPDATE_ARTICLE
+    actions.UPDATE_ARTICLE,
+    actions.GET_ARTICLES_AUTHOR,
+    actions.FAVORITED_AUTHOR
   ],
   override: {
     [actions.CLEAR_TARGET]: onClearTarget(),

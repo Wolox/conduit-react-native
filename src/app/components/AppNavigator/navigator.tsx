@@ -17,6 +17,7 @@ import MyArticles from '@screens/MyArticles';
 import DetailArticle from '@screens/DetailArticle';
 import Tags from '@screens/Tags';
 import Confirmation from '@screens/Confirmation';
+import DetailUser from '@screens/DetailUser';
 
 import TabBar from '../TabBar';
 
@@ -105,6 +106,7 @@ const AppStack = () => (
     {inferRoute(Stack)({ [Routes.Home]: HomeTabs })}
     {inferRoute(Stack)({ [Routes.NewArticle]: NewArticle })}
     {inferRoute(Stack)({ [Routes.Confirmation]: Confirmation })}
+    {inferRoute(Stack)({ [Routes.DetailUser]: DetailUser })}
   </>
 );
 

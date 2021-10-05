@@ -4,7 +4,7 @@ import { ProfileData, UserResponse } from '@interfaces/authInterfaces';
 import { Nullable } from '@interfaces/globalInterfaces';
 import { PaginatedList } from '@interfaces/miscelanious';
 
-import { Article, ArticleResponse, MyArticles } from './articlesInterface';
+import { Article, ArticleResponse, Author, MyArticles } from './articlesInterface';
 import { iComment } from './commentInterfaces';
 
 export interface Action<T = null, P = null, K = null> {
@@ -47,6 +47,11 @@ export interface ProfileState {
   followUser: any;
   followUserLoading: boolean;
   followUserError: Nullable<string>;
+  profileUser: {
+    profile: Author;
+  };
+  profileUserLoading: boolean;
+  profileUserError: Nullable<string>;
 }
 
 export interface ArtcileAction extends PaginatedList<Article> {}
@@ -70,6 +75,16 @@ export interface ArticlesState {
   updateArticle: Nullable<ArticleResponse>;
   updateArticleLoading: boolean;
   updateArticleError: Nullable<String>;
+  articlesAuthor: {
+    articles: [];
+  };
+  articlesAuthorLoading: boolean;
+  articlesAuthorError: Nullable<string>;
+  favoritedAuthor: {
+    articles: [];
+  };
+  favoritedAuthorLoading: boolean;
+  favoritedAuthorError: Nullable<string>;
 }
 export interface FavouritesState {
   favoritesArticlesList: {
@@ -101,7 +116,6 @@ export interface State {
   favourites: FavouritesState;
   myArticles: MyArticlesState;
   profile: ProfileState;
-  feedBack: FeedBackState;
 }
 
 export interface ReduxObject {

@@ -6,6 +6,8 @@ import { formatDate } from '@utils/dateUtils';
 import icDefaultArticleImage from '@assets/icons/icDefaultArticleImage.jpg';
 import icDelete from '@assets/icons/icDelete.png';
 import { getAvatar } from '@constants/iconsConstants';
+import { useNavigationWithParams } from '@utils/navUtils';
+import Routes from '@constants/routes';
 
 import styles from './styles';
 
@@ -17,6 +19,7 @@ interface Props {
 }
 
 function ArticleItem({ item, onPress, showDeleteIcon, onDeletePress }: Props) {
+  const navigation = useNavigationWithParams();
   const handlePress = () => onPress(item);
   const {
     title,
@@ -24,13 +27,16 @@ function ArticleItem({ item, onPress, showDeleteIcon, onDeletePress }: Props) {
     updatedAt,
     author: { image, username }
   } = item;
+  const handleNavigate = () => navigation.navigate(Routes.DetailUser, { user: username });
   return (
     <TouchableOpacity style={styles.container} onPress={handlePress}>
       <View style={styles.containerImage}>
         <Image source={image ? getAvatar(image) : icDefaultArticleImage} style={styles.image} />
         <View>
           <View style={styles.iconContainer}>
-            <CustomText green>{username}</CustomText>
+            <TouchableOpacity onPress={handleNavigate}>
+              <CustomText green>{username}</CustomText>
+            </TouchableOpacity>
             {showDeleteIcon && (
               <TouchableOpacity
                 onPress={() => {
