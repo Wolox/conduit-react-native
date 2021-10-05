@@ -99,7 +99,12 @@ const AuthTabs = () => (
   </Tab.Navigator>
 );
 
-const AuthStack = () => <>{inferRoute(Stack)({ [Routes.Auth]: AuthTabs })}</>;
+const AuthStack = () => (
+  <>
+    {inferRoute(Stack)({ [Routes.Auth]: AuthTabs })}
+    {inferRoute(Stack)({ [Routes.DetailUser]: DetailUser })}
+  </>
+);
 
 const AppStack = () => (
   <>
