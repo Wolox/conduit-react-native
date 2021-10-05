@@ -3,8 +3,7 @@ import renderer from 'react-test-renderer';
 import DetailArticle from '@screens/DetailArticle';
 import userIcon from '@assets/Profile/icUser.png';
 import MockedNavigator from '@mocks/MockedNavigator';
-
-import DetailUser from '../../../../src/app/screens/DetailUser';
+import DetailUser from '@screens/DetailUser';
 
 jest.mock('react-redux', () => {
   return {
