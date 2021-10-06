@@ -58,7 +58,7 @@ export default function MyArticles() {
       <ArticleItem
         item={item}
         onPress={handlePressArticle}
-        showDeleteIcon={true}
+        showDeleteIcon
         onDeletePress={onPressDeleteArticle}
       />
     ),
