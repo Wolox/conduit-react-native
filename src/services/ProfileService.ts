@@ -10,8 +10,10 @@ interface Params {
 
 const ProfileService = {
   followUser: ({ username, isFollow }: Params) => {
-    if (isFollow) api.delete(`${PROFILES_PATH}/${username}/${FOLLOW_PATH}`);
-    else if (!isFollow) api.post(`${PROFILES_PATH}/${username}/${FOLLOW_PATH}`);
+    if (isFollow) {
+      return api.delete(`${PROFILES_PATH}/${username}/${FOLLOW_PATH}`);
+    }
+    return api.post(`${PROFILES_PATH}/${username}/${FOLLOW_PATH}`);
   }
 };
 

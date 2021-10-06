@@ -6,7 +6,7 @@ import { moderateScale } from '@utils/scalingUtils';
 import fonts from '@config/fonts';
 
 const IMAGE_USER_SIZE = moderateScale(80);
-const INTERACION_ICON_SIZE = moderateScale(30);
+const INTERACION_ICON_SIZE = moderateScale(25);
 
 export default StyleSheet.create({
   container: {
