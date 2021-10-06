@@ -145,6 +145,7 @@ function Profile() {
               defaultValue={currentUser?.bio}
             />
             <CustomButton
+              primary
               disabled={!isAvatarChanged && !(isValid && isDirty)}
               onPress={handleSubmit(handleUpdateProfile)}
               style={styles.formButton}
