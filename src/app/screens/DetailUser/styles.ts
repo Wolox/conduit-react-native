@@ -1,6 +1,6 @@
+import { StyleSheet } from 'react-native';
 import { BOTTOM_SEPARATOR_LINE } from '@constants/commonStyles';
 import { SPACING } from '@constants/dimentions';
-import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   containerBio: {
