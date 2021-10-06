@@ -21,6 +21,8 @@ function Tags() {
   const storeSelectedTags = useSelector<State, string[]>(state => state.articles.selectedTags || []);
   const [selectedTags, setSelectedTags] = useState<string[]>(storeSelectedTags);
 
+  console.log('selected', selectedTags);
+  console.log('stre', storeSelectedTags);
   const handleGoHome = useCallback(() => {
     navigation?.goBack();
   }, [navigation]);
@@ -29,7 +31,13 @@ function Tags() {
     dispatch(ArticleActions.filterByTags(selectedTags, navigation));
   }, [dispatch, selectedTags, navigation]);
 
-  const handlePress = (option: string) => setSelectedTags([option]);
+  const handlePress = (option: string) => {
+    if (selectedTags.includes(option)) {
+      setSelectedTags([]);
+    } else {
+      setSelectedTags([option]);
+    }
+  };
 
   return (
     <View style={styles.container}>
