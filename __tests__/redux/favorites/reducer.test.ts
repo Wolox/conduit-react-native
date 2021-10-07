@@ -1,5 +1,5 @@
-import { actions, TARGETS } from '@redux/favourites/actions';
-import FavoritesReducer, { initialState } from '@redux/favourites/reducer';
+import { actions, TARGETS } from '@redux/favorites/actions';
+import FavoritesReducer, { initialState } from '@redux/favorites/reducer';
 import { CurrentUser } from '@interfaces/authInterfaces.ts';
 
 const MOCKED_DATA: CurrentUser = {
@@ -13,16 +13,16 @@ const MOCKED_DATA: CurrentUser = {
   username: 'hola5'
 };
 const favouritesActions = {
-  getFavouritesArticles: {
+  getFavoritesArticles: {
     type: actions.FAVORITES_ARTICLES_LIST,
     target: TARGETS.FAVORITES_ARTICLES_LIST
   },
-  getFavouritesArticlesSuccess: {
+  getFavoritesArticlesSuccess: {
     type: actions.FAVORITES_ARTICLES_LIST_SUCCESS,
     target: TARGETS.FAVORITES_ARTICLES_LIST,
     payload: MOCKED_DATA
   },
-  getFavouritesArticlesFailure: {
+  getFavoritesArticlesFailure: {
     type: actions.FAVORITES_ARTICLES_LIST_FAILURE,
     target: TARGETS.FAVORITES_ARTICLES_LIST,
     payload: true
@@ -31,20 +31,20 @@ const favouritesActions = {
 
 describe('case favoritesReducer', () => {
   test('test FAVORITES_ARTICLES_LIST_INIT', () => {
-    expect(FavoritesReducer(undefined, favouritesActions.getFavouritesArticles)).toMatchObject({
+    expect(FavoritesReducer(undefined, favouritesActions.getFavoritesArticles)).toMatchObject({
       ...initialState,
       favoritesArticlesListLoading: true
     });
   });
   test('test FAVORITES_ARTICLES_LIST_SUCCESS', async () => {
-    expect(await FavoritesReducer(undefined, favouritesActions.getFavouritesArticlesSuccess)).toMatchObject({
+    expect(await FavoritesReducer(undefined, favouritesActions.getFavoritesArticlesSuccess)).toMatchObject({
       ...initialState,
       favoritesArticlesList: MOCKED_DATA
     });
-    expect(await FavoritesReducer(undefined, favouritesActions.getFavouritesArticlesSuccess)).not.toBeNull();
+    expect(await FavoritesReducer(undefined, favouritesActions.getFavoritesArticlesSuccess)).not.toBeNull();
   });
   test('test FAVORITES_ARTICLES_LIST_FAILURE ', async () => {
-    expect(await FavoritesReducer(undefined, favouritesActions.getFavouritesArticlesFailure)).toMatchObject({
+    expect(await FavoritesReducer(undefined, favouritesActions.getFavoritesArticlesFailure)).toMatchObject({
       ...initialState,
       favoritesArticlesListError: true
     });

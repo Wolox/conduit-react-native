@@ -1,5 +1,5 @@
 import api from '@config/api';
-import { FAVORITE_PATH } from '@constants/favoriteServiceConstants';
+import { FAVORITE_PATH, ARTICLES_PATH } from '@constants/favoriteServiceConstants';
 import { CurrentUser } from '@interfaces/authInterfaces';
 
 // const FAVOURITED_MOCK = [
@@ -25,9 +25,11 @@ import { CurrentUser } from '@interfaces/authInterfaces';
 // const api = create({ baseURL });
 const FavoriteService = {
   getFavorites: ({ username }: CurrentUser) =>
-    api.get(FAVORITE_PATH, {
+    api.get(ARTICLES_PATH, {
       favorited: username
-    })
+    }),
+  addFavorite: (slug: string) => api.post(`${ARTICLES_PATH}/${slug}${FAVORITE_PATH}`),
+  deleteFavorite: (slug: string) => api.delete(`${ARTICLES_PATH}/${slug}${FAVORITE_PATH}`)
 
   // TODO: TEST API OK:
   // getMocked: () =>

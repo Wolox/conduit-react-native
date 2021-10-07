@@ -70,6 +70,9 @@ export interface ArticlesState {
   updateArticle: Nullable<ArticleResponse>;
   updateArticleLoading: boolean;
   updateArticleError: Nullable<String>;
+  article: Nullable<Article>;
+  articleLoading: boolean;
+  articleError: Nullable<string>;
 }
 export interface FavouritesState {
   favoritesArticlesList: {

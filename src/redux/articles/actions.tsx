@@ -23,7 +23,9 @@ export const actions = createTypes(
       'CREATE_ARTICLE',
       'DELETE_ARTICLE',
       'GET_TAGS',
-      'UPDATE_ARTICLE'
+      'UPDATE_ARTICLE',
+      'GET_ARTICLE',
+      'SET_ARTICLE'
     ],
     ignoredActions: ['CLEAR_TARGET', 'ADD_SELECTED_TAGS']
   }),
@@ -37,7 +39,8 @@ export const TARGETS = {
   MY_ARTICLES_LIST: 'myArticlesList',
   CREATE_ARTICLE: 'createArticle',
   DELETE_ARTICLE: 'deleteArticle',
-  UPDATE_ARTICLE: 'updateArticle'
+  UPDATE_ARTICLE: 'updateArticle',
+  GET_ARTICLE: 'article'
 };
 
 const articlesSuccesSelector = (response: ApiOkResponse<any>) => ({
@@ -153,6 +156,17 @@ const actionCreators = {
         );
       })
     ]
+  }),
+  getArticle: (slug: string) => ({
+    type: actions.GET_ARTICLE,
+    target: TARGETS.GET_ARTICLE,
+    payload: slug,
+    service: ArticlesService.getArticle
+  }),
+  setArticle: (article: any) => ({
+    type: actions.SET_ARTICLE,
+    target: TARGETS.GET_ARTICLE,
+    payload: article
   })
 };
 
