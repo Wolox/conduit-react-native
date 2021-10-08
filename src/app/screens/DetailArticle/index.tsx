@@ -66,12 +66,6 @@ function DetailArticle({ route }: Props) {
   const EXTRAHEIGHT = isIos ? 400 : 190;
   const handleToggleFavorite = () => {
     dispatch(favorited ? FavoriteActions.deleteFavorite(slug) : FavoriteActions.addFavorite(slug));
-
-    // if (favoriteCount > favoritesCount) {
-    //   setFavoriteCount(favoriteCount - 1);
-    // } else {
-    //   setFavoriteCount(favoriteCount + 1);
-    // }
   };
   const handleDeleteArticle = () => dispatch(ArticlesActions.deleteArticle(slug));
   const handleEditArticle = useCallback(
