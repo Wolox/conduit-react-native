@@ -1,5 +1,6 @@
 import { darkGray, grayTransparent, green, scarletRed, white } from '@constants/colors';
 import { SPACING } from '@constants/dimentions';
+import { NUNITO } from '@constants/fonts';
 import { StyleSheet } from 'react-native';
 
 const SPACING_TWENTY = 20;
@@ -43,7 +44,8 @@ const styles = StyleSheet.create({
   textStyle: {
     color: white,
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: NUNITO
   },
   modalText: {
     marginBottom: 15,
