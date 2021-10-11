@@ -402,6 +402,7 @@ exports[`test HOME SCREEN to match with Snapshot 1`] = `
                                   style={
                                     Object {
                                       "color": "#FFF",
+                                      "fontFamily": "Nunito",
                                       "fontWeight": "bold",
                                       "textAlign": "center",
                                     }
@@ -440,6 +441,7 @@ exports[`test HOME SCREEN to match with Snapshot 1`] = `
                                   style={
                                     Object {
                                       "color": "#FFF",
+                                      "fontFamily": "Nunito",
                                       "fontWeight": "bold",
                                       "textAlign": "center",
                                     }
