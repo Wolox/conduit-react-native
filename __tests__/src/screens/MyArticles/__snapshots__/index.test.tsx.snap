@@ -438,6 +438,7 @@ exports[`test MyArticles_SCREEN to match with snapshot 1`] = `
                                   style={
                                     Object {
                                       "color": "#FFF",
+                                      "fontFamily": "Nunito",
                                       "fontWeight": "bold",
                                       "textAlign": "center",
                                     }
@@ -476,6 +477,7 @@ exports[`test MyArticles_SCREEN to match with snapshot 1`] = `
                                   style={
                                     Object {
                                       "color": "#FFF",
+                                      "fontFamily": "Nunito",
                                       "fontWeight": "bold",
                                       "textAlign": "center",
                                     }
