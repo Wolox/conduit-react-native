@@ -38,7 +38,9 @@ function Home({ navigation }: Navigation) {
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
 
   const handlePressArticle = useCallback(
-    (article: Article) => navigation.navigate(Routes.DetailArticle, { article }),
+    (article: Article) => {
+      navigation.navigate(Routes.DetailArticle, { article });
+    },
     [navigation]
   );
 

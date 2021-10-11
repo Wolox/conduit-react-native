@@ -1,8 +1,8 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { fetchMiddleware } from 'redux-recompose';
-import actionCreators, { actions, TARGETS } from '@redux/favourites/actions';
-import { initialState } from '@redux/favourites/reducer';
+import actionCreators, { actions, TARGETS } from '@redux/favorites/actions';
+import { initialState } from '@redux/favorites/reducer';
 import { CurrentUser, UserResponse } from '@interfaces/authInterfaces.ts';
 
 const middleware = [thunk, fetchMiddleware];
@@ -28,7 +28,7 @@ describe('case FavoritesActions', () => {
     user: MOCKED_DATA
   };
   test('test GET_FAVORITES_ARTICLES', () => {
-    store.dispatch(actionCreators.getFavouritesArticles(MOCKED_USER));
+    store.dispatch(actionCreators.getFavoritesArticles(MOCKED_USER));
     expect(store.getActions()).toEqual([
       { target: TARGETS.FAVORITES_ARTICLES_LIST, type: actions.FAVORITES_ARTICLES_LIST }
     ]);
@@ -36,7 +36,7 @@ describe('case FavoritesActions', () => {
     expect(store.getActions()).toBeDefined();
   });
   test('test GET_FAVORITES_ARTICLES_SUCCESS', () => {
-    store.dispatch(actionCreators.getFavouritesArticles(MOCKED_USER)).then(async () => {
+    store.dispatch(actionCreators.getFavoritesArticles(MOCKED_USER)).then(async () => {
       expect(await store.getActions()).toEqual([
         { target: TARGETS.CREATE_COMMENT, type: actions.FAVORITES_ARTICLES_LIST_SUCCESS }
       ]);

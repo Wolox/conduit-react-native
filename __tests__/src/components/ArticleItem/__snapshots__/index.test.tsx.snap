@@ -333,6 +333,7 @@ exports[`test ArticleItem match with Snapshot 1`] = `
                             style={
                               Object {
                                 "flexDirection": "row",
+                                "width": "100%",
                               }
                             }
                           >
@@ -352,7 +353,9 @@ exports[`test ArticleItem match with Snapshot 1`] = `
                                       "color": "#5CB85C",
                                     },
                                   ],
-                                  undefined,
+                                  Object {
+                                    "width": "82%",
+                                  },
                                 ]
                               }
                             >

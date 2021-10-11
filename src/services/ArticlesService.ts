@@ -18,7 +18,8 @@ const ArticlesService = {
   createArticle: (article: NewArticleValues) => api.post(ARTICLES_PATH, { article }),
   getMyArticles: () => api.get(`${ARTICLES_PATH}${FEED_PATH}`),
   deleteArticle: (slug: string) => api.delete(`${ARTICLES_PATH}/${slug}`),
-  updateArticle: ({ slug, article }: UpdateArticle) => api.put(`${ARTICLES_PATH}/${slug}`, { article })
+  updateArticle: ({ slug, article }: UpdateArticle) => api.put(`${ARTICLES_PATH}/${slug}`, { article }),
+  getArticle: (slug: string) => api.get(`${ARTICLES_PATH}/${slug}`)
 };
 
 export default ArticlesService;
