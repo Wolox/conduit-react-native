@@ -11,7 +11,7 @@ import { ListKeyExtractor } from '@interfaces/miscelanious';
 import { FavouritesState, State } from '@interfaces/reduxInterfaces';
 import { Article } from '@interfaces/articlesInterface';
 import { UserResponse } from '@interfaces/authInterfaces';
-import FavouritesActions from '@redux/favourites/actions';
+import FavoritesActions from '@redux/favorites/actions';
 import { Nullable } from '@interfaces/globalInterfaces';
 
 import './i18n';
@@ -59,7 +59,7 @@ export default function FavArticles() {
   );
   useEffect(() => {
     if (currentUser?.user) {
-      dispatch(FavouritesActions.getFavouritesArticles(currentUser));
+      dispatch(FavoritesActions.getFavoritesArticles(currentUser));
     }
   }, [dispatch, currentUser]);
   return (
