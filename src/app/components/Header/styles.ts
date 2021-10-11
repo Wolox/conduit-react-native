@@ -6,7 +6,8 @@ const MARGIN_TITLE = isIos ? 2 : 10;
 const styles = StyleSheet.create({
   titleContainer: {
     alignItems: 'center',
-    marginTop: MARGIN_TITLE
+    marginTop: MARGIN_TITLE,
+    marginBottom: 10
   },
   title: {
     borderBottomWidth: 2,

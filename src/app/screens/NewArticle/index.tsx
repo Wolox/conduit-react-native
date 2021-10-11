@@ -9,6 +9,7 @@ import ControlledCustomTextInput from '@components/CustomTextInput/controller';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CustomButton from '@components/CustomButton';
 import CustomText from '@components/CustomText';
+import Header from '@components/Header';
 import ArticlesActions from '@redux/articles/actions';
 import Routes from '@constants/routes';
 import { isIos } from '@constants/platform';
@@ -120,7 +121,7 @@ function NewArticle({ route: { params } }: Props) {
     }
   };
   const handleContentSizeChange = () =>
-    isIos && scrollViewRef?.current?.scrollToPosition(0, height - height / 1.2, true);
+    isIos && scrollViewRef?.current?.scrollToPosition(0, height - height / 1.2 + 75, true);
 
   const handleGET = async () => {
     const delta = await editorRef.current?.getHtml();
@@ -137,16 +138,15 @@ function NewArticle({ route: { params } }: Props) {
     }
   }, [setBody, params]);
 
+  const onSubmitEditing = ({ nativeEvent: { text } }: { nativeEvent: { text: string } }) => {
+    if (text.length >= MIN_LENGTH_TAG) setItems([...items, text]);
+    setValue(FIELDS.addTag, '');
+  };
+
   return (
-    <>
-      <KeyboardAwareScrollView ref={scrollViewRef} extraHeight={20} bounces={false}>
-        {!isEdit && (
-          <SafeAreaView>
-            <CustomText green bold style={styles.title}>
-              {i18next.t('NEW_ARTICLE:CREATE_ARTICLE')}
-            </CustomText>
-          </SafeAreaView>
-        )}
+    <SafeAreaView style={styles.container}>
+      {!isEdit && <Header title={i18next.t('NEW_ARTICLE:CREATE_ARTICLE')} />}
+      <KeyboardAwareScrollView ref={scrollViewRef} extraHeight={20} bounces={false} enableOnAndroid>
         <View>
           <ControlledCustomTextInput
             defaultValue={isEdit ? params?.article?.title : ''}
@@ -165,20 +165,6 @@ function NewArticle({ route: { params } }: Props) {
             }}
             maxLength={MAX_TITLE_LENGHT}
           />
-          <SafeAreaView style={styles.containerEditor}>
-            <CustomText style={styles.customTextBody} xsmall green>
-              {i18next.t('NEW_ARTICLE:PLACEHOLDER_BODY')}
-            </CustomText>
-            <QuillToolbar editor={editorRef} options="full" theme="dark" />
-            <QuillEditor
-              onFocus={handleContentSizeChange}
-              container={true}
-              style={styles.edition}
-              ref={editorRef}
-              onEditorChange={handleGET}
-              initialHtml={params?.article?.body}
-            />
-          </SafeAreaView>
           <ControlledCustomTextInput
             defaultValue={isEdit ? params?.article?.description : ''}
             testIDProp={testIds.descriptionInput}
@@ -195,20 +181,33 @@ function NewArticle({ route: { params } }: Props) {
             }}
             maxLength={MAX_DESCRIPTION_LENGHT}
           />
+          <View style={styles.containerEditor}>
+            <CustomText style={styles.customTextBody} xsmall green>
+              {i18next.t('NEW_ARTICLE:PLACEHOLDER_BODY')}
+            </CustomText>
+            <QuillToolbar editor={editorRef} options="full" theme="dark" />
+            <QuillEditor
+              onFocus={handleContentSizeChange}
+              container={true}
+              style={styles.edition}
+              ref={editorRef}
+              onEditorChange={handleGET}
+              initialHtml={params?.article?.body}
+            />
+          </View>
           <ControlledCustomTextInput
             testIDProp={testIds.tagInput}
             control={control}
             labelStyle={styles.labelStyle}
             label={i18next.t('NEW_ARTICLE:TAGS')}
-            name={'addTag'}
+            name={FIELDS.addTag}
             placeholder={i18next.t('NEW_ARTICLE:PLACHEHOLDER_TAGS')}
-            onSubmitEditing={({ nativeEvent: { text } }) => {
-              if (text.length >= MIN_LENGTH_TAG) setItems([...items, text]);
-            }}
+            onSubmitEditing={onSubmitEditing}
           />
         </View>
       </KeyboardAwareScrollView>
-      <View style={styles.containerList}>
+
+      <View style={items.length > 0 && styles.containerList}>
         <FlatList
           numColumns={2}
           columnWrapperStyle={styles.row}
@@ -217,15 +216,17 @@ function NewArticle({ route: { params } }: Props) {
           renderItem={renderItem}
         />
       </View>
-      <CustomButton
-        loading={createArticleLoading}
-        testID={isEdit ? testIds.editArticleButton : testIds.createArticleButton}
-        primary
-        onPress={handleSubmit(handleSubmitArticle)}
-        title={i18next.t(isEdit ? 'NEW_ARTICLE:EDIT_BUTTON' : 'NEW_ARTICLE:CREATE_BUTTON')}
-        style={styles.createButton}
-      />
-    </>
+      <View style={styles.buttonContainer}>
+        <CustomButton
+          loading={createArticleLoading}
+          testID={isEdit ? testIds.editArticleButton : testIds.createArticleButton}
+          primary
+          onPress={handleSubmit(handleSubmitArticle)}
+          title={i18next.t(isEdit ? 'NEW_ARTICLE:EDIT_BUTTON' : 'NEW_ARTICLE:CREATE_BUTTON')}
+          style={styles.createButton}
+        />
+      </View>
+    </SafeAreaView>
   );
 }
 
