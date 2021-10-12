@@ -23,7 +23,11 @@ export const actions = createTypes(
       'CREATE_ARTICLE',
       'DELETE_ARTICLE',
       'GET_TAGS',
-      'UPDATE_ARTICLE'
+      'UPDATE_ARTICLE',
+      'GET_ARTICLES_AUTHOR',
+      'FAVORITED_AUTHOR',
+      'GET_ARTICLE',
+      'SET_ARTICLE'
     ],
     ignoredActions: ['CLEAR_TARGET', 'ADD_SELECTED_TAGS']
   }),
@@ -37,7 +41,10 @@ export const TARGETS = {
   MY_ARTICLES_LIST: 'myArticlesList',
   CREATE_ARTICLE: 'createArticle',
   DELETE_ARTICLE: 'deleteArticle',
-  UPDATE_ARTICLE: 'updateArticle'
+  UPDATE_ARTICLE: 'updateArticle',
+  GET_ARTICLES_AUTHOR: 'articlesAuthor',
+  FAVORITED_AUTHOR: 'favoritedAuthor',
+  GET_ARTICLE: 'article'
 };
 
 const articlesSuccesSelector = (response: ApiOkResponse<any>) => ({
@@ -111,6 +118,18 @@ const actionCreators = {
     target: TARGETS.MY_ARTICLES_LIST,
     service: ArticlesService.getMyArticles
   }),
+  getArticleByAuthor: (username: string) => ({
+    type: actions.GET_ARTICLES_AUTHOR,
+    target: TARGETS.GET_ARTICLES_AUTHOR,
+    payload: username,
+    service: ArticlesService.getArticlesByAuthor
+  }),
+  getFavoritedByAuthor: (username: string) => ({
+    type: actions.FAVORITED_AUTHOR,
+    target: TARGETS.FAVORITED_AUTHOR,
+    payload: username,
+    service: ArticlesService.getFavoritedByAuthor
+  }),
   deleteArticle: (slug: string) => ({
     type: actions.DELETE_ARTICLE,
     target: TARGETS.DELETE_ARTICLE,
@@ -153,6 +172,17 @@ const actionCreators = {
         );
       })
     ]
+  }),
+  getArticle: (slug: string) => ({
+    type: actions.GET_ARTICLE,
+    target: TARGETS.GET_ARTICLE,
+    payload: slug,
+    service: ArticlesService.getArticle
+  }),
+  setArticle: (article: any) => ({
+    type: actions.SET_ARTICLE,
+    target: TARGETS.GET_ARTICLE,
+    payload: article
   })
 };
 

@@ -394,6 +394,7 @@ exports[`test ConfirmationModal match with Snapshot 1`] = `
                                 style={
                                   Object {
                                     "color": "#FFF",
+                                    "fontFamily": "Nunito",
                                     "fontWeight": "bold",
                                     "textAlign": "center",
                                   }
@@ -432,6 +433,7 @@ exports[`test ConfirmationModal match with Snapshot 1`] = `
                                 style={
                                   Object {
                                     "color": "#FFF",
+                                    "fontFamily": "Nunito",
                                     "fontWeight": "bold",
                                     "textAlign": "center",
                                   }

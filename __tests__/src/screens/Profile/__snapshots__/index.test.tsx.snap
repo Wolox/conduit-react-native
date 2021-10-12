@@ -210,7 +210,7 @@ Array [
                     ]
                   }
                 >
-                  Nombre de usuario
+                  PROFILE:USERNAME
                 </Text>
                 <View
                   style={
@@ -295,7 +295,7 @@ Array [
                     onBlur={[Function]}
                     onChangeText={[Function]}
                     onFocus={[Function]}
-                    placeholder="Nombre de usuario"
+                    placeholder="PROFILE:USERNAME"
                     rejectResponderTermination={true}
                     returnKeyType="done"
                     style={
@@ -417,7 +417,7 @@ Array [
                     ]
                   }
                 >
-                  Correo electrónico
+                  PROFILE:EMAIL
                 </Text>
                 <View
                   style={
@@ -502,7 +502,7 @@ Array [
                     onBlur={[Function]}
                     onChangeText={[Function]}
                     onFocus={[Function]}
-                    placeholder="Correo electrónico"
+                    placeholder="PROFILE:EMAIL"
                     rejectResponderTermination={true}
                     returnKeyType="done"
                     style={
@@ -624,7 +624,7 @@ Array [
                     ]
                   }
                 >
-                  Descripción sobre ti
+                  PROFILE:DESCRIPTION
                 </Text>
                 <View
                   style={
@@ -709,7 +709,7 @@ Array [
                     onBlur={[Function]}
                     onChangeText={[Function]}
                     onFocus={[Function]}
-                    placeholder="Descripción sobre ti"
+                    placeholder="PROFILE:DESCRIPTION"
                     rejectResponderTermination={true}
                     returnKeyType="done"
                     style={
@@ -787,7 +787,18 @@ Array [
                         "fontStyle": "normal",
                         "fontWeight": "400",
                       },
-                      Array [],
+                      Array [
+                        Object {
+                          "color": "#000",
+                          "fontFamily": "Nunito",
+                          "fontSize": 25.142857142857142,
+                          "fontStyle": "normal",
+                          "fontWeight": "700",
+                        },
+                        Object {
+                          "color": "#FFF",
+                        },
+                      ],
                       Array [
                         Array [],
                         Object {
@@ -803,7 +814,7 @@ Array [
                     ]
                   }
                 >
-                  Actualizar perfil
+                  PROFILE:UPDATE_PROFILE
                 </Text>
               </View>
             </View>
@@ -896,7 +907,7 @@ Array [
                       ]
                     }
                   >
-                    Cerrar sesión
+                    PROFILE:LOGOUT
                   </Text>
                 </View>
                 <Image

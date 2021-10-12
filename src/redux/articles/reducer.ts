@@ -8,7 +8,10 @@ import { actions } from './actions';
 const stateDescription = {
   description: {
     articlesList: {},
-    tagList: []
+    tagList: [],
+    articlesAuthor: {},
+    favoritedAuthor: {},
+    article: null
   },
   ignoredTargets: {
     selectedTags: [],
@@ -26,11 +29,15 @@ const reducerDescription = {
     actions.CREATE_ARTICLE,
     actions.DELETE_ARTICLE,
     actions.GET_TAGS,
-    actions.UPDATE_ARTICLE
+    actions.UPDATE_ARTICLE,
+    actions.GET_ARTICLES_AUTHOR,
+    actions.FAVORITED_AUTHOR,
+    actions.GET_ARTICLE
   ],
   override: {
     [actions.CLEAR_TARGET]: onClearTarget(),
-    [actions.ADD_SELECTED_TAGS]: onReadValue()
+    [actions.ADD_SELECTED_TAGS]: onReadValue(),
+    [actions.SET_ARTICLE]: onReadValue()
   }
 };
 

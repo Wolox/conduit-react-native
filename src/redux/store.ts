@@ -14,7 +14,7 @@ import { State } from '@interfaces/reduxInterfaces';
 import auth from './auth/reducer';
 import articles from './articles/reducer';
 import comments from './comments/reducer';
-import favourites from './favourites/reducer';
+import favourites from './favorites/reducer';
 import feedBack from './feedback/reducer';
 import myArticles from './myArticles/reducer';
 import profile from './profile/reducer';
