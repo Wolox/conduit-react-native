@@ -12,7 +12,7 @@ export default function CustomHeader() {
   const fadeLogo = useRef(new Animated.Value(0)).current;
 
   const animationsStates = useCallback(() => {
-    const DURATION_ANIMATED = 3500;
+    const DURATION_ANIMATED = 2500;
     const useNativeDriver = true;
     Animated.timing(fadeBg, {
       toValue: 0.4,
