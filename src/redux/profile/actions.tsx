@@ -9,12 +9,17 @@ import ProfileService from '@services/ProfileService';
 
 import './i18n';
 
-export const actions = createTypes(completeTypes({ primaryActions: ['FOLLOW_USER'] }), '@@PROFILE');
+// export const actions = createTypes(completeTypes({ primaryActions: ['FOLLOW_USER'] }), '@@PROFILE');
+
+export const actions = createTypes(
+  completeTypes({ primaryActions: ['FOLLOW_USER', 'GET_PROFILE_USER'] }),
+  '@@PROFILE'
+);
 
 export const TARGETS = {
-  FOLLOW_USER: 'followUser'
+  FOLLOW_USER: 'followUser',
+  GET_PROFILE_USER: 'profileUser'
 };
-
 const handlePress = (dispatch: Dispatch<any>) => async () => {
   await dispatch(FeedbackActions.hideModal());
   await dispatch(ArticlesActions.getArticles());
@@ -68,6 +73,12 @@ const actionCreators = {
         );
       })
     ]
+  }),
+  getProfileUser: (username: string) => ({
+    type: actions.GET_PROFILE_USER,
+    target: TARGETS.GET_PROFILE_USER,
+    service: ProfileService.getProfiles,
+    payload: username
   })
 };
 
