@@ -13,6 +13,6 @@ const stateDescription = {
 export const initialState: FavouritesState = completeState(stateDescription);
 
 const reducerDescription = {
-  primaryActions: [actions.FAVORITES_ARTICLES_LIST]
+  primaryActions: [actions.FAVORITES_ARTICLES_LIST, actions.ADD_FAVORITE, actions.DELETE_ARTICLE]
 };
 export default createReducer(Immutable(initialState), completeReducer(reducerDescription));

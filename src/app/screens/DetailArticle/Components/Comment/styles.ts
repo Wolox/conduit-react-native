@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { white } from '@constants/colors';
 import { SPACING } from '@constants/dimentions';
+import { NUNITO } from '@constants/fonts';
 
 const ALIGN_CENTER = 'center';
 const COMMON_TWENTY = 20;
@@ -36,11 +37,13 @@ const styles = StyleSheet.create({
     width: '100%',
     marginBottom: SPACING.XXXSMALL,
     textAlign: ALIGN_CENTER,
-    paddingHorizontal: SPACING.XXSMALL
+    paddingHorizontal: SPACING.XXSMALL,
+    fontFamily: NUNITO
   },
   commentDate: {
     fontSize: COMMON_TEN,
-    textAlign: ALIGN_CENTER
+    textAlign: ALIGN_CENTER,
+    fontFamily: NUNITO
   },
   commentBody: {
     width: '68%',

@@ -130,6 +130,7 @@ exports[`Comment Comment Snapshot 1`] = `
                 style={
                   Object {
                     "color": "#FFF",
+                    "fontFamily": "Nunito",
                     "fontWeight": "bold",
                     "textAlign": "center",
                   }
@@ -168,6 +169,7 @@ exports[`Comment Comment Snapshot 1`] = `
                 style={
                   Object {
                     "color": "#FFF",
+                    "fontFamily": "Nunito",
                     "fontWeight": "bold",
                     "textAlign": "center",
                   }
@@ -216,6 +218,7 @@ exports[`Comment Comment Snapshot 1`] = `
       <Text
         style={
           Object {
+            "fontFamily": "Nunito",
             "fontSize": 10,
             "fontWeight": "bold",
             "marginBottom": 2,
@@ -230,6 +233,7 @@ exports[`Comment Comment Snapshot 1`] = `
       <Text
         style={
           Object {
+            "fontFamily": "Nunito",
             "fontSize": 10,
             "textAlign": "center",
           }

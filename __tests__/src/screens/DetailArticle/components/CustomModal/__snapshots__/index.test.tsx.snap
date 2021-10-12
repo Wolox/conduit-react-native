@@ -108,6 +108,7 @@ exports[`CustomModal CustomModal Snapshot 1`] = `
             style={
               Object {
                 "color": "#FFF",
+                "fontFamily": "Nunito",
                 "fontWeight": "bold",
                 "textAlign": "center",
               }
@@ -146,6 +147,7 @@ exports[`CustomModal CustomModal Snapshot 1`] = `
             style={
               Object {
                 "color": "#FFF",
+                "fontFamily": "Nunito",
                 "fontWeight": "bold",
                 "textAlign": "center",
               }

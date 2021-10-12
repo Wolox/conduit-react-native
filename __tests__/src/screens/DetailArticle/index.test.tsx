@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import DetailArticle from '@screens/DetailArticle';
 import userIcon from '@assets/Profile/icUser.png';
+import MockedNavigator from '@mocks/MockedNavigator';
 
 jest.mock('react-redux', () => {
   return {
@@ -28,7 +29,12 @@ describe('DetailArticle', () => {
         }
       }
     };
-    const tree = renderer.create(<DetailArticle {...item} />).toJSON();
+
+    const RenderCustom = {
+      renderDetail: () => <DetailArticle {...item} />,
+      renderCompleteDetail: () => <MockedNavigator component={RenderCustom.renderDetail} />
+    };
+    const tree = renderer.create(RenderCustom.renderCompleteDetail()).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

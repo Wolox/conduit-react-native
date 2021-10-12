@@ -14,7 +14,8 @@ const ProfileService = {
       return api.delete(`${PROFILES_PATH}/${username}/${FOLLOW_PATH}`);
     }
     return api.post(`${PROFILES_PATH}/${username}/${FOLLOW_PATH}`);
-  }
+  },
+  getProfiles: (username: string) => api.get(`${PROFILES_PATH}/${username}`)
 };
 
 export default ProfileService;

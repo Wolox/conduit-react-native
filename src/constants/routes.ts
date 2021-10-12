@@ -17,7 +17,8 @@ enum Routes {
   Confirmation = 'Confirmation',
   Tags = 'Tags',
   Tab2 = 'Tab2',
-  Tab4 = 'Tab4'
+  Tab4 = 'Tab4',
+  DetailUser = 'DetailUser'
 }
 
 export default Routes;
