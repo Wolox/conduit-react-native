@@ -1,8 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import MockedNavigator from '@mocks/MockedNavigator';
-
-import CustomHeader from '../../../../../src/app/screens/Home/components/CustomHeader';
+import CustomHeader from '@screens/Home/components/CustomHeader';
 
 jest.mock('react-redux', () => {
   return {
