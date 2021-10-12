@@ -15,11 +15,11 @@ import MyActiclesActions from '@redux/myArticles/actions';
 import ArticlesActions from '@redux/articles/actions';
 import { UserResponse } from '@interfaces/authInterfaces';
 import { Nullable } from '@interfaces/globalInterfaces';
+import Header from '@components/Header';
 
 import './i18n';
 
 import styles from './styles';
-import Header from './Header';
 
 export default function MyArticles() {
   const dispatch = useDispatch();
@@ -93,7 +93,7 @@ export default function MyArticles() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
+      <Header title={i18next.t('MY_ARTICLES:TITLE')} />
       <ConfirmationModal
         title={i18next.t('HOME:CONFIRM_DELETE_ARTICLE')}
         showModal={deleteArticleModal}

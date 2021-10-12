@@ -4,24 +4,25 @@ import { SPACING } from '@constants/dimentions';
 import { isAndroid } from '@constants/platform';
 
 const DEFAULT_SPACE = 10;
-const CUSTOM_MARGIN_TOP = isAndroid ? SPACING.BIG : 0;
+const CUSTOM_MARGIN_TOP = -20;
 const CUSTOM_HEIGHT = isAndroid ? 88 : 60;
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: DEFAULT_SPACE,
-    paddingTop: 50
+    paddingHorizontal: 6
   },
   title: {
-    margin: DEFAULT_SPACE
+    borderBottomWidth: 2,
+    borderBottomColor: green,
+    margin: DEFAULT_SPACE,
+    textAlign: 'center'
   },
   labelStyle: {
     color: green,
     marginVertical: 5
   },
   containerList: {
-    marginBottom: DEFAULT_SPACE,
     marginTop: SPACING.MEDIUM
   },
   row: {
@@ -29,9 +30,7 @@ export default StyleSheet.create({
     justifyContent: 'space-around'
   },
   createButton: {
-    marginVertical: DEFAULT_SPACE,
-    width: '80%',
-    marginLeft: '10%'
+    width: '100%'
   },
   edition: {
     flex: 1,
@@ -56,7 +55,6 @@ export default StyleSheet.create({
     marginVertical: 5
   },
   containerEditor: {
-    flex: 1,
     width: '100%',
     marginTop: CUSTOM_MARGIN_TOP,
     paddingTop: SPACING.NONE,
@@ -67,7 +65,12 @@ export default StyleSheet.create({
     paddingBottom: SPACING.XSMALL
   },
   customTitleInput: {
-    marginBottom: SPACING.NONE,
+    marginBottom: isAndroid ? 0 : 20,
     height: CUSTOM_HEIGHT
+  },
+  buttonContainer: {
+    width: '100%',
+    alignItems: 'center',
+    padding: 16
   }
 });
