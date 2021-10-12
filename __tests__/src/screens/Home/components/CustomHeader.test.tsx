@@ -3,13 +3,6 @@ import renderer from 'react-test-renderer';
 import MockedNavigator from '@mocks/MockedNavigator';
 import CustomHeader from '@screens/Home/components/CustomHeader';
 
-jest.mock('react-redux', () => {
-  return {
-    useSelector: jest.fn().mockImplementation(() => []),
-    useDispatch: () => jest.fn()
-  };
-});
-
 describe('test CustomHeaderHome', () => {
   beforeEach(() => {
     jest.useFakeTimers();
