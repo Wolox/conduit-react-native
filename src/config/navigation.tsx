@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavigationStackOptions } from 'react-navigation-stack';
+import { CardStyleInterpolators } from '@react-navigation/stack';
 import i18next from 'i18next';
 import Routes from '@constants/routes';
 import { green, transparent, white } from '@constants/colors';
@@ -10,7 +11,9 @@ import { customStyles, styles } from '@constants/navigationHelper';
 
 import fonts from './fonts';
 
-export const withoutHeader = (): NavigationStackOptions => ({ headerShown: false });
+export const withoutHeader = (): NavigationStackOptions => ({
+  headerShown: false
+});
 export const withoutShadow = (): NavigationStackOptions => ({
   headerStyle: { shadowColor: transparent, backgroundColor: green }
 });
@@ -27,6 +30,8 @@ export const withCustomHeader = (): NavigationStackOptions => ({
 const defaultNavOptions = ({ route }: Navigation) => ({
   // Change screen title from i18n traslates files
   headerTitle: i18next.t(`app:${route.name}`),
+  cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+
   // TODO: The following options are examples. Change them to your need
   headerStyle: {
     backgroundColor: green
