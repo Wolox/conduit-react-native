@@ -17,14 +17,15 @@ import ProfileActions from '@redux/profile/actions';
 import { validateMinLength, validateMaxLength } from '@utils/validations/validateUtils';
 import icAddInactive from '@assets/TabBar/icAddpostInactive.png';
 import icSendMessage from '@assets/icons/icSendMessage.png';
-import icFavouriteInactive from '@assets/TabBar/icFavoriteInactive.png';
-import icDelete from '@assets/icons/icDelete.png';
-import icEdit from '@assets/icons/icEdit.png';
+import icFavoriteInactive from '@assets/TabBar/icFavoriteInactive.png';
+import icDelete from '@assets/icons/icTrash.png';
+import icEdit from '@assets/icons/icEditNew.png';
 import Routes from '@constants/routes';
 import { getAvatar } from '@constants/iconsConstants';
 import ArticlesActions from '@redux/articles/actions';
 import { validatorHTML } from '@utils/htmlUtils';
 import { useNavigationWithParams } from '@utils/navUtils';
+import FavoriteActions from '@redux/favorites/actions';
 
 import './i18n';
 
@@ -39,18 +40,27 @@ function DetailArticle({ route }: Props) {
   const navigationParams = useNavigationWithParams();
 
   const dispatch = useDispatch();
+  const article = useSelector((state: State) => state.articles.article || route?.params?.article);
   const {
     title,
     description,
     updatedAt,
     body,
+    favorited,
     favoritesCount,
     slug,
     author: { image, username, following },
     tagList
-  } = route?.params?.article;
+  } = article;
 
-  const [favoriteCount, setFavoriteCount] = useState(favoritesCount || 0);
+  useEffect(() => {
+    return () => {
+      dispatch(ArticlesActions.getArticles());
+      dispatch(ArticlesActions.getMyArticles());
+      dispatch(ArticlesActions.setArticle(null));
+    };
+  }, [dispatch]);
+
   const [isFollow, setIsFollow] = useState(following);
   const [comment, setCommment] = useState<string>('');
 
@@ -58,8 +68,7 @@ function DetailArticle({ route }: Props) {
   const currentUser = useSelector((state: State) => state.auth.currentUser);
   const EXTRAHEIGHT = isIos ? 400 : 190;
   const handleToggleFavorite = () => {
-    if (favoriteCount > favoritesCount) setFavoriteCount(favoriteCount - 1);
-    else setFavoriteCount(favoriteCount + 1);
+    dispatch(favorited ? FavoriteActions.deleteFavorite(slug) : FavoriteActions.addFavorite(slug));
   };
   const handleDeleteArticle = () => dispatch(ArticlesActions.deleteArticle(slug));
   const handleEditArticle = useCallback(
@@ -113,20 +122,18 @@ function DetailArticle({ route }: Props) {
         <Image
           style={[
             styles.interactionButtonImage,
-            favoriteCount > favoritesCount ? styles.greenTint : styles.interactionButtonImage
+            favorited ? styles.greenTint : styles.interactionButtonImage
           ]}
-          source={icFavouriteInactive}
+          source={icFavoriteInactive}
           resizeMode="contain"
         />
-        {!!favoriteCount && (
-          <CustomText gray xsmall green={favoriteCount > favoritesCount}>{`(${favoriteCount})`}</CustomText>
-        )}
+        {favoritesCount > 0 && <CustomText gray xsmall green={favorited}>{`(${favoritesCount})`}</CustomText>}
       </TouchableOpacity>
     </View>
   );
   const renderTags = () => (
     <>
-      {tagList.map((tag: string, index: number) => (
+      {article?.tagList.map((tag: string, index: number) => (
         <Text key={index} style={styles.tag}>
           {tag}
         </Text>
@@ -199,21 +206,13 @@ function DetailArticle({ route }: Props) {
                 testID={testIds.editButton}
                 style={styles.interactionButton}
                 onPress={handleEditArticle}>
-                <Image
-                  style={[styles.interactionButtonImage, styles.greenTint]}
-                  source={icEdit}
-                  resizeMode="contain"
-                />
+                <Image style={[styles.icEdit, styles.greenTint]} source={icEdit} resizeMode="contain" />
               </TouchableOpacity>
               <TouchableOpacity
                 testID={testIds.deleteButton}
                 style={styles.interactionButton}
                 onPress={handleDeleteArticle}>
-                <Image
-                  style={[styles.interactionButtonImage, styles.redTint]}
-                  source={icDelete}
-                  resizeMode="contain"
-                />
+                <Image style={[styles.icTrash, styles.redTint]} source={icDelete} resizeMode="contain" />
               </TouchableOpacity>
             </View>
           )}

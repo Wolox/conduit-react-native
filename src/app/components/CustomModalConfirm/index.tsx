@@ -20,7 +20,7 @@ const CustomModalConfirm = ({ onPress, text, buttonText }: Props) => {
         </CustomText>
       </View>
       <View style={styles.containerButton}>
-        <CustomButton xmedium title={buttonText} onPress={onPress} style={styles.buttonOk} semiBold />
+        <CustomButton xmedium title={buttonText} onPress={onPress} style={styles.buttonOk} primary />
       </View>
     </View>
   );

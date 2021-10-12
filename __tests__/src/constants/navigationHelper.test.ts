@@ -6,8 +6,8 @@ describe('navigationHelper Return styles', () => {
     expect(response.headerStyle).not.toBeNull();
     expect(response.headerStyle).toStrictEqual({
       borderWidth: 0,
-      shadowColor: 'transparent',
-      backgroundColor: '#F1F1F1'
+      backgroundColor: '#F1F1F1',
+      shadowColor: 'transparent'
     });
     expect(response.headerTitleStyle).not.toBeNull();
     expect(response.headerTitleStyle).toStrictEqual({

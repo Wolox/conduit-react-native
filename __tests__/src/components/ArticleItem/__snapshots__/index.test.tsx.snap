@@ -333,6 +333,7 @@ exports[`test ArticleItem match with Snapshot 1`] = `
                             style={
                               Object {
                                 "flexDirection": "row",
+                                "width": "100%",
                               }
                             }
                           >
@@ -363,18 +364,15 @@ exports[`test ArticleItem match with Snapshot 1`] = `
                                       "fontStyle": "normal",
                                       "fontWeight": "400",
                                     },
-                                    Array [
-                                      Object {
-                                        "color": "#5CB85C",
-                                      },
-                                    ],
-                                    undefined,
-                                  ]
-                                }
-                              >
-                                mikeJax
-                              </Text>
-                            </View>
+                                  ],
+                                  Object {
+                                    "width": "82%",
+                                  },
+                                ]
+                              }
+                            >
+                              mikeJax
+                            </Text>
                           </View>
                           <Text
                             style={

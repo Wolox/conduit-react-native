@@ -26,7 +26,7 @@ function Home({ navigation }: Navigation) {
   const paginated = useRef(false);
   const [currentTab, setCurrentTab] = useState(0);
   const [deleteArticleModal, setDeleteArticleModal] = useState(false);
-  const [, setArticleToDelete] = useState<Article | null>(null);
+  const [articleToDelete, setArticleToDelete] = useState<Article | null>(null);
 
   const articles = useSelector<State, Article[]>(state => state.articles.articlesList?.page || []);
   const myArticles = useSelector<State, Article[]>(state => state.articles.myArticlesList.articles || []);
@@ -38,7 +38,9 @@ function Home({ navigation }: Navigation) {
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
 
   const handlePressArticle = useCallback(
-    (article: Article) => navigation.navigate(Routes.DetailArticle, { article }),
+    (article: Article) => {
+      navigation.navigate(Routes.DetailArticle, { article });
+    },
     [navigation]
   );
 

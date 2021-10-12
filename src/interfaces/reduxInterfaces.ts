@@ -85,6 +85,9 @@ export interface ArticlesState {
   };
   favoritedAuthorLoading: boolean;
   favoritedAuthorError: Nullable<string>;
+  article: Nullable<Article>;
+  articleLoading: boolean;
+  articleError: Nullable<string>;
 }
 export interface FavouritesState {
   favoritesArticlesList: {

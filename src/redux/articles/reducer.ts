@@ -10,7 +10,8 @@ const stateDescription = {
     articlesList: {},
     tagList: [],
     articlesAuthor: {},
-    favoritedAuthor: {}
+    favoritedAuthor: {},
+    article: null
   },
   ignoredTargets: {
     selectedTags: [],
@@ -30,11 +31,13 @@ const reducerDescription = {
     actions.GET_TAGS,
     actions.UPDATE_ARTICLE,
     actions.GET_ARTICLES_AUTHOR,
-    actions.FAVORITED_AUTHOR
+    actions.FAVORITED_AUTHOR,
+    actions.GET_ARTICLE
   ],
   override: {
     [actions.CLEAR_TARGET]: onClearTarget(),
-    [actions.ADD_SELECTED_TAGS]: onReadValue()
+    [actions.ADD_SELECTED_TAGS]: onReadValue(),
+    [actions.SET_ARTICLE]: onReadValue()
   }
 };
 
