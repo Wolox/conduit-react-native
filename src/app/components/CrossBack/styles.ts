@@ -5,6 +5,7 @@ import { isIos } from '@constants/platform';
 const PADDING_VERTICAL = isIos ? 8 : 4;
 const PADDING_HORIZONTAL = isIos ? 10 : 8;
 const COMMON_SPACING = 10;
+const SIZE = 32;
 const styles = StyleSheet.create({
   container: {
     marginRight: COMMON_SPACING,
@@ -19,8 +20,8 @@ const styles = StyleSheet.create({
       height: 3
     },
     shadowOpacity: 0.1,
-    width: 32,
-    height: 32,
+    width: SIZE,
+    height: SIZE,
     alignItems: 'center'
   }
 });
