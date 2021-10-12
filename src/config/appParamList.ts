@@ -13,4 +13,5 @@ export type AppStackParamList = {
   [Routes.Profile]: undefined;
   [Routes.NewArticle]: undefined;
   [Routes.Confirmation]: { typeError: boolean; type: ConfirmationTypes };
+  [Routes.DetailUser]: { user: string };
 };

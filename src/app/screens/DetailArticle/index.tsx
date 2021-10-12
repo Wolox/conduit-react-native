@@ -21,9 +21,10 @@ import icFavoriteInactive from '@assets/TabBar/icFavoriteInactive.png';
 import icDelete from '@assets/icons/icTrash.png';
 import icEdit from '@assets/icons/icEditNew.png';
 import Routes from '@constants/routes';
+import { getAvatar } from '@constants/iconsConstants';
 import ArticlesActions from '@redux/articles/actions';
 import { validatorHTML } from '@utils/htmlUtils';
-import { getAvatar } from '@constants/iconsConstants';
+import { useNavigationWithParams } from '@utils/navUtils';
 import FavoriteActions from '@redux/favorites/actions';
 
 import './i18n';
@@ -36,6 +37,8 @@ interface Props extends ArticleInParams {}
 
 function DetailArticle({ route }: Props) {
   const navigation = useNavigation();
+  const navigationParams = useNavigationWithParams();
+
   const dispatch = useDispatch();
   const article = useSelector((state: State) => state.articles.article || route?.params?.article);
   const {
@@ -179,6 +182,9 @@ function DetailArticle({ route }: Props) {
     ),
     [currentUser, handleRedirectToLogin, handleSubmit]
   );
+
+  const handleNavigate = () => navigationParams.navigate(Routes.DetailUser, { user: username });
+
   return (
     <>
       <KeyboardAwareScrollView
@@ -211,17 +217,19 @@ function DetailArticle({ route }: Props) {
             </View>
           )}
           <View style={styles.containerDetail}>
-            <View style={styles.containerUser}>
-              <Image source={image && getAvatar(image)} style={styles.image} />
-              <View>
-                <CustomText center green>
-                  {username}
-                </CustomText>
-                <CustomText center label>
-                  {formatDate(updatedAt)}
-                </CustomText>
+            <TouchableOpacity onPress={handleNavigate}>
+              <View style={styles.containerUser}>
+                <Image source={image && getAvatar(image)} style={styles.image} />
+                <View>
+                  <CustomText center green>
+                    {username}
+                  </CustomText>
+                  <CustomText center label>
+                    {formatDate(updatedAt)}
+                  </CustomText>
+                </View>
               </View>
-            </View>
+            </TouchableOpacity>
             {!!tagList.length && <View style={styles.tagContainer}>{renderTags()}</View>}
             <View style={styles.separator} />
             <CustomText>{title}</CustomText>

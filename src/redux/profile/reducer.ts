@@ -6,14 +6,15 @@ import { actions } from './actions';
 
 const stateDescription = {
   description: {
-    followUser: null
+    followUser: null,
+    profileUser: null
   }
 };
 
 export const initialState: ProfileState = completeState(stateDescription);
 
 const reducerDescription = {
-  primaryActions: [actions.FOLLOW_USER]
+  primaryActions: [actions.FOLLOW_USER, actions.GET_PROFILE_USER]
 };
 
 export default createReducer(Immutable(initialState), completeReducer(reducerDescription));
