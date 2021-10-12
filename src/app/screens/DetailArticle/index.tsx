@@ -24,6 +24,7 @@ import Routes from '@constants/routes';
 import { getAvatar } from '@constants/iconsConstants';
 import ArticlesActions from '@redux/articles/actions';
 import { validatorHTML } from '@utils/htmlUtils';
+import icCheck from '@assets/icons/icCheck.png';
 import { useNavigationWithParams } from '@utils/navUtils';
 import FavoriteActions from '@redux/favorites/actions';
 
@@ -111,7 +112,7 @@ function DetailArticle({ route }: Props) {
         onPress={handleClickFollow}>
         <Image
           style={[styles.interactionButtonImage, isFollow && styles.greenTint]}
-          source={icAddInactive}
+          source={isFollow ? icCheck : icAddInactive}
           resizeMode="contain"
         />
       </TouchableOpacity>
