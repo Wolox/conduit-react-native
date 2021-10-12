@@ -19,6 +19,8 @@ const ArticlesService = {
   getMyArticles: () => api.get(`${ARTICLES_PATH}${FEED_PATH}`),
   deleteArticle: (slug: string) => api.delete(`${ARTICLES_PATH}/${slug}`),
   updateArticle: ({ slug, article }: UpdateArticle) => api.put(`${ARTICLES_PATH}/${slug}`, { article }),
+  getArticlesByAuthor: (username: string) => api.get(`${ARTICLES_PATH}`, { author: username }),
+  getFavoritedByAuthor: (username: string) => api.get(`${ARTICLES_PATH}`, { favorited: username }),
   getArticle: (slug: string) => api.get(`${ARTICLES_PATH}/${slug}`)
 };
 

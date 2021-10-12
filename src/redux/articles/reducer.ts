@@ -9,6 +9,8 @@ const stateDescription = {
   description: {
     articlesList: {},
     tagList: [],
+    articlesAuthor: {},
+    favoritedAuthor: {},
     article: null
   },
   ignoredTargets: {
@@ -28,6 +30,8 @@ const reducerDescription = {
     actions.DELETE_ARTICLE,
     actions.GET_TAGS,
     actions.UPDATE_ARTICLE,
+    actions.GET_ARTICLES_AUTHOR,
+    actions.FAVORITED_AUTHOR,
     actions.GET_ARTICLE
   ],
   override: {

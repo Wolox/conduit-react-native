@@ -24,6 +24,8 @@ export const actions = createTypes(
       'DELETE_ARTICLE',
       'GET_TAGS',
       'UPDATE_ARTICLE',
+      'GET_ARTICLES_AUTHOR',
+      'FAVORITED_AUTHOR',
       'GET_ARTICLE',
       'SET_ARTICLE'
     ],
@@ -40,6 +42,8 @@ export const TARGETS = {
   CREATE_ARTICLE: 'createArticle',
   DELETE_ARTICLE: 'deleteArticle',
   UPDATE_ARTICLE: 'updateArticle',
+  GET_ARTICLES_AUTHOR: 'articlesAuthor',
+  FAVORITED_AUTHOR: 'favoritedAuthor',
   GET_ARTICLE: 'article'
 };
 
@@ -113,6 +117,18 @@ const actionCreators = {
     type: actions.GET_MY_ARTICLES,
     target: TARGETS.MY_ARTICLES_LIST,
     service: ArticlesService.getMyArticles
+  }),
+  getArticleByAuthor: (username: string) => ({
+    type: actions.GET_ARTICLES_AUTHOR,
+    target: TARGETS.GET_ARTICLES_AUTHOR,
+    payload: username,
+    service: ArticlesService.getArticlesByAuthor
+  }),
+  getFavoritedByAuthor: (username: string) => ({
+    type: actions.FAVORITED_AUTHOR,
+    target: TARGETS.FAVORITED_AUTHOR,
+    payload: username,
+    service: ArticlesService.getFavoritedByAuthor
   }),
   deleteArticle: (slug: string) => ({
     type: actions.DELETE_ARTICLE,
