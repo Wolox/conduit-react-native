@@ -2,14 +2,14 @@ import { StyleSheet } from 'react-native';
 import { green } from '@constants/colors';
 
 const DEFAULT_SPACE = 10;
-const ICON_SIZE = 40;
+const ICON_SIZE = 50;
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    paddingHorizontal: DEFAULT_SPACE,
-    paddingTop: 70
+    justifyContent: 'center',
+    paddingHorizontal: DEFAULT_SPACE
   },
   icon: {
     width: ICON_SIZE,

@@ -5,10 +5,11 @@ import { isIos } from '@constants/platform';
 const PADDING_VERTICAL = isIos ? 8 : 4;
 const PADDING_HORIZONTAL = isIos ? 10 : 8;
 const COMMON_SPACING = 10;
+const SIZE = 32;
 const styles = StyleSheet.create({
   container: {
-    marginLeft: COMMON_SPACING,
-    borderRadius: COMMON_SPACING,
+    marginRight: COMMON_SPACING,
+    borderRadius: 50,
     backgroundColor: white,
     paddingVertical: PADDING_VERTICAL,
     paddingHorizontal: PADDING_HORIZONTAL,
@@ -18,7 +19,10 @@ const styles = StyleSheet.create({
       width: 1,
       height: 3
     },
-    shadowOpacity: 0.1
+    shadowOpacity: 0.1,
+    width: SIZE,
+    height: SIZE,
+    alignItems: 'center'
   }
 });
 export default styles;
