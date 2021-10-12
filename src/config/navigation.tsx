@@ -16,7 +16,8 @@ export const withCustomHeader = (): NavigationStackOptions => ({
   headerTitle: '',
   headerStyle: customStyles().headerStyle,
   headerTitleStyle: customStyles().headerTitleStyle,
-  headerLeft: () => {
+  headerLeft: () => null,
+  headerRight: () => {
     return <CrossBack />;
   }
 });

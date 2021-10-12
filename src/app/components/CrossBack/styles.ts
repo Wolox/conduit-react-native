@@ -7,8 +7,8 @@ const PADDING_HORIZONTAL = isIos ? 10 : 8;
 const COMMON_SPACING = 10;
 const styles = StyleSheet.create({
   container: {
-    marginLeft: COMMON_SPACING,
-    borderRadius: COMMON_SPACING,
+    marginRight: COMMON_SPACING,
+    borderRadius: 50,
     backgroundColor: white,
     paddingVertical: PADDING_VERTICAL,
     paddingHorizontal: PADDING_HORIZONTAL,
@@ -18,7 +18,10 @@ const styles = StyleSheet.create({
       width: 1,
       height: 3
     },
-    shadowOpacity: 0.1
+    shadowOpacity: 0.1,
+    width: 32,
+    height: 32,
+    alignItems: 'center'
   }
 });
 export default styles;
