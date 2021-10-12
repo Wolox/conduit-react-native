@@ -350,6 +350,7 @@ exports[`test ArticleItem match with Snapshot 1`] = `
                               style={
                                 Object {
                                   "opacity": 1,
+                                  "width": "82%",
                                 }
                               }
                             >
@@ -364,15 +365,18 @@ exports[`test ArticleItem match with Snapshot 1`] = `
                                       "fontStyle": "normal",
                                       "fontWeight": "400",
                                     },
-                                  ],
-                                  Object {
-                                    "width": "82%",
-                                  },
-                                ]
-                              }
-                            >
-                              mikeJax
-                            </Text>
+                                    Array [
+                                      Object {
+                                        "color": "#5CB85C",
+                                      },
+                                    ],
+                                    undefined,
+                                  ]
+                                }
+                              >
+                                mikeJax
+                              </Text>
+                            </View>
                           </View>
                           <Text
                             style={

@@ -301,6 +301,103 @@ exports[`DetailArticle DetailArticle Snapshot 1`] = `
                       <View
                         style={
                           Object {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "height": 39.285714285714285,
+                            "justifyContent": "space-between",
+                            "position": "absolute",
+                            "top": 16,
+                            "width": "100%",
+                          }
+                        }
+                      >
+                        <View
+                          accessible={true}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "justifyContent": "center",
+                              "marginHorizontal": 6,
+                              "opacity": 1,
+                            }
+                          }
+                          testID="edit-button"
+                        >
+                          <Image
+                            resizeMode="contain"
+                            source={
+                              Object {
+                                "process": [Function],
+                              }
+                            }
+                            style={
+                              Array [
+                                Object {
+                                  "height": 39.285714285714285,
+                                  "width": 39.285714285714285,
+                                },
+                                Object {
+                                  "tintColor": "#5CB85C",
+                                },
+                              ]
+                            }
+                          />
+                        </View>
+                        <View
+                          accessible={true}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            Object {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "justifyContent": "center",
+                              "marginHorizontal": 6,
+                              "opacity": 1,
+                            }
+                          }
+                          testID="delete-button"
+                        >
+                          <Image
+                            resizeMode="contain"
+                            source={
+                              Object {
+                                "process": [Function],
+                              }
+                            }
+                            style={
+                              Array [
+                                Object {
+                                  "height": 24,
+                                  "marginRight": 4,
+                                  "width": 24,
+                                },
+                                Object {
+                                  "tintColor": "#FF0000",
+                                },
+                              ]
+                            }
+                          />
+                        </View>
+                      </View>
+                      <View
+                        style={
+                          Object {
                             "backgroundColor": "#FFF",
                             "borderRadius": 16,
                             "elevation": 1,
@@ -343,11 +440,7 @@ exports[`DetailArticle DetailArticle Snapshot 1`] = `
                             }
                           >
                             <Image
-                              source={
-                                Object {
-                                  "process": [Function],
-                                }
-                              }
+                              source=""
                               style={
                                 Object {
                                   "backgroundColor": "#F1F1F1",
@@ -382,9 +475,7 @@ exports[`DetailArticle DetailArticle Snapshot 1`] = `
                                     undefined,
                                   ]
                                 }
-                              >
-                                user
-                              </Text>
+                              />
                               <Text
                                 style={
                                   Array [
@@ -412,7 +503,7 @@ exports[`DetailArticle DetailArticle Snapshot 1`] = `
                                   ]
                                 }
                               >
-                                Invalid Date
+                                12 · 10 · 2021
                               </Text>
                             </View>
                           </View>
@@ -441,9 +532,7 @@ exports[`DetailArticle DetailArticle Snapshot 1`] = `
                               undefined,
                             ]
                           }
-                        >
-                          
-                        </Text>
+                        />
                         <Text
                           style={
                             Array [
@@ -467,9 +556,7 @@ exports[`DetailArticle DetailArticle Snapshot 1`] = `
                               undefined,
                             ]
                           }
-                        >
-                          
-                        </Text>
+                        />
                         <View
                           style={
                             Object {
@@ -510,7 +597,7 @@ exports[`DetailArticle DetailArticle Snapshot 1`] = `
                           style={
                             Object {
                               "flexDirection": "row",
-                              "height": 47.14285714285714,
+                              "height": 39.285714285714285,
                               "justifyContent": "flex-end",
                               "marginTop": 12,
                               "width": "100%",
@@ -548,12 +635,12 @@ exports[`DetailArticle DetailArticle Snapshot 1`] = `
                               style={
                                 Array [
                                   Object {
-                                    "height": 47.14285714285714,
+                                    "height": 39.285714285714285,
                                     "marginRight": 6,
                                     "tintColor": "#A7A7A7",
-                                    "width": 47.14285714285714,
+                                    "width": 39.285714285714285,
                                   },
-                                  false,
+                                  undefined,
                                 ]
                               }
                             />
@@ -589,16 +676,16 @@ exports[`DetailArticle DetailArticle Snapshot 1`] = `
                               style={
                                 Array [
                                   Object {
-                                    "height": 47.14285714285714,
+                                    "height": 39.285714285714285,
                                     "marginRight": 6,
                                     "tintColor": "#A7A7A7",
-                                    "width": 47.14285714285714,
+                                    "width": 39.285714285714285,
                                   },
                                   Object {
-                                    "height": 47.14285714285714,
+                                    "height": 39.285714285714285,
                                     "marginRight": 6,
                                     "tintColor": "#A7A7A7",
-                                    "width": 47.14285714285714,
+                                    "width": 39.285714285714285,
                                   },
                                 ]
                               }

@@ -575,12 +575,7 @@ exports[`DetailArticle DetailArticle Snapshot 1`] = `
                         <RCTScrollView
                           ItemSeparatorComponent={[Function]}
                           ListEmptyComponent={<RenderEmpty />}
-                          data={
-                            Object {
-                              "comments": Array [],
-                              "currentUser": "",
-                            }
-                          }
+                          data={Array []}
                           disableVirtualization={false}
                           getItem={[Function]}
                           getItemCount={[Function]}
