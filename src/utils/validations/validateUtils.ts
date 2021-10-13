@@ -38,8 +38,8 @@ export const validateOnlyNumber = {
     !!value.match(onlyNumberRegex) || (i18next.t('VALIDATIONS:ONLY_NUMBERS') as string)
 };
 
-export const validateMinLength = (minValue: number) => ({
-  minLength: { value: minValue, message: i18next.t('VALIDATIONS:MIN_LENGTH', { count: minValue }) }
+export const validateMinLength = (minValue: number, message: string = '') => ({
+  minLength: { value: minValue, message: message || i18next.t('VALIDATIONS:MIN_LENGTH', { count: minValue }) }
 });
 
 export const validateMaxLength = (maxValue: number) => ({

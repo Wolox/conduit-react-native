@@ -28,7 +28,7 @@ function AvatarSelector({ selected, setSelected }: AvatarSelectorProps) {
     return (
       <TouchableOpacity onPress={handleOnPress} style={styles.itemStyle}>
         <View style={isSelected && styles.selectedItem} />
-        <Image source={item.icon} style={styles.avatarStyle} />
+        <Image source={item.icon} style={styles.avatarStyle} resizeMode="contain" />
       </TouchableOpacity>
     );
   };
