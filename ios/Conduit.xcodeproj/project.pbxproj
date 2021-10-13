@@ -14,6 +14,7 @@
 		5DF99E5F4DEF47D9A1DE207F /* Nunito-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 57ACC6F92C88487BA5175446 /* Nunito-BoldItalic.ttf */; };
 		66FE1B0EC3184493A1067773 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD2FEF1D7B46959A138D16 /* Nunito-SemiBold.ttf */; };
 		6B66E6CF2CBC41FBA2AE628F /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5622F55FBCA4264AED1D5DA /* Nunito-Bold.ttf */; };
+		6BF65C9C2715D2E800FC43F3 /* libswiftWebKit.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF65C9B2715D2E800FC43F3 /* libswiftWebKit.tbd */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		89D1660CB38C4BBEB871B4DD /* Nunito-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0BA23317CC4A5ABCA749DD /* Nunito-SemiBoldItalic.ttf */; };
 		9FDFA22E6AB389835D6FEA62 /* libPods-Conduit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1B3539D79B8C3A0C181B5BA /* libPods-Conduit.a */; };
@@ -36,6 +37,7 @@
 		4FCD2FEF1D7B46959A138D16 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-SemiBold.ttf"; path = "../assets/fonts/Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		53FAC0AE7CDFA0A0110B3B27 /* Pods-Conduit.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Conduit.production.xcconfig"; path = "Target Support Files/Pods-Conduit/Pods-Conduit.production.xcconfig"; sourceTree = "<group>"; };
 		57ACC6F92C88487BA5175446 /* Nunito-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-BoldItalic.ttf"; path = "../assets/fonts/Nunito-BoldItalic.ttf"; sourceTree = "<group>"; };
+		6BF65C9B2715D2E800FC43F3 /* libswiftWebKit.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftWebKit.tbd; path = usr/lib/swift/libswiftWebKit.tbd; sourceTree = SDKROOT; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Conduit/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8F97FB5E05894BFCA774936A /* Nunito.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Nunito.ttf; path = ../assets/fonts/Nunito.ttf; sourceTree = "<group>"; };
 		8FE561B11BBFB606E05C2740 /* Pods-Conduit.qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Conduit.qa.xcconfig"; path = "Target Support Files/Pods-Conduit/Pods-Conduit.qa.xcconfig"; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BF65C9C2715D2E800FC43F3 /* libswiftWebKit.tbd in Frameworks */,
 				9FDFA22E6AB389835D6FEA62 /* libPods-Conduit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,6 +97,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6BF65C9B2715D2E800FC43F3 /* libswiftWebKit.tbd */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				E1B3539D79B8C3A0C181B5BA /* libPods-Conduit.a */,
 				B57619617AEC943D61E8AE3C /* libPods-Conduit-ConduitTests.a */,
@@ -354,6 +358,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -383,6 +391,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -530,6 +542,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -623,6 +639,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
