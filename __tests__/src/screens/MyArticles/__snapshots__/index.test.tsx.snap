@@ -299,6 +299,7 @@ exports[`test MyArticles_SCREEN to match with snapshot 1`] = `
                         style={
                           Object {
                             "alignItems": "center",
+                            "marginBottom": 10,
                             "marginTop": 2,
                           }
                         }
