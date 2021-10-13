@@ -162,7 +162,7 @@ function DetailArticle({ route }: Props) {
             maxLengthMessage={300}
             numberOfLinesMessage={10}
             messageRules={{
-              ...validateMinLength(5),
+              ...validateMinLength(5, i18next.t('DETAIL_ARTICLE:MIN_LENGTH_COMMENT')),
               ...validateMaxLength(300)
             }}
             showPlaceholderMessage
