@@ -693,7 +693,10 @@ exports[`test HOME SCREEN to match with Snapshot 1`] = `
                       <View
                         style={
                           Object {
+                            "borderBottomColor": "#E5E5E5",
+                            "borderBottomWidth": 1,
                             "flexDirection": "row",
+                            "paddingBottom": 12,
                             "paddingHorizontal": 16,
                           }
                         }
