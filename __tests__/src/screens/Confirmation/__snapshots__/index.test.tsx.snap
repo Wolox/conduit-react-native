@@ -292,8 +292,8 @@ exports[`test Confirmation_SCREEN to match with snapshot 1`] = `
                         Object {
                           "alignItems": "center",
                           "flex": 1,
+                          "justifyContent": "center",
                           "paddingHorizontal": 10,
-                          "paddingTop": 70,
                         }
                       }
                     >
@@ -307,8 +307,8 @@ exports[`test Confirmation_SCREEN to match with snapshot 1`] = `
                         style={
                           Array [
                             Object {
-                              "height": 40,
-                              "width": 40,
+                              "height": 50,
+                              "width": 50,
                             },
                             Object {
                               "tintColor": "#5CB85C",
@@ -365,6 +365,72 @@ exports[`test Confirmation_SCREEN to match with snapshot 1`] = `
                       >
                         CONFIRMATION:SUCCESS_REGISTER_ARTICLE_SUBTITLE
                       </Text>
+                      <View
+                        accessible={true}
+                        focusable={true}
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#5CB85C",
+                            "borderColor": "#FFF",
+                            "borderRadius": 25,
+                            "borderWidth": 0,
+                            "flexDirection": "row",
+                            "justifyContent": "center",
+                            "marginTop": "15%",
+                            "opacity": 1,
+                            "padding": 10,
+                          }
+                        }
+                      >
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "backgroundColor": "transparent",
+                                "color": "#000",
+                                "fontFamily": "Nunito",
+                                "fontSize": 25.142857142857142,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                              },
+                              Array [
+                                Object {
+                                  "color": "#000",
+                                  "fontFamily": "Nunito",
+                                  "fontSize": 25.142857142857142,
+                                  "fontStyle": "normal",
+                                  "fontWeight": "700",
+                                },
+                                Object {
+                                  "textAlign": "center",
+                                },
+                                Object {
+                                  "color": "#FFF",
+                                },
+                              ],
+                              Array [
+                                Array [
+                                  undefined,
+                                ],
+                                undefined,
+                                Object {
+                                  "color": "#FFF",
+                                },
+                              ],
+                            ]
+                          }
+                        >
+                          CONFIRMATION:CONFIRMATION_BUTTON
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>

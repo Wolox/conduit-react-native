@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useEffect, useState } from 'react';
-import { SafeAreaView, FlatList, ListRenderItem, View, ActivityIndicator, Text } from 'react-native';
+import { FlatList, ListRenderItem, View, ActivityIndicator, Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import i18next from 'i18next';
 import { State } from '@interfaces/reduxInterfaces';
@@ -18,6 +18,7 @@ import Routes from '@constants/routes';
 import icSort from '@assets/icons/icSort.png';
 import detailArticleStyles from '@screens/DetailArticle/styles';
 
+import CustomHeader from './components/CustomHeader';
 import styles from './styles';
 import './i18n';
 
@@ -38,7 +39,9 @@ function Home({ navigation }: Navigation) {
   const renderSeparator = useCallback(() => <View style={styles.separator} />, []);
 
   const handlePressArticle = useCallback(
-    (article: Article) => navigation.navigate(Routes.DetailArticle, { article }),
+    (article: Article) => {
+      navigation.navigate(Routes.DetailArticle, { article });
+    },
     [navigation]
   );
 
@@ -121,16 +124,14 @@ function Home({ navigation }: Navigation) {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <ConfirmationModal
         title={i18next.t('HOME:CONFIRM_DELETE_ARTICLE')}
         showModal={deleteArticleModal}
         onCancel={showDeleteModal}
         onConfirm={onConfirmDeleteAticle}
       />
-      <CustomText center big darkBlue bold style={styles.title}>
-        {i18next.t('HOME:APP_NAME')}
-      </CustomText>
+      <CustomHeader />
       {currentUser && (
         <TabList
           tabs={[i18next.t('HOME:FIRST_TAB'), i18next.t('HOME:SECOND_TAB')]}
@@ -190,7 +191,7 @@ function Home({ navigation }: Navigation) {
           />
         </ScreenWithLoader>
       )}
-    </SafeAreaView>
+    </View>
   );
 }
 

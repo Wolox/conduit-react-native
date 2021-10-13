@@ -306,17 +306,21 @@ exports[`test CroosBack match with Snapshot 1`] = `
                       <View
                         style={
                           Object {
+                            "alignItems": "center",
                             "backgroundColor": "#FFF",
                             "borderRadius": 50,
                             "elevation": 1,
-                            "marginLeft": 10,
-                            "padding": 13,
+                            "height": 32,
+                            "marginRight": 10,
+                            "paddingHorizontal": 10,
+                            "paddingVertical": 8,
                             "shadowColor": "#F1F1F1",
                             "shadowOffset": Object {
                               "height": 3,
                               "width": 1,
                             },
                             "shadowOpacity": 0.1,
+                            "width": 32,
                           }
                         }
                       >

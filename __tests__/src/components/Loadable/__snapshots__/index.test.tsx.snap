@@ -290,7 +290,7 @@ exports[`test Loadable loadable 1`] = `
                     <View
                       style={
                         Object {
-                          "backgroundColor": "#FFF",
+                          "backgroundColor": "transparent",
                           "flex": 1,
                           "justifyContent": "center",
                         }

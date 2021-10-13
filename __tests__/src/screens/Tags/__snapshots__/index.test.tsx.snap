@@ -329,10 +329,10 @@ exports[`test Tags_SCREEN to match with snapshot 1`] = `
                             style={
                               Array [
                                 Object {
-                                  "height": 47.14285714285714,
+                                  "height": 39.285714285714285,
                                   "marginRight": 6,
                                   "tintColor": "#A7A7A7",
-                                  "width": 47.14285714285714,
+                                  "width": 39.285714285714285,
                                 },
                                 Object {
                                   "tintColor": "#5CB85C",

@@ -20,7 +20,6 @@ function Tags() {
   const tags = useSelector<State, string[]>(state => state.articles.tagList || []);
   const storeSelectedTags = useSelector<State, string[]>(state => state.articles.selectedTags || []);
   const [selectedTags, setSelectedTags] = useState<string[]>(storeSelectedTags);
-
   const handleGoHome = useCallback(() => {
     navigation?.goBack();
   }, [navigation]);
@@ -29,7 +28,13 @@ function Tags() {
     dispatch(ArticleActions.filterByTags(selectedTags, navigation));
   }, [dispatch, selectedTags, navigation]);
 
-  const handlePress = (option: string) => setSelectedTags([option]);
+  const handlePress = (option: string) => {
+    if (selectedTags.includes(option)) {
+      setSelectedTags([]);
+    } else {
+      setSelectedTags([option]);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -61,7 +66,7 @@ function Tags() {
       <View>
         <CustomButton
           primary
-          disabled={selectedTags === storeSelectedTags}
+          disabled={selectedTags.length === 0}
           testID={testIds.applyFiltersButton}
           onPress={handleFilterByTags}
           title={i18next.t('TAGS:APPLY_FILTERS')}

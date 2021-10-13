@@ -299,6 +299,7 @@ exports[`test MyArticles_SCREEN to match with snapshot 1`] = `
                         style={
                           Object {
                             "alignItems": "center",
+                            "marginBottom": 10,
                             "marginTop": 2,
                           }
                         }
@@ -331,6 +332,165 @@ exports[`test MyArticles_SCREEN to match with snapshot 1`] = `
                           </Text>
                         </View>
                       </View>
+                      <Modal
+                        animationType="fade"
+                        hardwareAccelerated={false}
+                        transparent={true}
+                        visible={false}
+                      >
+                        <View
+                          style={
+                            Object {
+                              "alignItems": "center",
+                              "backgroundColor": "#00000033",
+                              "flex": 1,
+                              "justifyContent": "center",
+                              "marginTop": 22,
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              Object {
+                                "alignItems": "center",
+                                "backgroundColor": "#FFF",
+                                "borderRadius": 20,
+                                "elevation": 5,
+                                "height": 180,
+                                "margin": 20,
+                                "padding": 35,
+                                "shadowColor": "#555555",
+                                "shadowOffset": Object {
+                                  "height": 2,
+                                  "width": 0,
+                                },
+                                "shadowOpacity": 0.3,
+                                "shadowRadius": 4,
+                                "width": "93%",
+                              }
+                            }
+                          >
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "backgroundColor": "transparent",
+                                    "color": "#000",
+                                    "fontFamily": "Nunito",
+                                    "fontSize": 25.142857142857142,
+                                    "fontStyle": "normal",
+                                    "fontWeight": "400",
+                                  },
+                                  Array [
+                                    Object {
+                                      "color": "#000",
+                                      "fontFamily": "Nunito",
+                                      "fontSize": 25.142857142857142,
+                                      "fontStyle": "normal",
+                                      "fontWeight": "700",
+                                    },
+                                  ],
+                                  Object {
+                                    "marginBottom": 15,
+                                    "textAlign": "center",
+                                  },
+                                ]
+                              }
+                            >
+                              HOME:CONFIRM_DELETE_ARTICLE
+                            </Text>
+                            <View
+                              style={
+                                Object {
+                                  "flexDirection": "row",
+                                  "justifyContent": "space-evenly",
+                                  "marginTop": 20,
+                                  "width": "100%",
+                                }
+                              }
+                            >
+                              <View
+                                accessible={true}
+                                collapsable={false}
+                                focusable={true}
+                                onBlur={[Function]}
+                                onClick={[Function]}
+                                onFocus={[Function]}
+                                onResponderGrant={[Function]}
+                                onResponderMove={[Function]}
+                                onResponderRelease={[Function]}
+                                onResponderTerminate={[Function]}
+                                onResponderTerminationRequest={[Function]}
+                                onStartShouldSetResponder={[Function]}
+                                style={
+                                  Array [
+                                    Object {
+                                      "borderRadius": 20,
+                                      "elevation": 2,
+                                      "padding": 15,
+                                    },
+                                    Object {
+                                      "backgroundColor": "#5CB85C",
+                                    },
+                                  ]
+                                }
+                              >
+                                <Text
+                                  style={
+                                    Object {
+                                      "color": "#FFF",
+                                      "fontFamily": "Nunito",
+                                      "fontWeight": "bold",
+                                      "textAlign": "center",
+                                    }
+                                  }
+                                >
+                                  CONFIRMATION_MODAL:CANCEL
+                                </Text>
+                              </View>
+                              <View
+                                accessible={true}
+                                collapsable={false}
+                                focusable={true}
+                                onBlur={[Function]}
+                                onClick={[Function]}
+                                onFocus={[Function]}
+                                onResponderGrant={[Function]}
+                                onResponderMove={[Function]}
+                                onResponderRelease={[Function]}
+                                onResponderTerminate={[Function]}
+                                onResponderTerminationRequest={[Function]}
+                                onStartShouldSetResponder={[Function]}
+                                style={
+                                  Array [
+                                    Object {
+                                      "borderRadius": 20,
+                                      "elevation": 2,
+                                      "padding": 15,
+                                    },
+                                    Object {
+                                      "backgroundColor": "#FF2400",
+                                    },
+                                  ]
+                                }
+                              >
+                                <Text
+                                  style={
+                                    Object {
+                                      "color": "#FFF",
+                                      "fontFamily": "Nunito",
+                                      "fontWeight": "bold",
+                                      "textAlign": "center",
+                                    }
+                                  }
+                                >
+                                  CONFIRMATION_MODAL:DELETE
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </Modal>
                       <View
                         style={
                           Object {

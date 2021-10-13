@@ -333,31 +333,50 @@ exports[`test ArticleItem match with Snapshot 1`] = `
                             style={
                               Object {
                                 "flexDirection": "row",
+                                "width": "100%",
                               }
                             }
                           >
-                            <Text
+                            <View
+                              accessible={true}
+                              focusable={true}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
                               style={
-                                Array [
-                                  Object {
-                                    "backgroundColor": "transparent",
-                                    "color": "#000",
-                                    "fontFamily": "Nunito",
-                                    "fontSize": 25.142857142857142,
-                                    "fontStyle": "normal",
-                                    "fontWeight": "400",
-                                  },
-                                  Array [
-                                    Object {
-                                      "color": "#5CB85C",
-                                    },
-                                  ],
-                                  undefined,
-                                ]
+                                Object {
+                                  "opacity": 1,
+                                  "width": "82%",
+                                }
                               }
                             >
-                              mikeJax
-                            </Text>
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "backgroundColor": "transparent",
+                                      "color": "#000",
+                                      "fontFamily": "Nunito",
+                                      "fontSize": 25.142857142857142,
+                                      "fontStyle": "normal",
+                                      "fontWeight": "400",
+                                    },
+                                    Array [
+                                      Object {
+                                        "color": "#5CB85C",
+                                      },
+                                    ],
+                                    undefined,
+                                  ]
+                                }
+                              >
+                                mikeJax
+                              </Text>
+                            </View>
                           </View>
                           <Text
                             style={
