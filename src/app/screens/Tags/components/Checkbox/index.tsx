@@ -16,7 +16,7 @@ function Checkbox({ selected = false, option, onPress }: Props) {
   const isSelected = selected;
   return (
     <TouchableOpacity style={[styles.container, isSelected && styles.selected]} onPress={handlePress}>
-      <CustomText semiBold>{option}</CustomText>
+      <CustomText>{option}</CustomText>
       <View style={[styles.iconContainer]}>
         {isSelected && <Image source={icCheck} style={styles.icon} />}
       </View>
