@@ -30,7 +30,7 @@ import FavoriteActions from '@redux/favorites/actions';
 
 import './i18n';
 
-import Comment from './Components/Comment';
+import Comment from './components/Comment';
 import styles from './styles';
 import testIds from './testIds';
 
