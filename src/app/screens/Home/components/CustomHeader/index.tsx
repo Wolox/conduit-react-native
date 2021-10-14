@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { View, StatusBar, Animated } from 'react-native';
+import { useIsFocused } from '@react-navigation/core';
 import icLogo from '@assets/illustrations/ilLogoConduit.png';
 import icHeader from '@assets/illustrations/ilHeaderLogin.png';
 import { isAndroid } from '@constants/platform';
 import { transparent } from '@constants/colors';
-import { useIsFocused } from '@react-navigation/core';
 
 import styles from './styles';
 
