@@ -4,10 +4,12 @@ import icLogo from '@assets/illustrations/ilLogoConduit.png';
 import icHeader from '@assets/illustrations/ilHeaderLogin.png';
 import { isAndroid } from '@constants/platform';
 import { transparent } from '@constants/colors';
+import { useIsFocused } from '@react-navigation/core';
 
 import styles from './styles';
 
 export default function CustomHeader() {
+  const isFocused = useIsFocused();
   const fadeBg = useRef(new Animated.Value(0)).current;
   const fadeLogo = useRef(new Animated.Value(0)).current;
 
@@ -29,10 +31,9 @@ export default function CustomHeader() {
   useEffect(() => {
     animationsStates();
   }, [animationsStates]);
-
   return (
     <>
-      {isAndroid && <StatusBar translucent backgroundColor={transparent} />}
+      {isAndroid && isFocused && <StatusBar translucent backgroundColor={transparent} />}
       <View style={styles.container}>
         <Animated.Image
           source={icHeader}
