@@ -28,7 +28,9 @@ export default StyleSheet.create({
     alignSelf: 'flex-end'
   },
   containerSelectedTags: {
+    ...BOTTOM_SEPARATOR_LINE,
     paddingHorizontal: SPACING.MEDIUM,
+    paddingBottom: SPACING.SMALL,
     flexDirection: 'row'
   }
 });

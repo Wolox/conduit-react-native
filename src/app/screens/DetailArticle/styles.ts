@@ -86,7 +86,8 @@ export default StyleSheet.create({
     ...fonts.labelFont,
     borderColor: lightGray,
     borderWidth: BORDER_WIDTH.BOLD,
-    padding: SPACING.XXXSMALL,
+    paddingHorizontal: SPACING.SMALL,
+    paddingVertical: SPACING.XXSMALL,
     marginHorizontal: SPACING.XXXSMALL
   },
   bodyContainer: {

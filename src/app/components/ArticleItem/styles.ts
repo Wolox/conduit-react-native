@@ -2,9 +2,9 @@ import { StyleSheet } from 'react-native';
 import { extraLightGray, red } from '@constants/colors';
 import { SPACING } from '@constants/dimentions';
 import { moderateScale } from '@utils/scalingUtils';
+import { SIZES } from '@constants/fonts';
 
 const IMAGE_SIZE = moderateScale(40);
-const ICON_SIZE = 20;
 
 export default StyleSheet.create({
   container: {
@@ -23,11 +23,12 @@ export default StyleSheet.create({
   },
   iconContainer: {
     flexDirection: 'row',
-    width: '100%'
+    width: '100%',
+    alignItems: 'center'
   },
   deleteIcon: {
-    width: ICON_SIZE,
-    height: ICON_SIZE,
+    width: SIZES.MEDIUM,
+    height: SIZES.MEDIUM,
     tintColor: red
   },
   textUserName: {
