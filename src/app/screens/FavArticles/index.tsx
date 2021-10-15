@@ -6,6 +6,7 @@ import CustomText from '@components/CustomText';
 import ScreenWithLoader from '@components/ScreenWithLoader';
 import ArticleItem from '@components/ArticleItem';
 import useNavigation from '@components/AppNavigator/helper';
+import Header from '@components/Header';
 import Routes from '@constants/routes';
 import { ListKeyExtractor } from '@interfaces/miscelanious';
 import { FavouritesState, State } from '@interfaces/reduxInterfaces';
@@ -64,11 +65,7 @@ export default function FavArticles() {
   }, [dispatch, currentUser]);
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.statusNavBar}>
-        <View style={styles.textTitle}>
-          <CustomText medium>{i18next.t('FAV_ARTICLES:FAVORITED_ARTICLES')}</CustomText>
-        </View>
-      </View>
+      <Header title={i18next.t('FAV_ARTICLES:FAVORITED_ARTICLES')} />
       <ScreenWithLoader loading={favoritesArticlesListLoading} withInitialLoading={false}>
         {renderMessage()}
       </ScreenWithLoader>
