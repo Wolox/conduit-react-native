@@ -365,8 +365,8 @@ exports[`test Tags_SCREEN to match with snapshot 1`] = `
                           style={
                             Object {
                               "alignItems": "center",
-                              "backgroundColor": "#F1F1F1",
-                              "borderColor": "#A7A7A7",
+                              "backgroundColor": "#5CB85C",
+                              "borderColor": "#FFF",
                               "borderRadius": 25,
                               "borderWidth": 0,
                               "flexDirection": "row",
@@ -405,7 +405,7 @@ exports[`test Tags_SCREEN to match with snapshot 1`] = `
                                   Array [],
                                   undefined,
                                   Object {
-                                    "color": "#939393",
+                                    "color": "#FFF",
                                   },
                                 ],
                               ]
