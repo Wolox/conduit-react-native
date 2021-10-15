@@ -2,6 +2,7 @@ export const blue: string = '#288CCB';
 export const darkBlue: string = '#36424a';
 // TODO replace green or more colors when define Hex Primary Colors to app
 export const green: string = '#5CB85C';
+export const lightGreen: string = '#bee2bc';
 
 export const red: string = '#FF0000';
 export const scarletRed: string = '#FF2400';
