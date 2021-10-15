@@ -130,6 +130,7 @@ exports[`AvatarSelector AvatarSelector Snapshot 1`] = `
               }
             />
             <Image
+              resizeMode="contain"
               source={
                 Object {
                   "process": [Function],
@@ -165,89 +166,7 @@ exports[`AvatarSelector AvatarSelector Snapshot 1`] = `
               style={false}
             />
             <Image
-              source={
-                Object {
-                  "process": [Function],
-                }
-              }
-              style={
-                Object {
-                  "height": 214.28571428571428,
-                  "width": 214.28571428571428,
-                }
-              }
-            />
-          </View>
-        </View>
-      </View>
-      <View
-        onLayout={[Function]}
-        style={null}
-      >
-        <View
-          style={
-            Object {
-              "flexDirection": "row",
-            }
-          }
-        >
-          <View
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginBottom": 10,
-                "marginHorizontal": 15,
-                "opacity": 1,
-              }
-            }
-          >
-            <View
-              style={false}
-            />
-            <Image
-              source={
-                Object {
-                  "process": [Function],
-                }
-              }
-              style={
-                Object {
-                  "height": 214.28571428571428,
-                  "width": 214.28571428571428,
-                }
-              }
-            />
-          </View>
-          <View
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginBottom": 10,
-                "marginHorizontal": 15,
-                "opacity": 1,
-              }
-            }
-          >
-            <View
-              style={false}
-            />
-            <Image
+              resizeMode="contain"
               source={
                 Object {
                   "process": [Function],
@@ -296,6 +215,7 @@ exports[`AvatarSelector AvatarSelector Snapshot 1`] = `
               style={false}
             />
             <Image
+              resizeMode="contain"
               source={
                 Object {
                   "process": [Function],
@@ -331,6 +251,7 @@ exports[`AvatarSelector AvatarSelector Snapshot 1`] = `
               style={false}
             />
             <Image
+              resizeMode="contain"
               source={
                 Object {
                   "process": [Function],
@@ -379,6 +300,7 @@ exports[`AvatarSelector AvatarSelector Snapshot 1`] = `
               style={false}
             />
             <Image
+              resizeMode="contain"
               source={
                 Object {
                   "process": [Function],
@@ -414,6 +336,92 @@ exports[`AvatarSelector AvatarSelector Snapshot 1`] = `
               style={false}
             />
             <Image
+              resizeMode="contain"
+              source={
+                Object {
+                  "process": [Function],
+                }
+              }
+              style={
+                Object {
+                  "height": 214.28571428571428,
+                  "width": 214.28571428571428,
+                }
+              }
+            />
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "marginBottom": 10,
+                "marginHorizontal": 15,
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={false}
+            />
+            <Image
+              resizeMode="contain"
+              source={
+                Object {
+                  "process": [Function],
+                }
+              }
+              style={
+                Object {
+                  "height": 214.28571428571428,
+                  "width": 214.28571428571428,
+                }
+              }
+            />
+          </View>
+          <View
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "marginBottom": 10,
+                "marginHorizontal": 15,
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              style={false}
+            />
+            <Image
+              resizeMode="contain"
               source={
                 Object {
                   "process": [Function],

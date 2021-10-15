@@ -66,7 +66,6 @@ function Tags() {
       <View>
         <CustomButton
           primary
-          disabled={selectedTags.length === 0}
           testID={testIds.applyFiltersButton}
           onPress={handleFilterByTags}
           title={i18next.t('TAGS:APPLY_FILTERS')}

@@ -290,14 +290,13 @@ exports[`test CustomHeaderHome to match with Snapshot 1`] = `
                     <View
                       style={
                         Object {
-                          "height": 120,
-                          "overflow": "hidden",
+                          "height": 127,
                           "width": "100%",
                         }
                       }
                     >
                       <Image
-                        resizeMethod="scale"
+                        resizeMethod="resize"
                         resizeMode="stretch"
                         source={
                           Object {
@@ -306,9 +305,10 @@ exports[`test CustomHeaderHome to match with Snapshot 1`] = `
                         }
                         style={
                           Object {
-                            "height": "100%",
+                            "height": 145,
                             "opacity": 0,
                             "position": "absolute",
+                            "top": 0,
                             "width": "100%",
                           }
                         }
@@ -324,8 +324,8 @@ exports[`test CustomHeaderHome to match with Snapshot 1`] = `
                         }
                         style={
                           Object {
-                            "height": 28,
-                            "marginTop": "15%",
+                            "height": 21,
+                            "marginTop": "20%",
                             "opacity": 0,
                             "width": "100%",
                           }
