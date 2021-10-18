@@ -5,11 +5,9 @@ import { SPACING } from '@constants/dimentions';
 
 const AVATAR_SIZE = scale(100);
 const COMMON_POSITION = 0;
-const COMMON_SPACING = 15;
 
 export default StyleSheet.create({
   container: {
-    height: '85%',
     width: '100%',
     alignItems: 'center',
     paddingBottom: SPACING.XXSMALL
@@ -19,9 +17,11 @@ export default StyleSheet.create({
     height: AVATAR_SIZE
   },
   itemStyle: {
-    marginHorizontal: COMMON_SPACING,
-    marginBottom: 10,
-    padding: 7
+    marginHorizontal: 15,
+    marginBottom: 6,
+    paddingTop: 3,
+    paddingBottom: SPACING.SMALL,
+    paddingHorizontal: 8
   },
   selectedItem: {
     position: 'absolute',
