@@ -18,7 +18,7 @@ export default StyleSheet.create({
   },
   itemStyle: {
     marginHorizontal: 15,
-    marginBottom: 6,
+    marginBottom: SPACING.XSMALL,
     paddingTop: 3,
     paddingBottom: SPACING.SMALL,
     paddingHorizontal: 8
