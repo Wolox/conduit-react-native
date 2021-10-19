@@ -299,7 +299,7 @@ exports[`test NEW_ARTICLE_SNAPSHOT to match with snapshot 1`] = `
                         style={
                           Object {
                             "alignItems": "center",
-                            "marginBottom": 10,
+                            "marginBottom": 12,
                             "marginTop": 2,
                           }
                         }
@@ -342,7 +342,7 @@ exports[`test NEW_ARTICLE_SNAPSHOT to match with snapshot 1`] = `
                               },
                               false,
                               Object {
-                                "height": 60,
+                                "height": 80,
                                 "marginBottom": 20,
                               },
                             ]
@@ -602,7 +602,7 @@ exports[`test NEW_ARTICLE_SNAPSHOT to match with snapshot 1`] = `
                           style={
                             Object {
                               "marginBottom": 0,
-                              "marginTop": -20,
+                              "marginTop": -10,
                               "paddingTop": 0,
                               "width": "100%",
                             }
