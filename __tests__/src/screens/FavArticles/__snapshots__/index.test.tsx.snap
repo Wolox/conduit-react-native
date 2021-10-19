@@ -299,10 +299,8 @@ exports[`test FavArticles_SCREEN to match with snapshot 1`] = `
                         style={
                           Object {
                             "alignItems": "center",
-                            "alignSelf": "center",
+                            "marginBottom": 12,
                             "marginTop": 2,
-                            "paddingBottom": 5,
-                            "width": "100%",
                           }
                         }
                       >
@@ -325,11 +323,7 @@ exports[`test FavArticles_SCREEN to match with snapshot 1`] = `
                                   "fontStyle": "normal",
                                   "fontWeight": "400",
                                 },
-                                Array [
-                                  Object {
-                                    "fontSize": 25.142857142857142,
-                                  },
-                                ],
+                                Array [],
                                 undefined,
                               ]
                             }

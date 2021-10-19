@@ -4,8 +4,8 @@ import { SPACING } from '@constants/dimentions';
 import { isAndroid } from '@constants/platform';
 
 const DEFAULT_SPACE = 10;
-const CUSTOM_MARGIN_TOP = -20;
-const CUSTOM_HEIGHT = isAndroid ? 88 : 60;
+const CUSTOM_MARGIN_TOP = -10;
+const CUSTOM_HEIGHT = isAndroid ? 100 : 80;
 
 export default StyleSheet.create({
   container: {
