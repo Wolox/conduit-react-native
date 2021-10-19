@@ -21,7 +21,8 @@ export default StyleSheet.create({
     marginVertical: SPACING.SMALL
   },
   containerTagButton: {
-    paddingHorizontal: SPACING.MEDIUM
+    paddingRight: SPACING.MEDIUM,
+    marginTop: SPACING.SMALL
   },
   tagButton: {
     width: 80,

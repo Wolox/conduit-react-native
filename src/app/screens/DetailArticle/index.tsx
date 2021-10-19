@@ -68,8 +68,12 @@ function DetailArticle({ route }: Props) {
   const comments = useSelector((state: State) => state.comments.comments);
   const currentUser = useSelector((state: State) => state.auth.currentUser);
   const EXTRAHEIGHT = isIos ? 400 : 190;
-  const handleToggleFavorite = () => {
-    dispatch(favorited ? FavoriteActions.deleteFavorite(slug) : FavoriteActions.addFavorite(slug));
+  const handleToggleFavorite = async () => {
+    await dispatch(favorited ? FavoriteActions.deleteFavorite(slug) : FavoriteActions.addFavorite(slug));
+    await dispatch(ArticlesActions.getArticles());
+    if (currentUser?.user) {
+      await dispatch(FavoriteActions.getFavoritesArticles(currentUser));
+    }
   };
   const handleDeleteArticle = () => dispatch(ArticlesActions.deleteArticle(slug));
   const handleEditArticle = useCallback(
