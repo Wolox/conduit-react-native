@@ -15,7 +15,8 @@ export const withoutHeader = (): NavigationStackOptions => ({
   headerShown: false
 });
 export const withoutShadow = (): NavigationStackOptions => ({
-  headerStyle: { shadowColor: transparent, backgroundColor: green }
+  headerStyle: { shadowColor: transparent, backgroundColor: green },
+  headerTitle: i18next.t('DETAIL_USER:HEADER')
 });
 
 export const withCustomHeader = (): NavigationStackOptions => ({
