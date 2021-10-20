@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { BOTTOM_SEPARATOR_LINE } from '@constants/commonStyles';
 import { SPACING } from '@constants/dimentions';
+import { grayTransparent, green } from '@constants/colors';
 
 const styles = StyleSheet.create({
   containerBio: {
@@ -22,6 +23,27 @@ const styles = StyleSheet.create({
   },
   titleEmptyArticles: {
     marginTop: SPACING.MEDIUM
+  },
+  followButtonContainer: {
+    alignItems: 'flex-end',
+    marginHorizontal: SPACING.SMALL
+  },
+  interactionButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '30%',
+    padding: 10,
+    borderRadius: 50
+  },
+  following: {
+    backgroundColor: green
+  },
+  unfollowing: {
+    backgroundColor: grayTransparent
+  },
+  greenTint: {
+    tintColor: green
   }
 });
 export default styles;

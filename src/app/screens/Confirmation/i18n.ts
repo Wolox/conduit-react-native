@@ -9,5 +9,6 @@ i18next.addResources('en', 'CONFIRMATION', {
   [`${ConfirmationTypes.SUCCESS_UPDATE_ARTICLE}_SUBTITLE`]: 'The article has been updated correctly',
   [`${ConfirmationTypes.ERROR_REGISTER_ARTICLE}_TITLE`]: 'Error!',
   [`${ConfirmationTypes.ERROR_REGISTER_ARTICLE}_SUBTITLE`]: 'Something went wrong, try later',
-  CONFIRMATION_BUTTON: 'Go read'
+  CONFIRMATION_BUTTON: 'Go read',
+  [`${ConfirmationTypes.SUCCESS_REGISTER_ARTICLE}_CONFIRMATION_BUTTON`]: 'Back to feed!'
 });

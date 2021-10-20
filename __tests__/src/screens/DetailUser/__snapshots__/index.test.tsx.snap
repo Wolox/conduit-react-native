@@ -404,6 +404,69 @@ exports[`DetailArticle DetailArticle Snapshot 1`] = `
                             }
                           }
                         >
+                          <View
+                            style={
+                              Object {
+                                "alignItems": "flex-end",
+                                "marginHorizontal": 12,
+                              }
+                            }
+                          >
+                            <View
+                              accessible={true}
+                              focusable={true}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                Object {
+                                  "alignItems": "center",
+                                  "backgroundColor": "#00000033",
+                                  "borderRadius": 50,
+                                  "flexDirection": "row",
+                                  "justifyContent": "center",
+                                  "opacity": 1,
+                                  "padding": 10,
+                                  "width": "30%",
+                                }
+                              }
+                              testID="follow-user-button"
+                            >
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "backgroundColor": "transparent",
+                                      "color": "#000",
+                                      "fontFamily": "Nunito",
+                                      "fontSize": 25.142857142857142,
+                                      "fontStyle": "normal",
+                                      "fontWeight": "400",
+                                    },
+                                    Array [
+                                      Object {
+                                        "color": "#000",
+                                        "fontFamily": "Nunito",
+                                        "fontSize": 25.142857142857142,
+                                        "fontStyle": "normal",
+                                        "fontWeight": "700",
+                                      },
+                                      Object {
+                                        "textAlign": "center",
+                                      },
+                                    ],
+                                    undefined,
+                                  ]
+                                }
+                              >
+                                DETAIL_USER:USER_UNFOLLOW
+                              </Text>
+                            </View>
+                          </View>
                           <Text
                             style={
                               Array [

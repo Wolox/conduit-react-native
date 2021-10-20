@@ -40,7 +40,11 @@ function Confirmation() {
       <CustomButton
         style={styles.btnBack}
         center
-        title={i18next.t('CONFIRMATION:CONFIRMATION_BUTTON')}
+        title={
+          type === ConfirmationTypes.SUCCESS_REGISTER_ARTICLE
+            ? i18next.t(`CONFIRMATION:${type}_CONFIRMATION_BUTTON`)
+            : i18next.t('CONFIRMATION:CONFIRMATION_BUTTON')
+        }
         primary
         bold
         radial

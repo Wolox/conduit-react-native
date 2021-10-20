@@ -428,7 +428,7 @@ exports[`test Confirmation_SCREEN to match with snapshot 1`] = `
                             ]
                           }
                         >
-                          CONFIRMATION:CONFIRMATION_BUTTON
+                          CONFIRMATION:SUCCESS_REGISTER_ARTICLE_CONFIRMATION_BUTTON
                         </Text>
                       </View>
                     </View>

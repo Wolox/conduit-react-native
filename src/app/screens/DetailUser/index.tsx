@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import i18next from 'i18next';
 import ProfileActions from '@redux/profile/actions';
@@ -15,6 +15,7 @@ import ArticlesActions from '@redux/articles/actions';
 import RenderContent from './components/RenderContent';
 import './i18n';
 import styles from './styles';
+import testIds from './testIds';
 
 type Props = {
   route: {
@@ -31,6 +32,7 @@ export default function DetailUser({
 }: Props) {
   const dispatch = useDispatch();
   const [currentTab, setCurrentTab] = useState(0);
+  const currentUser = useSelector((state: State) => state?.auth?.currentUser?.user?.username);
   const articlesByAuthor = useSelector<State, Article[]>(
     state => state.articles.articlesAuthor.articles || []
   );
@@ -41,7 +43,7 @@ export default function DetailUser({
     state => state.articles || []
   );
   const userProfile = useSelector<State, Author>(state => state.profile?.profileUser?.profile);
-  const { bio, image, username } = userProfile || {};
+  const { bio, image, username, following } = userProfile || {};
   useEffect(() => {
     dispatch(ProfileActions.getProfileUser(user));
   }, [dispatch, user]);
@@ -63,12 +65,35 @@ export default function DetailUser({
     }
   }, [currentTab, getArticlesByAuthor, getFavoritedByAuthor]);
 
+  const [isFollow, setIsFollow] = useState(following);
+
+  const handleFollowUser = useCallback(() => {
+    dispatch(ProfileActions.followUser(username, isFollow));
+    setIsFollow(!isFollow);
+  }, [dispatch, isFollow, username]);
+
   return (
     <WithHeader
       title={i18next.t(`app:${username}`)}
       withAvatar
       avatar={image ? getAvatar(image) : icDefaultArticleImage}>
       <View style={styles.containerBio}>
+        {currentUser !== username && (
+          <View style={styles.followButtonContainer}>
+            <TouchableOpacity
+              testID={testIds.followUserButton}
+              style={[
+                styles.interactionButton,
+                isFollow && styles.following,
+                !isFollow && styles.unfollowing
+              ]}
+              onPress={handleFollowUser}>
+              <CustomText white={isFollow} bold center>
+                {isFollow ? i18next.t('DETAIL_USER:USER_FOLLOW') : i18next.t('DETAIL_USER:USER_UNFOLLOW')}
+              </CustomText>
+            </TouchableOpacity>
+          </View>
+        )}
         <CustomText green medium center>
           {i18next.t('DETAIL_USER:DESCRIPTION')}
         </CustomText>
