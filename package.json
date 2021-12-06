@@ -27,8 +27,8 @@
     "e2e:build.android": "detox build --configuration android.emu.qa.release",
     "e2e:ios": "detox test -c ios",
     "e2e:android": "detox test -c android.emu.qa.release",
-    "test:coverage": "yarn run test --env=jsdom --coverage --passWithNoTests --watchAll=false --silent --coverageThreshold '{}' --coverageReporters='json-summary' && npm run test:generate-coverage-file",
-    "test:generate-coverage-file": "node ./node_modules/@wolox/js-test-coverage-script"
+    "test:generate-coverage-file": "node ./node_modules/@wolox/js-test-coverage-script",
+    "test:coverage": "yarn run test --env=jsdom --coverage --passWithNoTests --watchAll=false --silent --coverageThreshold '{}' --coverageReporters='json-summary' && npm run test:generate-coverage-file"
   },
   "dependencies": {
     "@hookform/devtools": "^3.1.0",
