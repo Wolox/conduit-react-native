@@ -1929,6 +1929,11 @@
     "@typescript-eslint/types" "4.28.3"
     eslint-visitor-keys "^2.0.0"
 
+"@wolox/js-test-coverage-script@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@wolox/js-test-coverage-script/-/js-test-coverage-script-0.0.2.tgz#7f1f8dec5c04cb4afef095764372626f4b4d6687"
+  integrity sha512-5U1yelPP+ZtfEimcJEldVCjiu3fkOQRVu1P+v7GbVZj14lbTW790r3Z2xEvVSqe+DGBPAqwz9upHh/ysE6AnGg==
+
 abab@^2.0.3, abab@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.5.tgz#c0b678fb32d60fc1219c784d6a826fe385aeb79a"
