@@ -119,7 +119,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run lint-diff && yarn run check-types && yarn run test:coverage"
+      "pre-commit": "yarn run lint-diff && yarn run check-types",
+      "pre-push": "yarn run test:coverage"
     }
   }
 }
