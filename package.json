@@ -9,7 +9,6 @@
     "start": "npx react-native start",
     "test": "jest --passWithNoTests",
     "lint": "eslint src --ext .js,.ts,.jsx,.tsx",
-    "coverage": "jest --coverage --passWithNoTests",
     "clean": "rm -rf $TMPDIR/react-* && watchman watch-del-all && yarn cache clean",
     "force-clean": "yarn run android:clean && yarn run clean && rm -rf ios/build && rm -rf ios/Pods && rm -rf node_modules/ && yarn install && cd ios/ && pod install",
     "ios:clean": "cd ios/ && rm -rf build && rm -rf Pods",
@@ -28,7 +27,7 @@
     "e2e:ios": "detox test -c ios",
     "e2e:android": "detox test -c android.emu.qa.release",
     "test:generate-coverage-file": "node ./node_modules/@wolox/js-test-coverage-script",
-    "test:coverage": "yarn run test --env=jsdom --coverage --passWithNoTests --watchAll=false --silent --coverageThreshold '{}' --coverageReporters='json-summary' && npm run test:generate-coverage-file"
+    "test:coverage": "jest --env=jsdom --coverage --passWithNoTests --watchAll=false --silent --coverageThreshold '{}' --coverageReporters='json-summary' && npm run test:generate-coverage-file"
   },
   "dependencies": {
     "@hookform/devtools": "^3.1.0",
