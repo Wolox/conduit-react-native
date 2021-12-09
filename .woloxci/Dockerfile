@@ -1,6 +1,5 @@
 FROM node:12.13.0
 
-USER node
 
 WORKDIR /home/node
 
