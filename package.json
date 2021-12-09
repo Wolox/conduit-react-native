@@ -112,7 +112,10 @@
     "typescript": "^4.3.5"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    }
   },
   "husky": {
     "hooks": {
