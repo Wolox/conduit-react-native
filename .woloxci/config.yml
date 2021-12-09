@@ -6,7 +6,6 @@ steps:
   lint:
     - ln -sfn /home/node/node_modules node_modules
     - npm run lint
-    - cd src && npm run test -- -u
 
 environment:
   GIT_COMMITTER_NAME: a
