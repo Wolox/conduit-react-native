@@ -5,9 +5,9 @@ config:
 steps:
   lint:
     - ln -sfn /home/node/node_modules node_modules
-    - yarn run lint
-    - yarn run check-types
-    - yarn run test
+    - cd npm run lint
+    - cd npm run check-types
+    - cd npm run test
 
 environment:
   GIT_COMMITTER_NAME: a
