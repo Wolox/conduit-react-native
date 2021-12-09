@@ -114,8 +114,11 @@
   "jest": {
     "preset": "react-native",
     "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/src/$1"
-    }
+    "^@root(.*)$": "<rootDir>/src/app/$1",
+    "^@components(.*)$": "<rootDir>/src/app/components$1",
+    "^@/(.*)$": "<rootDir>/src/app/$1",
+    "^@components$": "<rootDir>/src/app/components/"
+  } 
   },
   "husky": {
     "hooks": {
