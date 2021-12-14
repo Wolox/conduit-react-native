@@ -37,7 +37,7 @@ function Tags() {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID={testIds.tagsView}>
       <View>
         <TouchableOpacity
           testID={testIds.clearFiltersButton}

@@ -1,12 +1,8 @@
-import testIDLogin from '@screens/Auth/screens/Login/testIds';
-
-const USER_MOCK = {
-  email: 'test@gmail.com',
-  password: '1234'
-};
+import testIDHome from '@screens/Home/testIds';
+import testIDTags from '@screens/Tags/testIds';
 
 /* eslint-disable no-undef */
-describe('Example login', () => {
+describe('Test Home', () => {
   beforeAll(async () => {
     await device.launchApp();
   });
@@ -15,19 +11,12 @@ describe('Example login', () => {
     await device.reloadReactNative();
   });
 
-  it('should have Login screen', async () => {
-    await expect(element(by.id(testIDLogin.loginView))).toBeVisible();
+  it('should have Home screen', async () => {
+    await expect(element(by.id(testIDHome.homeView))).toBeVisible();
   });
 
-  it('Should complete the login form and navigate to OnBoarding screen', async () => {
-    await expect(element(by.text('Email'))).toBeVisible();
-    await expect(element(by.text('Contraseña'))).toBeVisible();
-    await element(by.id(testIDLogin.emailLoginInput)).typeText(USER_MOCK.email);
-    await element(by.id(testIDLogin.passwordLoginInput)).typeText(USER_MOCK.password);
-    await element(by.id(testIDLogin.loginButton)).tap();
-  });
-
-  it('Should have OnBoarding screen', async () => {
-    await expect(element(by.text('First Screen'))).toBeVisible();
+  it('can navigate to Tags screen', async () => {
+    await element(by.id(testIDHome.tagsButton)).tap();
+    await expect(element(by.id(testIDTags.tagsView))).toBeVisible();
   });
 });
