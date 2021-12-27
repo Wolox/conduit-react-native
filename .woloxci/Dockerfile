@@ -1,10 +1,12 @@
-FROM node:10.11.0-alpine
+FROM node:12.13.0
+
+USER node
 
 WORKDIR /home/node
 
-COPY package.json .
+COPY ./package.json .
 
-RUN yarn install
+RUN npm install
 ENV PATH /home/node/node_modules/.bin:$PATH
 
 WORKDIR /home/node/app
