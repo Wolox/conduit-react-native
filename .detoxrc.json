@@ -4,8 +4,8 @@
   "apps": {
     "ios": {
       "type": "ios.app",
-      "build": "xcodebuild -workspace ios/conduitReactNative.xcworkspace -scheme qa -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
-      "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/conduitReactNative.app"
+      "build": "xcodebuild -workspace ios/Conduit.xcworkspace -scheme qa -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+      "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/Conduit.app"
     },
     "android.qa.release": {
       "type": "android.apk",

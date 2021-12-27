@@ -20,6 +20,7 @@ import detailArticleStyles from '@screens/DetailArticle/styles';
 
 import CustomHeader from './components/CustomHeader';
 import styles from './styles';
+import testIds from './testIds';
 import './i18n';
 
 function Home({ navigation }: Navigation) {
@@ -124,7 +125,7 @@ function Home({ navigation }: Navigation) {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID={testIds.homeView}>
       <ConfirmationModal
         title={i18next.t('HOME:CONFIRM_DELETE_ARTICLE')}
         showModal={deleteArticleModal}
@@ -140,6 +141,7 @@ function Home({ navigation }: Navigation) {
       )}
       <View style={styles.containerTagButton}>
         <CustomButton
+          testID={testIds.tagsButton}
           link
           icon={icSort}
           title={i18next.t('HOME:TAGS')}
